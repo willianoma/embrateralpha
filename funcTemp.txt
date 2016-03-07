@@ -1,0 +1,44 @@
+        profleimage:string
+        nome:string
+        posto:string
+        cpf:string
+        rg:string
+        ctps:string
+        endereco:string
+        nascimento:string
+        pis_pasep:string
+        reservista:string
+        titulo_eleitor:string
+        telefone:string
+        email:string
+        data_admissao:string
+        funcao:string
+        farda:string
+        bota:string
+        filiacao:string
+        filhos:string
+        banco:string
+        banco_conta:string
+        banco_agencia:string
+        banco_tipo:string
+        contato_emergencia:string
+        tipo_sanguineo:string
+        estado_civil:string
+        nome_conjuge:string
+        grau_instrucao:string
+        deficiencia:string
+        recebe_vale_transporte:string
+        cargo:string
+        cbo:string
+        aso:string
+        referencia:string
+        preenchida_por:string
+        obs:string
+
+
+
+
+        php artisan make:scaffold Funcionario --schema="profleimage:string, nome:string, posto:string, cpf:string, rg:string, ctps:string, endereco:string, nascimento:string, pis_pasep:string, reservista:string, titulo_eleitor:string, telefone:string, email:string, data_admissao:string, funcao:string, farda:string, bota:string, filiacao:string, filhos:string, banco:string, banco_conta:string, banco_agencia:string, banco_tipo:string, contato_emergencia:string, tipo_sanguineo:string, estado_civil:string, nome_conjuge:string, grau_instrucao:string, deficiencia:string, recebe_vale_transporte:string, cargo:string, cbo:string, aso:string, referencia:string, preenchida_por:string, obs:string"
+
+
+php artisan make:scaffold Ocorrencias --schema="usuario:string, posto:string, ocorrencia:string, ocorrencia_descricao:string, ocorrencia_data:string, funcionarios_envolvido:string, fiscal_responsavel:string, anexos:string"
