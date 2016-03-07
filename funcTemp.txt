@@ -42,3 +42,6 @@
 
 
 php artisan make:scaffold Ocorrencias --schema="usuario:string, posto:string, ocorrencia:string, ocorrencia_descricao:string, ocorrencia_data:string, funcionarios_envolvido:string, fiscal_responsavel:string, anexos:string"
+
+
+teste
