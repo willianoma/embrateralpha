@@ -78,6 +78,9 @@ class FuncionarioController extends Controller {
 		$funcionario->referencia = $request->input("referencia");
 		$funcionario->preenchida_por = $request->input("preenchida_por");
 		$funcionario->obs = $request->input("obs");
+		$funcionario->horario = $request->input("horario");
+		$funcionario->tipo = $request->input("tipo");
+		$funcionario->status = $request->input("status");
 
 		$profileImage = $request->file('profleimage');
 		if ($request->hasFile('profleimage') && $profileImage->isValid() ) {
@@ -172,18 +175,22 @@ class FuncionarioController extends Controller {
 		$funcionario->referencia = $request->input("referencia");
 		$funcionario->preenchida_por = $request->input("preenchida_por");
 		$funcionario->obs = $request->input("obs");
+		$funcionario->horario = $request->input("horario");
+		$funcionario->tipo = $request->input("tipo");
+		$funcionario->status = $request->input("status");
+
 
 		$profileImage = $request->file('profleimage');
 
-     //  dd($profileImage->isValid());
-     //  die();
+       //dd($profileImage->isValid());
+       //die();
 
 
 		if ($request->hasFile('profleimage') && $profileImage->isValid() ) {
 			if($profileImage->getClientMimeType() == "image/jpeg" || $profileImage->getClientMimeType() == "image/png" || $profileImage->getClientMimeType() == "image/jpg"){
 				$nomeArquivo = $funcionario->pis_pasep.'.'.$profileImage->getClientOriginalExtension();
 				$profileImage->move('profilesimages', $nomeArquivo);
-				$funcionario->profileimage = 'profilesimages/'.$nomeArquivo;
+				$funcionario->profleimage = 'profilesimages/'.$nomeArquivo;
 			}      	
 		}
 
