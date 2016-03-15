@@ -140,108 +140,114 @@
      </div>
      <div class="form-group @if($errors->has('funcao')) has-error @endif">
        <label for="funcao-field">Funcao</label>
+       @include('funcionarios.partials.funcoesFuncionarios')
+       <!--
        <input type="text" id="funcao-field" name="funcao" class="form-control" value="{{ $funcionario->funcao }}"/>
-       @if($errors->has("funcao"))
-       <span class="help-block">{{ $errors->first("funcao") }}</span>
-       @endif
-     </div>
-     <div class="form-group @if($errors->has('farda')) has-error @endif">
-       <label for="farda-field">Farda</label>
+     -->
+     @if($errors->has("funcao"))
+     <span class="help-block">{{ $errors->first("funcao") }}</span>
+     @endif
+   </div>
+
+
+   <div class="form-group @if($errors->has('farda')) has-error @endif">
+     <label for="farda-field">Farda</label>
+
+     @include('funcionarios.partials.fardas')
+
+       <!--
        <input type="text" id="farda-field" name="farda" class="form-control" value="{{ $funcionario->farda }}"/>
-       @if($errors->has("farda"))
-       <span class="help-block">{{ $errors->first("farda") }}</span>
-       @endif
-     </div>
-     <div class="form-group @if($errors->has('bota')) has-error @endif">
-       <label for="bota-field">Bota</label>
-       <input type="text" id="bota-field" name="bota" class="form-control" value="{{ $funcionario->bota }}"/>
-       @if($errors->has("bota"))
-       <span class="help-block">{{ $errors->first("bota") }}</span>
-       @endif
-     </div>
-     <div class="form-group @if($errors->has('filiacao')) has-error @endif">
-       <label for="filiacao-field">Filiacao</label>
-       <input type="text" id="filiacao-field" name="filiacao" class="form-control" value="{{ $funcionario->filiacao }}"/>
-       @if($errors->has("filiacao"))
-       <span class="help-block">{{ $errors->first("filiacao") }}</span>
-       @endif
-     </div>
-     <div class="form-group @if($errors->has('filhos')) has-error @endif">
-       <label for="filhos-field">Filhos</label>
-       <input type="number" id="filhos-field" name="filhos" class="form-control" value="{{ $funcionario->filhos }}"/>
-       @if($errors->has("filhos"))
-       <span class="help-block">{{ $errors->first("filhos") }}</span>
-       @endif
-     </div>
-     <div class="form-group @if($errors->has('banco')) has-error @endif">
-       <label for="banco-field">Banco</label>
-       <input type="text" id="banco-field" name="banco" class="form-control" value="{{ $funcionario->banco }}"/>
-       @if($errors->has("banco"))
-       <span class="help-block">{{ $errors->first("banco") }}</span>
-       @endif
-     </div>
-     <div class="form-group @if($errors->has('banco_conta')) has-error @endif">
-       <label for="banco_conta-field">Banco_conta</label>
-       <input type="text" id="banco_conta-field" name="banco_conta" class="form-control" value="{{ $funcionario->banco_conta }}"/>
-       @if($errors->has("banco_conta"))
-       <span class="help-block">{{ $errors->first("banco_conta") }}</span>
-       @endif
-     </div>
-     <div class="form-group @if($errors->has('banco_agencia')) has-error @endif">
-       <label for="banco_agencia-field">Banco_agencia</label>
-       <input type="text" id="banco_agencia-field" name="banco_agencia" class="form-control" value="{{ $funcionario->banco_agencia }}"/>
-       @if($errors->has("banco_agencia"))
-       <span class="help-block">{{ $errors->first("banco_agencia") }}</span>
-       @endif
-     </div>
-     <div class="form-group @if($errors->has('banco_tipo')) has-error @endif">
-       <label for="banco_tipo-field">Banco_tipo</label>
-       <input type="text" id="banco_tipo-field" name="banco_tipo" class="form-control" value="{{ $funcionario->banco_tipo }}"/>
-       @if($errors->has("banco_tipo"))
-       <span class="help-block">{{ $errors->first("banco_tipo") }}</span>
-       @endif
-     </div>
-     <div class="form-group @if($errors->has('contato_emergencia')) has-error @endif">
-       <label for="contato_emergencia-field">Contato_emergencia</label>
-       <input type="text" id="contato_emergencia-field" name="contato_emergencia" class="form-control" value="{{ $funcionario->contato_emergencia }}"/>
-       @if($errors->has("contato_emergencia"))
-       <span class="help-block">{{ $errors->first("contato_emergencia") }}</span>
-       @endif
-     </div>
-     <div class="form-group @if($errors->has('tipo_sanguineo')) has-error @endif">
-       <label for="tipo_sanguineo-field">Tipo_sanguineo</label>
-       <input type="text" id="tipo_sanguineo-field" name="tipo_sanguineo" class="form-control" value="{{ $funcionario->tipo_sanguineo }}"/>
-       @if($errors->has("tipo_sanguineo"))
-       <span class="help-block">{{ $errors->first("tipo_sanguineo") }}</span>
-       @endif
-     </div>
+     -->
+     @if($errors->has("farda"))
+     <span class="help-block">{{ $errors->first("farda") }}</span>
+     @endif
+   </div>
 
 
-     <div class="form-group @if($errors->has('estado_civil')) has-error @endif">
-       <label for="estado_civil-field">estado_civil</label>     
+   <div class="form-group @if($errors->has('bota')) has-error @endif">
+     <label for="bota-field">Bota</label>
+     <input type="text" id="bota-field" name="bota" class="form-control" value="{{ $funcionario->bota }}"/>
+     @if($errors->has("bota"))
+     <span class="help-block">{{ $errors->first("bota") }}</span>
+     @endif
+   </div>
+   <div class="form-group @if($errors->has('filiacao')) has-error @endif">
+     <label for="filiacao-field">Filiacao</label>
+     <input type="text" id="filiacao-field" name="filiacao" class="form-control" value="{{ $funcionario->filiacao }}"/>
+     @if($errors->has("filiacao"))
+     <span class="help-block">{{ $errors->first("filiacao") }}</span>
+     @endif
+   </div>
+   <div class="form-group @if($errors->has('filhos')) has-error @endif">
+     <label for="filhos-field">Filhos</label>
+     <input type="number" id="filhos-field" name="filhos" class="form-control" value="{{ $funcionario->filhos }}"/>
+     @if($errors->has("filhos"))
+     <span class="help-block">{{ $errors->first("filhos") }}</span>
+     @endif
+   </div>
+   <div class="form-group @if($errors->has('banco')) has-error @endif">
+     <label for="banco-field">Banco</label>
 
-       <select id="estado_civil-field" name="estado_civil" class="form-control">
-            <option>Casado</option>
-            <option>Solteiro</option>
-            <option>Viuvo</option>
-            <option>Divorciado</option>
-      </select>
+     @include('funcionarios.partials.bancos')
 
-      <!--   <input type="text" id="posto-field" name="posto" class="form-control" value="{{ $funcionario->posto }}"/> -->
-      @if($errors->has("estado_civil"))
-      <span class="help-block">{{ $errors->first("estado_civil") }}</span>
-      @endif
-    </div>
-
-<!--
-     <div class="form-group @if($errors->has('estado_civil')) has-error @endif">
-       <label for="estado_civil-field">Estado_civil</label>
-       <input type="text" id="estado_civil-field" name="estado_civil" class="form-control" value="{{ $funcionario->estado_civil }}"/>
-       @if($errors->has("estado_civil"))
-       <span class="help-block">{{ $errors->first("estado_civil") }}</span>
-       @endif
-     </div>
+     <!--
+     <input type="text" id="banco-field" name="banco" class="form-control" value="{{ $funcionario->banco }}"/>
    -->
+   @if($errors->has("banco"))
+   <span class="help-block">{{ $errors->first("banco") }}</span>
+   @endif
+ </div>
+ <div class="form-group @if($errors->has('banco_conta')) has-error @endif">
+   <label for="banco_conta-field">Banco_conta</label>
+   <input type="text" id="banco_conta-field" name="banco_conta" class="form-control" value="{{ $funcionario->banco_conta }}"/>
+   @if($errors->has("banco_conta"))
+   <span class="help-block">{{ $errors->first("banco_conta") }}</span>
+   @endif
+ </div>
+ <div class="form-group @if($errors->has('banco_agencia')) has-error @endif">
+   <label for="banco_agencia-field">Banco_agencia</label>
+   <input type="text" id="banco_agencia-field" name="banco_agencia" class="form-control" value="{{ $funcionario->banco_agencia }}"/>
+   @if($errors->has("banco_agencia"))
+   <span class="help-block">{{ $errors->first("banco_agencia") }}</span>
+   @endif
+ </div>
+ <div class="form-group @if($errors->has('banco_tipo')) has-error @endif">
+   <label for="banco_tipo-field">Banco_tipo</label>
+   <input type="text" id="banco_tipo-field" name="banco_tipo" class="form-control" value="{{ $funcionario->banco_tipo }}"/>
+   @if($errors->has("banco_tipo"))
+   <span class="help-block">{{ $errors->first("banco_tipo") }}</span>
+   @endif
+ </div>
+ <div class="form-group @if($errors->has('contato_emergencia')) has-error @endif">
+   <label for="contato_emergencia-field">Contato_emergencia</label>
+   <input type="text" id="contato_emergencia-field" name="contato_emergencia" class="form-control" value="{{ $funcionario->contato_emergencia }}"/>
+   @if($errors->has("contato_emergencia"))
+   <span class="help-block">{{ $errors->first("contato_emergencia") }}</span>
+   @endif
+ </div>
+ <div class="form-group @if($errors->has('tipo_sanguineo')) has-error @endif">
+   <label for="tipo_sanguineo-field">Tipo_sanguineo</label>
+   <input type="text" id="tipo_sanguineo-field" name="tipo_sanguineo" class="form-control" value="{{ $funcionario->tipo_sanguineo }}"/>
+   @if($errors->has("tipo_sanguineo"))
+   <span class="help-block">{{ $errors->first("tipo_sanguineo") }}</span>
+   @endif
+ </div>
+
+
+ 
+
+ <div class="form-group @if($errors->has('estado_civil')) has-error @endif">
+   <label for="estado_civil-field">Estado_civil</label>
+
+   @include('funcionarios.partials.estadoSocial')
+ <!--
+       <input type="text" id="estado_civil-field" name="estado_civil" class="form-control" value="{{ $funcionario->estado_civil }}"/>
+     -->
+     @if($errors->has("estado_civil"))
+     <span class="help-block">{{ $errors->first("estado_civil") }}</span>
+     @endif
+   </div>
+
 
    <div class="form-group @if($errors->has('nome_conjuge')) has-error @endif">
      <label for="nome_conjuge-field">Nome_conjuge</label>
@@ -259,89 +265,114 @@
    </div>
    <div class="form-group @if($errors->has('deficiencia')) has-error @endif">
      <label for="deficiencia-field">Deficiencia</label>
+
+     @include('funcionarios.partials.deficiencia')
+    <!--
      <input type="text" id="deficiencia-field" name="deficiencia" class="form-control" value="{{ $funcionario->deficiencia }}"/>
-     @if($errors->has("deficiencia"))
-     <span class="help-block">{{ $errors->first("deficiencia") }}</span>
-     @endif
-   </div>
-   <div class="form-group @if($errors->has('recebe_vale_transporte')) has-error @endif">
-     <label for="recebe_vale_transporte-field">Recebe_vale_transporte</label>
+   -->
+   @if($errors->has("deficiencia"))
+   <span class="help-block">{{ $errors->first("deficiencia") }}</span>
+   @endif
+ </div>
+ <div class="form-group @if($errors->has('recebe_vale_transporte')) has-error @endif">
+   <label for="recebe_vale_transporte-field">Recebe_vale_transporte</label>
+   @include('funcionarios.partials.recebeValeTransporte')
+
+     <!--
      <input type="text" id="recebe_vale_transporte-field" name="recebe_vale_transporte" class="form-control" value="{{ $funcionario->recebe_vale_transporte }}"/>
-     @if($errors->has("recebe_vale_transporte"))
-     <span class="help-block">{{ $errors->first("recebe_vale_transporte") }}</span>
-     @endif
-   </div>
-   <div class="form-group @if($errors->has('cargo')) has-error @endif">
-     <label for="cargo-field">Cargo</label>
-     <input type="text" id="cargo-field" name="cargo" class="form-control" value="{{ $funcionario->cargo }}"/>
-     @if($errors->has("cargo"))
-     <span class="help-block">{{ $errors->first("cargo") }}</span>
-     @endif
-   </div>
-   <div class="form-group @if($errors->has('cbo')) has-error @endif">
-     <label for="cbo-field">Cbo</label>
-     <input type="text" id="cbo-field" name="cbo" class="form-control" value="{{ $funcionario->cbo }}"/>
-     @if($errors->has("cbo"))
-     <span class="help-block">{{ $errors->first("cbo") }}</span>
-     @endif
-   </div>
-   <div class="form-group @if($errors->has('aso')) has-error @endif">
-     <label for="aso-field">Aso</label>
-     <input type="text" id="aso-field" name="aso" class="form-control" value="{{ $funcionario->aso }}"/>
-     @if($errors->has("aso"))
-     <span class="help-block">{{ $errors->first("aso") }}</span>
-     @endif
-   </div>
-   <div class="form-group @if($errors->has('referencia')) has-error @endif">
-     <label for="referencia-field">Referencia</label>
-     <input type="text" id="referencia-field" name="referencia" class="form-control" value="{{ $funcionario->referencia }}"/>
-     @if($errors->has("referencia"))
-     <span class="help-block">{{ $errors->first("referencia") }}</span>
-     @endif
-   </div>
-   <div class="form-group @if($errors->has('preenchida_por')) has-error @endif">
-     <label for="preenchida_por-field">Preenchida_por</label>
-     <input type="text" id="preenchida_por-field" name="preenchida_por" class="form-control" value="{{ $funcionario->preenchida_por }}"/>
-     @if($errors->has("preenchida_por"))
-     <span class="help-block">{{ $errors->first("preenchida_por") }}</span>
-     @endif
-   </div>
-   <div class="form-group @if($errors->has('obs')) has-error @endif">
-     <label for="obs-field">Obs</label>
-     <input type="text" id="obs-field" name="obs" class="form-control" value="{{ $funcionario->obs }}"/>
-     @if($errors->has("obs"))
-     <span class="help-block">{{ $errors->first("obs") }}</span>
-     @endif
-   </div>
+   -->
+   @if($errors->has("recebe_vale_transporte"))
+   <span class="help-block">{{ $errors->first("recebe_vale_transporte") }}</span>
+   @endif
+ </div>
+ <div class="form-group @if($errors->has('cargo')) has-error @endif">
+   <label for="cargo-field">Cargo</label>
+   
+   @include('funcionarios.partials.cargoFuncionario')
 
-   <div class="form-group @if($errors->has('horario')) has-error @endif">
-     <label for="horario-field">horario</label>
+   <!--<input type="text" id="cargo-field" name="cargo" class="form-control" value="{{ $funcionario->cargo }}"/>
+ -->
+ @if($errors->has("cargo"))
+ <span class="help-block">{{ $errors->first("cargo") }}</span>
+ @endif
+</div>
+<div class="form-group @if($errors->has('cbo')) has-error @endif">
+ <label for="cbo-field">Cbo</label>
+ <input type="text" id="cbo-field" name="cbo" class="form-control" value="{{ $funcionario->cbo }}"/>
+ @if($errors->has("cbo"))
+ <span class="help-block">{{ $errors->first("cbo") }}</span>
+ @endif
+</div>
+<div class="form-group @if($errors->has('aso')) has-error @endif">
+ <label for="aso-field">Aso</label>
+ <input type="text" id="aso-field" name="aso" class="form-control" value="{{ $funcionario->aso }}"/>
+ @if($errors->has("aso"))
+ <span class="help-block">{{ $errors->first("aso") }}</span>
+ @endif
+</div>
+<div class="form-group @if($errors->has('referencia')) has-error @endif">
+ <label for="referencia-field">Referencia</label>
+ <input type="text" id="referencia-field" name="referencia" class="form-control" value="{{ $funcionario->referencia }}"/>
+ @if($errors->has("referencia"))
+ <span class="help-block">{{ $errors->first("referencia") }}</span>
+ @endif
+</div>
+<div class="form-group @if($errors->has('preenchida_por')) has-error @endif">
+ <label for="preenchida_por-field">Preenchida_por</label>
+ <input type="text" id="preenchida_por-field" name="preenchida_por" class="form-control" value="{{ $funcionario->preenchida_por }}"/>
+ @if($errors->has("preenchida_por"))
+ <span class="help-block">{{ $errors->first("preenchida_por") }}</span>
+ @endif
+</div>
+<div class="form-group @if($errors->has('obs')) has-error @endif">
+ <label for="obs-field">Obs</label>
+ <input type="text" id="obs-field" name="obs" class="form-control" value="{{ $funcionario->obs }}"/>
+ @if($errors->has("obs"))
+ <span class="help-block">{{ $errors->first("obs") }}</span>
+ @endif
+</div>
+
+<div class="form-group @if($errors->has('horario')) has-error @endif">
+ <label for="horario-field">horario</label>
+
+ @include('funcionarios.partials.horarios')
+    <!--
      <input type="text" id="horario-field" name="horario" class="form-control" value="{{ $funcionario->horario }}"/>
-     @if($errors->has("horario"))
-     <span class="help-block">{{ $errors->first("horario") }}</span>
-     @endif
-   </div>
+   -->
+   @if($errors->has("horario"))
+   <span class="help-block">{{ $errors->first("horario") }}</span>
+   @endif
+ </div>
 
-   <div class="form-group @if($errors->has('tipo')) has-error @endif">
-     <label for="tipo-field">tipo</label>
+ <div class="form-group @if($errors->has('tipo')) has-error @endif">
+   <label for="tipo-field">tipo</label>
+
+   @include('funcionarios.partials.tipoHorario')
+     <!--
      <input type="text" id="tipo-field" name="tipo" class="form-control" value="{{ $funcionario->tipo }}"/>
-     @if($errors->has("tipo"))
-     <span class="help-block">{{ $errors->first("tipo") }}</span>
-     @endif
-   </div>
+   -->
+   @if($errors->has("tipo"))
+   <span class="help-block">{{ $errors->first("tipo") }}</span>
+   @endif
+ </div>
 
-   <div class="form-group @if($errors->has('status')) has-error @endif">
-     <label for="status-field">status</label>
-     <input type="text" id="status-field" name="status" class="form-control" value="{{ $funcionario->status }}"/>
-     @if($errors->has("status"))
-     <span class="help-block">{{ $errors->first("status") }}</span>
-     @endif
-   </div>
+ <div class="form-group @if($errors->has('status')) has-error @endif">
+   <label for="status-field">status</label>
 
-   <div class="well well-sm">
-    <button type="submit" class="btn btn-primary">Save</button>
-    <a class="btn btn-link pull-right" href="{{ route('funcionarios.index') }}"><i class="glyphicon glyphicon-backward"></i>  Back</a>
-  </div>
+   @include('funcionarios.partials.statusFuncionario')
+
+    <!-- <input type="text" id="status-field" name="status" class="form-control" value="{{ $funcionario->status }}"/>
+  -->
+  @if($errors->has("status"))
+
+  <span class="help-block">{{ $errors->first("status") }}</span>
+  @endif
+</div>
+
+<div class="well well-sm">
+  <button type="submit" class="btn btn-primary">Save</button>
+  <a class="btn btn-link pull-right" href="{{ route('funcionarios.index') }}"><i class="glyphicon glyphicon-backward"></i>Back</a>
+</div>
 </form>
 
 </div>

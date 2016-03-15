@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 
 class FuncionarioController extends Controller {
 
+
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -213,5 +215,7 @@ class FuncionarioController extends Controller {
 
 		return redirect()->route('funcionarios.index')->with('message', 'Item deleted successfully.');
 	}
+
+	
 
 }

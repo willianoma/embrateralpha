@@ -15,6 +15,7 @@
 
 Route::get('/', 'HomeController@index');
 
+
 Route::resource("funcionarios","FuncionarioController");
 Route::resource("postos","PostoController"); 
 Route::resource("motivos","MotivoController");
