@@ -5,7 +5,9 @@
 	<option>06:30~15:30</option>
 	<option>07:00~13:00</option>
 	<option>07:00~19:00</option>
+	<option>08:00~12:00</option>
 	<option>12:00~19:00</option>
+	<option>13:00~17:00</option>
 	<option>13:00~19:00</option>
 	<option>13:00~21:00</option>
 	<option>18:00~06:00</option>

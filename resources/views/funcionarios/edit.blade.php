@@ -1,3 +1,7 @@
+<head>
+  <link href="{{ asset('/css/formfuncionario.css') }}" rel="stylesheet">
+</head>
+
 @extends('layout')
 
 @section('header')
@@ -16,131 +20,71 @@
       <input type="hidden" name="_method" value="PUT">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-      <div class="form-group @if($errors->has('profleimage')) has-error @endif">
-       <label for="profleimage-field">Profleimage</label>
-       <img height="70" width="70" src="{{asset("$funcionario->profleimage")}}">
-       <input type="file" id="profleimage-field" name="profleimage" class="form-control" value="{{ $funcionario->profleimage }}"/>
+      
+      <div class="form-inline @if($errors->has('profleimage')) has-error @endif">
+       <img  height="70" width="70" src="{{asset("$funcionario->profleimage")}}">
+       <label class="" for="profleimage-field">Profleimage</label>
+       <input type="file" id="profleimage-field" name="profleimage" class="form-control-static" value="{{ $funcionario->profleimage }}"/>
        @if($errors->has("profleimage"))
        <span class="help-block">{{ $errors->first("profleimage") }}</span>
        @endif
      </div>
 
-
-     <div class="form-group @if($errors->has('nome')) has-error @endif">
-       <label for="nome-field">Nome</label>
-       <input type="text" id="nome-field" name="nome" class="form-control" value="{{ $funcionario->nome }}"/>
-       @if($errors->has("nome"))
-       <span class="help-block">{{ $errors->first("nome") }}</span>
-       @endif
-     </div>
+     <div class="form-inline" id="linha">
 
 
-     <div class="form-group @if($errors->has('posto')) has-error @endif">
-       <label for="posto-field">Posto</label>     
-
-       <select id="posto-field" name="posto" class="form-control">
-         <?php
-
-         foreach ($postos as $key => $value) {
-          if ($value->nome == $funcionario->posto) {
-            echo "<option selected=''>";
-            echo $value->nome;
-            echo ' </option>';
-          }else{
-            echo '<option>';
-            echo $value->nome;
-            echo ' </option>';
-          }}
-          ?>
-        </select>
-
-        <!--   <input type="text" id="posto-field" name="posto" class="form-control" value="{{ $funcionario->posto }}"/> -->
-        @if($errors->has("posto"))
-        <span class="help-block">{{ $errors->first("posto") }}</span>
-        @endif
-      </div>
+         <div class="form-group @if($errors->has('nome')) has-error @endif">
+           <label for="nome-field">Nome</label>
+           <input type="text" id="nome-field" name="nome" class="form-control" value="{{ $funcionario->nome }}"/>
+           @if($errors->has("nome"))
+           <span class="help-block">{{ $errors->first("nome") }}</span>
+           @endif
+         </div>
 
 
-      <div class="form-group @if($errors->has('cpf')) has-error @endif">
-       <label for="cpf-field">Cpf</label>
-       <input type="text" id="cpf-field" name="cpf" class="form-control" value="{{ $funcionario->cpf }}"/>
-       @if($errors->has("cpf"))
-       <span class="help-block">{{ $errors->first("cpf") }}</span>
-       @endif
-     </div>
-     <div class="form-group @if($errors->has('rg')) has-error @endif">
-       <label for="rg-field">Rg</label>
-       <input type="text" id="rg-field" name="rg" class="form-control" value="{{ $funcionario->rg }}"/>
-       @if($errors->has("rg"))
-       <span class="help-block">{{ $errors->first("rg") }}</span>
-       @endif
-     </div>
-     <div class="form-group @if($errors->has('ctps')) has-error @endif">
-       <label for="ctps-field">Ctps</label>
-       <input type="text" id="ctps-field" name="ctps" class="form-control" value="{{ $funcionario->ctps }}"/>
-       @if($errors->has("ctps"))
-       <span class="help-block">{{ $errors->first("ctps") }}</span>
-       @endif
-     </div>
-     <div class="form-group @if($errors->has('endereco')) has-error @endif">
-       <label for="endereco-field">Endereco</label>
-       <input type="text" id="endereco-field" name="endereco" class="form-control" value="{{ $funcionario->endereco }}"/>
-       @if($errors->has("endereco"))
-       <span class="help-block">{{ $errors->first("endereco") }}</span>
-       @endif
-     </div>
-     <div class="form-group @if($errors->has('nascimento')) has-error @endif">
-       <label for="nascimento-field">Nascimento</label>
-       <input type="date" id="nascimento-field" name="nascimento" class="form-control" value="{{ $funcionario->nascimento }}"/>
-       @if($errors->has("nascimento"))
-       <span class="help-block">{{ $errors->first("nascimento") }}</span>
-       @endif
-     </div>
-     <div class="form-group @if($errors->has('pis_pasep')) has-error @endif">
-       <label for="pis_pasep-field">Pis_pasep</label>
-       <input type="text" id="pis_pasep-field" required="" name="pis_pasep" class="form-control" value=""/>
-       @if($errors->has("pis_pasep"))
-       <span class="help-block">{{ $errors->first("pis_pasep") }}</span>
-       @endif
-     </div>
-     <div class="form-group @if($errors->has('reservista')) has-error @endif">
-       <label for="reservista-field">Reservista</label>
-       <input type="text" id="reservista-field" name="reservista" class="form-control" value="{{ $funcionario->reservista }}"/>
-       @if($errors->has("reservista"))
-       <span class="help-block">{{ $errors->first("reservista") }}</span>
-       @endif
-     </div>
-     <div class="form-group @if($errors->has('titulo_eleitor')) has-error @endif">
-       <label for="titulo_eleitor-field">Titulo_eleitor</label>
-       <input type="text" id="titulo_eleitor-field" name="titulo_eleitor" class="form-control" value="{{ $funcionario->titulo_eleitor }}"/>
-       @if($errors->has("titulo_eleitor"))
-       <span class="help-block">{{ $errors->first("titulo_eleitor") }}</span>
-       @endif
-     </div>
-     <div class="form-group @if($errors->has('telefone')) has-error @endif">
-       <label for="telefone-field">Telefone</label>
-       <input type="phone" id="telefone-field" name="telefone" class="form-control" value="{{ $funcionario->telefone }}"/>
-       @if($errors->has("telefone"))
-       <span class="help-block">{{ $errors->first("telefone") }}</span>
-       @endif
-     </div>
-     <div class="form-group @if($errors->has('email')) has-error @endif">
-       <label for="email-field">Email</label>
-       <input type="text" id="email-field" name="email" class="form-control" value="{{ $funcionario->email }}"/>
-       @if($errors->has("email"))
-       <span class="help-block">{{ $errors->first("email") }}</span>
-       @endif
-     </div>
-     <div class="form-group @if($errors->has('data_admissao')) has-error @endif">
-       <label for="data_admissao-field">Data_admissao</label>
-       <input type="date" id="data_admissao-field" name="data_admissao" class="form-control" value="{{ $funcionario->data_admissao }}"/>
-       @if($errors->has("data_admissao"))
-       <span class="help-block">{{ $errors->first("data_admissao") }}</span>
-       @endif
-     </div>
-     <div class="form-group @if($errors->has('funcao')) has-error @endif">
-       <label for="funcao-field">Funcao</label>
-       @include('funcionarios.partials.funcoesFuncionarios')
+         <div class="form-group @if($errors->has('posto')) has-error @endif">
+           <label for="posto-field">Posto</label>     
+
+           <select id="posto-field" name="posto" class="form-control">
+             <?php
+
+             foreach ($postos as $key => $value) {
+              if ($value->nome == $funcionario->posto) {
+                echo "<option selected=''>";
+                echo $value->nome;
+                echo ' </option>';
+              }else{
+                echo '<option>';
+                echo $value->nome;
+                echo ' </option>';
+              }}
+              ?>
+            </select>
+
+            @if($errors->has("posto"))
+            <span class="help-block">{{ $errors->first("posto") }}</span>
+            @endif
+          </div>
+
+
+          <div class="form-group @if($errors->has('cargo')) has-error @endif">
+           <label for="cargo-field">Cargo</label>
+
+           @include('funcionarios.partials.cargoFuncionario')
+
+
+           @if($errors->has("cargo"))
+           <span class="help-block">{{ $errors->first("cargo") }}</span>
+           @endif
+         </div>
+       </div>
+     
+
+     <div class="form-inline" id="linha">
+
+       <div class="form-group @if($errors->has('funcao')) has-error @endif">
+         <label for="funcao-field">Funcao</label>
+         @include('funcionarios.partials.funcoesFuncionarios')
        <!--
        <input type="text" id="funcao-field" name="funcao" class="form-control" value="{{ $funcionario->funcao }}"/>
      -->
@@ -150,10 +94,135 @@
    </div>
 
 
-   <div class="form-group @if($errors->has('farda')) has-error @endif">
-     <label for="farda-field">Farda</label>
+   <div class="form-group @if($errors->has('tipo')) has-error @endif">
+     <label for="tipo-field">tipo</label>
 
-     @include('funcionarios.partials.fardas')
+     @include('funcionarios.partials.tipoHorario')
+           <!--
+           <input type="text" id="tipo-field" name="tipo" class="form-control" value="{{ $funcionario->tipo }}"/>
+         -->
+         @if($errors->has("tipo"))
+         <span class="help-block">{{ $errors->first("tipo") }}</span>
+         @endif
+       </div>
+
+       <div class="form-group @if($errors->has('status')) has-error @endif">
+         <label for="status-field">status</label>
+
+         @include('funcionarios.partials.statusFuncionario')
+
+          <!-- <input type="text" id="status-field" name="status" class="form-control" value="{{ $funcionario->status }}"/>
+        -->
+        @if($errors->has("status"))
+
+        <span class="help-block">{{ $errors->first("status") }}</span>
+        @endif
+      </div>
+
+
+      <div class="form-group @if($errors->has('horario')) has-error @endif">
+       <label for="horario-field">horario</label>
+
+       @include('funcionarios.partials.horarios')
+    <!--
+     <input type="text" id="horario-field" name="horario" class="form-control" value="{{ $funcionario->horario }}"/>
+   -->
+   @if($errors->has("horario"))
+   <span class="help-block">{{ $errors->first("horario") }}</span>
+   @endif
+ </div>
+
+
+
+</div>
+
+
+<div class="form-group @if($errors->has('cpf')) has-error @endif">
+ <label for="cpf-field">Cpf</label>
+ <input type="text" id="cpf-field" name="cpf" class="form-control" value="{{ $funcionario->cpf }}"/>
+ @if($errors->has("cpf"))
+ <span class="help-block">{{ $errors->first("cpf") }}</span>
+ @endif
+</div>
+<div class="form-group @if($errors->has('rg')) has-error @endif">
+ <label for="rg-field">Rg</label>
+ <input type="text" id="rg-field" name="rg" class="form-control" value="{{ $funcionario->rg }}"/>
+ @if($errors->has("rg"))
+ <span class="help-block">{{ $errors->first("rg") }}</span>
+ @endif
+</div>
+<div class="form-group @if($errors->has('ctps')) has-error @endif">
+ <label for="ctps-field">Ctps</label>
+ <input type="text" id="ctps-field" name="ctps" class="form-control" value="{{ $funcionario->ctps }}"/>
+ @if($errors->has("ctps"))
+ <span class="help-block">{{ $errors->first("ctps") }}</span>
+ @endif
+</div>
+
+
+
+<div class="form-group @if($errors->has('endereco')) has-error @endif">
+ <label for="endereco-field">Endereco</label>
+ <input type="text" id="endereco-field" name="endereco" class="form-control" value="{{ $funcionario->endereco }}"/>
+ @if($errors->has("endereco"))
+ <span class="help-block">{{ $errors->first("endereco") }}</span>
+ @endif
+</div>
+<div class="form-group @if($errors->has('nascimento')) has-error @endif">
+ <label for="nascimento-field">Nascimento</label>
+ <input type="date" id="nascimento-field" name="nascimento" class="form-control" value="{{ $funcionario->nascimento }}"/>
+ @if($errors->has("nascimento"))
+ <span class="help-block">{{ $errors->first("nascimento") }}</span>
+ @endif
+</div>
+<div class="form-group @if($errors->has('pis_pasep')) has-error @endif">
+ <label for="pis_pasep-field">Pis_pasep</label>
+ <input type="text" id="pis_pasep-field" required="" name="pis_pasep" class="form-control" value=""/>
+ @if($errors->has("pis_pasep"))
+ <span class="help-block">{{ $errors->first("pis_pasep") }}</span>
+ @endif
+</div>
+<div class="form-group @if($errors->has('reservista')) has-error @endif">
+ <label for="reservista-field">Reservista</label>
+ <input type="text" id="reservista-field" name="reservista" class="form-control" value="{{ $funcionario->reservista }}"/>
+ @if($errors->has("reservista"))
+ <span class="help-block">{{ $errors->first("reservista") }}</span>
+ @endif
+</div>
+<div class="form-group @if($errors->has('titulo_eleitor')) has-error @endif">
+ <label for="titulo_eleitor-field">Titulo_eleitor</label>
+ <input type="text" id="titulo_eleitor-field" name="titulo_eleitor" class="form-control" value="{{ $funcionario->titulo_eleitor }}"/>
+ @if($errors->has("titulo_eleitor"))
+ <span class="help-block">{{ $errors->first("titulo_eleitor") }}</span>
+ @endif
+</div>
+<div class="form-group @if($errors->has('telefone')) has-error @endif">
+ <label for="telefone-field">Telefone</label>
+ <input type="phone" id="telefone-field" name="telefone" class="form-control" value="{{ $funcionario->telefone }}"/>
+ @if($errors->has("telefone"))
+ <span class="help-block">{{ $errors->first("telefone") }}</span>
+ @endif
+</div>
+<div class="form-group @if($errors->has('email')) has-error @endif">
+ <label for="email-field">Email</label>
+ <input type="text" id="email-field" name="email" class="form-control" value="{{ $funcionario->email }}"/>
+ @if($errors->has("email"))
+ <span class="help-block">{{ $errors->first("email") }}</span>
+ @endif
+</div>
+<div class="form-group @if($errors->has('data_admissao')) has-error @endif">
+ <label for="data_admissao-field">Data_admissao</label>
+ <input type="date" id="data_admissao-field" name="data_admissao" class="form-control" value="{{ $funcionario->data_admissao }}"/>
+ @if($errors->has("data_admissao"))
+ <span class="help-block">{{ $errors->first("data_admissao") }}</span>
+ @endif
+</div>
+
+
+<div class="form-group @if($errors->has('farda')) has-error @endif">
+ <label for="farda-field">Farda</label>
+
+ @include('funcionarios.partials.fardas')
 
        <!--
        <input type="text" id="farda-field" name="farda" class="form-control" value="{{ $funcionario->farda }}"/>
@@ -285,91 +354,46 @@
    <span class="help-block">{{ $errors->first("recebe_vale_transporte") }}</span>
    @endif
  </div>
- <div class="form-group @if($errors->has('cargo')) has-error @endif">
-   <label for="cargo-field">Cargo</label>
-   
-   @include('funcionarios.partials.cargoFuncionario')
 
-   <!--<input type="text" id="cargo-field" name="cargo" class="form-control" value="{{ $funcionario->cargo }}"/>
- -->
- @if($errors->has("cargo"))
- <span class="help-block">{{ $errors->first("cargo") }}</span>
- @endif
-</div>
-<div class="form-group @if($errors->has('cbo')) has-error @endif">
- <label for="cbo-field">Cbo</label>
- <input type="text" id="cbo-field" name="cbo" class="form-control" value="{{ $funcionario->cbo }}"/>
- @if($errors->has("cbo"))
- <span class="help-block">{{ $errors->first("cbo") }}</span>
- @endif
-</div>
-<div class="form-group @if($errors->has('aso')) has-error @endif">
- <label for="aso-field">Aso</label>
- <input type="text" id="aso-field" name="aso" class="form-control" value="{{ $funcionario->aso }}"/>
- @if($errors->has("aso"))
- <span class="help-block">{{ $errors->first("aso") }}</span>
- @endif
-</div>
-<div class="form-group @if($errors->has('referencia')) has-error @endif">
- <label for="referencia-field">Referencia</label>
- <input type="text" id="referencia-field" name="referencia" class="form-control" value="{{ $funcionario->referencia }}"/>
- @if($errors->has("referencia"))
- <span class="help-block">{{ $errors->first("referencia") }}</span>
- @endif
-</div>
-<div class="form-group @if($errors->has('preenchida_por')) has-error @endif">
- <label for="preenchida_por-field">Preenchida_por</label>
- <input type="text" id="preenchida_por-field" name="preenchida_por" class="form-control" value="{{ $funcionario->preenchida_por }}"/>
- @if($errors->has("preenchida_por"))
- <span class="help-block">{{ $errors->first("preenchida_por") }}</span>
- @endif
-</div>
-<div class="form-group @if($errors->has('obs')) has-error @endif">
- <label for="obs-field">Obs</label>
- <input type="text" id="obs-field" name="obs" class="form-control" value="{{ $funcionario->obs }}"/>
- @if($errors->has("obs"))
- <span class="help-block">{{ $errors->first("obs") }}</span>
- @endif
-</div>
-
-<div class="form-group @if($errors->has('horario')) has-error @endif">
- <label for="horario-field">horario</label>
-
- @include('funcionarios.partials.horarios')
-    <!--
-     <input type="text" id="horario-field" name="horario" class="form-control" value="{{ $funcionario->horario }}"/>
-   -->
-   @if($errors->has("horario"))
-   <span class="help-block">{{ $errors->first("horario") }}</span>
+ <div class="form-group @if($errors->has('cbo')) has-error @endif">
+   <label for="cbo-field">Cbo</label>
+   <input type="text" id="cbo-field" name="cbo" class="form-control" value="{{ $funcionario->cbo }}"/>
+   @if($errors->has("cbo"))
+   <span class="help-block">{{ $errors->first("cbo") }}</span>
+   @endif
+ </div>
+ <div class="form-group @if($errors->has('aso')) has-error @endif">
+   <label for="aso-field">Aso</label>
+   <input type="text" id="aso-field" name="aso" class="form-control" value="{{ $funcionario->aso }}"/>
+   @if($errors->has("aso"))
+   <span class="help-block">{{ $errors->first("aso") }}</span>
+   @endif
+ </div>
+ <div class="form-group @if($errors->has('referencia')) has-error @endif">
+   <label for="referencia-field">Referencia</label>
+   <input type="text" id="referencia-field" name="referencia" class="form-control" value="{{ $funcionario->referencia }}"/>
+   @if($errors->has("referencia"))
+   <span class="help-block">{{ $errors->first("referencia") }}</span>
+   @endif
+ </div>
+ <div class="form-group @if($errors->has('preenchida_por')) has-error @endif">
+   <label for="preenchida_por-field">Preenchida_por</label>
+   <input type="text" id="preenchida_por-field" name="preenchida_por" class="form-control" value="{{ $funcionario->preenchida_por }}"/>
+   @if($errors->has("preenchida_por"))
+   <span class="help-block">{{ $errors->first("preenchida_por") }}</span>
+   @endif
+ </div>
+ <div class="form-group @if($errors->has('obs')) has-error @endif">
+   <label for="obs-field">Obs</label>
+   <input type="text" id="obs-field" name="obs" class="form-control" value="{{ $funcionario->obs }}"/>
+   @if($errors->has("obs"))
+   <span class="help-block">{{ $errors->first("obs") }}</span>
    @endif
  </div>
 
- <div class="form-group @if($errors->has('tipo')) has-error @endif">
-   <label for="tipo-field">tipo</label>
 
-   @include('funcionarios.partials.tipoHorario')
-     <!--
-     <input type="text" id="tipo-field" name="tipo" class="form-control" value="{{ $funcionario->tipo }}"/>
-   -->
-   @if($errors->has("tipo"))
-   <span class="help-block">{{ $errors->first("tipo") }}</span>
-   @endif
- </div>
 
- <div class="form-group @if($errors->has('status')) has-error @endif">
-   <label for="status-field">status</label>
-
-   @include('funcionarios.partials.statusFuncionario')
-
-    <!-- <input type="text" id="status-field" name="status" class="form-control" value="{{ $funcionario->status }}"/>
-  -->
-  @if($errors->has("status"))
-
-  <span class="help-block">{{ $errors->first("status") }}</span>
-  @endif
-</div>
-
-<div class="well well-sm">
+ <div class="well well-sm">
   <button type="submit" class="btn btn-primary">Save</button>
   <a class="btn btn-link pull-right" href="{{ route('funcionarios.index') }}"><i class="glyphicon glyphicon-backward"></i>Back</a>
 </div>
