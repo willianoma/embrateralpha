@@ -1,10 +1,47 @@
 .form-inline{width: 1200px; min-width: 800px; margin-bottom: 10px}
-#linha{width: 900px}
+.row{background-color: #EDEEEF}
 
-#nome-field{width: 100%;}
-#posto-field{width: 100%;}
-#cargo-field{width: 100%}
-#funcao-field{width: 100%}
-#tipo-field{width: 100%}
-#status-field{width: 100%}
-#horario-field{width: 100%}
+.img-profile{
+	height: 100px;
+	width: 100px; 
+}
+.img-profile-div{}
+.input-profile-div{}
+.div-top{
+	padding-top: 10px;
+}
+
+
+/*Reseters*/
+.form-control{
+	border-radius: 10px !important;
+	border: 1px solid #0BB8F1 !important;
+	color: #0281AB !important;
+	font-weight: 600 !important;
+}
+
+.nopadding {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+.minimal-padding {
+	padding: 5 !important;
+	margin: 0 !important;
+}
+
+.first-item{ padding-left: 0 !important;}
+
+.last-item{ padding-right: 0 !important;}
+
+/*End Reseters*/
+
+#profleimage-field{}
+#label-image-profile{}
+#nome-field{}
+#posto-field{}
+#cargo-field{}
+#funcao-field{}
+#tipo-field{}
+#status-field{}
+#horario-field{}

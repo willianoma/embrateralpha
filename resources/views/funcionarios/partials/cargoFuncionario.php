@@ -3,6 +3,4 @@
 	<option id="Administrador" value="Adminitrador">Adminitrador</option>
 	<option id="AnalistaDeSistemas" value="Analista de sistemas">Analista de sistemas</option>
 	<option id="AuxiliarAdministrativo" value="Auxiliar Administrativo">Auxiliar Administrativo</option>
-
-
 </select>
