@@ -230,7 +230,10 @@
 
        <div class="form-group col-md-3 minimal-padding last-item @if($errors->has('grau_instrucao')) has-error @endif">
          <label for="grau_instrucao-field">Grau_instrucao</label>
-         <input type="text" id="grau_instrucao-field" name="grau_instrucao" class="form-control" value="{{ $funcionario->grau_instrucao }}"/>
+         
+         @include('funcionarios.partials.grauInstrucao')
+
+         <!--<input type="text" id="grau_instrucao-field" name="grau_instrucao" class="form-control" value="{{ $funcionario->grau_instrucao }}"/>-->
          @if($errors->has("grau_instrucao"))
          <span class="help-block">{{ $errors->first("grau_instrucao") }}</span>
          @endif
@@ -326,7 +329,7 @@
 
            @if (isset($funcionario->recebe_vale_transporte))
            <select id="recebe_vale_transporte-field" name="recebe_vale_transporte" class="form-control">
-          <option selected=''>{{$funcionario->recebe_vale_transporte}}</option>             
+            <option selected=''>{{$funcionario->recebe_vale_transporte}}</option>             
 
             <option id="Nao" value="Nao">Não</option>
             <option id="Sim" value="Sim">Sim</option>
@@ -401,7 +404,7 @@
        </div>
 
 
-  <div class="form-group col-md-3 minimal-padding @if($errors->has('banco')) has-error @endif">
+       <div class="form-group col-md-3 minimal-padding @if($errors->has('banco')) has-error @endif">
          <label for="banco-field">Banco</label>
 
          @include('funcionarios.partials.bancos')

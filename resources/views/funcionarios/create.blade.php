@@ -213,7 +213,11 @@
 
    <div class="form-group col-md-3 minimal-padding last-item @if($errors->has('grau_instrucao')) has-error @endif">
      <label for="grau_instrucao-field">Grau_instrucao</label>
-     <input type="text" id="grau_instrucao-field" name="grau_instrucao" class="form-control" value="{{ old("grau_instrucao") }}"/>
+     
+   @include('funcionarios.partials.grauInstrucao')
+
+    <!-- <input type="text" id="grau_instrucao-field" name="grau_instrucao" class="form-control" value="{{ old("grau_instrucao") }}"/> -->
+
      @if($errors->has("grau_instrucao"))
      <span class="help-block">{{ $errors->first("grau_instrucao") }}</span>
      @endif
