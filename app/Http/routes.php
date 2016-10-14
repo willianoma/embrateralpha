@@ -13,14 +13,18 @@
 
 /*Route::get('/', 'WelcomeController@index');*/
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'Auth\AuthController@getLogin');
+
 
 Route::group(['prefix' => '', 'middleware' => 'auth'], function(){
 
-Route::resource("funcionarios","FuncionarioController");
-Route::resource("postos","PostoController"); 
-Route::resource("motivos","MotivoController");
-Route::resource("ocorrencias","OcorrenciaController"); 
+	Route::get('/home', 'HomeController@index');
+	Route::resource("funcionarios","FuncionarioController");
+	Route::resource("postos","PostoController"); 
+	Route::resource("motivos","MotivoController");
+	Route::resource("ocorrencias","OcorrenciaController"); 
+	Route::get('auth/register', 'Auth\AuthController@getRegister');
+ 	Route::post('auth/register', 'Auth\AuthController@postRegister');
 });
 
 Route::controllers([
@@ -35,5 +39,3 @@ Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
 // Registration routes...
-Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');

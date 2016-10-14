@@ -1,20 +1,18 @@
-<select id="estado_civil-field" name="estado_civil" class="form-control" >
-
-
+<select id="TipoConta-field" name="banco_tipo" class="form-control">
 	<?php 
 
 	$lista  = [ 
-	"Solteiro" =>"Solteiro",
-	"Casado" =>"Casado",
-	"Divorciado" =>"Divorciado",
-	"Viuvo" =>"Viuvo",
+	"ContaSalario" =>"Conta Salario",
+	"ContaCorrente" =>"Conta Corrente",
+	"ContaPoupanca" =>"Conta Poupanca",
+	"Outra" =>"Outra",
 	];
 
 	foreach ($lista as $key => $value) {
 
 		if(isset($funcionario)){
 
-			if ($value == $funcionario->estado_civil){
+			if ($value == $funcionario->banco_tipo){
 				echo "<option selected=''>";	
 				echo $value;
 				echo " </option>";

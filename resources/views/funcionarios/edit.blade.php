@@ -26,11 +26,11 @@
        <label id="label-image-profile" hidden="" for="profleimage-field">Profleimage</label>
        
        <!-- <div class="img-profile-div col-md-2"> -->
-         <img class="img-profile" src="{{asset("$funcionario->profleimage")}}">
+       <img class="img-profile" src="{{asset("$funcionario->profleimage")}}">
        <!-- </div> -->
 
        <!-- <div class="input-profile-div col-md-10"> -->
-         <input type="file" id="profleimage-field" name="profleimage" class="form-control-static" value="{{ $funcionario->profleimage }}"/>
+       <input type="file" id="profleimage-field" name="profleimage" class="form-control-static" value="{{ $funcionario->profleimage }}"/>
        <!-- </div> -->
 
        @if($errors->has("profleimage"))
@@ -194,7 +194,7 @@
 
        <div class="form-group col-md-3 minimal-padding last-item @if($errors->has('pis_pasep')) has-error @endif">
          <label for="pis_pasep-field">Pis_pasep</label>
-         <input type="text" id="pis_pasep-field" required="" name="pis_pasep" class="form-control" value=""/>
+         <input type="text" id="pis_pasep-field" required="" readonly="" name="pis_pasep" value="{{$funcionario->pis_pasep}}" class="form-control" value=""/>
          @if($errors->has("pis_pasep"))
          <span class="help-block">{{ $errors->first("pis_pasep") }}</span>
          @endif
@@ -268,7 +268,15 @@
        <div class="form-group col-md-3 minimal-padding last-item  @if($errors->has('deficiencia')) has-error @endif">
          <label for="deficiencia-field">Deficiencia</label>
 
-         @include('funcionarios.partials.deficiencia')
+
+         <select id="deficiencia-field" name="deficiencia" class="form-control">
+          @if (isset($funcionario->deficiencia))
+          <option selected=''>{{$funcionario->deficiencia}}</option>             
+          <option id="Nao" value="Nao">Não</option>
+          <option id="Sim" value="Sim">Sim</option>
+          @endif
+        </select>
+
           <!--
            <input type="text" id="deficiencia-field" name="deficiencia" class="form-control" value="{{ $funcionario->deficiencia }}"/>
          -->
@@ -315,7 +323,15 @@
 
          <div class="form-group col-md-3 minimal-padding last-item  @if($errors->has('recebe_vale_transporte')) has-error @endif">
            <label for="recebe_vale_transporte-field">Recebe_vale_transporte</label>
-           @include('funcionarios.partials.recebeValeTransporte')
+
+           @if (isset($funcionario->recebe_vale_transporte))
+           <select id="recebe_vale_transporte-field" name="recebe_vale_transporte" class="form-control">
+          <option selected=''>{{$funcionario->recebe_vale_transporte}}</option>             
+
+            <option id="Nao" value="Nao">Não</option>
+            <option id="Sim" value="Sim">Sim</option>
+            @endif
+          </select>
 
            <!--
            <input type="text" id="recebe_vale_transporte-field" name="recebe_vale_transporte" class="form-control" value="{{ $funcionario->recebe_vale_transporte }}"/>
@@ -372,8 +388,20 @@
 
        <!-- 4 Itens -->
 
+       <div class="form-group col-md-3 minimal-padding first-item @if($errors->has('banco_tipo')) has-error @endif">
+         <label for="banco_tipo-field">Banco_tipo</label>
 
-       <div class="form-group col-md-3 minimal-padding first-item @if($errors->has('banco')) has-error @endif">
+         @include('funcionarios.partials.bancosTipoConta')
+
+         <!-- <input type="text" id="banco_tipo-field" name="banco_tipo" class="form-control" value="{{ $funcionario->banco_tipo }}"/>-->
+
+         @if($errors->has("banco_tipo"))
+         <span class="help-block">{{ $errors->first("banco_tipo") }}</span>
+         @endif
+       </div>
+
+
+  <div class="form-group col-md-3 minimal-padding @if($errors->has('banco')) has-error @endif">
          <label for="banco-field">Banco</label>
 
          @include('funcionarios.partials.bancos')
@@ -394,7 +422,7 @@
    @endif
  </div>
 
- <div class="form-group col-md-3 minimal-padding @if($errors->has('banco_agencia')) has-error @endif">
+ <div class="form-group col-md-3 minimal-padding last-item @if($errors->has('banco_agencia')) has-error @endif">
    <label for="banco_agencia-field">Banco_agencia</label>
    <input type="text" id="banco_agencia-field" name="banco_agencia" class="form-control" value="{{ $funcionario->banco_agencia }}"/>
    @if($errors->has("banco_agencia"))
@@ -402,13 +430,7 @@
    @endif
  </div>
 
- <div class="form-group col-md-3 minimal-padding last-item @if($errors->has('banco_tipo')) has-error @endif">
-   <label for="banco_tipo-field">Banco_tipo</label>
-   <input type="text" id="banco_tipo-field" name="banco_tipo" class="form-control" value="{{ $funcionario->banco_tipo }}"/>
-   @if($errors->has("banco_tipo"))
-   <span class="help-block">{{ $errors->first("banco_tipo") }}</span>
-   @endif
- </div>
+ 
  
  <!-- Fim 4 Itens -->
 
@@ -441,7 +463,7 @@
 
  <div class="form-group col-md-3 minimal-padding last-item @if($errors->has('preenchida_por')) has-error @endif">
    <label for="preenchida_por-field">Preenchida_por</label>
-   <input type="text" id="preenchida_por-field" name="preenchida_por" class="form-control" value="{{ $funcionario->preenchida_por }}"/>
+   <input type="text" id="preenchida_por-field" readonly="" name="preenchida_por" class="form-control" value="{{ Auth::user()->name }}"/>
    @if($errors->has("preenchida_por"))
    <span class="help-block">{{ $errors->first("preenchida_por") }}</span>
    @endif

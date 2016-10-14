@@ -6,7 +6,7 @@ use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller {
-	protected $redirectPath = 'motivos';
+	protected $redirectPath = 'home';
 
 	/*
 	|--------------------------------------------------------------------------
@@ -33,7 +33,7 @@ class AuthController extends Controller {
 		$this->auth = $auth;
 		$this->registrar = $registrar;
 
-		$this->middleware('guest', ['except' => 'getLogout']);
+		//$this->middleware('guest', ['except' => 'getLogout']);
 	}
 
 }

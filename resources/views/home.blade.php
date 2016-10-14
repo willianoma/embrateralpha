@@ -8,9 +8,14 @@
 				<div class="panel-heading">Home</div>
 
 				<div class="panel-body">
-
-
-				
+				<label style="text-align: center;width: 100%; font-weight: 800;">	
+					SISTEMA DE GESTÃO EMPRESARIOAL VERSÃO BETA.
+					<br>
+					Escolha uma opção no menu superior.
+					<br>
+					<br>
+					Usuário: {{ Auth::user()->name }}
+				</label>
 				</div>
 			</div>
 		</div>

@@ -40,11 +40,13 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/">Home</a></li>
+                    <li class="active"><a href="/home">Home</a></li>
                     <li><a href="/funcionarios">Funcionários</a></li>
                     <li><a href="/motivos">Motivos</a></li>
                     <li><a href="/postos">Postos</a></li>
                     <li><a href="/ocorrencias">Ocorrencias</a></li>
+                    <li><a href="/auth/logout">SAIR</a></li>
+
                  <!--   <li><a href="users">Usuários</a></li> -->
                 </ul>
             </div><!--/.nav-collapse -->
