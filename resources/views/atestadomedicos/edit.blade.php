@@ -18,21 +18,39 @@
 
                 <div class="form-group @if($errors->has('usuario')) has-error @endif">
                        <label for="usuario-field">Usuario</label>
-                    <input type="text" id="usuario-field" name="usuario" class="form-control" value="{{ $atestadomedico->usuario }}"/>
+                    <input type="text" id="usuario-field" name="usuario" class="form-control"  readonly="" value="{{ Auth::user()->name }}"/>
                        @if($errors->has("usuario"))
                         <span class="help-block">{{ $errors->first("usuario") }}</span>
                        @endif
                     </div>
                     <div class="form-group @if($errors->has('funcionario')) has-error @endif">
                        <label for="funcionario-field">Funcionario</label>
-                    <input type="text" id="funcionario-field" name="funcionario" class="form-control" value="{{ $atestadomedico->funcionario }}"/>
+                    <input type="text" id="funcionario-field" readonly="" name="funcionario" class="form-control" value="{{ $atestadomedico->funcionario }}"/>
                        @if($errors->has("funcionario"))
                         <span class="help-block">{{ $errors->first("funcionario") }}</span>
                        @endif
                     </div>
+
                     <div class="form-group @if($errors->has('posto')) has-error @endif">
                        <label for="posto-field">Posto</label>
-                    <input type="text" id="posto-field" name="posto" class="form-control" value="{{ $atestadomedico->posto }}"/>
+
+                        <select id="posto-field" name="posto" class="form-control">
+                            <?php
+
+                            foreach ($postos as $key => $value) {
+                                if ($value->nome == $atestadomedico->posto) {
+                                    echo "<option selected=''>";
+                                    echo $value->nome;
+                                    echo ' </option>';
+                                }else{
+                                    echo '<option>';
+                                    echo $value->nome;
+                                    echo ' </option>';
+                                }}
+                            ?>
+                        </select>
+
+                    {{--<input type="text" id="posto-field" name="posto" class="form-control" value="{{ $atestadomedico->posto }}"/>--}}
                        @if($errors->has("posto"))
                         <span class="help-block">{{ $errors->first("posto") }}</span>
                        @endif
@@ -46,14 +64,14 @@
                     </div>
                     <div class="form-group @if($errors->has('datainicio')) has-error @endif">
                        <label for="datainicio-field">Datainicio</label>
-                    <input type="text" id="datainicio-field" name="datainicio" class="form-control" value="{{ $atestadomedico->datainicio }}"/>
+                    <input type="date" id="datainicio-field" name="datainicio" class="form-control" value="{{ $atestadomedico->datainicio }}"/>
                        @if($errors->has("datainicio"))
                         <span class="help-block">{{ $errors->first("datainicio") }}</span>
                        @endif
                     </div>
                     <div class="form-group @if($errors->has('datafinal')) has-error @endif">
                        <label for="datafinal-field">Datafinal</label>
-                    <input type="text" id="datafinal-field" name="datafinal" class="form-control" value="{{ $atestadomedico->datafinal }}"/>
+                    <input type="date" id="datafinal-field" name="datafinal" class="form-control" value="{{ $atestadomedico->datafinal }}"/>
                        @if($errors->has("datafinal"))
                         <span class="help-block">{{ $errors->first("datafinal") }}</span>
                        @endif
