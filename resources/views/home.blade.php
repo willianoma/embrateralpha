@@ -9,7 +9,7 @@
 
 				<div class="panel-body">
 				<label style="text-align: center;width: 100%; font-weight: 800;">	
-					SISTEMA DE GESTÃO EMPRESARIOAL VERSÃO BETA.
+					SISTEMA DE GESTÃO EMPRESARIAL VERSÃO BETA.
 					<br>
 					Escolha uma opção no menu superior.
 					<br>

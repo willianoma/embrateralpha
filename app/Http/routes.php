@@ -22,7 +22,9 @@ Route::group(['prefix' => '', 'middleware' => 'auth'], function(){
 	Route::resource("funcionarios","FuncionarioController");
 	Route::resource("postos","PostoController"); 
 	Route::resource("motivos","MotivoController");
-	Route::resource("ocorrencias","OcorrenciaController"); 
+	Route::resource("ocorrencias","OcorrenciaController");
+    Route::resource("atestadomedicos","AtestadomedicoController");
+
 	Route::get('auth/register', 'Auth\AuthController@getRegister');
  	Route::post('auth/register', 'Auth\AuthController@postRegister');
 });

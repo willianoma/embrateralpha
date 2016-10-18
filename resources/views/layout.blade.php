@@ -36,7 +36,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Embrater</a>
+                <a class="navbar-brand" href="/home">Embrater</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
@@ -45,6 +45,7 @@
                     <li><a href="/motivos">Motivos</a></li>
                     <li><a href="/postos">Postos</a></li>
                     <li><a href="/ocorrencias">Ocorrencias</a></li>
+                    <li><a href="/atestadomedicos">Atestados Medicos</a></li>
                     <li><a href="/auth/logout">SAIR</a></li>
 
                  <!--   <li><a href="users">Usuários</a></li> -->
