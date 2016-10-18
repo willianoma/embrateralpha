@@ -41,6 +41,8 @@
                                 <td class="text-right">
                                     <a class="btn btn-xs btn-primary" href="{{ route('atestadomedicos.show', $atestadomedico->id) }}"><i class="glyphicon glyphicon-eye-open"></i> View</a>
                                     <a class="btn btn-xs btn-warning" href="{{ route('atestadomedicos.edit', $atestadomedico->id) }}"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+                                    <a class="btn btn-xs btn-success" href="atestadomedicos/comprovante/{{$atestadomedico->id}}"><i class="glyphicon glyphicon-print"></i> Comprovante</a>
+
                                     <form action="{{ route('atestadomedicos.destroy', $atestadomedico->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">

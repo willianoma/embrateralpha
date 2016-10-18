@@ -76,7 +76,7 @@ class AtestadomedicoController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function edit($id,Posto $postos, Funcionario $funcionarios )
+    public function edit($id, Posto $postos, Funcionario $funcionarios)
     {
         $atestadomedico = Atestadomedico::findOrFail($id);
         $postos = $postos->all();
@@ -119,6 +119,12 @@ class AtestadomedicoController extends Controller
         $atestadomedico->delete();
 
         return redirect()->route('atestadomedicos.index')->with('message', 'Item deleted successfully.');
+    }
+
+    public function comprovante($id)
+    {
+        $atestadomedico = Atestadomedico::findOrFail($id);
+        return view('atestadomedicos/relatorios/comprovanteatestadomedico', compact('atestadomedico'));
     }
 
 }

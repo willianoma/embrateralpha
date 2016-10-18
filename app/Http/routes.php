@@ -16,22 +16,25 @@
 Route::get('/', 'Auth\AuthController@getLogin');
 
 
-Route::group(['prefix' => '', 'middleware' => 'auth'], function(){
+Route::group(['prefix' => '', 'middleware' => 'auth'], function () {
 
-	Route::get('/home', 'HomeController@index');
-	Route::resource("funcionarios","FuncionarioController");
-	Route::resource("postos","PostoController"); 
-	Route::resource("motivos","MotivoController");
-	Route::resource("ocorrencias","OcorrenciaController");
-    Route::resource("atestadomedicos","AtestadomedicoController");
+    Route::get('/home', 'HomeController@index');
+    Route::resource("funcionarios", "FuncionarioController");
+    Route::resource("postos", "PostoController");
+    Route::resource("motivos", "MotivoController");
+    Route::resource("ocorrencias", "OcorrenciaController");
 
-	Route::get('auth/register', 'Auth\AuthController@getRegister');
- 	Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+    Route::get('atestadomedicos/comprovante/{id}', 'AtestadomedicoController@comprovante');
+    Route::resource("atestadomedicos", "AtestadomedicoController");
+
+    Route::get('auth/register', 'Auth\AuthController@getRegister');
+    Route::post('auth/register', 'Auth\AuthController@postRegister');
 });
 
 Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
 ]);
 
 
