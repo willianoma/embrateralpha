@@ -68,6 +68,8 @@ class AtestadomedicoController extends Controller
         $atestadomedico = Atestadomedico::findOrFail($id);
 
         return view('atestadomedicos.show', compact('atestadomedico'));
+
+
     }
 
     /**
@@ -123,8 +125,17 @@ class AtestadomedicoController extends Controller
 
     public function comprovante($id)
     {
-        $atestadomedico = Atestadomedico::findOrFail($id);
-        return view('atestadomedicos/relatorios/comprovanteatestadomedico', compact('atestadomedico'));
+
+//        $atestadomedico = Atestadomedico::findOrFail($id);
+//        return view('atestadomedicos/relatorios/comprovanteatestadomedico', compact('atestadomedico'));
+
+        $pdf = app('dompdf.wrapper');
+        return $pdf->loadHTML('<h1>Test</h1>')->stream();
+
+
+
+
+
     }
 
 }
