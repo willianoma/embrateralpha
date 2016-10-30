@@ -21,6 +21,9 @@
                             <th style="width: 100px">PROFLEIMAGE</th>
                         <th>NOME</th>
                         <th>POSTO</th>
+                        <th>STATUS</th>
+                        <th>ESCALA</th>
+                        <th>HORÁRIO</th>
                       <!--  <th>CPF</th>
                         <th>RG</th>
                         <th>CTPS</th>
@@ -64,10 +67,11 @@
                                 <td>{{$funcionario->id}}</td>
                                 <td align="center"><img height="70" width="70" src="{{asset("$funcionario->profleimage")}}"></td>
                                <!--  <td>{{$funcionario->profleimage}}</td> -->
-                    <td>{{$funcionario->nome}}</td>
-                   
-                    
+                    <td>{{$funcionario->nome}}</td>                                
                     <td>{{$funcionario->posto}}</td> 
+                    <td>{{$funcionario->status}}</td>
+                    <td>{{$funcionario->tipo}}</td>
+                    <td>{{$funcionario->horario}}</td>
                   <!--  
                     <td>{{$funcionario->cpf}}</td>
                     <td>{{$funcionario->rg}}</td>

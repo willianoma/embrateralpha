@@ -6,6 +6,8 @@
 	$lista  = [ 
 	"Ativo" =>"Ativo",
 	"Inativo" =>"Inativo",
+	"INSS" =>"INSS",
+	"Férias" =>"Férias",
 	];
 
 	foreach ($lista as $key => $value) {
