@@ -42,6 +42,7 @@ class FuncionarioController extends Controller
      */
     public function store(Request $request)
     {
+
         $funcionario = new Funcionario();
 
         //$funcionario->profleimage = $request->input("profleimage");
@@ -84,22 +85,33 @@ class FuncionarioController extends Controller
         $funcionario->tipo = $request->input("tipo");
         $funcionario->status = $request->input("status");
 
+        //Start Upload profile image
         $profileImage = $request->file('profleimage');
         if ($request->hasFile('profleimage') && $profileImage->isValid()) {
             if ($profileImage->getClientMimeType() == "image/jpeg" || $profileImage->getClientMimeType() == "image/png" || $profileImage->getClientMimeType() == "image/png") {
                 $nomeArquivo = $funcionario->pis_pasep . '.' . $profileImage->getClientOriginalExtension();
                 $profileImage->move('profilesimages', $nomeArquivo);
-
-
+                $funcionario->profleimage = 'profilesimages/' . $nomeArquivo;
+                $funcionario->save();
             }
+            //if hasn't image profile
+        } else {
+            $funcionario->profleimage = 'profilesimages/' . 'guest.png';
+            $funcionario->save();
         }
+        //End Upload profile image
 
-        $funcionario->profleimage = 'profilesimages/' . $nomeArquivo;
-
-        $funcionario->save();
 
         return redirect()->route('funcionarios.index')->with('message', 'Item created successfully.');
     }
+
+
+   /* public function checkPis($pis){
+        $funcionario = Funcionario::all();
+        var_dump($funcionario);
+        die();
+
+    }*/
 
     /**
      * Display the specified resource.
@@ -107,8 +119,12 @@ class FuncionarioController extends Controller
      * @param  int $id
      * @return Response
      */
+
+
     public function show($id)
     {
+        /*$this->checkPis('oi');
+        die();*/
         $funcionario = Funcionario::findOrFail($id);
 
         return view('funcionarios.show', compact('funcionario'));
