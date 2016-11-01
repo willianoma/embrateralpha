@@ -85,6 +85,16 @@ class FuncionarioController extends Controller
         $funcionario->tipo = $request->input("tipo");
         $funcionario->status = $request->input("status");
 
+
+        //     START  REFATORAR ISSO AQUI, JOGAR NO MODEL!
+
+        if ($this->hasPis($funcionario->pis_pasep) == true) {
+            echo "<h3>PIS já cadastrado da base de dados, Clique em voltar no navegador!</h3>";
+            die();
+        }
+        //       END REFATORAR ISSO AQUI, JOGAR NO MODEL!
+
+
         //Start Upload profile image
         $profileImage = $request->file('profleimage');
         if ($request->hasFile('profleimage') && $profileImage->isValid()) {
@@ -105,26 +115,24 @@ class FuncionarioController extends Controller
         return redirect()->route('funcionarios.index')->with('message', 'Item created successfully.');
     }
 
+    //     START  REFATORAR ISSO AQUI, JOGAR NO MODEL!
 
-   /* public function checkPis($pis){
-        $funcionario = Funcionario::all();
-        var_dump($funcionario);
-        die();
+    public function hasPis($pis)
+    {
+        $funcionarios = Funcionario::all();
+        foreach ($funcionarios as $funcionario) {
+            if ($funcionario->pis_pasep == $pis) {
+                return true;
+            }
+        }
+    }
 
-    }*/
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return Response
-     */
+    //       END REFATORAR ISSO AQUI, JOGAR NO MODEL!
 
 
     public function show($id)
     {
-        /*$this->checkPis('oi');
-        die();*/
+
         $funcionario = Funcionario::findOrFail($id);
 
         return view('funcionarios.show', compact('funcionario'));
