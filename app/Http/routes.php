@@ -23,6 +23,8 @@ Route::group(['prefix' => '', 'middleware' => 'auth'], function () {
     Route::resource("postos", "PostoController");
     Route::resource("motivos", "MotivoController");
     Route::resource("ocorrencias", "OcorrenciaController");
+    Route::resource("calculofaltas", "CalculofaltasController");
+
 
 
     Route::get('atestadomedicos/comprovante/{id}', 'AtestadomedicoController@comprovante');

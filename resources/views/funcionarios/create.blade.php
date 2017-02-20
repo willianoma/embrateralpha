@@ -213,7 +213,7 @@
 
    <div class="form-group col-md-3 minimal-padding last-item @if($errors->has('grau_instrucao')) has-error @endif">
      <label for="grau_instrucao-field">Grau_instrucao</label>
-     
+
    @include('funcionarios.partials.grauInstrucao')
 
     <!-- <input type="text" id="grau_instrucao-field" name="grau_instrucao" class="form-control" value="{{ old("grau_instrucao") }}"/> -->
@@ -321,21 +321,30 @@
 
 <!-- 2 itens -->
 
-<div class="form-group col-md-6 minimal-padding first-item @if($errors->has('endereco')) has-error @endif">
- <label for="endereco-field">Endereco</label>
- <input type="text" required="" id="endereco-field" name="endereco" class="form-control" value="{{ old("endereco") }}"/>
- @if($errors->has("endereco"))
- <span class="help-block">{{ $errors->first("endereco") }}</span>
- @endif
-</div>
+        <div class="form-group col-md-6 minimal-padding first-item @if($errors->has('endereco')) has-error @endif">
+            <label for="endereco-field">Endereço Completo (Logradouro, N, Bairro, Cidade-Estado. Complemento)</label>
+            <input type="text" required="" id="endereco-field" name="endereco" class="form-control"
+                   value="{{ old("endereco") }}"/>
+            @if($errors->has("endereco"))
+                <span class="help-block">{{ $errors->first("endereco") }}</span>
+            @endif
+        </div>
+{{--Arrumar isso no futuro--}}
+        <div class="form-group col-md-3 minimal-padding @if($errors->has('filiacaopai')) has-error @endif">
+            <label for="filiacao-pai-field">Nome do Pai</label>
+            <input type="text" id="filiacao-pai-field" name="filiacaopai" class="form-control" value="{{ old("filiacaopai") }}"/>
+            @if($errors->has("filiacaopai"))
+                <span class="help-block">{{ $errors->first("filiacaopai") }}</span>
+            @endif
+        </div>
 
-<div class="form-group col-md-6 minimal-padding last-item @if($errors->has('filiacao')) has-error @endif">
- <label for="filiacao-field">Filiacao</label>
- <input type="text" id="filiacao-field" name="filiacao" class="form-control" value="{{ old("filiacao") }}"/>
- @if($errors->has("filiacao"))
- <span class="help-block">{{ $errors->first("filiacao") }}</span>
- @endif
-</div>
+        <div class="form-group col-md-3 minimal-padding last-item @if($errors->has('filiacaomae')) has-error @endif">
+            <label for="filiacao-mae-field">Nome da Mãe</label>
+            <input type="text" id="filiacao-mae-field" name="filiacaomae" class="form-control" value="{{ old("filiacaomae") }}"/>
+            @if($errors->has("filiacao"))
+                <span class="help-block">{{ $errors->first("filiacaomae") }}</span>
+            @endif
+        </div>
 
 <!-- Fim 2 itens -->
 
@@ -367,7 +376,7 @@
  <label for="banco_tipo-field">Banco_tipo</label>
 
          @include('funcionarios.partials.bancosTipoConta')
- 
+
 
  <!--<input type="text" id="banco_tipo-field" name="banco_tipo" class="form-control" value="{{ old("banco_tipo") }}"/>-->
 
@@ -439,7 +448,7 @@
  @endif
 </div>
 
-<!-- Fim 4 itens -->  
+<!-- Fim 4 itens -->
 
 <div class="form-group col-md-12 first-item last-item @if($errors->has('obs')) has-error @endif">
  <label for="obs-field">Obs</label>

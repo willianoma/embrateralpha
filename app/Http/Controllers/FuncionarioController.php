@@ -62,7 +62,13 @@ class FuncionarioController extends Controller
         $funcionario->funcao = $request->input("funcao");
         $funcionario->farda = $request->input("farda");
         $funcionario->bota = $request->input("bota");
-        $funcionario->filiacao = $request->input("filiacao");
+        //$funcionario->filiacao = $request->input("filiacao");
+
+        //Arrumar isso no futuro.
+        $filiacaopai = $request->input("filiacaopai");
+        $filiacaomae = $request->input("filiacaomae");
+        $funcionario->filiacao = $filiacaopai. " / ". $filiacaomae;;
+
         $funcionario->filhos = $request->input("filhos");
         $funcionario->banco = $request->input("banco");
         $funcionario->banco_conta = $request->input("banco_conta");

@@ -1,9 +1,9 @@
 <?php
 
-class getfile
+class Getfile
 {
 
-    protected function ola()
+    public function ola()
     {
 
         $calculofaltas = new CalculoFaltas();
