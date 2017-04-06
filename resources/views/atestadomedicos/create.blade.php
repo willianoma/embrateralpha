@@ -90,6 +90,16 @@
                         <span class="help-block">{{ $errors->first("datafinal") }}</span>
                     @endif
                 </div>
+
+                <div class="form-group @if($errors->has('referencia')) has-error @endif">
+                    <label for="referencia-field">Referencia</label>
+                    <input type="text" id="referencia-field" name="referencia" class="form-control"
+                           value="{{ old("referencia") }}"/>
+                    @if($errors->has("referencia"))
+                        <span class="help-block">{{ $errors->first("referencia") }}</span>
+                    @endif
+                </div>
+
                 <div class="well well-sm">
                     <button type="submit" class="btn btn-primary">Create</button>
                     <a class="btn btn-link pull-right" href="{{ route('atestadomedicos.index') }}"><i

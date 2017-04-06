@@ -28,7 +28,10 @@ Route::group(['prefix' => '', 'middleware' => 'auth'], function () {
 
 
     Route::get('atestadomedicos/comprovante/{id}', 'AtestadomedicoController@comprovante');
+    Route::get('atestadomedicos/recibomanual', 'AtestadomedicoController@recibomanual');
     Route::resource("atestadomedicos", "AtestadomedicoController");
+
+
 
 
     Route::get('auth/register', 'Auth\AuthController@getRegister');

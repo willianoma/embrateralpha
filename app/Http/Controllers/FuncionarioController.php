@@ -101,7 +101,7 @@ class FuncionarioController extends Controller
         //       END REFATORAR ISSO AQUI, JOGAR NO MODEL!
 
 
-        //Start Upload profile image
+        //Upload
         $profileImage = $request->file('profleimage');
         if ($request->hasFile('profleimage') && $profileImage->isValid()) {
             if ($profileImage->getClientMimeType() == "image/jpeg" || $profileImage->getClientMimeType() == "image/png" || $profileImage->getClientMimeType() == "image/png") {

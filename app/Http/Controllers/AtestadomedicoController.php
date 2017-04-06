@@ -3,10 +3,12 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\ControleReciboManual;
 use App\Atestadomedico;
 use Illuminate\Http\Request;
 use App\Funcionario;
 use App\Posto;
+use League\Flysystem\Exception;
 
 class AtestadomedicoController extends Controller
 {
@@ -51,6 +53,8 @@ class AtestadomedicoController extends Controller
         $atestadomedico->obs = $request->input("obs");
         $atestadomedico->datainicio = $request->input("datainicio");
         $atestadomedico->datafinal = $request->input("datafinal");
+        $atestadomedico->referencia = $request->input("referencia");
+
 
         $atestadomedico->save();
 
@@ -103,6 +107,8 @@ class AtestadomedicoController extends Controller
         $atestadomedico->obs = $request->input("obs");
         $atestadomedico->datainicio = $request->input("datainicio");
         $atestadomedico->datafinal = $request->input("datafinal");
+        $atestadomedico->referencia = $request->input("referencia");
+
 
         $atestadomedico->save();
 
@@ -125,17 +131,39 @@ class AtestadomedicoController extends Controller
 
     public function comprovante($id)
     {
-
-//        $atestadomedico = Atestadomedico::findOrFail($id);
-//        return view('atestadomedicos/relatorios/comprovanteatestadomedico', compact('atestadomedico'));
+        $atestadomedico = Atestadomedico::findOrFail($id);
 
         $pdf = app('dompdf.wrapper');
-        return $pdf->loadHTML('<h1>Test</h1>')->stream();
+        $pdf->setPaper('A4', 'landscape');
+
+        return $pdf->loadHTML(view('atestadomedicos.relatorios.comprovanteatestadomedico', compact('atestadomedico')))->stream();
+
+        //return view('atestadomedicos.relatorios.comprovanteatestadomedico', compact('atestadomedico'));
 
 
+    }
+
+    public function reciboManual()
+    {
+        $controleReciboManual = new ControleReciboManual();
+
+        $lastIdRecord = $controleReciboManual->orderBy('id', 'desc')->first()->id;
+
+        for ($i = 0; $i <= 29; $i++) {
+            $newRecords [] = $lastIdRecord += 1;
+            $controleReciboManualFor = new ControleReciboManual();
+            $controleReciboManualFor->idatestadomedico = "";
+            $controleReciboManualFor->save();
+
+        }
+
+        $pdf = app('dompdf.wrapper');
+        $pdf->setPaper('A4', 'landscape');
 
 
+        return $pdf->loadHTML(view('atestadomedicos.relatorios.recibomanual', compact('newRecords')))->stream();
 
+        //return view('atestadomedicos.relatorios.recibomanual');
     }
 
 }

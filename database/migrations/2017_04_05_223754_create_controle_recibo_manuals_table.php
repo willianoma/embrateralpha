@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCalculoFaltasTable extends Migration {
+class CreateControleReciboManualsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,11 @@ class CreateCalculoFaltasTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('calculo_faltas', function(Blueprint $table)
+		Schema::create('controle_recibo_manuals', function(Blueprint $table)
 		{
 			$table->increments('id');
             $table->string('idatestadomedico');
-            $table->timestamps();
+			$table->timestamps();
 		});
 	}
 
@@ -27,7 +27,7 @@ class CreateCalculoFaltasTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('calculo_faltas');
+		Schema::drop('controle_recibo_manuals');
 	}
 
 }
