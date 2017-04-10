@@ -26,18 +26,15 @@ Route::group(['prefix' => '', 'middleware' => 'auth'], function () {
     Route::resource("calculofaltas", "CalculofaltasController");
 
 
-
     Route::get('atestadomedicos/comprovante/{id}', 'AtestadomedicoController@comprovante');
     Route::get('atestadomedicos/recibomanual', 'AtestadomedicoController@recibomanual');
     Route::resource("atestadomedicos", "AtestadomedicoController");
 
 
+    Route::get('auth/register', 'Auth\AuthController@getRegister');
+    Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 
-
-
-
-  
 });
 
 Route::controllers([
@@ -52,5 +49,3 @@ Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
 // Registration routes...
-Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');
