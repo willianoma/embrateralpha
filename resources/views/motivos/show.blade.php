@@ -1,13 +1,13 @@
 @extends('layout')
 @section('header')
 <div class="page-header">
-        <h1>Motivos / {{trans('crud.view')}} #{{$motivo->id}}</h1>
+        <h1>Motivos / {{trans('crud/crud.view')}} #{{$motivo->id}}</h1>
         <form action="{{ route('motivos.destroy', $motivo->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
             <input type="hidden" name="_method" value="DELETE">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="btn-group pull-right" role="group" aria-label="...">
-                <a class="btn btn-warning btn-group" role="group" href="{{ route('motivos.edit', $motivo->id) }}"><i class="glyphicon glyphicon-edit"></i> {{trans('crud.edit')}}</a>
-                <button type="submit" class="btn btn-danger">{{trans('crud.delete')}} <i class="glyphicon glyphicon-trash"></i></button>
+                <a class="btn btn-warning btn-group" role="group" href="{{ route('motivos.edit', $motivo->id) }}"><i class="glyphicon glyphicon-edit"></i> {{trans('crud/crud.edit')}}</a>
+                <button type="submit" class="btn btn-danger">{{trans('crud/crud.delete')}} <i class="glyphicon glyphicon-trash"></i></button>
             </div>
         </form>
     </div>
@@ -23,16 +23,16 @@
                     <p class="form-control-static"></p>
                 </div>
                 <div class="form-group">
-                     <label for="descricao">{{trans('motivos.desc')}}</label>
+                     <label for="descricao">{{trans('crud/motivos.desc')}}</label>
                      <p class="form-control-static">{{$motivo->descricao}}</p>
                 </div>
                     <div class="form-group">
-                     <label for="obs">{{trans('motivos.obs')}}</label>
+                     <label for="obs">{{trans('crud/motivos.obs')}}</label>
                      <p class="form-control-static">{{$motivo->obs}}</p>
                 </div>
             </form>
 
-            <a class="btn btn-link" href="{{ route('motivos.index') }}"><i class="glyphicon glyphicon-backward"></i>  {{trans('crud.back')}}</a>
+            <a class="btn btn-link" href="{{ route('motivos.index') }}"><i class="glyphicon glyphicon-backward"></i>  {{trans('crud/crud.back')}}</a>
 
         </div>
     </div>

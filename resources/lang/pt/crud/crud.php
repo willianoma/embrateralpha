@@ -23,6 +23,7 @@ return [
     'edit' => 'Editar',
     'delete' => 'Deletar',
     'create' => 'Criar',
-    'back' => 'Voltar'
+    'back' => 'Voltar',
+    'save' => 'Salvar'
 
 ];
