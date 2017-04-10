@@ -147,6 +147,14 @@ class AtestadomedicoController extends Controller
     {
         $controleReciboManual = new ControleReciboManual();
 
+
+        if ($controleReciboManual->orderBy('id', 'desc')->count() == 0) {
+            $controleReciboManualFor = new ControleReciboManual();
+            $controleReciboManualFor->idatestadomedico = "";
+            $controleReciboManualFor->save();
+        }
+
+
         $lastIdRecord = $controleReciboManual->orderBy('id', 'desc')->first()->id;
 
         for ($i = 0; $i <= 29; $i++) {

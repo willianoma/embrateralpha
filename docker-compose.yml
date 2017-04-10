@@ -9,7 +9,7 @@ web:
   environment:
     DB_HOST: db
     DB_DATABASE: embrater
-    DB_USERNAME: embrater
+    DB_USERNAME: root
     DB_PASSWORD: password
     DB_CONNECTION: mysql
 db:
@@ -17,4 +17,4 @@ db:
   environment:
     MYSQL_DATABASE: embrater
     MYSQL_USER: root
-    MYSQL_PASSWORD: 
+    MYSQL_PASSWORD: password
