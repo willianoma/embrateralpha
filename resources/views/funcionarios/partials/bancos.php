@@ -4,7 +4,7 @@
 	$lista  = [ 
 	"BancoDoBrasil" =>"Banco Do Brasil",
 	"Caixa" =>"Caixa",
-	"Itau" =>"Itau",
+	"Itau" =>"Itaú",
 	"Santander" =>"Santander",
 	];
 

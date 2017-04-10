@@ -7,7 +7,7 @@
 	"Solteiro" =>"Solteiro",
 	"Casado" =>"Casado",
 	"Divorciado" =>"Divorciado",
-	"Viuvo" =>"Viuvo",
+	"Viúvo" =>"Viúvo",
 	];
 
 	foreach ($lista as $key => $value) {

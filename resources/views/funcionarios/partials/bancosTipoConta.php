@@ -2,9 +2,9 @@
 	<?php 
 
 	$lista  = [ 
-	"ContaSalario" =>"Conta Salario",
+	"ContaSalario" =>"Conta Salário",
 	"ContaCorrente" =>"Conta Corrente",
-	"ContaPoupanca" =>"Conta Poupanca",
+	"ContaPoupanca" =>"Conta Poupança",
 	"Outra" =>"Outra",
 	];
 

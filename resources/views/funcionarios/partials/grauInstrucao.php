@@ -6,8 +6,8 @@
 	$lista  = [ 
 	"EnsinoFundamentalIncompleto" =>"Ensino Fundamental Incompleto",
 	"EnsinoFundamentalCompleto" =>"Ensino Fundamental Completo",
-	"EnsinoMedioIncompleto" =>"Ensino Medio Incompleto",
-	"EnsinoMedioCompleto" =>"Ensino Medio Completo",
+	"EnsinoMedioIncompleto" =>"Ensino Médio Incompleto",
+	"EnsinoMedioCompleto" =>"Ensino Médio Completo",
 	"EnsinoSuperiorIncompleto" =>"Ensino Superior Incompleto",
 	"EnsinoSuperiorCompleto" =>"Ensino Superior Completo",
 	];
