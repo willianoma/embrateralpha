@@ -232,14 +232,24 @@ class FuncionarioController extends Controller
         if ($request->hasFile('profleimage') && $profileImage->isValid()) {
             if ($profileImage->getClientMimeType() == "image/jpeg" || $profileImage->getClientMimeType() == "image/png" || $profileImage->getClientMimeType() == "image/jpg") {
 
-                $nomeArquivo = $funcionario->pis_pasep . '.' . $profileImage->getClientOriginalExtension();
+               // $nomeArquivo = $funcionario->pis_pasep . '.' . $profileImage->getClientOriginalExtension();
+
+                $nomeArquivo = $funcionario->pis_pasep . '.' . 'png';
+
+
                 $profileImage->move('profilesimages', $nomeArquivo);
                 $funcionario->profleimage = 'profilesimages/' . $nomeArquivo;
 
+               // var_dump($funcionario->profleimage);
 
-                //Ver problema com JPG, girando automaticamente e sem sucesso de save com o metodo abaixo...
+             //   $img = WideImage::load($funcionario->profleimage);
+             //   $img = $img->resize(200, 200, 'inside');
+             //   $img->saveToFile('/imagens/minha_foto_menor.jpg');
+
+             //   die();
+
+                //Ver problema com JPG, girando automaticamente e sem sucesso de save com o metodo abaixo em mobile...
                 Image::make($funcionario->profleimage)->resize(480, 640)->save();
-
             }
         }
 

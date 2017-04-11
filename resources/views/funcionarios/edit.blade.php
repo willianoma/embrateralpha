@@ -26,7 +26,10 @@
        <label id="label-image-profile" hidden="" for="profleimage-field">Profleimage</label>
        
        <!-- <div class="img-profile-div col-md-2"> -->
-       <img class="img-profile" src="{{asset("$funcionario->profleimage")}}">
+
+      <img class="img-profile thumb" src="{{asset("$funcionario->profleimage")}}">
+
+
        <!-- </div> -->
 
        <!-- <div class="input-profile-div col-md-10"> -->
