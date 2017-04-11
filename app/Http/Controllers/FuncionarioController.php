@@ -109,7 +109,7 @@ class FuncionarioController extends Controller
         //Upload
         $profileImage = $request->file('profleimage');
         if ($request->hasFile('profleimage') && $profileImage->isValid()) {
-            if ($profileImage->getClientMimeType() == "image/jpeg" || $profileImage->getClientMimeType() == "image/png") {
+            if ($profileImage->getClientMimeType() == "image/jpeg" || $profileImage->getClientMimeType() == "image/jpg" || $profileImage->getClientMimeType() == "image/png") {
                 $nomeArquivo = $funcionario->pis_pasep . '.' . $profileImage->getClientOriginalExtension();
                 $profileImage->move('profilesimages', $nomeArquivo);
                 $funcionario->profleimage = 'profilesimages/' . $nomeArquivo;
@@ -228,12 +228,16 @@ class FuncionarioController extends Controller
         //die();
 
 
+
         if ($request->hasFile('profleimage') && $profileImage->isValid()) {
             if ($profileImage->getClientMimeType() == "image/jpeg" || $profileImage->getClientMimeType() == "image/png" || $profileImage->getClientMimeType() == "image/jpg") {
+
                 $nomeArquivo = $funcionario->pis_pasep . '.' . $profileImage->getClientOriginalExtension();
                 $profileImage->move('profilesimages', $nomeArquivo);
                 $funcionario->profleimage = 'profilesimages/' . $nomeArquivo;
 
+
+                //Ver problema com JPG, girando automaticamente e sem sucesso de save com o metodo abaixo...
                 Image::make($funcionario->profleimage)->resize(480, 640)->save();
 
             }
