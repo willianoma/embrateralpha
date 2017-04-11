@@ -7,6 +7,11 @@ use App\Funcionario;
 use App\Posto;
 use Illuminate\Http\Request;
 
+// include composer autoload
+
+
+use Intervention\Image\ImageManagerStatic as Image;
+
 class FuncionarioController extends Controller
 {
 
@@ -67,7 +72,7 @@ class FuncionarioController extends Controller
         //Arrumar isso no futuro.
         $filiacaopai = $request->input("filiacaopai");
         $filiacaomae = $request->input("filiacaomae");
-        $funcionario->filiacao = $filiacaopai. " / ". $filiacaomae;;
+        $funcionario->filiacao = $filiacaopai . " / " . $filiacaomae;;
 
         $funcionario->filhos = $request->input("filhos");
         $funcionario->banco = $request->input("banco");
@@ -104,15 +109,20 @@ class FuncionarioController extends Controller
         //Upload
         $profileImage = $request->file('profleimage');
         if ($request->hasFile('profleimage') && $profileImage->isValid()) {
-            if ($profileImage->getClientMimeType() == "image/jpeg" || $profileImage->getClientMimeType() == "image/png" || $profileImage->getClientMimeType() == "image/png") {
+            if ($profileImage->getClientMimeType() == "image/jpeg" || $profileImage->getClientMimeType() == "image/png") {
                 $nomeArquivo = $funcionario->pis_pasep . '.' . $profileImage->getClientOriginalExtension();
                 $profileImage->move('profilesimages', $nomeArquivo);
                 $funcionario->profleimage = 'profilesimages/' . $nomeArquivo;
+
+                //Faltar obrigar imagem em portrait
+
+               Image::make($funcionario->profleimage)->resize(480, 640)->save();
+
                 $funcionario->save();
             }
             //if hasn't image profile
         } else {
-            $funcionario->profleimage = 'profilesimages/' . 'guest.png';
+            $funcionario->profleimage = 'guest.png';
             $funcionario->save();
         }
         //End Upload profile image
@@ -223,6 +233,9 @@ class FuncionarioController extends Controller
                 $nomeArquivo = $funcionario->pis_pasep . '.' . $profileImage->getClientOriginalExtension();
                 $profileImage->move('profilesimages', $nomeArquivo);
                 $funcionario->profleimage = 'profilesimages/' . $nomeArquivo;
+
+                Image::make($funcionario->profleimage)->resize(480, 640)->save();
+
             }
         }
 
