@@ -19,11 +19,11 @@ return [
     |
     */
 
-    'view' => 'Mostrar',
+    'show' => 'Mostrar',
     'edit' => 'Editar',
     'delete' => 'Deletar',
     'create' => 'Criar',
     'back' => 'Voltar',
-    'save' => 'Salvar'
-
+    'save' => 'Salvar',
+    'options' => 'Opções'
 ];

@@ -4,13 +4,13 @@
 @extends('layout')
 @section('header')
 <div class="page-header">
-  <h1>Funcionarios / Show #{{$funcionario->id}}</h1>
+  <h1>Funcionarios / {{trans('crud/crud.show')}} #{{$funcionario->id}}</h1>
   <form action="{{ route('funcionarios.destroy', $funcionario->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <div class="btn-group pull-right" role="group" aria-label="...">
-      <a class="btn btn-warning btn-group" role="group" href="{{ route('funcionarios.edit', $funcionario->id) }}"><i class="glyphicon glyphicon-edit"></i> Edit</a>
-      <button type="submit" class="btn btn-danger">Delete <i class="glyphicon glyphicon-trash"></i></button>
+      <a class="btn btn-warning btn-group" role="group" href="{{ route('funcionarios.edit', $funcionario->id) }}"><i class="glyphicon glyphicon-edit"></i> {{trans('crud/crud.edit')}}</a>
+      <button type="submit" class="btn btn-danger">{{trans('crud/crud.delete')}} <i class="glyphicon glyphicon-trash"></i></button>
     </div>
   </form>
 </div>
@@ -26,36 +26,36 @@
         <p class="form-control-static">{{$funcionario->id}}</p>
       </div>
       <div class="form-group">
-       <label for="profleimage">PROFLEIMAGE</label>
-       <img height="80" width="80" src="{{asset("$funcionario->profleimage")}}">
+          <label for="profleimage-field">{{trans('crud/funcionarios.profile_image')}}</label>
+          <img height="80" width="80" src="{{asset("$funcionario->profleimage")}}">
        <!--<p class="form-control-static">{{$funcionario->profleimage}}</p>-->
      </div>
 
      <div class="form-group col-md-12 first-item last-item">
-       <label for="nome">NOME</label>
-       <p class="form-control-static">{{$funcionario->nome}}</p>
+         <label for="nome-field">{{trans('crud/funcionarios.name')}}</label>
+         <p class="form-control-static">{{$funcionario->nome}}</p>
      </div>
 
      <!-- 4 itens -->
 
      <div class="form-group col-md-3 minimal-padding first-item">
-       <label for="posto">POSTO</label>
-       <p class="form-control-static">{{$funcionario->posto}}</p>
+         <label for="posto-field">{{trans('crud/funcionarios.station')}}</label>
+         <p class="form-control-static">{{$funcionario->posto}}</p>
      </div>
 
      <div class="form-group col-md-3 minimal-padding">
-       <label for="tipo">tipo</label>
-       <p class="form-control-static">{{$funcionario->tipo}}</p>
+         <label for="tipo-field">{{trans('crud/funcionarios.workload')}}</label>
+         <p class="form-control-static">{{$funcionario->tipo}}</p>
      </div>
 
      <div class="form-group col-md-3 minimal-padding">
-       <label for="horario">Horário</label>
-       <p class="form-control-static">{{$funcionario->horario}}</p>
+         <label for="horario-field">{{trans('crud/funcionarios.schedule')}}</label>
+         <p class="form-control-static">{{$funcionario->horario}}</p>
      </div>
 
      <div class="form-group col-md-3 minimal-padding last-item">
-       <label for="status">status</label>
-       <p class="form-control-static">{{$funcionario->status}}</p>
+         <label for="status-field">{{trans('crud/funcionarios.status')}}</label>
+         <p class="form-control-static">{{$funcionario->status}}</p>
      </div>
 
      <!-- Fim 4 Itens -->
@@ -63,23 +63,23 @@
      <!-- 4 Itens -->
 
      <div class="form-group col-md-3 minimal-padding first-item">
-       <label for="cargo">CARGO</label>
-       <p class="form-control-static">{{$funcionario->cargo}}</p>
+         <label for="cargo-field">{{trans('crud/funcionarios.office')}}</label>
+         <p class="form-control-static">{{$funcionario->cargo}}</p>
      </div>
 
      <div class="form-group col-md-3 minimal-padding">
-       <label for="funcao">FUNCAO</label>
-       <p class="form-control-static">{{$funcionario->funcao}}</p>
+         <label for="funcao-field">{{trans('crud/funcionarios.function')}}</label>
+         <p class="form-control-static">{{$funcionario->funcao}}</p>
      </div>
 
      <div class="form-group col-md-3 minimal-padding">
-       <label for="data_admissao">DATA_ADMISSAO</label>
-       <p class="form-control-static">{{$funcionario->data_admissao}}</p>
+         <label for="data_admissao-field">{{trans('crud/funcionarios.date_adm')}}</label>
+         <p class="form-control-static">{{$funcionario->data_admissao}}</p>
      </div>
 
      <div class="form-group col-md-3 minimal-padding last-item">
-       <label for="estado_civil">ESTADO_CIVIL</label>
-       <p class="form-control-static">{{$funcionario->estado_civil}}</p>
+         <label for="estado_civil-field">{{trans('crud/funcionarios.civil_state')}}</label>
+         <p class="form-control-static">{{$funcionario->estado_civil}}</p>
      </div>
 
      <!-- Fim 4 Itens -->
@@ -87,23 +87,23 @@
      <!-- 4 Itens -->
 
      <div class="form-group col-md-3 minimal-padding first-item">
-       <label for="cpf">CPF</label>
-       <p class="form-control-static">{{$funcionario->cpf}}</p>
+         <label for="cpf-field">{{trans('crud/funcionarios.cpf')}}</label>
+         <p class="form-control-static">{{$funcionario->cpf}}</p>
      </div>
 
      <div class="form-group col-md-3 minimal-padding">
-       <label for="rg">RG</label>
-       <p class="form-control-static">{{$funcionario->rg}}</p>
+         <label for="rg-field">{{trans('crud/funcionarios.rg')}}</label>
+         <p class="form-control-static">{{$funcionario->rg}}</p>
      </div>
 
      <div class="form-group col-md-3 minimal-padding">
-       <label for="ctps">CTPS</label>
-       <p class="form-control-static">{{$funcionario->ctps}}</p>
+         <label for="ctps-field">{{trans('crud/funcionarios.ctps')}}</label>
+         <p class="form-control-static">{{$funcionario->ctps}}</p>
      </div>
 
      <div class="form-group col-md-3 minimal-padding last-item">
-       <label for="pis_pasep">PIS_PASEP</label>
-       <p class="form-control-static">{{$funcionario->pis_pasep}}</p>
+         <label for="pis_pasep-field">{{trans('crud/funcionarios.pis')}}</label>
+         <p class="form-control-static">{{$funcionario->pis_pasep}}</p>
      </div>
 
      <!-- Fim 4 Itens -->
@@ -111,23 +111,27 @@
      <!-- 4 Itens -->
 
      <div class="form-group col-md-3 minimal-padding fisrt-item">
-       <label for="reservista">RESERVISTA</label>
-       <p class="form-control-static">{{$funcionario->reservista}}</p>
+         <label for="reservista-field">{{trans('crud/funcionarios.military_reservist')}}</label>
+         <p class="form-control-static">{{$funcionario->reservista}}</p>
+
      </div>
 
      <div class="form-group col-md-3 minimal-padding">
-       <label for="titulo_eleitor">TITULO_ELEITOR</label>
-       <p class="form-control-static">{{$funcionario->titulo_eleitor}}</p>
+         <label for="titulo_eleitor-field">{{trans('crud/funcionarios.voter_number')}}</label>
+
+         <p class="form-control-static">{{$funcionario->titulo_eleitor}}</p>
      </div>
 
      <div class="form-group col-md-3 minimal-padding">
-       <label for="nascimento">NASCIMENTO</label>
-       <p class="form-control-static">{{$funcionario->nascimento}}</p>
+         <label for="nascimento-field">{{trans('crud/funcionarios.born')}}</label>
+
+         <p class="form-control-static">{{$funcionario->nascimento}}</p>
      </div>
 
      <div class="form-group col-md-3 minimal-padding last-item">
-       <label for="grau_instrucao">GRAU_INSTRUCAO</label>
-       <p class="form-control-static">{{$funcionario->grau_instrucao}}</p>
+         <label for="grau_instrucao-field">{{trans('crud/funcionarios.knowledge')}}</label>
+
+         <p class="form-control-static">{{$funcionario->grau_instrucao}}</p>
      </div>
 
      <!-- Fim 4 Itens -->
@@ -135,23 +139,24 @@
      <!-- 4 Itens -->
 
      <div class="form-group col-md-3 minimal-padding first-item">
-       <label for="telefone">TELEFONE</label>
-       <p class="form-control-static">{{$funcionario->telefone}}</p>
+         <label for="telefone-field">{{trans('crud/funcionarios.phone')}}</label>
+
+         <p class="form-control-static">{{$funcionario->telefone}}</p>
      </div>
 
      <div class="form-group col-md-3 minimal-padding">
-       <label for="email">EMAIL</label>
-       <p class="form-control-static">{{$funcionario->email}}</p>
+         <label for="email-field">{{trans('crud/funcionarios.email')}}</label>
+         <p class="form-control-static">{{$funcionario->email}}</p>
      </div>
 
      <div class="form-group col-md-3 minimal-padding">
-       <label for="tipo_sanguineo">TIPO_SANGUINEO</label>
-       <p class="form-control-static">{{$funcionario->tipo_sanguineo}}</p>
+         <label for="tipo_sanguineo-field">{{trans('crud/funcionarios.blood_type')}}</label>
+         <p class="form-control-static">{{$funcionario->tipo_sanguineo}}</p>
      </div>
 
      <div class="form-group col-md-3 minimal-padding last-item">
-       <label for="deficiencia">DEFICIENCIA</label>
-       <p class="form-control-static">{{$funcionario->deficiencia}}</p>
+         <label for="deficiencia-field">{{trans('crud/funcionarios.special_condition')}}</label>
+         <p class="form-control-static">{{$funcionario->deficiencia}}</p>
      </div>
 
      <!-- Fim 4 Itens -->
@@ -159,23 +164,23 @@
      <!-- 4 Itens -->
 
      <div class="form-group col-md-3 minimal-padding first-item">
-       <label for="farda">FARDA</label>
-       <p class="form-control-static">{{$funcionario->farda}}</p>
+         <label for="farda-field">{{trans('crud/funcionarios.uniform')}}</label>
+         <p class="form-control-static">{{$funcionario->farda}}</p>
      </div>
 
      <div class="form-group col-md-3 minimal-padding">
-       <label for="bota">BOTA</label>
-       <p class="form-control-static">{{$funcionario->bota}}</p>
+         <label for="bota-field">{{trans('crud/funcionarios.boot')}}</label>
+         <p class="form-control-static">{{$funcionario->bota}}</p>
      </div>
 
      <div class="form-group col-md-3 minimal-padding">
-       <label for="contato_emergencia">CONTATO_EMERGENCIA</label>
-       <p class="form-control-static">{{$funcionario->contato_emergencia}}</p>
+         <label for="contato_emergencia-field">{{trans('crud/funcionarios.emergency_contact')}}</label>
+         <p class="form-control-static">{{$funcionario->contato_emergencia}}</p>
      </div>
 
      <div class="form-group col-md-3 minimal-padding last-item">
-       <label for="recebe_vale_transporte">RECEBE_VALE_TRANSPORTE</label>
-       <p class="form-control-static">{{$funcionario->recebe_vale_transporte}}</p>
+         <label for="recebe_vale_transporte-field">{{trans('crud/funcionarios.ticket_transport')}}</label>
+         <p class="form-control-static">{{$funcionario->recebe_vale_transporte}}</p>
      </div>
 
      <!-- Fim 4 Itens -->
@@ -183,51 +188,51 @@
      <!-- 2 Itens -->
 
      <div class="form-group col-md-6 minimal-padding first-item">
-       <label for="endereco">ENDERECO</label>
-       <p class="form-control-static">{{$funcionario->endereco}}</p>
+         <label for="endereco-field">{{trans('crud/funcionarios.adress')}}</label>
+         <p class="form-control-static">{{$funcionario->endereco}}</p>
      </div>
 
      <div class="form-group col-md-6 form-group minimal-padding last-item">
-       <label for="filiacao">FILIACAO</label>
-       <p class="form-control-static">{{$funcionario->filiacao}}</p>
+         <label for="filiacao-pai-field">{{trans('crud/funcionarios.father'). " e ".trans('crud/funcionarios.mother') }}</label>
+         <p class="form-control-static">{{$funcionario->filiacao}}</p>
      </div>
 
      <!-- Fim 2 Itens -->
-     
+
      <!-- 2 Itens -->
 
      <div class="form-group col-md-6 minimal-padding first-item">
-       <label for="nome_conjuge">NOME_CONJUGE</label>
-       <p class="form-control-static">{{$funcionario->nome_conjuge}}</p>
+         <label for="nome_conjuge-field">{{trans('crud/funcionarios.spouse')}}</label>
+         <p class="form-control-static">{{$funcionario->nome_conjuge}}</p>
      </div>
 
      <div class="form-group col-md-6 form-group minimal-padding last-item">
-       <label for="filhos">FILHOS</label>
-       <p class="form-control-static">{{$funcionario->filhos}}</p>
+         <label for="filhos-field">{{trans('crud/funcionarios.children')}}</label>
+         <p class="form-control-static">{{$funcionario->filhos}}</p>
      </div>
 
      <!-- Fim 2 Itens -->
-     
+
      <!-- 4 Itens -->
 
      <div class="form-group col-md-3 minimal-padding first-item">
-       <label for="banco">BANCO</label>
-       <p class="form-control-static">{{$funcionario->banco}}</p>
+         <label for="banco_tipo-field">{{trans('crud/funcionarios.acount_type')}}</label>
+         <p class="form-control-static">{{$funcionario->banco}}</p>
      </div>
 
      <div class="form-group col-md-3 minimal-padding">
-       <label for="banco_conta">BANCO_CONTA</label>
-       <p class="form-control-static">{{$funcionario->banco_conta}}</p>
+         <label for="banco-field">{{trans('crud/funcionarios.bank_name')}}</label>
+         <p class="form-control-static">{{$funcionario->banco_conta}}</p>
      </div>
 
      <div class="form-group col-md-3 minimal-padding">
-       <label for="banco_agencia">BANCO_AGENCIA</label>
-       <p class="form-control-static">{{$funcionario->banco_agencia}}</p>
+         <label for="banco_conta-field">{{trans('crud/funcionarios.acount_number')}}</label>
+         <p class="form-control-static">{{$funcionario->banco_agencia}}</p>
      </div>
 
      <div class="form-group col-md-3 minimal-padding last-item">
-       <label for="banco_tipo">BANCO_TIPO</label>
-       <p class="form-control-static">{{$funcionario->banco_tipo}}</p>
+         <label for="banco_agencia-field">{{trans('crud/funcionarios.acount_agency')}}</label>
+         <p class="form-control-static">{{$funcionario->banco_tipo}}</p>
      </div>
 
      <!-- Fim 4 Itens -->
@@ -235,35 +240,35 @@
      <!-- 4 Itens -->
 
      <div class="form-group col-md-3 minimal-padding first-item">
-       <label for="cbo">CBO</label>
-       <p class="form-control-static">{{$funcionario->cbo}}</p>
+         <label for="cbo-field">{{trans('crud/funcionarios.cbo')}}</label>
+         <p class="form-control-static">{{$funcionario->cbo}}</p>
      </div>
 
      <div class="form-group col-md-3 minimal-padding">
-       <label for="aso">ASO</label>
-       <p class="form-control-static">{{$funcionario->aso}}</p>
+         <label for="aso-field">{{trans('crud/funcionarios.aso')}}</label>
+         <p class="form-control-static">{{$funcionario->aso}}</p>
      </div>
 
      <div class="form-group col-md-3 minimal-padding">
-       <label for="referencia">REFERENCIA</label>
-       <p class="form-control-static">{{$funcionario->referencia}}</p>
+         <label for="referencia-field">{{trans('crud/funcionarios.ref')}}</label>
+         <p class="form-control-static">{{$funcionario->referencia}}</p>
      </div>
 
      <div class="form-group col-md-3 minimal-padding last-item">
-       <label for="preenchida_por">PREENCHIDA_POR</label>
-       <p class="form-control-static">{{$funcionario->preenchida_por}}</p>
+         <label for="preenchida_por-field">{{trans('crud/funcionarios.completed_by')}}</label>
+         <p class="form-control-static">{{$funcionario->preenchida_por}}</p>
      </div>
 
      <!-- Fim 4 Itens -->
 
      <div class="form-group col-md-12 first-item last-item">
-       <label for="obs">OBS</label>
-       <p class="form-control-static">{{$funcionario->obs}}</p>
+         <label for="obs-field">{{trans('crud/funcionarios.obs')}}</label>
+         <p class="form-control-static">{{$funcionario->obs}}</p>
      </div>
 
    </form>
 
-   <a class="btn btn-link" href="{{ route('funcionarios.index') }}"><i class="glyphicon glyphicon-backward"></i>  Back</a>
+   <a class="btn btn-link" href="{{ route('funcionarios.index') }}"><i class="glyphicon glyphicon-backward"></i>  {{trans('crud/crud.back')}}</a>
 
  </div>
 </div>

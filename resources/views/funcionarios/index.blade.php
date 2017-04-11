@@ -3,8 +3,8 @@
 @section('header')
     <div class="page-header clearfix">
         <h1>
-            <i class="glyphicon glyphicon-align-justify"></i> Funcionarios
-            <a class="btn btn-success pull-right" href="{{ route('funcionarios.create') }}"><i class="glyphicon glyphicon-plus"></i> Create</a>
+            <i class="glyphicon glyphicon-align-justify"></i> {{trans('crud/funconarios.title')}}
+            <a class="btn btn-success pull-right" href="{{ route('funcionarios.create') }}"><i class="glyphicon glyphicon-plus"></i> {{trans('crud/crud.create')}}</a>
         </h1>
 
     </div>
@@ -18,12 +18,12 @@
                     <thead>
                         <tr>
                             <th style="width: 50px">ID</th>
-                            <th style="width: 100px">PROFLEIMAGE</th>
-                        <th>NOME</th>
-                        <th>POSTO</th>
-                        <th>STATUS</th>
-                        <th>ESCALA</th>
-                        <th>HORÁRIO</th>
+                            <th style="width: 100px">{{trans('crud/funcionarios.profile_image')}}</th>
+                        <th>{{trans('crud/funcionarios.name')}}</th>
+                        <th>{{trans('crud/funcionarios.station')}}</th>
+                        <th>{{trans('crud/funcionarios.workload')}}</th>
+                        <th>{{trans('crud/funcionarios.workload')}}</th>
+                        <th>{{trans('crud/funcionarios.schedule')}}</th>
                       <!--  <th>CPF</th>
                         <th>RG</th>
                         <th>CTPS</th>
@@ -57,7 +57,7 @@
                         <th>REFERENCIA</th>
                         <th>PREENCHIDA_POR</th>
                         <th>OBS</th> -->
-                            <th class="text-right">OPTIONS</th>
+                            <th class="text-right">{{trans('crud/crud.options')}}</th>
                         </tr>
                     </thead>
 
@@ -107,12 +107,12 @@
                     <td>{{$funcionario->preenchida_por}}</td>
                     <td>{{$funcionario->obs}}</td> -->
                                 <td class="text-right">
-                                    <a class="btn btn-xs btn-primary" href="{{ route('funcionarios.show', $funcionario->id) }}"><i class="glyphicon glyphicon-eye-open"></i> View</a>
-                                    <a class="btn btn-xs btn-warning" href="{{ route('funcionarios.edit', $funcionario->id) }}"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+                                    <a class="btn btn-xs btn-primary" href="{{ route('funcionarios.show', $funcionario->id) }}"><i class="glyphicon glyphicon-eye-open"></i> {{trans('crud/crud.show')}}</a>
+                                    <a class="btn btn-xs btn-warning" href="{{ route('funcionarios.edit', $funcionario->id) }}"><i class="glyphicon glyphicon-edit"></i> {{trans('crud/crud.edit')}}</a>
                                     <form action="{{ route('funcionarios.destroy', $funcionario->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Deletar? Tem certesa?')) { return true } else {return false };">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <button type="submit" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> Delete</button>
+                                        <button type="submit" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> {{trans('crud/crud.delete')}}</button>
                                     </form>
                                 </td>
                             </tr>

@@ -20,7 +20,7 @@
                             <th>ID</th>
                             <th>{{trans('crud/motivos.desc')}}</th>
                         <th>{{trans('crud/motivos.obs')}}</th>
-                            <th class="text-right">OPÇÕES</th>
+                            <th class="text-right">{{trans('crud/crud.options')}}</th>
                         </tr>
                     </thead>
 
@@ -31,7 +31,7 @@
                                 <td>{{$motivo->descricao}}</td>
                     <td>{{$motivo->obs}}</td>
                                 <td class="text-right">
-                                    <a class="btn btn-xs btn-primary" href="{{ route('motivos.show', $motivo->id) }}"><i class="glyphicon glyphicon-eye-open"></i> {{trans('crud/crud.view')}}</a>
+                                    <a class="btn btn-xs btn-primary" href="{{ route('motivos.show', $motivo->id) }}"><i class="glyphicon glyphicon-eye-open"></i> {{trans('crud/crud.show')}}</a>
                                     <a class="btn btn-xs btn-warning" href="{{ route('motivos.edit', $motivo->id) }}"><i class="glyphicon glyphicon-edit"></i> {{trans('crud/crud.edit')}}</a>
                                     <form action="{{ route('motivos.destroy', $motivo->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
                                         <input type="hidden" name="_method" value="DELETE">

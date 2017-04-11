@@ -1,7 +1,7 @@
 @extends('layout')
 @section('header')
     <div class="page-header">
-        <h1>Motivos / {{trans('crud/crud.view')}} #{{$motivo->id}}</h1>
+        <h1>Motivos / {{trans('crud/crud.show')}} #{{$motivo->id}}</h1>
         <form action="{{ route('motivos.destroy', $motivo->id) }}" method="POST" style="display: inline;"
               onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
             <input type="hidden" name="_method" value="DELETE">
