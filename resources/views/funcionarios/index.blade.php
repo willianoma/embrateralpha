@@ -3,7 +3,7 @@
 @section('header')
     <div class="page-header clearfix">
         <h1>
-            <i class="glyphicon glyphicon-align-justify"></i> {{trans('crud/funconarios.title')}}
+            <i class="glyphicon glyphicon-align-justify"></i> {{trans('crud/funcionarios.title')}}
             <a class="btn btn-success pull-right" href="{{ route('funcionarios.create') }}"><i class="glyphicon glyphicon-plus"></i> {{trans('crud/crud.create')}}</a>
         </h1>
 
@@ -109,7 +109,7 @@
                                 <td class="text-right">
                                     <a class="btn btn-xs btn-primary" href="{{ route('funcionarios.show', $funcionario->id) }}"><i class="glyphicon glyphicon-eye-open"></i> {{trans('crud/crud.show')}}</a>
                                     <a class="btn btn-xs btn-warning" href="{{ route('funcionarios.edit', $funcionario->id) }}"><i class="glyphicon glyphicon-edit"></i> {{trans('crud/crud.edit')}}</a>
-                                    <form action="{{ route('funcionarios.destroy', $funcionario->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Deletar? Tem certesa?')) { return true } else {return false };">
+                                    <form action="{{ route('funcionarios.destroy', $funcionario->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Deletar? Tem certeza?')) { return true } else {return false };">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <button type="submit" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> {{trans('crud/crud.delete')}}</button>
