@@ -206,6 +206,7 @@
                            pattern="^\d{3}.\d{3}.\d{3}-\d{2}$"
                            OnKeyPress="formatar('###.###.###-##', this)"
                            title="Digite o CPF no formato xxx.xxx.xxx-xx"
+                           value="{{ $funcionario->cpf }}"
                     />
 
                     @if($errors->has("cpf"))
@@ -254,8 +255,20 @@
 
                 <div class="form-group col-md-3 minimal-padding @if($errors->has('titulo_eleitor')) has-error @endif">
                     <label for="titulo_eleitor-field">{{trans('crud/funcionarios.voter_number')}}</label>
-                    <input type="text" id="titulo_eleitor-field" name="titulo_eleitor" class="form-control"
-                           value="{{ $funcionario->titulo_eleitor }}"/>
+
+                    <input name="titulo_eleitor"
+                           type="text"
+                           maxlength="23"
+                           id="titulo_eleitor-field"
+                           class="form-control"
+                           title="Digite o valor na ordem: Numero Incrição / Zona / Seção"
+                           placeholder="Numero Incrição - Zona - Seção"
+                           pattern="^\d{4}.\d{4}.\d{4}-\d{3}-\d{4}$"
+                           OnKeyPress="formatar('####.####.####-###-####', this)"
+                           value="{{ $funcionario->titulo_eleitor }}"
+                    />
+
+
                     @if($errors->has("titulo_eleitor"))
                         <span class="help-block">{{ $errors->first("titulo_eleitor") }}</span>
                     @endif
@@ -288,8 +301,11 @@
 
                 <div class="form-group col-md-3 minimal-padding first-item @if($errors->has('telefone')) has-error @endif">
                     <label for="telefone-field">{{trans('crud/funcionarios.phone')}}</label>
-                    <input type="phone" id="telefone-field" name="telefone" class="form-control"
+                    <input type="tel" required="" id="telefone-field" name="telefone" class="form-control"
+                           pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$"
+                           placeholder="(xx) xxxxx-xxxx"
                            value="{{ $funcionario->telefone }}"/>
+
                     @if($errors->has("telefone"))
                         <span class="help-block">{{ $errors->first("telefone") }}</span>
                     @endif
@@ -297,8 +313,11 @@
 
                 <div class="form-group col-md-3 minimal-padding @if($errors->has('email')) has-error @endif">
                     <label for="email-field">{{trans('crud/funcionarios.email')}}</label>
-                    <input type="text" id="email-field" name="email" class="form-control"
-                           value="{{ $funcionario->email }}"/>
+                    <input type="text" id="email-field" name="email" class="form-control" value="{{ old("email") }}"
+                           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                           placeholder="xxxx@xxx.com"
+                           value="{{ $funcionario->email }}"
+                    />
                     @if($errors->has("email"))
                         <span class="help-block">{{ $errors->first("email") }}</span>
                     @endif
@@ -354,7 +373,7 @@
                 <div class="form-group col-md-3 minimal-padding @if($errors->has('bota')) has-error @endif">
                     <label for="bota-field">{{trans('crud/funcionarios.boot')}}</label>
                     <input type="text" id="bota-field" name="bota" class="form-control"
-                           value="{{ $funcionario->bota }}"/>
+                           value="{{ $funcionario->bota }}" placeholder="36"/>
                     @if($errors->has("bota"))
                         <span class="help-block">{{ $errors->first("bota") }}</span>
                     @endif
@@ -363,7 +382,9 @@
                 <div class="form-group col-md-3 minimal-padding @if($errors->has('contato_emergencia')) has-error @endif">
                     <label for="contato_emergencia-field">{{trans('crud/funcionarios.emergency_contact')}}</label>
                     <input type="text" id="contato_emergencia-field" name="contato_emergencia" class="form-control"
-                           value="{{ $funcionario->contato_emergencia }}"/>
+                           value="{{ $funcionario->contato_emergencia }}"
+                           pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$"
+                           placeholder="(xx) xxxxx-xxxx"/>
                     @if($errors->has("contato_emergencia"))
                         <span class="help-block">{{ $errors->first("contato_emergencia") }}</span>
                     @endif
@@ -397,7 +418,10 @@
                 <div class="form-group col-md-6 minimal-padding first-item @if($errors->has('endereco')) has-error @endif">
                     <label for="endereco-field">{{trans('crud/funcionarios.adress')}}</label>
                     <input type="text" id="endereco-field" name="endereco" class="form-control"
-                           value="{{ $funcionario->endereco }}"/>
+                           value="{{ $funcionario->endereco }}"
+                           placeholder="Rua exemplo, N 00, Bairro-Estado CEP: 57000-000"
+                    />
+
                     @if($errors->has("endereco"))
                         <span class="help-block">{{ $errors->first("endereco") }}</span>
                     @endif
