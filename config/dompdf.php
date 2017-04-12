@@ -176,11 +176,11 @@ return array(
          *
          * For the purposes of DOMPDF, pixels per inch (PPI) = dots per inch (DPI).
          * If a size in html is given as px (or without unit as image size),
-         * this tells the corresponding size in pt_BR.
+         * this tells the corresponding size in pt.
          * This adjusts the relative sizes to be similar to the rendering of the
          * html page in a reference browser.
          *
-         * In pdf, always 1 pt_BR = 1/72 inch
+         * In pdf, always 1 pt = 1/72 inch
          *
          * Rendering resolution of various browsers in px per inch:
          * Windows Firefox and Internet Explorer:
