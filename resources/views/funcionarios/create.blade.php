@@ -5,12 +5,26 @@
 
 @section('header')
     <div class="page-header">
-        <h1><i class="glyphicon glyphicon-plus"></i> {{trans('crud/funcionarios.title')}} / {{trans('crud/crud.create')}} </h1>
+        <h1><i class="glyphicon glyphicon-plus"></i> {{trans('crud/funcionarios.title')}}
+            / {{trans('crud/crud.create')}} </h1>
     </div>
 @endsection
 
 @section('content')
     @include('error')
+
+    <script>
+        function formatar(mascara, documento) {
+            var i = documento.value.length;
+            var saida = mascara.substring(0, 1);
+            var texto = mascara.substring(i)
+
+            if (texto.substring(0, 1) != saida) {
+                documento.value += texto.substring(0, 1);
+            }
+
+        }
+    </script>
 
     <div class="row">
         <div class="col-md-12">
@@ -131,7 +145,8 @@
 
                 <div class="form-group col-md-3 minimal-padding @if($errors->has('data_admissao')) has-error @endif">
                     <label for="data_admissao-field">{{trans('crud/funcionarios.date_adm')}}</label>
-                    <input type="date" id="data_admissao-field" name="data_admissao" class="form-control"
+                    <input type="date" data-date-format="DD MM YYYY" id="data_admissao-field" name="data_admissao"
+                           class="form-control"
                            value="{{ old("data_admissao") }}"/>
                     @if($errors->has("data_admissao"))
                         <span class="help-block">{{ $errors->first("data_admissao") }}</span>
@@ -156,8 +171,19 @@
 
                 <div class="form-group col-md-3 minimal-padding first-item @if($errors->has('cpf')) has-error @endif">
                     <label for="cpf-field">{{trans('crud/funcionarios.cpf')}}</label>
-                    <input type="text" required="" id="cpf-field" name="cpf" class="form-control"
-                           value="{{ old("cpf") }}"/>
+
+                    <input name="cpf"
+                           type="text"
+                           placeholder="xxx.xxx.xxx-xx"
+                           required=""
+                           id="cpf-field"
+                           maxlength="14"
+                           class="form-control"
+                           pattern="^\d{3}.\d{3}.\d{3}-\d{2}$"
+                           OnKeyPress="formatar('###.###.###-##', this)"
+                           title="Digite o CPF no formato xxx.xxx.xxx-xx"
+                    />
+
                     @if($errors->has("cpf"))
                         <span class="help-block">{{ $errors->first("cpf") }}</span>
                     @endif
@@ -165,7 +191,8 @@
 
                 <div class="form-group col-md-3 minimal-padding @if($errors->has('rg')) has-error @endif">
                     <label for="rg-field">{{trans('crud/funcionarios.rg')}}</label>
-                    <input type="text" required="" id="rg-field" name="rg" class="form-control"
+                    <input type="text" required="" id="rg-field" name="rg" class="form-control" pattern="[0-9]+$"
+                           title="Apenas Números" placeholder="Apenas Números"
                            value="{{ old("rg") }}"/>
                     @if($errors->has("rg"))
                         <span class="help-block">{{ $errors->first("rg") }}</span>
@@ -174,7 +201,8 @@
 
                 <div class="form-group col-md-3 minimal-padding @if($errors->has('ctps')) has-error @endif">
                     <label for="ctps-field">{{trans('crud/funcionarios.ctps')}}</label>
-                    <input type="text" required="" id="ctps-field" name="ctps" class="form-control"
+                    <input type="text" required="" id="ctps-field" name="ctps" class="form-control" pattern="[0-9]+$"
+                           title="Apenas Números" placeholder="Apenas Números"
                            value="{{ old("ctps") }}"/>
                     @if($errors->has("ctps"))
                         <span class="help-block">{{ $errors->first("ctps") }}</span>
@@ -183,7 +211,18 @@
 
                 <div class="form-group col-md-3 minimal-padding last-item @if($errors->has('pis_pasep')) has-error @endif">
                     <label for="pis_pasep-field">{{trans('crud/funcionarios.pis')}}</label>
-                    <input type="text" required="" id="pis_pasep-field" name="pis_pasep" class="form-control"
+
+                    <input name="pis_pasep"
+                           type="text"
+                           placeholder="xxx.xxxxx.xx-x"
+                           required=""
+                           id="pis_pasep-field"
+                           class="form-control"
+                           maxlength="14"
+                           pattern="^\d{3}.\d{5}.\d{2}-\d{1}$"
+                           OnKeyPress="formatar('###.#####.##-#', this)"
+                           title="Digite o numero do PIS/PASSEP no formato xxx.xxxxx.xx-x"
+
                            value="{{ old("pis_pasep") }}"/>
                     @if($errors->has("pis_pasep"))
                         <span class="help-block">{{ $errors->first("pis_pasep") }}</span>
@@ -197,7 +236,7 @@
                 <div class="form-group col-md-3 minimal-padding first-item @if($errors->has('reservista')) has-error @endif">
                     <label for="reservista-field">{{trans('crud/funcionarios.military_reservist')}}</label>
                     <input type="text" id="reservista-field" name="reservista" class="form-control"
-                           value="{{ old("reservista") }}"/>
+                           value="{{ old("reservista") }}" title="Apenas Números" placeholder="Apenas Números"/>
                     @if($errors->has("reservista"))
                         <span class="help-block">{{ $errors->first("reservista") }}</span>
                     @endif
@@ -205,8 +244,17 @@
 
                 <div class="form-group col-md-3 minimal-padding @if($errors->has('titulo_eleitor')) has-error @endif">
                     <label for="titulo_eleitor-field">{{trans('crud/funcionarios.voter_number')}}</label>
-                    <input type="text" id="titulo_eleitor-field" name="titulo_eleitor" class="form-control"
-                           value="{{ old("titulo_eleitor") }}"/>
+                    <input name="titulo_eleitor"
+                           type="text"
+                           maxlength="23"
+                           id="titulo_eleitor-field"
+                           class="form-control"
+                           title="Digite o valor na ordem: Numero Incrição / Zona / Seção"
+                           placeholder="Numero Incrição - Zona - Seção"
+                           pattern="^\d{4}.\d{4}.\d{4}-\d{3}-\d{4}$"
+                           OnKeyPress="formatar('####.####.####-###-####', this)"
+
+                    />
                     @if($errors->has("titulo_eleitor"))
                         <span class="help-block">{{ $errors->first("titulo_eleitor") }}</span>
                     @endif
@@ -239,8 +287,12 @@
 
                 <div class="form-group col-md-3 minimal-padding first-item @if($errors->has('telefone')) has-error @endif">
                     <label for="telefone-field">{{trans('crud/funcionarios.phone')}}</label>
-                    <input type="text" required="" id="telefone-field" name="telefone" class="form-control"
+                    <input type="tel" required="" id="telefone-field" name="telefone" class="form-control"
+                           pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$"
+                           placeholder="(xx) xxxxx-xxxx"
                            value="{{ old("telefone") }}"/>
+
+
                     @if($errors->has("telefone"))
                         <span class="help-block">{{ $errors->first("telefone") }}</span>
                     @endif
@@ -248,7 +300,13 @@
 
                 <div class="form-group col-md-3 minimal-padding @if($errors->has('email')) has-error @endif">
                     <label for="email-field">{{trans('crud/funcionarios.email')}}</label>
-                    <input type="text" id="email-field" name="email" class="form-control" value="{{ old("email") }}"/>
+                    <input type="text" id="email-field" name="email" class="form-control" value="{{ old("email") }}"
+                           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                           placeholder="xxxx@xxx.com"
+
+                    />
+
+
                     @if($errors->has("email"))
                         <span class="help-block">{{ $errors->first("email") }}</span>
                     @endif
@@ -298,7 +356,7 @@
 
                 <div class="form-group col-md-3 minimal-padding @if($errors->has('bota')) has-error @endif">
                     <label for="bota-field">{{trans('crud/funcionarios.boot')}}</label>
-                    <input type="text" id="bota-field" name="bota" class="form-control" value="{{ old("bota") }}"/>
+                    <input type="number" id="bota-field" name="bota" class="form-control" value="{{ old("bota") }}" placeholder="36"/>
                     @if($errors->has("bota"))
                         <span class="help-block">{{ $errors->first("bota") }}</span>
                     @endif
@@ -306,7 +364,8 @@
 
                 <div class="form-group col-md-3 minimal-padding @if($errors->has('contato_emergencia')) has-error @endif">
                     <label for="contato_emergencia-field">{{trans('crud/funcionarios.emergency_contact')}}</label>
-                    <input type="text" id="contato_emergencia-field" name="contato_emergencia" class="form-control"
+                    <input type="text" id="contato_emergencia-field" name="contato_emergencia" class="form-control"  pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$"
+                           placeholder="(xx) xxxxx-xxxx"
                            value="{{ old("contato_emergencia") }}"/>
                     @if($errors->has("contato_emergencia"))
                         <span class="help-block">{{ $errors->first("contato_emergencia") }}</span>
@@ -337,7 +396,10 @@
                 <div class="form-group col-md-6 minimal-padding first-item @if($errors->has('endereco')) has-error @endif">
                     <label for="endereco-field">{{trans('crud/funcionarios.adress')}}</label>
                     <input type="text" required="" id="endereco-field" name="endereco" class="form-control"
-                           value="{{ old("endereco") }}"/>
+                           value="{{ old("endereco") }}"
+                            placeholder="Rua exemplo, N 00, Bairro-Estado CEP: 57000-000"
+
+                    />
                     @if($errors->has("endereco"))
                         <span class="help-block">{{ $errors->first("endereco") }}</span>
                     @endif
