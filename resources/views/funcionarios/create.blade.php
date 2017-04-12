@@ -477,7 +477,7 @@
 
                 <div class="form-group col-md-3 minimal-padding @if($errors->has('banco_conta')) has-error @endif">
                     <label for="banco_conta-field">{{trans('crud/funcionarios.acount_number')}}</label>
-                    <input type="text" required="" id="banco_conta-field" name="banco_conta" class="form-control"
+                    <input type="text" id="banco_conta-field" name="banco_conta" class="form-control"
                            value="{{ old("banco_conta") }}"/>
                     @if($errors->has("banco_conta"))
                         <span class="help-block">{{ $errors->first("banco_conta") }}</span>
@@ -486,7 +486,7 @@
 
                 <div class="form-group col-md-3 minimal-padding last-item @if($errors->has('banco_agencia')) has-error @endif">
                     <label for="banco_agencia-field">{{trans('crud/funcionarios.acount_agency')}}</label>
-                    <input type="text" required="" id="banco_agencia-field" name="banco_agencia" class="form-control"
+                    <input type="text" id="banco_agencia-field" name="banco_agencia" class="form-control"
                            value="{{ old("banco_agencia") }}"/>
                     @if($errors->has("banco_agencia"))
                         <span class="help-block">{{ $errors->first("banco_agencia") }}</span>
