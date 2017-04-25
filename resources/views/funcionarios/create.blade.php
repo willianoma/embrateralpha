@@ -287,7 +287,8 @@
 
                 <div class="form-group col-md-3 minimal-padding first-item @if($errors->has('telefone')) has-error @endif">
                     <label for="telefone-field">{{trans('crud/funcionarios.phone')}}</label>
-                    <input type="tel" required="" id="telefone-field" name="telefone" class="form-control"
+
+                      <input type="tel" required="" id="telefone-field" name="telefone" class="form-control"
                            pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$"
                            placeholder="(xx) xxxxx-xxxx"
                            value="{{ old("telefone") }}"/>
@@ -356,7 +357,8 @@
 
                 <div class="form-group col-md-3 minimal-padding @if($errors->has('bota')) has-error @endif">
                     <label for="bota-field">{{trans('crud/funcionarios.boot')}}</label>
-                    <input type="number" id="bota-field" name="bota" class="form-control" value="{{ old("bota") }}" placeholder="36"/>
+                    <input type="number" id="bota-field" name="bota" class="form-control" value="{{ old("bota") }}"
+                           placeholder="36"/>
                     @if($errors->has("bota"))
                         <span class="help-block">{{ $errors->first("bota") }}</span>
                     @endif
@@ -364,7 +366,8 @@
 
                 <div class="form-group col-md-3 minimal-padding @if($errors->has('contato_emergencia')) has-error @endif">
                     <label for="contato_emergencia-field">{{trans('crud/funcionarios.emergency_contact')}}</label>
-                    <input type="text" id="contato_emergencia-field" name="contato_emergencia" class="form-control"  pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$"
+                    <input type="text" id="contato_emergencia-field" name="contato_emergencia" class="form-control"
+                           pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$"
                            placeholder="(xx) xxxxx-xxxx"
                            value="{{ old("contato_emergencia") }}"/>
                     @if($errors->has("contato_emergencia"))
@@ -397,7 +400,7 @@
                     <label for="endereco-field">{{trans('crud/funcionarios.adress')}}</label>
                     <input type="text" required="" id="endereco-field" name="endereco" class="form-control"
                            value="{{ old("endereco") }}"
-                            placeholder="Rua exemplo, N 00, Bairro-Estado CEP: 57000-000"
+                           placeholder="Rua exemplo, N 00, Bairro-Estado CEP: 57000-000"
 
                     />
                     @if($errors->has("endereco"))
@@ -550,4 +553,6 @@
 
         </div>
     </div>
+
+
 @endsection
