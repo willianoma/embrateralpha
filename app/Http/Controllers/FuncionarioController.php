@@ -96,27 +96,29 @@ class FuncionarioController extends Controller
         $funcionario->tipo = $request->input("tipo");
         $funcionario->status = $request->input("status");
 
+        $nextIdFuncionario = $funcionario->orderBy('id', 'desc')->first()->id + 1;
 
-        //     START  REFATORAR ISSO AQUI, JOGAR NO MODEL!
+
+   /*     //     START  REFATORAR ISSO AQUI, JOGAR NO MODEL!
 
         if ($this->hasPis($funcionario->pis_pasep) == true) {
             echo "<h3>PIS já cadastrado da base de dados, Clique em voltar no navegador!</h3>";
             die();
         }
-        //       END REFATORAR ISSO AQUI, JOGAR NO MODEL!
+        //       END REFATORAR ISSO AQUI, JOGAR NO MODEL!*/
 
 
         //Upload
         $profileImage = $request->file('profleimage');
         if ($request->hasFile('profleimage') && $profileImage->isValid()) {
             if ($profileImage->getClientMimeType() == "image/jpeg" || $profileImage->getClientMimeType() == "image/jpg" || $profileImage->getClientMimeType() == "image/png") {
-                $nomeArquivo = $funcionario->pis_pasep . '.' . $profileImage->getClientOriginalExtension();
+                $nomeArquivo = $nextIdFuncionario. '.png';
                 $profileImage->move('profilesimages', $nomeArquivo);
                 $funcionario->profleimage = 'profilesimages/' . $nomeArquivo;
 
                 //Faltar obrigar imagem em portrait
 
-               Image::make($funcionario->profleimage)->resize(480, 640)->save();
+                Image::make($funcionario->profleimage)->resize(480, 640)->save();
 
                 $funcionario->save();
             }
@@ -228,25 +230,24 @@ class FuncionarioController extends Controller
         //die();
 
 
-
         if ($request->hasFile('profleimage') && $profileImage->isValid()) {
             if ($profileImage->getClientMimeType() == "image/jpeg" || $profileImage->getClientMimeType() == "image/png" || $profileImage->getClientMimeType() == "image/jpg") {
 
-               // $nomeArquivo = $funcionario->pis_pasep . '.' . $profileImage->getClientOriginalExtension();
+                // $nomeArquivo = $funcionario->pis_pasep . '.' . $profileImage->getClientOriginalExtension();
 
-                $nomeArquivo = $funcionario->pis_pasep . '.' . 'png';
+                $nomeArquivo = $funcionario->id . '.' . 'png';
 
 
                 $profileImage->move('profilesimages', $nomeArquivo);
                 $funcionario->profleimage = 'profilesimages/' . $nomeArquivo;
 
-               // var_dump($funcionario->profleimage);
+                // var_dump($funcionario->profleimage);
 
-             //   $img = WideImage::load($funcionario->profleimage);
-             //   $img = $img->resize(200, 200, 'inside');
-             //   $img->saveToFile('/imagens/minha_foto_menor.jpg');
+                //   $img = WideImage::load($funcionario->profleimage);
+                //   $img = $img->resize(200, 200, 'inside');
+                //   $img->saveToFile('/imagens/minha_foto_menor.jpg');
 
-             //   die();
+                //   die();
 
                 //Ver problema com JPG, girando automaticamente e sem sucesso de save com o metodo abaixo em mobile...
                 Image::make($funcionario->profleimage)->resize(480, 640)->save();

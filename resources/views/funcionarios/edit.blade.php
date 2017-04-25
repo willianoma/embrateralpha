@@ -233,7 +233,7 @@
 
                 <div class="form-group col-md-3 minimal-padding last-item @if($errors->has('pis_pasep')) has-error @endif">
                     <label for="pis_pasep-field">{{trans('crud/funcionarios.pis')}}</label>
-                    <input type="text" id="pis_pasep-field" required="" readonly="" name="pis_pasep"
+                    <input type="text" id="pis_pasep-field" required="" name="pis_pasep"
                            value="{{$funcionario->pis_pasep}}" class="form-control" value=""/>
                     @if($errors->has("pis_pasep"))
                         <span class="help-block">{{ $errors->first("pis_pasep") }}</span>
