@@ -216,7 +216,10 @@
 
                 <div class="form-group col-md-3 minimal-padding @if($errors->has('rg')) has-error @endif">
                     <label for="rg-field">{{trans('crud/funcionarios.rg')}}</label>
-                    <input type="text" id="rg-field" name="rg" class="form-control" value="{{ $funcionario->rg }}"/>
+                    <input type="text" id="rg-field" name="rg" class="form-control" value="{{ $funcionario->rg }}"
+                            pattern=" [0-9]+$
+                           title="Apenas Números" placeholder="Apenas Números"
+                    />
                     @if($errors->has("rg"))
                         <span class="help-block">{{ $errors->first("rg") }}</span>
                     @endif
@@ -225,6 +228,8 @@
                     <label for="ctps-field">{{trans('crud/funcionarios.ctps')}}</label>
 
                     <input type="text" id="ctps-field" name="ctps" class="form-control"
+                           pattern="[0-9]+$"
+                           title="Apenas Números" placeholder="Apenas Números"
                            value="{{ $funcionario->ctps }}"/>
                     @if($errors->has("ctps"))
                         <span class="help-block">{{ $errors->first("ctps") }}</span>
@@ -234,7 +239,15 @@
                 <div class="form-group col-md-3 minimal-padding last-item @if($errors->has('pis_pasep')) has-error @endif">
                     <label for="pis_pasep-field">{{trans('crud/funcionarios.pis')}}</label>
                     <input type="text" id="pis_pasep-field" required="" name="pis_pasep"
-                           value="{{$funcionario->pis_pasep}}" class="form-control" value=""/>
+                           value="{{$funcionario->pis_pasep}}" class="form-control"
+                           placeholder="xxx.xxxxx.xx-x"
+                           maxlength="14"
+                           pattern="^\d{3}.\d{5}.\d{2}-\d{1}$"
+                           OnKeyPress="formatar('###.#####.##-#', this)"
+                           title="Digite o numero do PIS/PASSEP no formato xxx.xxxxx.xx-x"
+
+
+                    />
                     @if($errors->has("pis_pasep"))
                         <span class="help-block">{{ $errors->first("pis_pasep") }}</span>
                     @endif
