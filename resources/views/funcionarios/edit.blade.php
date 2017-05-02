@@ -596,6 +596,8 @@
                     <a class="btn btn-link pull-right" href="{{ route('funcionarios.index') }}"><i
                                 class="glyphicon glyphicon-backward"></i>{{trans('crud/crud.back')}}</a>
                 </div>
+
+
             </form>
 
         </div>

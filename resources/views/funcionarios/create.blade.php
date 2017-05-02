@@ -467,7 +467,8 @@
                 <div class="form-group col-md-6 minimal-padding last-item @if($errors->has('filhos')) has-error @endif">
                     <label for="filhos-field">{{trans('crud/funcionarios.children')}}</label>
                     <input type="text" id="filhos-field" name="filhos" class="form-control"
-                           value="{{ old("filhos") }}"/>
+                           value="{{ old("filhos") }}"
+                    placeholder="Ex.: José Antonio Correia - 05/03/1995 + Maria Correia - 20/05/2001"/>
                     @if($errors->has("filhos"))
                         <span class="help-block">{{ $errors->first("filhos") }}</span>
                     @endif
@@ -572,10 +573,20 @@
                     <a class="btn btn-link pull-right" href="{{ route('funcionarios.index') }}"><i
                                 class="glyphicon glyphicon-backward"></i> {{trans('crud/crud.back')}}</a>
                 </div>
+
+
             </form>
 
         </div>
     </div>
+
+
+
+
+
+
+
+
 
 
 
