@@ -27,6 +27,23 @@
         }
     </script>
 
+    <script>
+        function mascara(o, f) {
+            v_obj = o
+            v_fun = f
+            setTimeout("execmascara()", 1)
+        }
+        function execmascara() {
+            v_obj.value = v_fun(v_obj.value)
+        }
+        function mtel(v) {
+            v = v.replace(/\D/g, "");             //Remove tudo o que não é dígito
+            v = v.replace(/^(\d{2})(\d)/g, "($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
+            v = v.replace(/(\d)(\d{4})$/, "$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
+            return v;
+        }
+    </script>
+
     <div class="row">
         <div class="col-md-12">
 
@@ -217,7 +234,7 @@
                 <div class="form-group col-md-3 minimal-padding @if($errors->has('rg')) has-error @endif">
                     <label for="rg-field">{{trans('crud/funcionarios.rg')}}</label>
                     <input type="text" id="rg-field" name="rg" class="form-control" value="{{ $funcionario->rg }}"
-                            pattern=" [0-9]+$
+                           pattern="[0-9]+$"
                            title="Apenas Números" placeholder="Apenas Números"
                     />
                     @if($errors->has("rg"))
@@ -315,7 +332,7 @@
                 <div class="form-group col-md-3 minimal-padding first-item @if($errors->has('telefone')) has-error @endif">
                     <label for="telefone-field">{{trans('crud/funcionarios.phone')}}</label>
                     <input type="tel" required="" id="telefone-field" name="telefone" class="form-control"
-                           pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$"
+                           onkeyup="mascara( this, mtel );" maxlength="15"
                            placeholder="(xx) xxxxx-xxxx"
                            value="{{ $funcionario->telefone }}"/>
 
@@ -396,7 +413,7 @@
                     <label for="contato_emergencia-field">{{trans('crud/funcionarios.emergency_contact')}}</label>
                     <input type="text" id="contato_emergencia-field" name="contato_emergencia" class="form-control"
                            value="{{ $funcionario->contato_emergencia }}"
-                           pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$"
+                           onkeyup="mascara( this, mtel );" maxlength="15"
                            placeholder="(xx) xxxxx-xxxx"/>
                     @if($errors->has("contato_emergencia"))
                         <span class="help-block">{{ $errors->first("contato_emergencia") }}</span>
