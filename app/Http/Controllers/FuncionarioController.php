@@ -3,6 +3,8 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+
+use DB;
 use App\Funcionario;
 use App\Posto;
 use Illuminate\Http\Request;
@@ -99,20 +101,20 @@ class FuncionarioController extends Controller
         $nextIdFuncionario = $funcionario->orderBy('id', 'desc')->first()->id + 1;
 
 
-   /*     //     START  REFATORAR ISSO AQUI, JOGAR NO MODEL!
+        /*     //     START  REFATORAR ISSO AQUI, JOGAR NO MODEL!
 
-        if ($this->hasPis($funcionario->pis_pasep) == true) {
-            echo "<h3>PIS já cadastrado da base de dados, Clique em voltar no navegador!</h3>";
-            die();
-        }
-        //       END REFATORAR ISSO AQUI, JOGAR NO MODEL!*/
+             if ($this->hasPis($funcionario->pis_pasep) == true) {
+                 echo "<h3>PIS já cadastrado da base de dados, Clique em voltar no navegador!</h3>";
+                 die();
+             }
+             //       END REFATORAR ISSO AQUI, JOGAR NO MODEL!*/
 
 
         //Upload
         $profileImage = $request->file('profleimage');
         if ($request->hasFile('profleimage') && $profileImage->isValid()) {
             if ($profileImage->getClientMimeType() == "image/jpeg" || $profileImage->getClientMimeType() == "image/jpg" || $profileImage->getClientMimeType() == "image/png") {
-                $nomeArquivo = $nextIdFuncionario. '.png';
+                $nomeArquivo = $nextIdFuncionario . '.png';
                 $profileImage->move('profilesimages', $nomeArquivo);
                 $funcionario->profleimage = 'profilesimages/' . $nomeArquivo;
 
@@ -272,6 +274,25 @@ class FuncionarioController extends Controller
         $funcionario->delete();
 
         return redirect()->route('funcionarios.index')->with('message', 'Item deleted successfully.');
+    }
+
+    public function filtro()
+    {
+        //cateira de trabalho = 0000000
+        //não tem!
+
+        $posto = 'hdt';
+
+        $funcionarios = DB::table('funcionarios')->where('posto', $posto)->get();
+
+        //verificar agora quais campos estão nulos
+
+        var_dump($funcionarios);
+        die();
+
+        return view('funcionarios.filtro', compact('funcionarios'));
+
+
     }
 
 

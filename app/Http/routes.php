@@ -19,7 +19,13 @@ Route::get('/', 'Auth\AuthController@getLogin');
 Route::group(['prefix' => '', 'middleware' => 'auth'], function () {
 
     Route::get('/home', 'HomeController@index');
+
+
+    //Rotas Funcionários
+    Route::get('/funcionarios/filtro', 'FuncionarioController@filtro');
     Route::resource("funcionarios", "FuncionarioController");
+    //Fim Rotas Funcionários
+
     Route::resource("postos", "PostoController");
     Route::resource("motivos", "MotivoController");
     Route::resource("ocorrencias", "OcorrenciaController");
