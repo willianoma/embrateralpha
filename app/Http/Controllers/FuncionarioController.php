@@ -98,7 +98,15 @@ class FuncionarioController extends Controller
         $funcionario->tipo = $request->input("tipo");
         $funcionario->status = $request->input("status");
 
-        $nextIdFuncionario = $funcionario->orderBy('id', 'desc')->first()->id + 1;
+
+        $funcionariosDB = DB::table('funcionarios')->get();
+
+        if (!empty($funcionariosDB)) {
+            $nextIdFuncionario = $funcionario->orderBy('id', 'desc')->first()->id + 1;
+        }
+        if (empty($funcionariosDB)) {
+            $nextIdFuncionario = 1;
+        }
 
 
         /*     //     START  REFATORAR ISSO AQUI, JOGAR NO MODEL!
