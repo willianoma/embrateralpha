@@ -40,14 +40,14 @@ $espaco = " ";
         <td colspan="8"><img height="30px" width="40px" src="logo.png" style="padding-left: 10px"></td>
         <th colspan="4"
             style="text-align: center; padding: 5px; border-bottom: solid; border-left:solid;">
-            Referencia: {{$atestadomedico->referencia}}</th>
+            Id: {{$atestadomedico->id}}</th>
 
         <td style="border-right: solid; border-left: solid"></td>
 
         <td colspan="8"><img height="30px" width="40px" src="logo.png" style="padding-left: 10px"></td>
         <th colspan="4"
             style="text-align: center; padding: 5px; border-bottom: solid; border-left:solid ">
-            Referencia: {{$atestadomedico->referencia}}</th>
+            Id: {{$atestadomedico->id}}</th>
     </tr>
 
 
@@ -74,11 +74,11 @@ $espaco = " ";
 
 
     <tr id="Row4">
-        <td colspan="12" style="text-align: left; padding: 5px; border-bottom: solid"><b>Obs.:</b></td>
+        <td colspan="12" style="text-align: left; padding: 5px; border-bottom: solid"><b>Obs.:</b> {{$atestadomedico->obs}}</td>
 
         <td style="border-right: solid; border-left: solid"></td>
 
-        <td colspan="12" style="text-align: left; padding: 5px; border-bottom: solid"><b>Obs.:</b></td>
+        <td colspan="12" style="text-align: left; padding: 5px; border-bottom: solid"><b>Obs.:</b>{{$atestadomedico->obs}}</td>
     </tr>
 
 
