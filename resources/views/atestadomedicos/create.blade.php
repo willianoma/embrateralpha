@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-md-12">
 
-            <form action="{{ route('atestadomedicos.store') }}" method="POST">
+            <form action="{{ route('atestadomedicos.store') }}" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                 <div class="form-group @if($errors->has('usuario')) has-error @endif">
@@ -93,7 +93,7 @@
 
                 <div class="form-group @if($errors->has('referencia')) has-error @endif">
                     <label for="referencia-field">Referencia</label>
-                    <input type="text" id="referencia-field" name="referencia" class="form-control"
+                    <input type="file" id="referencia-field" name="referencia" class="form-control"
                            value="{{ old("referencia") }}"/>
                     @if($errors->has("referencia"))
                         <span class="help-block">{{ $errors->first("referencia") }}</span>

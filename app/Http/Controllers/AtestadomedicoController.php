@@ -8,7 +8,9 @@ use App\Atestadomedico;
 use Illuminate\Http\Request;
 use App\Funcionario;
 use App\Posto;
+use Storage;
 use League\Flysystem\Exception;
+use DB;
 
 class AtestadomedicoController extends Controller
 {
@@ -53,12 +55,36 @@ class AtestadomedicoController extends Controller
         $atestadomedico->obs = $request->input("obs");
         $atestadomedico->datainicio = $request->input("datainicio");
         $atestadomedico->datafinal = $request->input("datafinal");
-        $atestadomedico->referencia = $request->input("referencia");
+        //  $atestadomedico->referencia = $request->input("referencia");
+
+        $imagem = $request->file('referencia');
+
+        $idFuncionario = DB::select('select id from funcionarios where nome = "' . $atestadomedico->funcionario . '"');
+        $nextIdAtestadoMedico = $atestadomedico->orderBy('id', 'desc')->first()->id + 1;
+
+    // TEM QUE CONVERTER DE ARRAY PARA STRING
+        (string)$fileName = $idFuncionario;
+        var_dump($idFuncionario);
+        die();
+
+        if ($request->hasFile('referencia') && $imagem->isValid()) {
+            if ($imagem->getClientMimeType() == "image/jpeg" || $imagem->getClientMimeType() == "image/jpg" || $imagem->getClientMimeType() == "image/png") {
+
+                Storage::put('atestados\\' . $atestadomedico->id . '.png', file_get_contents($request->file('referencia')->getRealPath()));
+
+            }
+
+        }
 
 
         $atestadomedico->save();
 
         return redirect()->route('atestadomedicos.index')->with('message', 'Item created successfully.');
+    }
+
+    public function getFileName()
+    {
+
     }
 
     /**
