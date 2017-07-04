@@ -23,11 +23,39 @@ class FuncionarioController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Posto $postos, Request $request)
     {
-        $funcionarios = Funcionario::orderBy('id', 'desc')->paginate(20);
+        //para o select de busca
+        $postos = $postos->all();
 
-        return view('funcionarios.index', compact('funcionarios'));
+        //BUSCA TEMPORARIO!
+
+        $posto = $request->input('postoselecionado');
+        $nome = $request->input('buscanome');
+
+        if ($nome == "") {
+
+            if (!isset($posto)) {
+
+                $posto = 'Todos';
+            }
+            if ($posto == 'Todos') {
+                $funcionarios = Funcionario::orderBy('id', 'desc')->paginate(20);
+            } else {
+
+                $funcionarios = DB::table('funcionarios')->where('posto', $posto)->get();
+            }
+
+        }
+
+        //Busca Por Nome
+        if (isset($nome) and $nome <> "") {
+
+
+            $funcionarios = DB::table('funcionarios')->where('nome', 'like', "%".$nome."%")->get();
+        }
+
+        return view('funcionarios.index', compact('funcionarios', 'postos'));
     }
 
     /**
@@ -302,8 +330,6 @@ class FuncionarioController extends Controller
 
 
     }
-
-
 
 
 }
