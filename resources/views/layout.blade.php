@@ -47,6 +47,7 @@
                 <li><a href="/postos">Postos</a></li>
                 <li><a href="/ocorrencias">Ocorrencias</a></li>
                 <li><a href="/atestadomedicos">Atestados Medicos</a></li>
+                <li><a href="/relogio">Relogio</a></li>
                 <li><a href="/auth/logout">SAIR</a></li>
 
                 <!--   <li><a href="users">Usuários</a></li> -->
@@ -68,7 +69,6 @@
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
-
 
 
 </body>
