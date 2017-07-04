@@ -151,7 +151,10 @@
                     @endforeach
                     </tbody>
                 </table>
-                {{-- {!! $funcionarios->render() !!}--}}
+
+                @if($render==true)
+                    {!! $funcionarios->render() !!}
+                @endif
             @else
                 <h3 class="text-center alert alert-info">Empty!</h3>
             @endif

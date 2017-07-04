@@ -41,21 +41,25 @@ class FuncionarioController extends Controller
             }
             if ($posto == 'Todos') {
                 $funcionarios = Funcionario::orderBy('id', 'desc')->paginate(20);
+                $render = true;
             } else {
 
                 $funcionarios = DB::table('funcionarios')->where('posto', $posto)->get();
+                $render = false;
+
             }
 
         }
 
         //Busca Por Nome
         if (isset($nome) and $nome <> "") {
+            $funcionarios = DB::table('funcionarios')->where('nome', 'like', "%" . $nome . "%")->get();
+            $render = false;
 
-
-            $funcionarios = DB::table('funcionarios')->where('nome', 'like', "%".$nome."%")->get();
         }
 
-        return view('funcionarios.index', compact('funcionarios', 'postos'));
+
+        return view('funcionarios.index', compact('funcionarios', 'postos', 'render'));
     }
 
     /**
