@@ -18,6 +18,9 @@ Route::group(['prefix' => '', 'middleware' => 'auth'], function () {
 
     Route::get('/home', 'HomeController@index');
 
+    //RelogioExport
+    Route::controller('relogio', 'RelogioPontoController');
+
 
     //Rotas Funcionários
     Route::get('/funcionarios/filtro', 'FuncionarioController@filtro');

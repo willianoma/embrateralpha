@@ -304,4 +304,6 @@ class FuncionarioController extends Controller
     }
 
 
+
+
 }
