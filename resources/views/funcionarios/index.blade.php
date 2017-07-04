@@ -30,7 +30,7 @@
                 <input type="text" placeholder="Busca Por Nome" name="buscanome" id="buscanome" class="form-control">
             </div>
             <div class="col-md-2">
-                <input type="submit" value="buscar" class="form-control btn-default">
+                <input type="submit" value="Buscar" class="form-control btn-default">
             </div>
         </form>
 
