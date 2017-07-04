@@ -46,7 +46,7 @@ return [
     'cbo' => 'CBO',
     'aso' => 'ASO',
     'ref' => 'Referência',
-    'completed_by' => 'Preenchida Por:',
+    'completed_by' => 'Atualizada Por:',
     'obs' => 'Observações'
 
 ];

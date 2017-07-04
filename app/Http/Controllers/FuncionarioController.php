@@ -40,7 +40,7 @@ class FuncionarioController extends Controller
                 $posto = 'Todos';
             }
             if ($posto == 'Todos') {
-                $funcionarios = Funcionario::orderBy('id', 'desc')->paginate(20);
+                $funcionarios = Funcionario::orderBy('nome', 'asc')->paginate(20);
                 $render = true;
             } else {
 
