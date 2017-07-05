@@ -13,7 +13,7 @@
 @section('content')
     @include('error')
 
-    //refatorar scripts
+    {{--refatorar scripts--}}
     <script>
         function formatar(mascara, documento) {
             var i = documento.value.length;

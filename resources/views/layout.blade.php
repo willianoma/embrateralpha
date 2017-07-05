@@ -39,15 +39,52 @@
             </button>
             <a class="navbar-brand" href="/home">Embrater</a>
         </div>
+
+
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/home">Home</a></li>
-                <li><a href="/funcionarios">Funcionários</a></li>
-                <li><a href="/motivos">Motivos</a></li>
-                <li><a href="/postos">Postos</a></li>
-                <li><a href="/ocorrencias">Ocorrencias</a></li>
-                <li><a href="/atestadomedicos">Atestados Medicos</a></li>
-                <li><a href="/auth/logout">SAIR</a></li>
+
+
+                <li>
+                    <button href="#" class=" btn btn-default" data-toggle="dropdown">
+                        Menu <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/home">Inicio</a></li>
+                        <li><a href="/postos">Cadastrar Postos</a></li>
+                        <li><a href="/motivos">Cadastrar Motivos</a></li>
+                        <li><a href="/ocorrencias">Cadastrar Ocorrencias</a></li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <button href="#" class=" btn btn-default" data-toggle="dropdown">
+                        Funcionários <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/funcionarios/create">Cadastrar Novo</a></li>
+                        <li><a href="/funcionarios">Listar Todos</a></li>
+                        <li><a href="/funcionarios/correcoes">Ajuste em Lote</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/relogio">Exportar Dados P/ Ponto</a></li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <button href="#" class=" btn btn-default" data-toggle="dropdown">
+                        Atestados Medicos <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/atestadomedicos">Listar</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <button href="#" class=" btn btn-default" data-toggle="dropdown">
+                        Usuário <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/auth/logout">Logout</a></li>
+                    </ul>
+                </li>
 
                 <!--   <li><a href="users">Usuários</a></li> -->
             </ul>
@@ -68,7 +105,6 @@
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
-
 
 
 </body>
