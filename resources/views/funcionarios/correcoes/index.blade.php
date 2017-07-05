@@ -15,7 +15,7 @@
 @section('content')
 
     <div class="row">
-        {{--  Buscar Por Posto--}}
+       {{-- --}}{{--  Buscar Por Posto--}}{{--
         <form action="" method="GET" autocomplete="on">
             <div class="col-md-5">
                 <select name="postoselecionado" class="form-control">
@@ -32,7 +32,7 @@
             <div class="col-md-2">
                 <input type="submit" value="Buscar" class="form-control btn-default">
             </div>
-        </form>
+        </form>--}}
 
 
         <div class="col-md-12">
@@ -152,9 +152,9 @@
                     </tbody>
                 </table>
 
-                @if($render==true)
+               {{-- @if($render==true)
                     {!! $funcionarios->render() !!}
-                @endif
+                @endif--}}
             @else
                 <h3 class="text-center alert alert-info">Empty!</h3>
             @endif

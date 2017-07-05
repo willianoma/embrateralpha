@@ -22,8 +22,9 @@ Route::group(['prefix' => '', 'middleware' => 'auth'], function () {
     Route::controller('relogio', 'RelogioPontoController');
 
 
-    //Rotas Funcionários
+    //Rotas Funcionários ARRUMAR ISSO
     Route::get('/funcionarios/filtro', 'FuncionarioController@filtro');
+    Route::get('/funcionarios/correcoes/index', 'FuncionarioController@correcoes');
     Route::resource("funcionarios", "FuncionarioController");
     //Fim Rotas Funcionários
 

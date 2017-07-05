@@ -9,6 +9,9 @@ use App\Funcionario;
 use App\Posto;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Schema;
+
+
 // include composer autoload
 
 
@@ -335,5 +338,65 @@ class FuncionarioController extends Controller
 
     }
 
+    public function correcoes(Posto $postos, Request $request)
+    {
+
+        /*     //para o select de busca
+             $postos = $postos->all();
+
+             //BUSCA TEMPORARIO!
+
+             $posto = $request->input('postoselecionado');
+             $nome = $request->input('buscanome');
+
+             if ($nome == "") {
+
+                 if (!isset($posto)) {
+
+                     $posto = 'Todos';
+                 }
+                 if ($posto == 'Todos') {
+                     $funcionarios = Funcionario::orderBy('nome', 'asc')->paginate(20);
+                     $render = true;
+                 } else {
+
+                     $funcionarios = DB::table('funcionarios')->where('posto', $posto)->get();
+                     $render = false;
+
+                 }
+
+             }
+
+             //Busca Por Nome
+             if (isset($nome) and $nome <> "") {
+                 $funcionarios = DB::table('funcionarios')->where('nome', 'like', "%" . $nome . "%")->get();
+                 $render = false;
+
+             }*/
+
+
+        // $funcionarios = DB::table('funcionarios')->where('posto', $posto)->get();
+
+        // return view('funcionarios.correcoes.index', compact('funcionarios', 'postos','render'));
+
+
+        $funcionarios = DB::select('select * from funcionarios where');
+        $columns = Schema::getColumnListing($funcionarios);
+
+        $sql = 'SELECT * FROM users WHERE ';
+        $table_fields = Schema::getColumnListing('funcionarios');
+        $sql += implode(" = '' OR ", $table_fields);
+        var_dump($columns);
+        die();
+
+        foreach ($funcionarios as $funcionario) {
+
+
+        }
+
+        return view('funcionarios.correcoes.index', compact('funcionarios'));
+
+
+    }
 
 }
