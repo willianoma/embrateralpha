@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 
+
     <style type="text/css">
         li {
             margin-right: 1px;
@@ -34,10 +35,11 @@
 </head>
 
 <body>
-
 <nav class="navbar navbar-default">
     <div class="container">
+
         <div class="navbar-header">
+
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
                     aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
@@ -104,6 +106,28 @@
     @yield('header')
     @yield('content')
 </div><!-- /.container -->
+
+
+<footer>
+
+    <div style="text-align: center">
+        <img src="\logo.png" height="90px" width="130px">
+    </div>
+    <div class="container-fluid bg-primary py-3">
+        <div class="container" style="margin-top: 22px; margin-bottom: 16px">
+         {{--   <div class="text-center">
+                <label class="text-center"> E-mail: faleconosco@embrater.com</label>
+            </div>
+            <div class="text-center">
+                <label> Contato: (82) 3327-8358 </label>
+            </div>--}}
+            <div class="text-center">
+                <p class="text-center"> Copyright © Embrater 2017. </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
