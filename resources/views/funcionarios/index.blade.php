@@ -17,24 +17,43 @@
     <div class="row">
         {{--  Buscar Por Posto--}}
         <form action="" method="GET" autocomplete="on">
-            <div class="col-md-5">
+
+            <div class="col-md-4">
+                <input type="text" placeholder="Busca Por Nome" name="buscanome" id="buscanome" value=""
+                       class="form-control">
+            </div>
+
+            <div class="col-md-3">
                 <select name="postoselecionado" class="form-control">
-                    <option selected value="Todos">Selecionar Posto</option>
+                    <option selected value="vazio">Selecionar Posto</option>
                     @foreach($postos as $posto)
                         <option>{{$posto->nome}}</option>
                     @endforeach
                 </select>
             </div>
 
-            <div class="col-md-5">
-                <input type="text" placeholder="Busca Por Nome" name="buscanome" id="buscanome" class="form-control">
+
+            <div class="col-md-3">
+                <select name="status" class="form-control">
+                    <option selected value="vazio">Selecionar Status</option>
+                    <option>Ativo</option>
+                    <option>Inativo</option>
+                    <option>INSS</option>
+                    <option>Férias</option>
+                </select>
             </div>
+
             <div class="col-md-2">
                 <input type="submit" value="Buscar" class="form-control btn-default">
             </div>
+
         </form>
 
+        <div class="col-lg-12 " style="text-align: right; margin-top: 10px">
+            <label>Contagem: </label>
+            <label>{{count($funcionarios)}}</label>
 
+        </div>
         <div class="col-md-12">
             @if(count($funcionarios))
                 <table class="table table-condensed table-striped">

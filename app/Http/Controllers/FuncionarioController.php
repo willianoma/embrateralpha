@@ -26,44 +26,82 @@ class FuncionarioController extends Controller
      *
      * @return Response
      */
+
+
     public function index(Posto $postos, Request $request)
     {
         //para o select de busca
         $postos = $postos->all();
 
-        //BUSCA TEMPORARIO!
-
         $posto = $request->input('postoselecionado');
+
         $nome = $request->input('buscanome');
+        if ($nome == '') {
+            $nome = 'vazio';
+        }
 
-        if ($nome == "") {
+        $status = $request->input('status');
 
-            if (!isset($posto)) {
+        /*var_dump($posto);
+        var_dump($nome);
+        var_dump($status);*/
 
-                $posto = 'Todos';
-            }
-            if ($posto == 'Todos') {
-                $funcionarios = Funcionario::orderBy('nome', 'asc')->paginate(20);
-                $render = true;
-            } else {
+        //Clicou no menu listar funcionarios (listar todos)
+        if (!isset($posto) and $nome == 'vazio' and !isset($status)) {
+            $funcionarios = Funcionario::orderBy('nome', 'asc')->paginate(20);
+            $render = true;
+        } else
 
+            //Busca Posto
+            if ($posto != "vazio" and $nome == "vazio" and $status == "vazio") {
+                //echo 'Busca Posto';
                 $funcionarios = DB::table('funcionarios')->where('posto', $posto)->get();
                 $render = false;
+            } else
 
-            }
+                //Busca Posto+Nome
+                if ($posto != "vazio" and $nome != "vazio" and $status == "vazio") {
+                    //echo 'Busca Posto+Nome';
+                    $funcionarios = DB::table('funcionarios')->where('nome', 'like', "%" . $nome . "%")->where('posto', $posto)->get();
+                    $render = false;
+                } else
 
-        }
+                    //Busca Posto+Status
+                    if ($posto != "vazio" and $nome == "vazio" and $status != "vazio") {
+                        //echo 'Busca Posto+Status';
+                        $funcionarios = DB::table('funcionarios')->where('posto', $posto)->where('status', $status)->get();
+                        $render = false;
+                    } else
 
-        //Busca Por Nome
-        if (isset($nome) and $nome <> "") {
-            $funcionarios = DB::table('funcionarios')->where('nome', 'like', "%" . $nome . "%")->get();
-            $render = false;
+                        //Busca Por Nome
+                        if ($posto == "vazio" and $nome != "vazio" and $status == "vazio") {
+                            //echo "Busca Por Nome";
+                            $funcionarios = DB::table('funcionarios')->where('nome', 'like', "%" . $nome . "%")->get();
+                            $render = false;
+                        } else
 
-        }
+                            //Busca Por Status
+                            if ($posto == "vazio" and $nome == "vazio" and $status != "vazio") {
+                                //echo "Busca Por Status";
+                                $funcionarios = DB::table('funcionarios')->where('status', $status)->get();
+                                $render = false;
+                            } else
+
+                                //busca Em Branco
+                                if ($posto == "vazio" and $nome == "vazio" and $status == "vazio") {
+                                    $funcionarios = Funcionario::orderBy('nome', 'asc')->paginate(20);
+                                    $render = true;
+                                } // Nome+Status ou Posto+Nome+Status
+                                else {
+                                    $funcionarios = Funcionario::orderBy('nome', 'asc')->paginate(20);
+                                    $render = true;
+
+                                }
 
 
         return view('funcionarios.index', compact('funcionarios', 'postos', 'render'));
     }
+
 
     /**
      * Show the form for creating a new resource.

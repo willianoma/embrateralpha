@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <style type="text/css">
+        li {
+            margin-right: 1px;
+        }
+    </style>
+
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,7 +49,7 @@
         </div>
 
 
-        <div id="navbar" class="collapse navbar-collapse">
+        <div id="navbar" class="collapse navbar-collapse" style="margin-top: 8px">
             <ul class="nav navbar-nav">
 
 
@@ -109,5 +117,6 @@
 
 </body>
 </html>
+
 
 
