@@ -15,24 +15,24 @@
 @section('content')
 
     <div class="row">
-       {{-- --}}{{--  Buscar Por Posto--}}{{--
-        <form action="" method="GET" autocomplete="on">
-            <div class="col-md-5">
-                <select name="postoselecionado" class="form-control">
-                    <option selected value="Todos">Selecionar Posto</option>
-                    @foreach($postos as $posto)
-                        <option>{{$posto->nome}}</option>
-                    @endforeach
-                </select>
-            </div>
+        {{-- --}}{{--  Buscar Por Posto--}}{{--
+         <form action="" method="GET" autocomplete="on">
+             <div class="col-md-5">
+                 <select name="postoselecionado" class="form-control">
+                     <option selected value="Todos">Selecionar Posto</option>
+                     @foreach($postos as $posto)
+                         <option>{{$posto->nome}}</option>
+                     @endforeach
+                 </select>
+             </div>
 
-            <div class="col-md-5">
-                <input type="text" placeholder="Busca Por Nome" name="buscanome" id="buscanome" class="form-control">
-            </div>
-            <div class="col-md-2">
-                <input type="submit" value="Buscar" class="form-control btn-default">
-            </div>
-        </form>--}}
+             <div class="col-md-5">
+                 <input type="text" placeholder="Busca Por Nome" name="buscanome" id="buscanome" class="form-control">
+             </div>
+             <div class="col-md-2">
+                 <input type="submit" value="Buscar" class="form-control btn-default">
+             </div>
+         </form>--}}
 
 
         <div class="col-md-12">
@@ -45,8 +45,9 @@
                         <th>{{trans('crud/funcionarios.name')}}</th>
                         <th>{{trans('crud/funcionarios.station')}}</th>
                         <th>{{trans('crud/funcionarios.status')}}</th>
-                        <th>{{trans('crud/funcionarios.workload')}}</th>
-                        <th>{{trans('crud/funcionarios.schedule')}}</th>
+                        {{--    <th>{{trans('crud/funcionarios.workload')}}</th>
+                           <th>{{trans('crud/funcionarios.schedule')}}</th>--}}
+                        <th>FILHOS</th>
                         <!--  <th>CPF</th>
                           <th>RG</th>
                           <th>CTPS</th>
@@ -94,8 +95,7 @@
                             <td>{{$funcionario->nome}}</td>
                             <td>{{$funcionario->posto}}</td>
                             <td>{{$funcionario->status}}</td>
-                            <td>{{$funcionario->tipo}}</td>
-                            <td>{{$funcionario->horario}}</td>
+                            <td>{{$funcionario->filhos}}</td>
                         <!--
                     <td>{{$funcionario->cpf}}</td>
                     <td>{{$funcionario->rg}}</td>
@@ -152,9 +152,9 @@
                     </tbody>
                 </table>
 
-               {{-- @if($render==true)
-                    {!! $funcionarios->render() !!}
-                @endif--}}
+                {{-- @if($render==true)
+                     {!! $funcionarios->render() !!}
+                 @endif--}}
             @else
                 <h3 class="text-center alert alert-info">Empty!</h3>
             @endif
