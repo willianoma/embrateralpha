@@ -419,13 +419,7 @@ class FuncionarioController extends Controller
 
 
         $funcionarios = DB::table('funcionarios')->where('filhos', '<>', '')->get();
-        var_dump($funcionarios);
-        die();
 
-        foreach ($funcionarios as $funcionario) {
-
-
-        }
 
         return view('funcionarios.correcoes.index', compact('funcionarios'));
 
