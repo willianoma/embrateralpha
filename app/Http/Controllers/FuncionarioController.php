@@ -418,13 +418,8 @@ class FuncionarioController extends Controller
         // return view('funcionarios.correcoes.index', compact('funcionarios', 'postos','render'));
 
 
-        $funcionarios = DB::select('select * from funcionarios where');
-        $columns = Schema::getColumnListing($funcionarios);
-
-        $sql = 'SELECT * FROM users WHERE ';
-        $table_fields = Schema::getColumnListing('funcionarios');
-        $sql += implode(" = '' OR ", $table_fields);
-        var_dump($columns);
+        $funcionarios = DB::table('funcionarios')->where('filhos', '<>', '')->get();
+        var_dump($funcionarios);
         die();
 
         foreach ($funcionarios as $funcionario) {
