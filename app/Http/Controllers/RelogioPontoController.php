@@ -25,9 +25,34 @@ class RelogioPontoController extends Controller
 
         if ($posto == 'Todos') {
             $funcionarios = Funcionario::all();
+
         } else {
 
             $funcionarios = DB::table('funcionarios')->where('posto', $posto)->get();
+
+            foreach ($funcionarios as $funcionario) {
+                if (empty($codigo = $funcionario->id)) {
+                    echo 'Codigo Não Preenchido';
+                }
+                $nomeFuncionario = $funcionario->nome;
+                $pis = $funcionario->pis_pasep;
+                $cargo = $funcionario->cargo;
+                if (empty($admissao = $funcionario->data_admissao)) {
+                    echo 'Data Não preenchida'. $nomeFuncionario;
+                    die();
+                }
+                $tipo = $funcionario->tipo;
+
+
+                echo $nomeFuncionario;
+                echo " | ";
+                echo $pis;
+                echo " | ";
+                echo $admissao;
+                echo "<br>";
+            }
+            die();
+
         }
         return view('relogio.exportartodos', compact('funcionarios'));
     }

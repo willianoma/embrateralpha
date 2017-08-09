@@ -3,6 +3,7 @@
 
 $postoSelecionado = $_GET['postoselecionado'];
 
+
 // Definimos o nome do arquivo que será exportado
 $arquivo = 'planilha.xls';
 // Criamos uma tabela HTML com o formato da planilha
