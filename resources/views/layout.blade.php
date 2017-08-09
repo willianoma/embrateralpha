@@ -73,7 +73,7 @@
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="/funcionarios/create">Cadastrar Novo</a></li>
                         <li><a href="/funcionarios">Listar Todos</a></li>
-                        <li><a href="/funcionarios/correcoes">Ajuste em Lote</a></li>
+                        <li><a href="/funcionarios/correcoes/index">Ajuste em Lote</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="/relogio">Exportar Dados P/ Ponto</a></li>
 

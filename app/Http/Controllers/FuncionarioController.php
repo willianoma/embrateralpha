@@ -379,50 +379,75 @@ class FuncionarioController extends Controller
     public function correcoes(Posto $postos, Request $request)
     {
 
-        /*     //para o select de busca
-             $postos = $postos->all();
-
-             //BUSCA TEMPORARIO!
-
-             $posto = $request->input('postoselecionado');
-             $nome = $request->input('buscanome');
-
-             if ($nome == "") {
-
-                 if (!isset($posto)) {
-
-                     $posto = 'Todos';
-                 }
-                 if ($posto == 'Todos') {
-                     $funcionarios = Funcionario::orderBy('nome', 'asc')->paginate(20);
-                     $render = true;
-                 } else {
-
-                     $funcionarios = DB::table('funcionarios')->where('posto', $posto)->get();
-                     $render = false;
-
-                 }
-
-             }
-
-             //Busca Por Nome
-             if (isset($nome) and $nome <> "") {
-                 $funcionarios = DB::table('funcionarios')->where('nome', 'like', "%" . $nome . "%")->get();
-                 $render = false;
-
-             }*/
-
-
-        // $funcionarios = DB::table('funcionarios')->where('posto', $posto)->get();
-
-        // return view('funcionarios.correcoes.index', compact('funcionarios', 'postos','render'));
-
 
         $funcionarios = DB::table('funcionarios')->where('filhos', '<>', '')->get();
+
+        var_dump($request->input('data_admissao'));
+        die();
+
+        if ($request->input('data_admissao')) {
+            $operador = '=';
+        }
+
+
+        $func = DB::table('funcionarios')
+            ->where('id', $operador, '')
+            ->orwhere('profleimage', $operador, '')
+            ->orwhere('nome', $operador, '')
+            ->orwhere('posto', $operador, '')
+            ->orwhere('cpf', $operador, '')
+            ->orwhere('rg', $operador, '')
+            ->orwhere('ctps', $operador, '')
+            ->orwhere('endereco', $operador, '')
+            ->orwhere('nascimento', $operador, '')
+            ->orwhere('pis_pasep', $operador, '')
+            ->orwhere('reservista', $operador, '')
+            ->orwhere('titulo_eleitor', $operador, '')
+            ->orwhere('telefone', $operador, '')
+            ->orwhere('email', $operador, '')
+            ->orwhere('data_admissao', $operador, '')
+            ->orwhere('funcao', $operador, '')
+            ->orwhere('farda', $operador, '')
+            ->orwhere('bota', $operador, '')
+            ->orwhere('filiacao', $operador, '')
+            ->orwhere('filhos', $operador, '')
+            ->orwhere('banco', $operador, '')
+            ->orwhere('banco_conta', $operador, '')
+            ->orwhere('banco_agencia', $operador, '')
+            ->orwhere('banco_tipo', $operador, '')
+            ->orwhere('contato_emergencia', $operador, '')
+            ->orwhere('tipo_sanguineo', $operador, '')
+            ->orwhere('estado_civil', $operador, '')
+            ->orwhere('nome_conjuge', $operador, '')
+            ->orwhere('grau_instrucao', $operador, '')
+            ->orwhere('deficiencia', $operador, '')
+            ->orwhere('recebe_vale_transporte', $operador, '')
+            ->orwhere('cargo', $operador, '')
+            ->orwhere('cbo', $operador, '')
+            ->orwhere('aso', $operador, '')
+            ->orwhere('referencia', $operador, '')
+            ->orwhere('obs', $operador, '')
+            ->orwhere('horario', $operador, '')
+            ->orwhere('tipo', $operador, '')
+            ->orwhere('status', $operador, '')
+            ->get();
+
+        var_dump($func);
+        die();
 
 
         return view('funcionarios.correcoes.index', compact('funcionarios'));
 
+
+    }
+
+    public function formcorrecoes(Request $request)
+    {
+        echo 'ola';
+        /* $req = $request->all();
+         var_dump($req);
+         die();*/
+        return view('funcionarios.correcoes.index');
 
     }
 

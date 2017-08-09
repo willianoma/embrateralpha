@@ -1,165 +1,81 @@
-@extends('layout')
-
-@section('header')
-    <div class="page-header clearfix">
-        <h1>
-            <i class="glyphicon glyphicon-align-justify"></i> {{trans('crud/funcionarios.title')}}
-            <a class="btn btn-success pull-right" href="{{ route('funcionarios.create') }}"><i
-                        class="glyphicon glyphicon-plus"></i> {{trans('crud/crud.create')}}</a>
-        </h1>
-
-    </div>
-
-@endsection
-
-@section('content')
-
-    <div class="row">
-        {{-- --}}{{--  Buscar Por Posto--}}{{--
-         <form action="" method="GET" autocomplete="on">
-             <div class="col-md-5">
-                 <select name="postoselecionado" class="form-control">
-                     <option selected value="Todos">Selecionar Posto</option>
-                     @foreach($postos as $posto)
-                         <option>{{$posto->nome}}</option>
-                     @endforeach
-                 </select>
-             </div>
-
-             <div class="col-md-5">
-                 <input type="text" placeholder="Busca Por Nome" name="buscanome" id="buscanome" class="form-control">
-             </div>
-             <div class="col-md-2">
-                 <input type="submit" value="Buscar" class="form-control btn-default">
-             </div>
-         </form>--}}
-
-
-        <div class="col-md-12">
-            @if(count($funcionarios))
-                <table class="table table-condensed table-striped">
-                    <thead>
-                    <tr>
-                        <th style="width: 50px">ID</th>
-                        <th style="width: 100px">{{trans('crud/funcionarios.profile_image')}}</th>
-                        <th>{{trans('crud/funcionarios.name')}}</th>
-                        <th>{{trans('crud/funcionarios.station')}}</th>
-                        <th>{{trans('crud/funcionarios.status')}}</th>
-                        {{--    <th>{{trans('crud/funcionarios.workload')}}</th>
-                           <th>{{trans('crud/funcionarios.schedule')}}</th>--}}
-                        <th>FILHOS</th>
-                        <!--  <th>CPF</th>
-                          <th>RG</th>
-                          <th>CTPS</th>
-                          <th>ENDERECO</th>
-                          <th>NASCIMENTO</th>
-                          <th>PIS_PASEP</th>
-                          <th>RESERVISTA</th>
-                          <th>TITULO_ELEITOR</th>
-                          <th>TELEFONE</th>
-                          <th>EMAIL</th>
-                          <th>DATA_ADMISSAO</th>
-                          <th>FUNCAO</th>
-                          <th>FARDA</th>
-                          <th>BOTA</th>
-                          <th>FILIACAO</th>
-                          <th>FILHOS</th>
-                          <th>BANCO</th>
-                          <th>BANCO_CONTA</th>
-                          <th>BANCO_AGENCIA</th>
-                          <th>BANCO_TIPO</th>
-                          <th>CONTATO_EMERGENCIA</th>
-                          <th>TIPO_SANGUINEO</th>
-                          <th>ESTADO_CIVIL</th>
-                          <th>NOME_CONJUGE</th>
-                          <th>GRAU_INSTRUCAO</th>
-                          <th>DEFICIENCIA</th>
-                          <th>RECEBE_VALE_TRANSPORTE</th>
-                          <th>CARGO</th>
-                          <th>CBO</th>
-                          <th>ASO</th>
-                          <th>REFERENCIA</th>
-                          <th>PREENCHIDA_POR</th>
-                          <th>OBS</th> -->
-                        <th class="text-right">{{trans('crud/crud.options')}}</th>
-                    </tr>
-                    </thead>
-
-                    <tbody>
-                    @foreach($funcionarios as $funcionario)
-                        <tr>
-                            <td>{{$funcionario->id}}</td>
-                            <td align="center"><img height="70" width="70" src="{{asset("$funcionario->profleimage")}}">
-                            </td>
-                        <!--  <td>{{$funcionario->profleimage}}</td> -->
-                            <td>{{$funcionario->nome}}</td>
-                            <td>{{$funcionario->posto}}</td>
-                            <td>{{$funcionario->status}}</td>
-                            <td>{{$funcionario->filhos}}</td>
-                        <!--
-                    <td>{{$funcionario->cpf}}</td>
-                    <td>{{$funcionario->rg}}</td>
-                    <td>{{$funcionario->ctps}}</td>
-                    <td>{{$funcionario->endereco}}</td>
-                    <td>{{$funcionario->nascimento}}</td>
-                    <td>{{$funcionario->pis_pasep}}</td>
-                    <td>{{$funcionario->reservista}}</td>
-                    <td>{{$funcionario->titulo_eleitor}}</td>
-                    <td>{{$funcionario->telefone}}</td>
-                    <td>{{$funcionario->email}}</td>
-                    <td>{{$funcionario->data_admissao}}</td>
-                    <td>{{$funcionario->funcao}}</td>
-                    <td>{{$funcionario->farda}}</td>
-                    <td>{{$funcionario->bota}}</td>
-                    <td>{{$funcionario->filiacao}}</td>
-                    <td>{{$funcionario->filhos}}</td>
-                    <td>{{$funcionario->banco}}</td>
-                    <td>{{$funcionario->banco_conta}}</td>
-                    <td>{{$funcionario->banco_agencia}}</td>
-                    <td>{{$funcionario->banco_tipo}}</td>
-                    <td>{{$funcionario->contato_emergencia}}</td>
-                    <td>{{$funcionario->tipo_sanguineo}}</td>
-                    <td>{{$funcionario->estado_civil}}</td>
-                    <td>{{$funcionario->nome_conjuge}}</td>
-                    <td>{{$funcionario->grau_instrucao}}</td>
-                    <td>{{$funcionario->deficiencia}}</td>
-                    <td>{{$funcionario->recebe_vale_transporte}}</td>
-                    <td>{{$funcionario->cargo}}</td>
-                    <td>{{$funcionario->cbo}}</td>
-                    <td>{{$funcionario->aso}}</td>
-                    <td>{{$funcionario->referencia}}</td>
-                    <td>{{$funcionario->preenchida_por}}</td>
-                    <td>{{$funcionario->obs}}</td> -->
-                            <td class="text-right">
-                                <a class="btn btn-xs btn-primary"
-                                   href="{{ route('funcionarios.show', $funcionario->id) }}"><i
-                                            class="glyphicon glyphicon-eye-open"></i> {{trans('crud/crud.show')}}</a>
-                                <a class="btn btn-xs btn-warning"
-                                   href="{{ route('funcionarios.edit', $funcionario->id) }}"><i
-                                            class="glyphicon glyphicon-edit"></i> {{trans('crud/crud.edit')}}</a>
-                                <form action="{{ route('funcionarios.destroy', $funcionario->id) }}" method="POST"
-                                      style="display: inline;"
-                                      onsubmit="if(confirm('Deletar? Tem certeza?')) { return true } else {return false };">
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    <button type="submit" class="btn btn-xs btn-danger"><i
-                                                class="glyphicon glyphicon-trash"></i> {{trans('crud/crud.delete')}}
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-
-                {{-- @if($render==true)
-                     {!! $funcionarios->render() !!}
-                 @endif--}}
-            @else
-                <h3 class="text-center alert alert-info">Empty!</h3>
-            @endif
-
-        </div>
-    </div>
-
-@endsection
+<form action="correcoes" method="get" enctype="multipart/form-data">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    <input type="checkbox" name="id">
+    <label>id</label>
+    <input type="checkbox" name="profleimage">
+    <label>Foto</label>
+    <input type="checkbox" name="nome">
+    <label>Nome</label>
+    <input type="checkbox" name="posto">
+    <label>CPF</label>
+    <input type="checkbox" name="cpf">
+    <label>RG</label>
+    <input type="checkbox" name="rg">
+    <label>CTPS</label>
+    <input type="checkbox" name="ctps">
+    <label>Endereço</label>
+    <input type="checkbox" name="endereco">
+    <label>Nascimento</label>
+    <input type="checkbox" name="nascimento">
+    <label>Pis/Pasep</label>
+    <input type="checkbox" name="pis_pasep">
+    <label>Reservista</label>
+    <input type="checkbox" name="reservista">
+    <label>Titulo de Eleitor</label>
+    <input type="checkbox" name="titulo_eleitor">
+    <label>Telefone</label>
+    <input type="checkbox" name="telefone">
+    <label>E-mail</label>
+    <input type="checkbox" name="email">
+    <label>Data de Admissão</label>
+    <input type="checkbox" name="data_admissao">
+    <label>Função</label>
+    <input type="checkbox" name="funcao">
+    <label>Farda</label>
+    <input type="checkbox" name="farda">
+    <label>Bota</label>
+    <input type="checkbox" name="bota">
+    <label>Filiação</label>
+    <input type="checkbox" name="filiacao">
+    <label>Filhos</label>
+    <input type="checkbox" name="filhos">
+    <label>Banco</label>
+    <input type="checkbox" name="banco">
+    <label>Banco Conta</label>
+    <input type="checkbox" name="banco_conta">
+    <label>Banco Agencia</label>
+    <input type="checkbox" name="banco_agencia">
+    <label>Banco Tipo</label>
+    <input type="checkbox" name="banco_tipo">
+    <label>Contato de Emergencia </label>
+    <input type="checkbox" name="contato_emergencia">
+    <label>Tipo Sanguineo</label>
+    <input type="checkbox" name="tipo_sanguineo">
+    <label>Estado Civil</label>
+    <input type="checkbox" name="estado_civil">
+    <label>Nome Conjuge</label>
+    <input type="checkbox" name="nome_conjuge">
+    <label>Grau de Instrução</label>
+    <input type="checkbox" name="grau_instrucao">
+    <label>Deficiencia</label>
+    <input type="checkbox" name="deficiencia">
+    <label>Recebe Vale Transporte</label>
+    <input type="checkbox" name="recebe_vale_transporte">
+    <label>Cargo</label>
+    <input type="checkbox" name="cargo">
+    <label>CBO</label>
+    <input type="checkbox" name="cbo">
+    <label>ASO</label>
+    <input type="checkbox" name="aso">
+    <label>Referencia</label>
+    <input type="checkbox" name="referencia">
+    <label>Obs</label>
+    <input type="checkbox" name="obs">
+    <label>Horario</label>
+    <input type="checkbox" name="horario">
+    <label>Tipo de horario</label>
+    <input type="checkbox" name="tipo">
+    <label>Status</label>
+    <input type="checkbox" name="status">
+    <input type="submit">
+</form>
