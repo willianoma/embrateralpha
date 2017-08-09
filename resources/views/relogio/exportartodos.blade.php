@@ -3,6 +3,11 @@
 
 $postoSelecionado = $_GET['postoselecionado'];
 
+if (!empty($msg)) {
+    echo $msg;
+    die();
+}
+
 
 // Definimos o nome do arquivo que será exportado
 $arquivo = 'planilha.xls';

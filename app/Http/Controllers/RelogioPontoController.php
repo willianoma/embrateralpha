@@ -21,6 +21,7 @@ class RelogioPontoController extends Controller
 
     public function getExportar()
     {
+        $msg = '';
         $posto = $_GET['postoselecionado'];
 
         if ($posto == 'Todos') {
@@ -31,29 +32,36 @@ class RelogioPontoController extends Controller
             $funcionarios = DB::table('funcionarios')->where('posto', $posto)->get();
 
             foreach ($funcionarios as $funcionario) {
+                if (empty($nomeFuncionario = $funcionario->nome)) {
+                    $msg = 'Nome de Funcionário Não preenchida.';
+
+                }
+
                 if (empty($codigo = $funcionario->id)) {
-                    echo 'Codigo Não Preenchido';
+                    $msg = 'Codigo de' . $nomeFuncionario . ' Não preenchida.';
                 }
-                $nomeFuncionario = $funcionario->nome;
-                $pis = $funcionario->pis_pasep;
-                $cargo = $funcionario->cargo;
+
+                if (empty($pis = $funcionario->pis_pasep)) {
+                    $msg = 'Pis/Passep de ' . $nomeFuncionario . ' Não preenchida.';
+
+                }
+
+                if (empty($cargo = $funcionario->cargo)) {
+                    $msg = 'Cargo de ' . $nomeFuncionario . ' Não preenchida.';
+                }
+
                 if (empty($admissao = $funcionario->data_admissao)) {
-                    echo 'Data Não preenchida'. $nomeFuncionario;
-                    die();
+                    $msg = 'Data de ' . $nomeFuncionario . ' Não preenchida.';
                 }
-                $tipo = $funcionario->tipo;
 
+                if (empty($tipo = $funcionario->tipo)) {
+                    $msg = 'Carga Horária de ' . $nomeFuncionario . ' Não preenchida.';
+                }
 
-                echo $nomeFuncionario;
-                echo " | ";
-                echo $pis;
-                echo " | ";
-                echo $admissao;
-                echo "<br>";
             }
-            die();
+
 
         }
-        return view('relogio.exportartodos', compact('funcionarios'));
+        return view('relogio.exportartodos', compact('funcionarios'), compact('msg'));
     }
 }
