@@ -43,11 +43,12 @@
                 </select>
             </div>
 
-        </form>
 
-        <div class="col-md-2">
-            <input type="submit" value="Buscar" class="form-control btn-default">
-        </div>
+            <div class="col-md-2">
+                <input type="submit" value="Buscar" class="form-control btn-default">
+            </div>
+
+        </form>
 
         <div class="col-lg-12 " style="text-align: right; margin-top: 10px">
             <label>Contagem: </label>
