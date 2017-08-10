@@ -3,8 +3,11 @@
 
 $postoSelecionado = $_GET['postoselecionado'];
 
-if (!empty($msg)) {
-    echo $msg;
+if (!empty($msgs)) {
+    foreach ($msgs as $msg) {
+        echo $msg;
+        echo '<br>';
+    }
     die();
 }
 
