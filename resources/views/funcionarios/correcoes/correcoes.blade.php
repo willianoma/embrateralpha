@@ -14,6 +14,8 @@
 
 @section('content')
 
+
+
     <div class="row">
         {{-- --}}{{--  Buscar Por Posto--}}{{--
          <form action="" method="GET" autocomplete="on">
@@ -41,14 +43,21 @@
                     <thead>
                     <tr>
                         <th style="width: 50px">ID</th>
-                        <th style="width: 100px">{{trans('crud/funcionarios.profile_image')}}</th>
                         <th>{{trans('crud/funcionarios.name')}}</th>
                         <th>{{trans('crud/funcionarios.station')}}</th>
+                        <th>CPF</th>
+                        <th>RG</th>
+                        <th>CTPS</th>
+                        <th>ENDERECO</th>
+                        <th>NASCIMENTO</th>
+                        <th>PIS_PASEP</th>
+                        <th>DATA_ADMISSAO</th>
+                        <th>{{trans('crud/funcionarios.schedule')}}</th>
+                        <th>{{trans('crud/funcionarios.workload')}}</th>
                         <th>{{trans('crud/funcionarios.status')}}</th>
-                        {{--    <th>{{trans('crud/funcionarios.workload')}}</th>
-                           <th>{{trans('crud/funcionarios.schedule')}}</th>--}}
-                        <th>FILHOS</th>
-                        <!--  <th>CPF</th>
+
+                    {{--    <th>FILHOS</th>--}}
+                    <!--  <th>CPF</th>
                           <th>RG</th>
                           <th>CTPS</th>
                           <th>ENDERECO</th>
@@ -87,15 +96,36 @@
 
                     <tbody>
                     @foreach($funcionarios as $funcionario)
+
                         <tr>
                             <td>{{$funcionario->id}}</td>
-                            <td align="center"><img height="70" width="70" src="{{asset("$funcionario->profleimage")}}">
-                            </td>
-                        <!--  <td>{{$funcionario->profleimage}}</td> -->
                             <td>{{$funcionario->nome}}</td>
                             <td>{{$funcionario->posto}}</td>
+                            <td>{{$funcionario->cpf}}</td>
+                            <td>{{$funcionario->rg}}</td>
+                            @if($funcionario->ctps=='')
+                                <td><b>{{$funcionario->ctps = "PREENCHER"}}</b></td>
+                            @else
+                                <td>{{$funcionario->ctps}}</td>
+                            @endif
+                            <td>{{$funcionario->endereco}}</td>
+                            @if($funcionario->nascimento=='')
+                                <td><b>{{$funcionario->nascimento = "PREENCHER"}}</b></td>
+                            @else
+                                <td>{{$funcionario->nascimento}}</td>
+                            @endif
+                            <td>{{$funcionario->pis_pasep}}</td>
+                            @if($funcionario->data_admissao== '')
+                                <td><b>{{$funcionario->data_admissao = "PREENCHER"}}</b></td>
+                            @else
+                                <td>{{$funcionario->data_admissao}}</td>
+                            @endif
+
+                            <td>{{$funcionario->horario}}</td>
+                            <td>{{$funcionario->tipo}}</td>
                             <td>{{$funcionario->status}}</td>
-                            <td>{{$funcionario->filhos}}</td>
+
+
                         <!--
                     <td>{{$funcionario->cpf}}</td>
                     <td>{{$funcionario->rg}}</td>

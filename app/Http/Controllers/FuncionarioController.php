@@ -376,23 +376,20 @@ class FuncionarioController extends Controller
 
     }
 
-    public function correcoes(Posto $postos, Request $request)
+    public function correcoes(Request $request)
     {
 
 
-        $funcionarios = DB::table('funcionarios')->where('filhos', '<>', '')->get();
-
-        var_dump($request->input('data_admissao'));
-        die();
-
-        if ($request->input('data_admissao')) {
-            $operador = '=';
-        }
+        return view('funcionarios.correcoes.correcoes', compact('funcionarios'));
 
 
-        $func = DB::table('funcionarios')
+    }
+
+    public function formcorrecoes(Request $request, Posto $postos)
+    {
+        $operador = '=';
+        $funcionarios = DB::table('funcionarios')
             ->where('id', $operador, '')
-            ->orwhere('profleimage', $operador, '')
             ->orwhere('nome', $operador, '')
             ->orwhere('posto', $operador, '')
             ->orwhere('cpf', $operador, '')
@@ -401,54 +398,190 @@ class FuncionarioController extends Controller
             ->orwhere('endereco', $operador, '')
             ->orwhere('nascimento', $operador, '')
             ->orwhere('pis_pasep', $operador, '')
-            ->orwhere('reservista', $operador, '')
-            ->orwhere('titulo_eleitor', $operador, '')
-            ->orwhere('telefone', $operador, '')
-            ->orwhere('email', $operador, '')
             ->orwhere('data_admissao', $operador, '')
-            ->orwhere('funcao', $operador, '')
-            ->orwhere('farda', $operador, '')
-            ->orwhere('bota', $operador, '')
-            ->orwhere('filiacao', $operador, '')
-            ->orwhere('filhos', $operador, '')
-            ->orwhere('banco', $operador, '')
-            ->orwhere('banco_conta', $operador, '')
-            ->orwhere('banco_agencia', $operador, '')
-            ->orwhere('banco_tipo', $operador, '')
-            ->orwhere('contato_emergencia', $operador, '')
-            ->orwhere('tipo_sanguineo', $operador, '')
-            ->orwhere('estado_civil', $operador, '')
-            ->orwhere('nome_conjuge', $operador, '')
-            ->orwhere('grau_instrucao', $operador, '')
-            ->orwhere('deficiencia', $operador, '')
-            ->orwhere('recebe_vale_transporte', $operador, '')
-            ->orwhere('cargo', $operador, '')
-            ->orwhere('cbo', $operador, '')
-            ->orwhere('aso', $operador, '')
-            ->orwhere('referencia', $operador, '')
-            ->orwhere('obs', $operador, '')
             ->orwhere('horario', $operador, '')
             ->orwhere('tipo', $operador, '')
             ->orwhere('status', $operador, '')
             ->get();
 
-        var_dump($func);
-        die();
+
+        foreach ($funcionarios as $funcionario) {
+            if (empty($funcionario->id)) {
+                $funcionario->id == "!!PREENCHER!!";
+            }
+            if (empty($funcionario->nome)) {
+                $funcionario->nome == "!!PREENCHER!!";
+            }
+            if (empty($funcionario->posto)) {
+                $funcionario->posto == "!!PREENCHER!!";
+            }
+            if (empty($funcionario->cpf)) {
+                $funcionario->cpf == "!!PREENCHER!!";
+            }
+
+            if (empty($funcionario->rg)) {
+                $funcionario->rg == "!!PREENCHER!!";
+            }
+            if (empty($funcionario->ctps)) {
+                $funcionario->ctps == "!!PREENCHER!!";
+            }
+            if (empty($funcionario->endereco)) {
+                $funcionario->endereco == "!!PREENCHER!!";
+            }
+            if (empty($funcionario->nascimento)) {
+                $funcionario->nascimento == "!!PREENCHER!!";
+            }
+
+            if (empty($funcionario->pis_pasep)) {
+                $funcionario->pis_pasep == "!!PREENCHER!!";
+
+            }
+            if (empty($funcionario->data_admissao)) {
+                $funcionario->data_admissao == "!!PREENCHER!!";
+            }
+
+            if (empty($funcionario->horario)) {
+                $funcionario->horario == "!!PREENCHER!!";
+            }
+
+            if (empty($funcionario->tipo)) {
+                $funcionario->tipo == "!!PREENCHER!!";
+            }
+            if (empty($funcionario->status)) {
+                $funcionario->status == "!!PREENCHER!!";
+            }
 
 
-        return view('funcionarios.correcoes.index', compact('funcionarios'));
+        }
 
-
-    }
-
-    public function formcorrecoes(Request $request)
-    {
-        echo 'ola';
-        /* $req = $request->all();
-         var_dump($req);
-         die();*/
-        return view('funcionarios.correcoes.index');
+        return view('funcionarios.correcoes.correcoes', compact('funcionarios'));
 
     }
 
 }
+
+
+
+
+
+
+/*
+ *
+ * Lixo
+ *
+ *
+ //tentativa de match entre checkbox+banco
+
+ $funcionarios = DB::table('funcionarios')->get();
+     foreach ($funcionarios as $funcionario) {
+         foreach ($req as $re) {
+             if (isset($req['id'])) {
+                 var_dump($req['id']);
+                 var_dump($funcionario->id);
+             }
+             //var_dump($funcionario);
+             die();
+
+
+         }
+     }*/
+
+
+/*       $funcionario->id
+       $funcionario->profleimage
+       $funcionario->nome
+       $funcionario->posto
+       $funcionario->cpf
+       $funcionario->rg
+       $funcionario->ctps
+       $funcionario->endereco
+       $funcionario->nascimento
+       $funcionario->pis_pasep
+       $funcionario->reservista
+       $funcionario->titulo_eleitor;
+       $funcionario->telefone
+       $funcionario->email
+       $funcionario->data_admissao
+       $funcionario->funcao
+       $funcionario->farda
+       $funcionario->bota
+       $funcionario->filiacao
+       $funcionario->filhos
+       $funcionario->banco
+       $funcionario->banco_conta
+       $funcionario->banco_agencia
+       $funcionario->banco_tipo
+       $funcionario->contato_emergencia
+       $funcionario->tipo_sanguineo
+       $funcionario->estado_civil
+       $funcionario->nome_conjuge
+       $funcionario->grau_instrucao
+       $funcionario->deficiencia
+       $funcionario->recebe_vale_transporte
+       $funcionario->cargo
+       $funcionario->cb
+       $funcionario->aso
+       $funcionario->referencia
+       $funcionario->preenchida_por
+       $funcionario->obs
+       $funcionario->horario
+       $funcionario->tipo
+       $funcionario->status*/
+
+
+//die();
+
+
+/*$req = $request->all();*/
+//var_dump($req);
+/*       foreach ($req as $key) {
+           if ($req) {
+               $operador = '=';
+
+
+
+               $func = DB::table('funcionarios')
+                   ->where('id', $operador, '')
+                   ->orwhere('profleimage', $operador, '')
+                   ->orwhere('nome', $operador, '')
+                   ->orwhere('posto', $operador, '')
+                   ->orwhere('cpf', $operador, '')
+                   ->orwhere('rg', $operador, '')
+                   ->orwhere('ctps', $operador, '')
+                   ->orwhere('endereco', $operador, '')
+                   ->orwhere('nascimento', $operador, '')
+                   ->orwhere('pis_pasep', $operador, '')
+                   ->orwhere('reservista', $operador, '')
+                   ->orwhere('titulo_eleitor', $operador, '')
+                   ->orwhere('telefone', $operador, '')
+                   ->orwhere('email', $operador, '')
+                   ->orwhere('data_admissao', $operador, '')
+                   ->orwhere('funcao', $operador, '')
+                   ->orwhere('farda', $operador, '')
+                   ->orwhere('bota', $operador, '')
+                   ->orwhere('filiacao', $operador, '')
+                   ->orwhere('filhos', $operador, '')
+                   ->orwhere('banco', $operador, '')
+                   ->orwhere('banco_conta', $operador, '')
+                   ->orwhere('banco_agencia', $operador, '')
+                   ->orwhere('banco_tipo', $operador, '')
+                   ->orwhere('contato_emergencia', $operador, '')
+                   ->orwhere('tipo_sanguineo', $operador, '')
+                   ->orwhere('estado_civil', $operador, '')
+                   ->orwhere('nome_conjuge', $operador, '')
+                   ->orwhere('grau_instrucao', $operador, '')
+                   ->orwhere('deficiencia', $operador, '')
+                   ->orwhere('recebe_vale_transporte', $operador, '')
+                   ->orwhere('cargo', $operador, '')
+                   ->orwhere('cbo', $operador, '')
+                   ->orwhere('aso', $operador, '')
+                   ->orwhere('referencia', $operador, '')
+                   ->orwhere('obs', $operador, '')
+                   ->orwhere('horario', $operador, '')
+                   ->orwhere('tipo', $operador, '')
+                   ->orwhere('status', $operador, '')
+                   ->get();
+           }
+       }
+       var_dump($func);
+       die();*/
