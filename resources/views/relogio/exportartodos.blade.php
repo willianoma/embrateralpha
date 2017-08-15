@@ -109,7 +109,7 @@ header("Last-Modified: " . gmdate("D,d M YH:i:s") . " GMT");
 header("Cache-Control: no-cache, must-revalidate");
 header("Pragma: no-cache");
 header("Content-type: application/x-msexcel");
-header("Content-Disposition: attachment; filename=\"{$postoSelecionado}\"");
+header("Content-Disposition: attachment; filename=$postoSelecionado.xls");
 header("Content-Description: PHP Generated Data");
 // Envia o conteúdo do arquivo
 echo $html;
