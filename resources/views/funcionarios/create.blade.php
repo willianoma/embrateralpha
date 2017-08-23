@@ -61,17 +61,33 @@
                 </div>
 
 
-                <div class="form-group first-item last-item @if($errors->has('nome')) has-error @endif">
+                <div class="form-group first-item col-md-10 @if($errors->has('nome')) has-error @endif">
                     <label for="nome-field">{{trans('crud/funcionarios.name')}}</label>
                     <input type="text" required="" id="nome-field" name="nome" class="form-control"
                            value="{{ old("nome") }}"/>
                     @if($errors->has("nome"))
                         <span class="help-block">{{ $errors->first("nome") }}</span>
-                @endif
+                    @endif
+
+                </div>
+
+                <div class="form-group last-item col-md-2 @if($errors->has('sexo')) has-error @endif">
+                    <label for="sexo-field">{{trans('crud/funcionarios.sexo')}}</label>
+
+                    @include('funcionarios.partials.sexo')
+
+                    {{--  <input type="text" required="" id="sexo-field" name="sexo" class="form-control"
+                             value="{{ old("sexo") }}"/>
+                      @if($errors->has("sexo"))
+                          <span class="help-block">{{ $errors->first("sexo") }}</span>
+                      @endif--}}
+
+                </div>
+
 
                 <!-- 4 Itens -->
 
-                </div>
+
                 <div class="form-group col-md-3 minimal-padding first-item @if($errors->has('posto')) has-error @endif">
                     <label for="posto-field">{{trans('crud/funcionarios.station')}}</label>
 
@@ -468,7 +484,7 @@
                     <label for="filhos-field">{{trans('crud/funcionarios.children')}}</label>
                     <input type="text" id="filhos-field" name="filhos" class="form-control"
                            value="{{ old("filhos") }}"
-                    placeholder="Ex.: José Antonio Correia - 05/03/1995 + Maria Correia - 20/05/2001"/>
+                           placeholder="Ex.: José Antonio Correia - 05/03/1995 + Maria Correia - 20/05/2001"/>
                     @if($errors->has("filhos"))
                         <span class="help-block">{{ $errors->first("filhos") }}</span>
                     @endif

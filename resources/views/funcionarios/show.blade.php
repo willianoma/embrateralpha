@@ -39,9 +39,14 @@
                 <!--<p class="form-control-static">{{$funcionario->profleimage}}</p>-->
                 </div>
 
-                <div class="form-group col-md-3 form-group minimal-padding  last-item">
+                <div class="form-group col-md-3 form-group minimal-padding ">
                     <label for="nome-field">{{trans('crud/funcionarios.name')}}</label>
                     <p class="form-control-static">{{$funcionario->nome}}</p>
+                </div>
+
+                <div class="form-group col-md-3 form-group minimal-padding  last-item">
+                    <label for="sexo-field">{{trans('crud/funcionarios.sexo')}}</label>
+                    <p class="form-control-static">{{$funcionario->sexo}}</p>
                 </div>
 
             {{--fim 2 itens--}}

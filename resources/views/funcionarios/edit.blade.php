@@ -75,9 +75,9 @@
                 </div>
 
 
-                <!-- 1 items -->
+                <!-- 2 items -->
 
-                <div class="form-group first-item last-item @if($errors->has('nome')) has-error @endif">
+                <div class="form-group col-md-10 first-item @if($errors->has('nome')) has-error @endif">
                     <label for="nome-field">{{trans('crud/funcionarios.name')}}</label>
                     <input type="text" id="nome-field" name="nome" class="form-control"
                            value="{{ $funcionario->nome }}"/>
@@ -86,7 +86,24 @@
                     @endif
                 </div>
 
-                <!-- Fim 1 items -->
+                <div class="form-group last-item col-md-2 last-item @if($errors->has('sexo')) has-error @endif">
+                    <label for="sexo-field">{{trans('crud/funcionarios.sexo')}}</label>
+
+                    @include('funcionarios.partials.sexo')
+
+                    @if($errors->has("sexo"))
+                        <span class="help-block">{{ $errors->first("sexo") }}</span>
+                    @endif
+
+                    {{--  <input type="text" required="" id="sexo-field" name="sexo" class="form-control"
+                             value="{{ old("sexo") }}"/>
+                      @if($errors->has("sexo"))
+                          <span class="help-block">{{ $errors->first("sexo") }}</span>
+                      @endif--}}
+
+                </div>
+
+                <!-- Fim 2 items -->
 
                 <!-- 4 items -->
 

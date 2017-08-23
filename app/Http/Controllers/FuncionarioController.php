@@ -127,6 +127,7 @@ class FuncionarioController extends Controller
 
         //$funcionario->profleimage = $request->input("profleimage");
         $funcionario->nome = $request->input("nome");
+        $funcionario->sexo = $request->input("sexo");
         $funcionario->posto = $request->input("posto");
         $funcionario->cpf = $request->input("cpf");
         $funcionario->rg = $request->input("rg");
@@ -268,6 +269,7 @@ class FuncionarioController extends Controller
 
         //$funcionario->profleimage = $request->input("profleimage");
         $funcionario->nome = $request->input("nome");
+        $funcionario->sexo = $request->input("sexo");
         $funcionario->posto = $request->input("posto");
         $funcionario->cpf = $request->input("cpf");
         $funcionario->rg = $request->input("rg");
