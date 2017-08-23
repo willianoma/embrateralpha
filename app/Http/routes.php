@@ -26,6 +26,10 @@ Route::group(['prefix' => '', 'middleware' => 'auth'], function () {
     Route::get('/funcionarios/filtro', 'FuncionarioController@filtro');
     Route::get('/funcionarios/correcoes/index', 'FuncionarioController@formcorrecoes');
     Route::get('/funcionarios/correcoes/correcoes', 'FuncionarioController@correcoes');
+    Route::get('/funcionarios/correcoes/sexo', 'FuncionarioController@formcorrecoessexo');
+    Route::post('/funcionarios/correcoes/updatesexo', 'FuncionarioController@corecoessexoupdate');
+
+
     Route::resource("funcionarios", "FuncionarioController");
     //Fim Rotas Funcionários
 

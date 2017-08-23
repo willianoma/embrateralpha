@@ -387,6 +387,30 @@ class FuncionarioController extends Controller
 
     }
 
+    public function formcorrecoessexo(Request $request)
+    {
+
+
+        $funcionarios = Funcionario::all();
+
+
+        return view('funcionarios.correcoes.sexo', compact('funcionarios'));
+    }
+
+    public function corecoessexoupdate(Request $request, Funcionario $funcionarios)
+    {
+
+
+        $funcs = $request->input("funcionarios");
+
+        var_dump($funcs);
+
+
+        /* $funcionario = Funcionario::findOrFail($id);
+         $funcionario->nome = $request->input("nome");
+         $funcionario->save();*/
+    }
+
     public function formcorrecoes(Request $request, Posto $postos)
     {
         $operador = '=';
