@@ -47,6 +47,7 @@
                 <div class="form-group col-md-3 form-group minimal-padding  last-item">
                     <label for="sexo-field">{{trans('crud/funcionarios.sexo')}}</label>
                     <p class="form-control-static">{{$funcionario->sexo}}</p>
+
                 </div>
 
             {{--fim 2 itens--}}
@@ -64,10 +65,6 @@
                 </div>
 
 
-
-
-
-
                 <div class="form-group col-md-3 minimal-padding">
                     <label for="horario-field">{{trans('crud/funcionarios.schedule')}}</label>
                     <p class="form-control-static">{{$funcionario->horario}}</p>
@@ -78,7 +75,6 @@
                     <label for="tipo-field">{{trans('crud/funcionarios.workload')}}</label>
                     <p class="form-control-static">{{$funcionario->tipo}}</p>
                 </div>
-
 
 
                 <!-- Fim 4 Itens -->
@@ -94,9 +90,6 @@
                     <label for="funcao-field">{{trans('crud/funcionarios.function')}}</label>
                     <p class="form-control-static">{{$funcionario->funcao}}</p>
                 </div>
-
-
-
 
 
                 <div class="form-group col-md-3 minimal-padding">
@@ -124,9 +117,6 @@
                 </div>
 
 
-
-
-
                 <div class="form-group col-md-3 minimal-padding">
                     <label for="ctps-field">{{trans('crud/funcionarios.ctps')}}</label>
                     <p class="form-control-static">{{$funcionario->ctps}}</p>
@@ -151,10 +141,6 @@
                     <label for="titulo_eleitor-field">{{trans('crud/funcionarios.voter_number')}}</label>
                     <p class="form-control-static">{{$funcionario->titulo_eleitor}}</p>
                 </div>
-
-
-
-
 
 
                 <div class="form-group col-md-3 minimal-padding">
@@ -185,10 +171,6 @@
                 </div>
 
 
-
-
-
-
                 <div class="form-group col-md-3 minimal-padding">
                     <label for="tipo_sanguineo-field">{{trans('crud/funcionarios.blood_type')}}</label>
                     <p class="form-control-static">{{$funcionario->tipo_sanguineo}}</p>
@@ -212,9 +194,6 @@
                     <label for="bota-field">{{trans('crud/funcionarios.boot')}}</label>
                     <p class="form-control-static">{{$funcionario->bota}}</p>
                 </div>
-
-
-
 
 
                 <div class="form-group col-md-3 minimal-padding">
@@ -246,9 +225,6 @@
                 <!-- 2 Itens -->
 
 
-
-
-
                 <div class="form-group col-md-3 minimal-padding first-item">
                     <label for="nome_conjuge-field">{{trans('crud/funcionarios.spouse')}}</label>
                     <p class="form-control-static">{{$funcionario->nome_conjuge}}</p>
@@ -271,9 +247,6 @@
                 <div class="form-group col-md-3 minimal-padding">
                     <label for="banco-field">{{trans('crud/funcionarios.bank_name')}}</label>
                     <p class="form-control-static">{{$funcionario->banco_conta}}</p>
-
-
-
 
 
                 </div>
@@ -301,10 +274,6 @@
                     <label for="aso-field">{{trans('crud/funcionarios.aso')}}</label>
                     <p class="form-control-static">{{$funcionario->aso}}</p>
                 </div>
-
-
-
-
 
 
                 <div class="form-group col-md-3 minimal-padding">
