@@ -55,6 +55,7 @@
                         <th>{{trans('crud/funcionarios.schedule')}}</th>
                         <th>{{trans('crud/funcionarios.workload')}}</th>
                         <th>{{trans('crud/funcionarios.status')}}</th>
+                        <th>SEXO</th>
 
                     {{--    <th>FILHOS</th>--}}
                     <!--  <th>CPF</th>
@@ -124,6 +125,11 @@
                             <td>{{$funcionario->horario}}</td>
                             <td>{{$funcionario->tipo}}</td>
                             <td>{{$funcionario->status}}</td>
+                            @if($funcionario->sexo== '')
+                                <td><b>{{$funcionario->sexo = "PREENCHER"}}</b></td>
+                            @else
+                                <td>{{$funcionario->sexo}}</td>
+                        @endif
 
 
                         <!--

@@ -236,6 +236,7 @@ class FuncionarioController extends Controller
     {
 
         $funcionario = Funcionario::findOrFail($id);
+     
 
         return view('funcionarios.show', compact('funcionario'));
     }
