@@ -13,9 +13,15 @@ class AddCampoSexoFuncionarios extends Migration
      */
     public function up()
     {
-        Schema::table('funcionarios', function (Blueprint $table) {
-            $table->string('sexo')->nullable();
-        });
+
+        if (Schema::hasColumn('funcionarios', 'sexo')) {
+
+
+        } else {
+            Schema::table('funcionarios', function (Blueprint $table) {
+                $table->string('sexo')->nullable();
+            });
+        }
     }
 
     /**
@@ -23,7 +29,8 @@ class AddCampoSexoFuncionarios extends Migration
      *
      * @return void
      */
-    public function down()
+    public
+    function down()
     {
         //
     }
