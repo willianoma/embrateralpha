@@ -46,10 +46,22 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-
+    {{--Matarial Design Lite Select--}}
 
     <link rel="stylesheet" href="/componentes/getmdl-select/getmdl-select.min.css">
     <script defer src="/componentes/getmdl-select/getmdl-select.min.js"></script>
+
+    {{--E-Signaturepad--}}
+    <link href="/componentes/signature/css/jquery.signaturepad.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/componentes/signature/js/numeric-1.2.6.min.js"></script>
+    <script src="/componentes/signature/js/bezier.js"></script>
+    <script src="/componentes/signature/js/jquery.signaturepad.js"></script>
+    <script type='text/javascript'
+            src="https://github.com/niklasvh/html2canvas/releases/download/0.4.1/html2canvas.js"></script>
+    <script src="/componentes/signature/js/json2.min.js"></script>
+    <link href="/componentes/signature/css/app_style.css" rel="stylesheet">
+
 
 </head>
 

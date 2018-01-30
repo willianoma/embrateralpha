@@ -34,13 +34,91 @@
                 <label class="mdl-textfield__label" for="obs">Observações</label>
             </div>
 
-            <div class="mdl-cell mdl-cell--12-col">
-                assinatura
-            </div>
-
 
         </div>
 
 
+        <body>
+        <button type="button" class="mdl-button show-modal">Colher assinatura</button>
+        <dialog class="mdl-dialog" style="width: auto">
+            <div class="mdl-dialog__content">
+                <p>
+
+
+                <div class="mdl-cell mdl-cell--12-col">
+                    <div id="signArea">
+                        <h2 class="tag-info">Assinatura</h2>
+                        <div class="sig sigWrapper" style="height:auto;">
+                            <div class="typed"></div>
+                            <canvas class="sign-pad" id="sign-pad" width="400" height="100"></canvas>
+                        </div>
+                        <script>
+                            screen.orientation.lock('landscape');
+                            $('#signArea').signaturePad({drawOnly: true, drawBezierCurves: true, lineTop: 90});
+
+
+                            $("#btnSaveSign").click(function (e) {
+                                html2canvas([document.getElementById('sign-pad')], {
+                                    onrendered: function (canvas) {
+                                        var canvas_img_data = canvas.toDataURL('image/png');
+                                        var img_data = canvas_img_data.replace(/^data:image\/(png|jpg);base64,/, "");
+                                        //ajax call to save image inside folder
+                                        $.ajax({
+                                            url: 'save_sign.php',
+                                            data: {img_data: img_data},
+                                            type: 'post',
+                                            dataType: 'json',
+                                            success: function (response) {
+                                                window.location.reload();
+                                            }
+                                        });
+                                    }
+                                });
+                            });
+                        </script>
+
+                      {{--  <button id="btnSaveSign">Save Signature</button>--}}
+
+                    </div>
+
+
+                </div>
+
+
+                </p>
+            </div>
+            <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                <button type="button" class="mdl-button">Agree</button>
+                <button type="button" class="mdl-button close">Disagree</button>
+            </div>
+        </dialog>
+        <script>
+            var dialog = document.querySelector('dialog');
+            var showModalButton = document.querySelector('.show-modal');
+            if (!dialog.showModal) {
+                dialogPolyfill.registerDialog(dialog);
+            }
+            showModalButton.addEventListener('click', function () {
+                dialog.showModal();
+            });
+            dialog.querySelector('.close').addEventListener('click', function () {
+                dialog.close();
+            });
+        </script>
+        </body>
+
+
     </form>
+
+
+
+
+
+
+
+
+
+
+
+
 @endsection
