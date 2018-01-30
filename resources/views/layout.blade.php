@@ -9,6 +9,15 @@
         }
     </style>
 
+    <style>
+        .form-control {
+            border-radius: 10px !important;
+            border: 1px solid #0BB8F1 !important;
+            color: #0281AB !important;
+            font-weight: 600 !important;
+        }
+    </style>
+
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -63,6 +72,8 @@
                         <li><a href="/postos">Cadastrar Postos</a></li>
                         <li><a href="/motivos">Cadastrar Motivos</a></li>
                         <li><a href="/ocorrencias">Cadastrar Ocorrencias</a></li>
+                        <li><a href="/veste/crudveste">Cadastrar Vestes</a></li>
+
 
                     </ul>
                 </li>
@@ -85,6 +96,18 @@
                         Atestados Medicos <span class="caret"></span></button>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="/atestadomedicos">Listar</a></li>
+                    </ul>
+                </li>
+
+
+                <li>
+                    <button href="#" class=" btn btn-default" data-toggle="dropdown">
+                        Controle Veste <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/veste/entregarveste">Entregar</a></li>
+                        <li><a href="/veste/devolverveste">Devolver</a></li>
+                        <li><a href="/veste/listarentregarveste">Listar Entregas</a></li>
+                        <li><a href="/veste/listardevolverveste">Listar Devoluções</a></li>
                     </ul>
                 </li>
 
@@ -115,12 +138,12 @@
     </div>
     <div class="container-fluid bg-primary py-3">
         <div class="container" style="margin-top: 22px; margin-bottom: 16px">
-         {{--   <div class="text-center">
-                <label class="text-center"> E-mail: faleconosco@embrater.com</label>
-            </div>
-            <div class="text-center">
-                <label> Contato: (82) 3327-8358 </label>
-            </div>--}}
+            {{--   <div class="text-center">
+                   <label class="text-center"> E-mail: faleconosco@embrater.com</label>
+               </div>
+               <div class="text-center">
+                   <label> Contato: (82) 3327-8358 </label>
+               </div>--}}
             <div class="text-center">
                 <p class="text-center"> Copyright © Embrater 2017. </p>
             </div>
