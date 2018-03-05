@@ -2,6 +2,12 @@
 
 @section('content')
 
+    <style>
+        a{
+            color: #1c94c4;
+        }
+    </style>
+
     <!-- Square card -->
     <style>
         .demo-card-square.mdl-card {
@@ -88,7 +94,8 @@
                                     <li class="mdl-list__item mdl-list__item--two-line">
                                     <span class="mdl-list__item-primary-content">
                                       <i id="fotofuncionario" class="material-icons mdl-list__item-avatar">person</i>
-                                      <span id="nomefuncionario"> {{$aniversariante->nome}}</span>
+                                      <span id="nomefuncionario"> <a
+                                                  href="/funcionarios/{{$aniversariante->id}}">{{$aniversariante->nome}}</a></span>
                                       <span id="idade"
                                             class="mdl-list__item-sub-title">{{$aniversariante->idade}}</span>
                                     </span>
@@ -125,7 +132,8 @@
                                     <li class="mdl-list__item mdl-list__item--two-line">
                                     <span class="mdl-list__item-primary-content">
                                       <i id="fotofuncionario" class="material-icons mdl-list__item-avatar">person</i>
-                                      <span id="nomefuncionario"> {{$afastado->nome}}</span>
+                                      <span id="nomefuncionario"> <a
+                                                  href="/funcionarios/{{$afastado->id}}">{{$afastado->nome}}</a> </span>
                                       <span id="idade"
                                             class="mdl-list__item-sub-title">{{$afastado->status}}</span>
                                     </span>

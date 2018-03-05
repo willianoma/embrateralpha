@@ -52,6 +52,7 @@ class HomeController extends Controller
             $idade = Carbon::parse($func['nascimento'])->age;
             $nascimento = date('d/m/Y', strtotime($func->nascimento));
             array_push($aniversariantes, array(
+                'id' => $func->id,
                 'nome' => $func->nome,
                 'idade' => $idade,
                 'nascimento' => $nascimento
@@ -70,6 +71,7 @@ class HomeController extends Controller
         foreach ($funcionariosinss as $func) {
 
             array_push($afastados, array(
+                'id' => $func->id,
                 'nome' => $func->nome,
                 'status' => $func->status,
             ));
@@ -78,6 +80,7 @@ class HomeController extends Controller
         foreach ($funcionariosferias as $func) {
 
             array_push($afastados, array(
+                'id' => $func->id,
                 'nome' => $func->nome,
                 'status' => $func->status,
             ));

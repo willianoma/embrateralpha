@@ -66,8 +66,24 @@
 
 </head>
 
+<style>
+    .btn-default {
+        color: #FFFFFF;
+        background-color: #3c7ab7;
+        border-color: #FFFFFF;
+        border-radius: 20px;
+        border-width: 1.5px;
+        width: 170px;
+        font-weight: bold;
+        margin-right: 1px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+
+    }
+</style>
+
 <body>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" style="background-color: #337ab7">
     <div class="container">
 
         <div class="navbar-header">
@@ -79,11 +95,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/home">Embrater</a>
+            <a class="navbar-brand" style="color: #FFFFFF; font-weight: bold" href="/home">Embrater</a>
         </div>
 
 
-        <div id="navbar" class="collapse navbar-collapse" style="margin-top: 8px">
+        <div id="navbar" class="collapse navbar-collapse" style="margin-top: 8px;">
             <ul class="nav navbar-nav">
 
 
@@ -116,7 +132,7 @@
 
                 <li>
                     <button href="#" class=" btn btn-default" data-toggle="dropdown">
-                        Atestados Medicos <span class="caret"></span></button>
+                        Atestados <span class="caret"></span></button>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="/atestadomedicos">Listar</a></li>
                     </ul>
@@ -140,6 +156,8 @@
                     <button href="#" class=" btn btn-default" data-toggle="dropdown">
                         Usuário <span class="caret"></span></button>
                     <ul class="dropdown-menu" role="menu">
+                        <li><a>{{ Auth::user()->name }}</a></li>
+                       
                         <li><a href="/auth/logout">Logout</a></li>
                     </ul>
                 </li>
