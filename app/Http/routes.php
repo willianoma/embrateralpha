@@ -18,7 +18,15 @@ Route::group(['prefix' => '', 'middleware' => 'auth'], function () {
 
     Route::get('/home', 'HomeController@index');
 
+    //Veste Routes
+
+    //Ajax
+    //Route::post('veste/assinaturapost', 'VesteController@assinaturapost');
+    Route::post('veste/assinaturapost', 'VesteController@postStoreentregarveste');
+
+    //Implict Controller
     Route::controller('veste', 'VesteController');
+
 
     //RelogioExport
     Route::controller('relogio', 'RelogioPontoController');

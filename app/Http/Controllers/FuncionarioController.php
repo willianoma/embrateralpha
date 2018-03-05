@@ -55,35 +55,35 @@ class FuncionarioController extends Controller
             //Busca Posto
             if ($posto != "vazio" and $nome == "vazio" and $status == "vazio") {
                 //echo 'Busca Posto';
-                $funcionarios = DB::table('funcionarios')->where('posto', $posto)->get();
+                $funcionarios = DB::table('funcionarios')->where('posto', $posto)->orderBy('nome', 'asc')->get();
                 $render = false;
             } else
 
                 //Busca Posto+Nome
                 if ($posto != "vazio" and $nome != "vazio" and $status == "vazio") {
                     //echo 'Busca Posto+Nome';
-                    $funcionarios = DB::table('funcionarios')->where('nome', 'like', "%" . $nome . "%")->where('posto', $posto)->get();
+                    $funcionarios = DB::table('funcionarios')->where('nome', 'like', "%" . $nome . "%")->where('posto', $posto)->orderBy('nome', 'asc')->get();
                     $render = false;
                 } else
 
                     //Busca Posto+Status
                     if ($posto != "vazio" and $nome == "vazio" and $status != "vazio") {
                         //echo 'Busca Posto+Status';
-                        $funcionarios = DB::table('funcionarios')->where('posto', $posto)->where('status', $status)->get();
+                        $funcionarios = DB::table('funcionarios')->where('posto', $posto)->where('status', $status)->orderBy('nome', 'asc')->get();
                         $render = false;
                     } else
 
                         //Busca Por Nome
                         if ($posto == "vazio" and $nome != "vazio" and $status == "vazio") {
                             //echo "Busca Por Nome";
-                            $funcionarios = DB::table('funcionarios')->where('nome', 'like', "%" . $nome . "%")->get();
+                            $funcionarios = DB::table('funcionarios')->where('nome', 'like', "%" . $nome . "%")->orderBy('nome', 'asc')->get();
                             $render = false;
                         } else
 
                             //Busca Por Status
                             if ($posto == "vazio" and $nome == "vazio" and $status != "vazio") {
                                 //echo "Busca Por Status";
-                                $funcionarios = DB::table('funcionarios')->where('status', $status)->get();
+                                $funcionarios = DB::table('funcionarios')->where('status', $status)->orderBy('nome', 'asc')->get();
                                 $render = false;
                             } else
 
@@ -236,7 +236,7 @@ class FuncionarioController extends Controller
     {
 
         $funcionario = Funcionario::findOrFail($id);
-     
+
 
         return view('funcionarios.show', compact('funcionario'));
     }

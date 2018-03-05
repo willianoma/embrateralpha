@@ -51,7 +51,7 @@
     <link rel="stylesheet" href="/componentes/getmdl-select/getmdl-select.min.css">
     <script defer src="/componentes/getmdl-select/getmdl-select.min.js"></script>
 
-    {{--E-Signaturepad--}}
+   {{-- --}}{{--E-Signaturepad--}}{{--
     <link href="/componentes/signature/css/jquery.signaturepad.css" rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="/componentes/signature/js/numeric-1.2.6.min.js"></script>
@@ -60,8 +60,9 @@
     <script type='text/javascript'
             src="https://github.com/niklasvh/html2canvas/releases/download/0.4.1/html2canvas.js"></script>
     <script src="/componentes/signature/js/json2.min.js"></script>
+   --}}{{-- <script type='text/javascript' src="/componentes/signature/html2canvas.js"></script>--}}{{--
     <link href="/componentes/signature/css/app_style.css" rel="stylesheet">
-
+--}}
 
 </head>
 
@@ -121,6 +122,7 @@
                     </ul>
                 </li>
 
+{{--
 
                 <li>
                     <button href="#" class=" btn btn-default" data-toggle="dropdown">
@@ -132,6 +134,7 @@
                         <li><a href="/veste/listardevolverveste">Listar Devoluções</a></li>
                     </ul>
                 </li>
+--}}
 
                 <li>
                     <button href="#" class=" btn btn-default" data-toggle="dropdown">
