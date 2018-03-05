@@ -25,21 +25,21 @@
             font-size: 16px;
         }
 
-        #idade {
+        #nascimento {
             font-size: 14px;
             background-color: #a6e1ec;
             height: 30px;
-            padding-top: 25%;
+            padding-top: 10%;
 
         }
 
         @media only screen and (max-width: 768px) {
             /* For mobile phones: */
-
             .demo-list-two {
                 width: 115%;
             }
-            .mdl-list__item{
+
+            .mdl-list__item {
                 overflow: unset;
             }
 
@@ -48,20 +48,21 @@
 
             }
 
-            #idade {
+            #nascimento {
                 font-size: 10px;
                 background-color: #a6e1ec;
                 height: 25px;
-                padding-top: 30%;
+                padding-top: 10%;
 
             }
-            #nascimentofuncionario{
+
+            #nascimento {
                 font-size: 10px;
 
-
             }
-            #fotofuncionario{
-               display: none;
+
+            #fotofuncionario {
+                display: none;
             }
         }
 
@@ -73,7 +74,7 @@
 
             <div class="col-md-12">
 
-                <div class="col-md-6">
+                <div class="col-md-7">
 
                     <div class="demo-card-square mdl-card mdl-shadow--2dp">
                         <div class="mdl-card__title mdl-card--expand">
@@ -85,14 +86,15 @@
 
                                 <ul class="demo-list-two mdl-list">
                                     <li class="mdl-list__item mdl-list__item--two-line">
-                                    <span  class="mdl-list__item-primary-content">
+                                    <span class="mdl-list__item-primary-content">
                                       <i id="fotofuncionario" class="material-icons mdl-list__item-avatar">person</i>
                                       <span id="nomefuncionario"> {{$aniversariante->nome}}</span>
-                                      <span id="nascimentofuncionario" class="mdl-list__item-sub-title">{{$aniversariante->nascimento}}</span>
+                                      <span id="idade"
+                                            class="mdl-list__item-sub-title">{{$aniversariante->idade}}</span>
                                     </span>
                                         <span class="mdl-list__item-secondary-content">
-                                      <span id='idade'
-                                            class="badge mdl-list__item-secondary-info">{{$aniversariante->idade}}</span>
+                                      <span id='nascimento'
+                                            class="badge mdl-list__item-secondary-info">{{$aniversariante->nascimento}}</span>
                                     </span>
                                     </li>
                                 </ul>
@@ -102,13 +104,13 @@
                         </div>
                         <div class="mdl-card__actions mdl-card--border">
                             <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                                View Updates
+                                Imprimir (Em breve)
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-5">
 
 
                     <div class="demo-card-square mdl-card mdl-shadow--2dp">
@@ -117,19 +119,26 @@
                         </div>
                         <div class="mdl-card__supporting-text">
 
-                            <div>
-                                <div>
-                                    <b>02</b>
-                                </div>
-                                <div>
-                                    Antonio Domingos Correia Filho
-                                </div>
-                            </div>
+                            @foreach($afastados as $afastado)
 
+                                <ul class="demo-list-two mdl-list">
+                                    <li class="mdl-list__item mdl-list__item--two-line">
+                                    <span class="mdl-list__item-primary-content">
+                                      <i id="fotofuncionario" class="material-icons mdl-list__item-avatar">person</i>
+                                      <span id="nomefuncionario"> {{$afastado->nome}}</span>
+                                      <span id="idade"
+                                            class="mdl-list__item-sub-title">{{$afastado->status}}</span>
+                                    </span>
+                                        <span class="mdl-list__item-secondary-content">
+
+                                    </li>
+                                </ul>
+
+                            @endforeach
                         </div>
                         <div class="mdl-card__actions mdl-card--border">
                             <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                                View Updates
+                                Imprimir (Em breve)
                             </a>
                         </div>
                     </div>

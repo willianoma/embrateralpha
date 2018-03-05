@@ -35,14 +35,9 @@ class HomeController extends Controller
     public function index()
     {
         $aniversariantes = json_decode($this->getAniversariantes());
+        $afastados = json_decode($this->getAfastados());
 
-        /*       foreach ($aniversariantes as $ob) {
-                   echo $ob->nome;
-               }
-
-
-               die();*/
-        return view('home', compact('aniversariantes'));
+        return view('home', compact('aniversariantes', 'afastados'));
     }
 
     public function getAniversariantes()
@@ -64,6 +59,32 @@ class HomeController extends Controller
         }
 
         return json_encode($aniversariantes);
+    }
+
+    public function getAfastados()
+    {
+        $afastados = array();
+        $funcionariosinss = Funcionario::where('status', '=', 'INSS')->orderBy('nome', 'asc')->get();
+        $funcionariosferias = Funcionario::where('status', '=', 'Férias')->orderBy('nome', 'asc')->get();
+
+        foreach ($funcionariosinss as $func) {
+
+            array_push($afastados, array(
+                'nome' => $func->nome,
+                'status' => $func->status,
+            ));
+        }
+
+        foreach ($funcionariosferias as $func) {
+
+            array_push($afastados, array(
+                'nome' => $func->nome,
+                'status' => $func->status,
+            ));
+        }
+
+        return json_encode($afastados);
+
     }
 
 }
