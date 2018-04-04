@@ -47,6 +47,7 @@ return [
     'aso' => 'ASO',
     'ref' => 'Referência',
     'completed_by' => 'Atualizada Por:',
-    'obs' => 'Observações'
+    'obs' => 'Observações',
+    'sexo'=> 'Sexo'
 
 ];

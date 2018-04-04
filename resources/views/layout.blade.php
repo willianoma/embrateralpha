@@ -157,7 +157,7 @@
                         Usuário <span class="caret"></span></button>
                     <ul class="dropdown-menu" role="menu">
                         <li><a>{{ Auth::user()->name }}</a></li>
-                       
+
                         <li><a href="/auth/logout">Logout</a></li>
                     </ul>
                 </li>
