@@ -3,36 +3,30 @@
 use App\Funcionario;
 use Carbon\Carbon;
 use Charts;
+use DB;
 
 class HomeController extends Controller
 {
 
-    /*
-    |--------------------------------------------------------------------------
-    | Home Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller renders your application's "dashboard" for users that
-    | are authenticated. Of course, you are free to change or remove the
-    | controller as you wish. It is just here to get your app started!
-    |
-    */
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         //$this->middleware('auth');
+
+        $uncisal = 'uncisal';
+
     }
 
-    /**
-     * Show the application dashboard to the user.
-     *
-     * @return Response
-     */
+
+    /*
+    portugal = 48
+    santa monica = 52
+    hdt = 46
+    unsical = 4+4+1+1+18+9  = 37
+    etsal = 8
+    total 189
+
+    */
 
 
     public function index()
@@ -40,18 +34,18 @@ class HomeController extends Controller
         $aniversariantes = json_decode($this->getAniversariantes());
         $afastados = json_decode($this->getAfastados());
 
-        $uncisalChart = $this->createChart('Uncisal', '#00BFFF', 60, 50);
-        $hdtChart = $this->createChart('Hdt', '#008B8B', 50, 50);
-        $santaMonicaChart = $this->createChart('San. Mônica', '#40E0D0', 50, 80);
-        $portugalRamalhoChart = $this->createChart('Por. Ramalho', '#FA8072', 40, 50);
-        $etsalChart = $this->createChart('ETSAL', '#DAA520', 30, 50);
-        $reservaChart = $this->createChart('Reserva Tec.', '#808080', 8, 10);
+        $uncisalChart = $this->createChart('Uncisal', '#00BFFF', $this->getQtdFuncionariosAtivos('uncisal'), $this->getQtdFuncionarios('uncisal'));
+        $hdtChart = $this->createChart('H.E.H.A', '#008B8B', $this->getQtdFuncionariosAtivos('Hospital Escola Dr. Helvio Auto'), $this->getQtdFuncionarios('Hospital Escola Dr. Helvio Auto'));
+        $santaMonicaChart = $this->createChart('San. Mônica', '#40E0D0', $this->getQtdFuncionariosAtivos('Santa Monica'), $this->getQtdFuncionarios('Santa Monica'));
+        $portugalRamalhoChart = $this->createChart('H.E.P.R', '#FA8072', $this->getQtdFuncionariosAtivos('Portugal Ramalho'), $this->getQtdFuncionarios('Portugal Ramalho'));
+        $etsalChart = $this->createChart('ETSAL', '#DAA520', $this->getQtdFuncionariosAtivos('Etsal'), $this->getQtdFuncionarios('Etsal'));
+        $reservaChart = $this->createChart('Reserva Tec.', '#808080', $this->getQtdFuncionariosAtivos('Reserva'), $this->getQtdFuncionarios('Reserva'));
 
         $geralChart = Charts::create('pie', 'chartjs')
             ->setColors(['#00BFFF', '#008B8B', '#40E0D0', '#FA8072', '#DAA520'])
             ->setTitle('Alocação Por Unidades')
-            ->setlabels(['UNCISAL', 'HDT', 'SAN. MONICA', 'POR. RAMALHO', 'ETSAL'])
-            ->setValues([60, 10, 10, 10, 10])
+            ->setlabels(['UNCISAL', 'H.E.H.A', 'SAN. MONICA', 'H.E.P.R', 'ETSAL', 'AUSENTES'])
+            ->setValues([$this->getQtdFuncionariosAtivos('uncisal'), $this->getQtdFuncionariosAtivos('Hospital Escola Dr. Helvio Auto'), $this->getQtdFuncionariosAtivos('Santa Monica'), $this->getQtdFuncionariosAtivos('Portugal Ramalho'), $this->getQtdFuncionariosAtivos('Reserva'), $this->getFuncionariosAusentes()])
             ->setResponsive(false)
             ->setHeight(400)
             ->setWidth(0);
@@ -145,4 +139,34 @@ class HomeController extends Controller
             ->setWidth(0);
         return $chart;
     }
+
+    public function getQtdFuncionarios($posto)
+    {
+        $results = DB::select("select qtdfunc from postos where nome = '$posto' ");
+        return $results[0]->qtdfunc;
+    }
+
+    public function getQtdFuncionariosAtivos($posto)
+    {
+        $qtdFuncPosto = Funcionario::where('posto', '=', $posto)->where('status', '=', 'Ativo')->count();
+        return $qtdFuncPosto;
+    }
+
+    public function getFuncionariosAusentes()
+    {
+        $ausentes = Funcionario::where('Status', '<>', 'Ativo')->where('Status', '<>', 'Inativo')->count();
+        return $ausentes;
+    }
+
+    public function getSumario()
+    {
+        $Cadastrados = '';
+        $Ativos = '';
+        $Inativos = '';
+        $Ferias = '';
+        $INSS = '';
+        $Maternidade = '';
+
+    }
+
 }
