@@ -2,7 +2,6 @@
 
 use App\Funcionario;
 use Carbon\Carbon;
-use Khill\Lavacharts\Lavacharts;
 use Charts;
 
 class HomeController extends Controller

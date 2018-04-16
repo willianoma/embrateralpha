@@ -6,105 +6,108 @@ use App\Http\Controllers\Controller;
 use App\Posto;
 use Illuminate\Http\Request;
 
-class PostoController extends Controller {
+class PostoController extends Controller
+{
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		$postos = Posto::orderBy('id', 'desc')->paginate(10);
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        $postos = Posto::orderBy('id', 'desc')->paginate(10);
 
-		return view('postos.index', compact('postos'));
-	}
+        return view('postos.index', compact('postos'));
+    }
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		return view('postos.create');
-	}
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return view('postos.create');
+    }
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param Request $request
-	 * @return Response
-	 */
-	public function store(Request $request)
-	{
-		$posto = new Posto();
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function store(Request $request)
+    {
+        $posto = new Posto();
 
-		$posto->nome = $request->input("nome");
+        $posto->nome = $request->input("nome");
         $posto->endereco = $request->input("endereco");
+        $posto->qtdfunc = $request->input("qtdfunc");
 
-		$posto->save();
+        $posto->save();
 
-		return redirect()->route('postos.index')->with('message', 'Item created successfully.');
-	}
+        return redirect()->route('postos.index')->with('message', 'Item created successfully.');
+    }
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		$posto = Posto::findOrFail($id);
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function show($id)
+    {
+        $posto = Posto::findOrFail($id);
 
-		return view('postos.show', compact('posto'));
-	}
+        return view('postos.show', compact('posto'));
+    }
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		$posto = Posto::findOrFail($id);
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        $posto = Posto::findOrFail($id);
 
-		return view('postos.edit', compact('posto'));
-	}
+        return view('postos.edit', compact('posto'));
+    }
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @param Request $request
-	 * @return Response
-	 */
-	public function update(Request $request, $id)
-	{
-		$posto = Posto::findOrFail($id);
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int $id
+     * @param Request $request
+     * @return Response
+     */
+    public function update(Request $request, $id)
+    {
+        $posto = Posto::findOrFail($id);
 
-		$posto->nome = $request->input("nome");
+        $posto->nome = $request->input("nome");
         $posto->endereco = $request->input("endereco");
+        $posto->qtdfunc = $request->input("qtdfunc");
 
-		$posto->save();
+        $posto->save();
 
-		return redirect()->route('postos.index')->with('message', 'Item updated successfully.');
-	}
+        return redirect()->route('postos.index')->with('message', 'Item updated successfully.');
+    }
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		$posto = Posto::findOrFail($id);
-		$posto->delete();
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        $posto = Posto::findOrFail($id);
+        $posto->delete();
 
-		return redirect()->route('postos.index')->with('message', 'Item deleted successfully.');
-	}
+        return redirect()->route('postos.index')->with('message', 'Item deleted successfully.');
+    }
 
 }
