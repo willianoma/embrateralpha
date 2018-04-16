@@ -2,6 +2,8 @@
 
 use App\Funcionario;
 use Carbon\Carbon;
+use Khill\Lavacharts\Lavacharts;
+use Charts;
 
 class HomeController extends Controller
 {
@@ -37,7 +39,24 @@ class HomeController extends Controller
         $aniversariantes = json_decode($this->getAniversariantes());
         $afastados = json_decode($this->getAfastados());
 
-        return view('home', compact('aniversariantes', 'afastados'));
+        $uncisalChart = Charts::create('donut', 'morris')
+            ->setTitle('Uncisal')
+            ->setlabels(['Ativos', 'Inativos'])
+            ->setValues([80, 20])
+            ->setResponsive(false)
+            ->setHeight(160)
+            ->setWidth(0);
+
+
+        $hdtChart = Charts::create('donut', 'morris')
+            ->setTitle('HDT')
+            ->setlabels(['Ativos', 'Inativos'])
+            ->setValues([80, 20])
+            ->setResponsive(false)
+            ->setHeight(160)
+            ->setWidth(0);
+
+        return view('home', compact('aniversariantes', 'afastados', 'uncisalChart', 'hdtChart'));
     }
 
     public function getAniversariantes()
