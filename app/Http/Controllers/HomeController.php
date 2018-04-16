@@ -34,65 +34,19 @@ class HomeController extends Controller
      *
      * @return Response
      */
+
+
     public function index()
     {
         $aniversariantes = json_decode($this->getAniversariantes());
         $afastados = json_decode($this->getAfastados());
 
-        $uncisalChart = Charts::create('donut', 'morris')
-            ->setColors(['#00BFFF', '#A9A9A9'])
-            ->setTitle('Uncisal')
-            ->setlabels(['Ativos', 'Inativos'])
-            ->setValues([80, 20])
-            ->setResponsive(false)
-            ->setHeight(160)
-            ->setWidth(0);
-
-
-        $hdtChart = Charts::create('donut', 'morris')
-            ->setColors(['#008B8B', '#A9A9A9'])
-            ->setTitle('HDT')
-            ->setlabels(['Ativos', 'Inativos'])
-            ->setValues([80, 20])
-            ->setResponsive(false)
-            ->setHeight(160)
-            ->setWidth(0);
-
-        $santaMonicaChart = Charts::create('donut', 'morris')
-            ->setColors(['#40E0D0', '#A9A9A9'])
-            ->setTitle('Santa Monica')
-            ->setlabels(['Ativos', 'Inativos'])
-            ->setValues([80, 20])
-            ->setResponsive(false)
-            ->setHeight(160)
-            ->setWidth(0);
-
-        $portugalRamalhoChart = Charts::create('donut', 'morris')
-            ->setColors(['#FA8072', '#A9A9A9'])
-            ->setTitle('Por. Ramalho')
-            ->setlabels(['Ativos', 'Inativos'])
-            ->setValues([80, 20])
-            ->setResponsive(false)
-            ->setHeight(160)
-            ->setWidth(0);
-
-        $etsalChart = Charts::create('donut', 'morris')
-            ->setColors(['#DAA520', '#A9A9A9'])
-            ->setTitle('Etsal')
-            ->setlabels(['Ativos', 'Inativos'])
-            ->setValues([80, 20])
-            ->setResponsive(false)
-            ->setHeight(160)
-            ->setWidth(0);
-
-        $reservaChart = Charts::create('donut', 'morris')
-            ->setColors(['#808080', '#A9A9A9'])
-            ->setTitle('Reserva')
-            ->setlabels(['Ativos', 'Inativos'])
-            ->setValues([80, 20])
-            ->setResponsive(false)
-            ->setHeight(160)
-            ->setWidth(0);
+        $uncisalChart = $this->createChart('Uncisal', '#00BFFF', 60, 50);
+        $hdtChart = $this->createChart('Hdt', '#008B8B', 50, 50);
+        $santaMonicaChart = $this->createChart('San. Mônica', '#40E0D0', 50, 80);
+        $portugalRamalhoChart = $this->createChart('Por. Ramalho', '#FA8072', 40, 50);
+        $etsalChart = $this->createChart('ETSAL', '#DAA520', 30, 50);
+        $reservaChart = $this->createChart('Reserva Tec.', '#808080', 8, 10);
 
         $geralChart = Charts::create('pie', 'chartjs')
             ->setColors(['#00BFFF', '#008B8B', '#40E0D0', '#FA8072', '#DAA520'])
@@ -107,7 +61,8 @@ class HomeController extends Controller
         return view('home', compact('aniversariantes', 'afastados', 'uncisalChart', 'hdtChart', 'santaMonicaChart', 'portugalRamalhoChart', 'etsalChart', 'reservaChart', 'geralChart'));
     }
 
-    public function getAniversariantes()
+    public
+    function getAniversariantes()
     {
 
         $aniversariantes = array();
@@ -129,7 +84,8 @@ class HomeController extends Controller
         return json_encode($aniversariantes);
     }
 
-    public function getAfastados()
+    public
+    function getAfastados()
     {
         $afastados = array();
         $funcionariosinss = Funcionario::where('status', '=', 'INSS')->orderBy('nome', 'asc')->get();
@@ -157,4 +113,37 @@ class HomeController extends Controller
 
     }
 
+
+    public function isPositivo($numero)
+    {
+        if ($numero < 0) {
+            return false;
+        } else return true;
+    }
+
+    public function createChart($titulo, $corUnidade, $qtdFuncAtivos, $qtdFuncContrato)
+    {
+        $diferenca = $qtdFuncContrato - $qtdFuncAtivos;
+
+        if ($this->isPositivo($diferenca)) {
+            $label = 'Vago';
+            $cor = '#32CD32';
+            $diferenca;
+        } else {
+            $label = 'Sobressalente';
+            $cor = '#B22222';
+            $diferenca = abs($diferenca);
+        }
+
+
+        $chart = Charts::create('donut', 'morris')
+            ->setColors([$corUnidade, $cor])
+            ->setTitle($titulo)
+            ->setlabels(['Ativos', $label])
+            ->setValues([$qtdFuncAtivos, $diferenca])
+            ->setResponsive(false)
+            ->setHeight(160)
+            ->setWidth(0);
+        return $chart;
+    }
 }
