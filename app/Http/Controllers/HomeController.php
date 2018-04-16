@@ -31,6 +31,8 @@ class HomeController extends Controller
 
     public function index()
     {
+
+        $sumario = $this->getSumario();
         $aniversariantes = json_decode($this->getAniversariantes());
         $afastados = json_decode($this->getAfastados());
 
@@ -51,7 +53,7 @@ class HomeController extends Controller
             ->setWidth(0);
 
 
-        return view('home', compact('aniversariantes', 'afastados', 'uncisalChart', 'hdtChart', 'santaMonicaChart', 'portugalRamalhoChart', 'etsalChart', 'reservaChart', 'geralChart'));
+        return view('home', compact('aniversariantes', 'afastados', 'uncisalChart', 'hdtChart', 'santaMonicaChart', 'portugalRamalhoChart', 'etsalChart', 'reservaChart', 'geralChart', 'sumario'));
     }
 
     public
@@ -160,12 +162,24 @@ class HomeController extends Controller
 
     public function getSumario()
     {
-        $Cadastrados = '';
-        $Ativos = '';
-        $Inativos = '';
-        $Ferias = '';
-        $INSS = '';
-        $Maternidade = '';
+        $Cadastrados = Funcionario::all()->count();
+        $Ativos = Funcionario::where('Status', '=', 'Ativo')->count();
+        $Inativos = Funcionario::where('Status', '=', 'Inativo')->count();
+        $Ferias = Funcionario::where('Status', '=', 'Férias')->count();
+        $INSS = Funcionario::where('Status', '=', 'INSS')->count();
+        $Maternidade = Funcionario::where('Status', '=', 'Maternidade')->count();
+
+
+        $sumario = array(
+            'Cadastrados' => $Cadastrados,
+            'Ativos' => $Ativos,
+            'Inativos' => $Inativos,
+            'Ferias' => $Ferias,
+            'Inss' => $INSS,
+            'Maternidade' => $Maternidade
+        );
+
+        return $sumario;
 
     }
 

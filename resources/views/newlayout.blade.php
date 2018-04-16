@@ -175,23 +175,27 @@
                         <ul>
                             <li>
                                 <span class="mdl-checkbox__label">Cadastrados:</span>
-                                <span class="mdl-checkbox__label">220</span>
+                                <span class="mdl-checkbox__label">{{$sumario['Cadastrados']}}</span>
                             </li>
                             <li>
                                 <span class="mdl-checkbox__label">Ativos:</span>
-                                <span class="mdl-checkbox__label">200</span>
+                                <span class="mdl-checkbox__label">{{$sumario['Ativos']}}</span>
+                            </li>
+                            <li>
+                                <span class="mdl-checkbox__label">Inativos:</span>
+                                <span class="mdl-checkbox__label">{{$sumario['Inativos']}}</span>
                             </li>
                             <li>
                                 <span class="mdl-checkbox__label">Ferias:</span>
-                                <span class="mdl-checkbox__label">4</span>
+                                <span class="mdl-checkbox__label">{{$sumario['Ferias']}}</span>
                             </li>
                             <li>
                                 <span class="mdl-checkbox__label">INSS:</span>
-                                <span class="mdl-checkbox__label">8</span>
+                                <span class="mdl-checkbox__label">{{$sumario['Inss']}}</span>
                             </li>
                             <li>
                                 <span class="mdl-checkbox__label">Maternidade:</span>
-                                <span class="mdl-checkbox__label">6</span>
+                                <span class="mdl-checkbox__label">{{$sumario['Maternidade']}}</span>
                             </li>
                         </ul>
                     </div>
