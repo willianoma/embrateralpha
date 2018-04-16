@@ -40,6 +40,7 @@ class HomeController extends Controller
         $afastados = json_decode($this->getAfastados());
 
         $uncisalChart = Charts::create('donut', 'morris')
+            ->setColors(['#00BFFF', '#A9A9A9'])
             ->setTitle('Uncisal')
             ->setlabels(['Ativos', 'Inativos'])
             ->setValues([80, 20])
@@ -49,6 +50,7 @@ class HomeController extends Controller
 
 
         $hdtChart = Charts::create('donut', 'morris')
+            ->setColors(['#008B8B', '#A9A9A9'])
             ->setTitle('HDT')
             ->setlabels(['Ativos', 'Inativos'])
             ->setValues([80, 20])
@@ -56,7 +58,53 @@ class HomeController extends Controller
             ->setHeight(160)
             ->setWidth(0);
 
-        return view('home', compact('aniversariantes', 'afastados', 'uncisalChart', 'hdtChart'));
+        $santaMonicaChart = Charts::create('donut', 'morris')
+            ->setColors(['#40E0D0', '#A9A9A9'])
+            ->setTitle('Santa Monica')
+            ->setlabels(['Ativos', 'Inativos'])
+            ->setValues([80, 20])
+            ->setResponsive(false)
+            ->setHeight(160)
+            ->setWidth(0);
+
+        $portugalRamalhoChart = Charts::create('donut', 'morris')
+            ->setColors(['#FA8072', '#A9A9A9'])
+            ->setTitle('Por. Ramalho')
+            ->setlabels(['Ativos', 'Inativos'])
+            ->setValues([80, 20])
+            ->setResponsive(false)
+            ->setHeight(160)
+            ->setWidth(0);
+
+        $etsalChart = Charts::create('donut', 'morris')
+            ->setColors(['#DAA520', '#A9A9A9'])
+            ->setTitle('Etsal')
+            ->setlabels(['Ativos', 'Inativos'])
+            ->setValues([80, 20])
+            ->setResponsive(false)
+            ->setHeight(160)
+            ->setWidth(0);
+
+        $reservaChart = Charts::create('donut', 'morris')
+            ->setColors(['#808080', '#A9A9A9'])
+            ->setTitle('Reserva')
+            ->setlabels(['Ativos', 'Inativos'])
+            ->setValues([80, 20])
+            ->setResponsive(false)
+            ->setHeight(160)
+            ->setWidth(0);
+
+        $geralChart = Charts::create('pie', 'chartjs')
+            ->setColors(['#00BFFF', '#008B8B', '#40E0D0', '#FA8072', '#DAA520'])
+            ->setTitle('Alocação Por Unidades')
+            ->setlabels(['UNCISAL', 'HDT', 'SAN. MONICA', 'POR. RAMALHO', 'ETSAL'])
+            ->setValues([60, 10, 10, 10, 10])
+            ->setResponsive(false)
+            ->setHeight(400)
+            ->setWidth(0);
+
+
+        return view('home', compact('aniversariantes', 'afastados', 'uncisalChart', 'hdtChart', 'santaMonicaChart', 'portugalRamalhoChart', 'etsalChart', 'reservaChart', 'geralChart'));
     }
 
     public function getAniversariantes()

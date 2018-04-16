@@ -131,103 +131,26 @@
         <div class="mdl-grid demo-content">
             <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
 
+                {{-- Inicio Charts--}}
+
                 {!! Charts::assets() !!}
+                <div class="mdl-cell mdl-cell--2-col">{!! $uncisalChart->render() !!}</div>
+                <div class="mdl-cell mdl-cell--2-col">{!! $hdtChart->render() !!}</div>
+                <div class="mdl-cell mdl-cell--2-col">{!! $santaMonicaChart->render() !!}</div>
+                <div class="mdl-cell mdl-cell--2-col">{!! $portugalRamalhoChart->render() !!}</div>
+                <div class="mdl-cell mdl-cell--2-col">{!! $etsalChart->render() !!}</div>
+                <div class="mdl-cell mdl-cell--2-col">{!! $reservaChart->render() !!}</div>
 
-                <div style="height: 250px; width: 150px">
-                    {!! $uncisalChart->render() !!}
-                </div>
-                <div style="height: 250px; width: 150px">
-
-                    {!! $hdtChart->render() !!}
-                </div>
-                {{--
-                                <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1"
-                                     class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--2-col-desktop">
-                                    <use xlink:href="#piechart" mask="url(#piemask)"/>
-                                    <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle"
-                                          dy="0.1">82
-                                        <tspan font-size="0.2" dy="-0.07">%</tspan>
-                                    </text>
-
-                                    <text x="0.5" y="1.0" font-family="Roboto" font-size="0.1" fill="#888" text-anchor="middle"
-                                          dy="0.1">UNCISAL
-                                    </text>
-
-                                </svg>
-                                <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1"
-                                     class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--2-col-desktop">
-                                    <use xlink:href="#piechart" mask="url(#piemask)"/>
-                                    <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle"
-                                          dy="0.1">82
-                                        <tspan dy="-0.07" font-size="0.2">%</tspan>
-                                    </text>
-
-                                    <text x="0.5" y="1.0" font-family="Roboto" font-size="0.1" fill="#888" text-anchor="middle"
-                                          dy="0.1">H.E.H.A
-                                    </text>
-
-                                </svg>
-                                <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1"
-                                     class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--2-col-desktop">
-                                    <use xlink:href="#piechart" mask="url(#piemask)"/>
-                                    <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle"
-                                          dy="0.1">82
-                                        <tspan dy="-0.07" font-size="0.2">%</tspan>
-                                    </text>
-
-                                    <text x="0.5" y="1.0" font-family="Roboto" font-size="0.1" fill="#888" text-anchor="middle"
-                                          dy="0.1">Portual Ramalho
-                                    </text>
-                                </svg>
-                                <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1"
-                                     class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--2-col-desktop">
-                                    <use xlink:href="#piechart" mask="url(#piemask)"/>
-                                    <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle"
-                                          dy="0.1">82
-                                        <tspan dy="-0.07" font-size="0.2">%</tspan>
-                                    </text>
-
-                                    <text x="0.5" y="1.0" font-family="Roboto" font-size="0.1" fill="#888" text-anchor="middle"
-                                          dy="0.1">Santa Monica
-                                    </text>
-                                </svg>
-                                <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1"
-                                     class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--2-col-desktop">
-                                    <use xlink:href="#piechart" mask="url(#piemask)"/>
-                                    <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle"
-                                          dy="0.1">82
-                                        <tspan dy="-0.07" font-size="0.2">%</tspan>
-                                    </text>
-
-                                    <text x="0.5" y="1.0" font-family="Roboto" font-size="0.1" fill="#888" text-anchor="middle"
-                                          dy="0.1">ETSAL
-                                    </text>
-                                </svg>
-                                <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1"
-                                     class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--2-col-desktop">
-                                    <use xlink:href="#piechart" mask="url(#piemask)"/>
-                                    <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle"
-                                          dy="0.1">82
-                                        <tspan dy="-0.07" font-size="0.2">%</tspan>
-                                    </text>
-
-                                    <text x="0.5" y="1.0" font-family="Roboto" font-size="0.1" fill="#888" text-anchor="middle"
-                                          dy="0.1">Reservas
-                                    </text>
-                                </svg>
-
-
-                                --}}
+                {{-- FIM Charts--}}
 
             </div>
+
             <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
-
-
                 <div>
+                    <div class="mdl-cell mdl-cell--12-col">{!! $geralChart->render() !!}</div>
 
 
                 </div>
-
 
             </div>
             <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
@@ -283,7 +206,95 @@
         </div>
     </main>
 </div>
-{{--Inicio Circulo--}}
+
+
+<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+</body>
+</html>
+
+{{--@yield('content')--}}
+
+
+{{-- INICIO Graficos do layout MDL
+
+
+                               <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1"
+                                    class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--2-col-desktop">
+                                   <use xlink:href="#piechart" mask="url(#piemask)"/>
+                                   <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle"
+                                         dy="0.1">82
+                                       <tspan font-size="0.2" dy="-0.07">%</tspan>
+                                   </text>
+
+                                   <text x="0.5" y="1.0" font-family="Roboto" font-size="0.1" fill="#888" text-anchor="middle"
+                                         dy="0.1">UNCISAL
+                                   </text>
+
+                               </svg>
+                               <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1"
+                                    class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--2-col-desktop">
+                                   <use xlink:href="#piechart" mask="url(#piemask)"/>
+                                   <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle"
+                                         dy="0.1">82
+                                       <tspan dy="-0.07" font-size="0.2">%</tspan>
+                                   </text>
+
+                                   <text x="0.5" y="1.0" font-family="Roboto" font-size="0.1" fill="#888" text-anchor="middle"
+                                         dy="0.1">H.E.H.A
+                                   </text>
+
+                               </svg>
+                               <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1"
+                                    class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--2-col-desktop">
+                                   <use xlink:href="#piechart" mask="url(#piemask)"/>
+                                   <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle"
+                                         dy="0.1">82
+                                       <tspan dy="-0.07" font-size="0.2">%</tspan>
+                                   </text>
+
+                                   <text x="0.5" y="1.0" font-family="Roboto" font-size="0.1" fill="#888" text-anchor="middle"
+                                         dy="0.1">Portual Ramalho
+                                   </text>
+                               </svg>
+                               <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1"
+                                    class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--2-col-desktop">
+                                   <use xlink:href="#piechart" mask="url(#piemask)"/>
+                                   <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle"
+                                         dy="0.1">82
+                                       <tspan dy="-0.07" font-size="0.2">%</tspan>
+                                   </text>
+
+                                   <text x="0.5" y="1.0" font-family="Roboto" font-size="0.1" fill="#888" text-anchor="middle"
+                                         dy="0.1">Santa Monica
+                                   </text>
+                               </svg>
+                               <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1"
+                                    class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--2-col-desktop">
+                                   <use xlink:href="#piechart" mask="url(#piemask)"/>
+                                   <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle"
+                                         dy="0.1">82
+                                       <tspan dy="-0.07" font-size="0.2">%</tspan>
+                                   </text>
+
+                                   <text x="0.5" y="1.0" font-family="Roboto" font-size="0.1" fill="#888" text-anchor="middle"
+                                         dy="0.1">ETSAL
+                                   </text>
+                               </svg>
+                               <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1"
+                                    class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--2-col-desktop">
+                                   <use xlink:href="#piechart" mask="url(#piemask)"/>
+                                   <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle"
+                                         dy="0.1">82
+                                       <tspan dy="-0.07" font-size="0.2">%</tspan>
+                                   </text>
+
+                                   <text x="0.5" y="1.0" font-family="Roboto" font-size="0.1" fill="#888" text-anchor="middle"
+                                         dy="0.1">Reservas
+                                   </text>
+                               </svg>
+
+
+Inicio Circulo
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
      style="position: fixed; left: -1000px; height: -1000px;">
     <defs>
@@ -297,10 +308,6 @@
         </g>
     </defs>
 </svg>
-{{--FIM Inicio Circulo--}}
+FIM Inicio Circulo
 
-<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-</body>
-</html>
-
-{{--@yield('content')--}}
+FIM Graficos do layout MDL--}}
