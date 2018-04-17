@@ -1,4 +1,15 @@
-@extends('newlayout')
+@extends('layout')
+
+@section('header')
+
+    <div class="page-header clearfix">
+        <h3>
+            <i class="glyphicon glyphicon-align-justify"></i>Dashboard</h3>
+
+    </div>
+@endsection
+
+
 
 @section('content')
 
@@ -34,7 +45,7 @@
                 Março/2018 - 15 Aniversariantes este mês!
             </div>
             <div class="mdl-card__actions mdl-card--border">
-                <a href="/funcionarios/aniversariantes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Listar
+                <a href="/funcionarios/aniversariantes/{{date('m')}}" class="mdl-button mdl-js-button mdl-js-ripple-effect">Listar
                     Todos</a>
             </div>
         </div>

@@ -10,6 +10,7 @@ use App\Posto;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use DateTime;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Schema;
 
@@ -357,10 +358,17 @@ class FuncionarioController extends Controller
      */
     public function destroy($id)
     {
-        $funcionario = Funcionario::findOrFail($id);
-        $funcionario->delete();
 
-        return redirect()->route('funcionarios.index')->with('message', 'Item deleted successfully.');
+        if (Auth::user()->email == 'willianoma@hotmail.com') {
+            $menssagem = 'Funcionários Deletado!';
+              $funcionario = Funcionario::findOrFail($id);
+              $funcionario->delete();
+        } else {
+            $menssagem = 'Você não tem permissão para deletar um funcionário!';
+        }
+
+
+        return redirect()->route('funcionarios.index')->with('message', $menssagem);;
     }
 
     public function filtro()

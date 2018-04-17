@@ -1,73 +1,88 @@
 @extends('layout')
 
+
+
+
 @section('header')
     <div class="page-header clearfix">
-        <h1>
+        <h3>
             <i class="glyphicon glyphicon-align-justify"></i> {{trans('crud/funcionarios.title')}}
-            <a class="btn btn-success pull-right" href="{{ route('funcionarios.create') }}"><i
+            <a class="btn btn-success " href="{{ route('funcionarios.create') }}"><i
                         class="glyphicon glyphicon-plus"></i> {{trans('crud/crud.create')}}</a>
-        </h1>
+        </h3>
 
     </div>
 
 @endsection
 
+@if (session('message'))
+    <div class="alert alert-warning">
+        {{ session('message') }}
+    </div>
+@endif
+
 @section('content')
 
-    <div class="row">
+    <div class="container-fluid float-sm-left">
         {{--  Buscar Por Posto--}}
+
         <form action="" method="GET" autocomplete="on">
 
-            <div class="col-md-4">
-                <input type="text" placeholder="Busca Por Nome" name="buscanome" id="buscanome" value=""
-                       class="form-control">
+            <div class="row">
+
+
+                <div class="col-4">
+                    <input type="text" placeholder="Busca Por Nome" name="buscanome" id="buscanome" value=""
+                           class="form-control">
+                </div>
+
+                <div class="col-3">
+                    <select name="postoselecionado" class="form-control">
+                        <option selected value="vazio">Selecionar Posto</option>
+                        @foreach($postos as $posto)
+                            <option>{{$posto->nome}}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+
+                <div class="col-3">
+                    <select name="status" class="form-control">
+                        <option selected value="vazio">Selecionar Status</option>
+                        <option>Ativo</option>
+                        <option>Inativo</option>
+                        <option>INSS</option>
+                        <option>Férias</option>
+                    </select>
+                </div>
+
+
+                <div class="col-2">
+                    <input type="submit" value="Buscar" class="form-control btn-default">
+                </div>
+
             </div>
-
-            <div class="col-md-3">
-                <select name="postoselecionado" class="form-control">
-                    <option selected value="vazio">Selecionar Posto</option>
-                    @foreach($postos as $posto)
-                        <option>{{$posto->nome}}</option>
-                    @endforeach
-                </select>
-            </div>
-
-
-            <div class="col-md-3">
-                <select name="status" class="form-control">
-                    <option selected value="vazio">Selecionar Status</option>
-                    <option>Ativo</option>
-                    <option>Inativo</option>
-                    <option>INSS</option>
-                    <option>Férias</option>
-                </select>
-            </div>
-
-
-            <div class="col-md-2">
-                <input type="submit" value="Buscar" class="form-control btn-default">
-            </div>
-
         </form>
+
 
         <div class="col-lg-12 " style="text-align: right; margin-top: 10px">
             <label>Contagem: </label>
             <label>{{count($funcionarios)}}</label>
 
         </div>
-        <div class="col-md-12">
+        <div class="">
             @if(count($funcionarios))
-                <table class="table table-condensed table-striped">
+                <table class="table table-condensed table-striped " style="overflow: scroll;">
                     <thead>
                     <tr>
-                        <th style="width: 50px">ID</th>
+                        {{-- <th style="width: 50px">ID</th>--}}
                         <th style="width: 100px">{{trans('crud/funcionarios.profile_image')}}</th>
                         <th>{{trans('crud/funcionarios.name')}}</th>
                         <th>{{trans('crud/funcionarios.station')}}</th>
                         <th>{{trans('crud/funcionarios.status')}}</th>
                         <th>{{trans('crud/funcionarios.workload')}}</th>
-                        <th>{{trans('crud/funcionarios.schedule')}}</th>
-                        <!--  <th>CPF</th>
+                    {{--<th>{{trans('crud/funcionarios.schedule')}}</th>--}}
+                    <!--  <th>CPF</th>
                           <th>RG</th>
                           <th>CTPS</th>
                           <th>ENDERECO</th>
@@ -107,15 +122,16 @@
                     <tbody>
                     @foreach($funcionarios as $funcionario)
                         <tr>
-                            <td>{{$funcionario->id}}</td>
+                            {{--<td>{{$funcionario->id}}</td>--}}
                             <td align="center"><img height="70" width="70" src="{{asset("$funcionario->profleimage")}}">
                             </td>
                         <!--  <td>{{$funcionario->profleimage}}</td> -->
-                            <td>{{$funcionario->nome}}</td>
+                            <td><a href="{{ route('funcionarios.show', $funcionario->id) }}">{{$funcionario->nome}}</a>
+                            </td>
                             <td>{{$funcionario->posto}}</td>
                             <td>{{$funcionario->status}}</td>
                             <td>{{$funcionario->tipo}}</td>
-                            <td>{{$funcionario->horario}}</td>
+                        {{-- <td>{{$funcionario->horario}}</td>--}}
                         <!--
                     <td>{{$funcionario->cpf}}</td>
                     <td>{{$funcionario->rg}}</td>
@@ -151,21 +167,65 @@
                     <td>{{$funcionario->preenchida_por}}</td>
                     <td>{{$funcionario->obs}}</td> -->
                             <td class="text-right">
-                                <a class="btn btn-xs btn-primary"
-                                   href="{{ route('funcionarios.show', $funcionario->id) }}"><i
-                                            class="glyphicon glyphicon-eye-open"></i> {{trans('crud/crud.show')}}</a>
-                                <a class="btn btn-xs btn-warning"
-                                   href="{{ route('funcionarios.edit', $funcionario->id) }}"><i
-                                            class="glyphicon glyphicon-edit"></i> {{trans('crud/crud.edit')}}</a>
-                                <form action="{{ route('funcionarios.destroy', $funcionario->id) }}" method="POST"
-                                      style="display: inline;"
-                                      onsubmit="if(confirm('Deletar? Tem certeza?')) { return true } else {return false };">
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    <button type="submit" class="btn btn-xs btn-danger"><i
-                                                class="glyphicon glyphicon-trash"></i> {{trans('crud/crud.delete')}}
-                                    </button>
-                                </form>
+
+
+                                <div class="container">
+                                    <div class="row">
+
+                                        <a class="btn btn-xs btn-primary table-responsive "
+                                           href="{{ route('funcionarios.show', $funcionario->id) }}"><i
+                                                    class="glyphicon glyphicon-eye-open"></i> {{trans('crud/crud.show')}}
+                                        </a>
+
+                                    </div>
+                                    <div class="row" style="padding-top: 2px">
+
+                                        <a class="btn btn-xs btn-warning table-responsive"
+                                           href="{{ route('funcionarios.edit', $funcionario->id) }}"><i
+                                                    class="glyphicon glyphicon-edit"></i> {{trans('crud/crud.edit')}}
+                                        </a>
+
+                                    </div>
+                                    {{--    <div class="col-4">
+
+                                            <form action="{{ route('funcionarios.destroy', $funcionario->id) }}" method="POST"
+                                                  style="display: inline;"
+                                                  onsubmit="if(confirm('Deletar? Tem certeza?')) { return true } else {return false };">
+
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                <button type="submit" class="btn btn-xs btn-danger"> {{trans('crud/crud.delete')}}
+                                                </button>
+                                            </form>
+
+                                        </div>--}}
+                                </div>
+
+
+                                {{--
+                                                            <a class="btn btn-xs btn-primary"
+                                                               href="{{ route('funcionarios.show', $funcionario->id) }}"><i
+                                                                        class="glyphicon glyphicon-eye-open"></i> {{trans('crud/crud.show')}}</a>
+
+
+                                                            <a class="btn btn-xs btn-warning"
+                                                               href="{{ route('funcionarios.edit', $funcionario->id) }}"><i
+                                                                        class="glyphicon glyphicon-edit"></i> {{trans('crud/crud.edit')}}</a>
+
+                                                            <form action="{{ route('funcionarios.destroy', $funcionario->id) }}" method="POST"
+                                                                  style="display: inline;"
+                                                                  onsubmit="if(confirm('Deletar? Tem certeza?')) { return true } else {return false };">
+
+                                                                <input type="hidden" name="_method" value="DELETE">
+                                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                                <button type="submit" class="btn btn-xs btn-danger"><i
+                                                                            class="glyphicon glyphicon-trash"></i> {{trans('crud/crud.delete')}}
+                                                                </button>
+                                                            </form>
+
+                                                            --}}
+
+
                             </td>
                         </tr>
                     @endforeach

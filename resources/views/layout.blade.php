@@ -1,213 +1,266 @@
-<!DOCTYPE html>
+<!doctype html>
+<!--
+  Material Design Lite
+  Copyright 2015 Google Inc. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
+-->
 <html lang="en">
 <head>
 
+    <?php
+    setlocale(LC_ALL, 'pt_BR'); //
+    date_default_timezone_set("America/Sao_Paulo");
 
-    <style type="text/css">
-        li {
-            margin-right: 1px;
-        }
-    </style>
+    ?>
 
-    <style>
-        .form-control {
-            border-radius: 10px !important;
-            border: 1px solid #0BB8F1 !important;
-            color: #0281AB !important;
-            font-weight: 600 !important;
-        }
-    </style>
+    {{--BootStrap--}}
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    {{--EndBootStrap--}}
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Material Design Lite</title>
 
-    <title>Embrater- Empresa Brasileira de Terceirização</title>
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/android-desktop.png">
 
-    <!-- Bootstrap core CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
 
-    <!-- Custom styles for this template -->
-    <!-- <link href="starter-template.css" rel="stylesheet"> -->
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
 
+    <link rel="shortcut icon" href="images/favicon.png">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
 
-    {{--Matarial Design Lite--}}
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    {{--Matarial Design Lite Select--}}
-
-    <link rel="stylesheet" href="/componentes/getmdl-select/getmdl-select.min.css">
-    <script defer src="/componentes/getmdl-select/getmdl-select.min.js"></script>
-
-    {{-- --}}{{--E-Signaturepad--}}{{--
-     <link href="/componentes/signature/css/jquery.signaturepad.css" rel="stylesheet">
-     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-     <script src="/componentes/signature/js/numeric-1.2.6.min.js"></script>
-     <script src="/componentes/signature/js/bezier.js"></script>
-     <script src="/componentes/signature/js/jquery.signaturepad.js"></script>
-     <script type='text/javascript'
-             src="https://github.com/niklasvh/html2canvas/releases/download/0.4.1/html2canvas.js"></script>
-     <script src="/componentes/signature/js/json2.min.js"></script>
-    --}}{{-- <script type='text/javascript' src="/componentes/signature/html2canvas.js"></script>--}}{{--
-     <link href="/componentes/signature/css/app_style.css" rel="stylesheet">
- --}}
-
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
+    <link rel="stylesheet" href="/css/mdlstyles.css">
+    <style>
+        #view-source {
+            position: fixed;
+            display: block;
+            right: 0;
+            bottom: 0;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            z-index: 900;
+        }
+    </style>
 </head>
-
-<style>
-    .btn-default {
-        color: #FFFFFF;
-        background-color: #3c7ab7;
-        border-color: #FFFFFF;
-        border-radius: 20px;
-        border-width: 1.5px;
-        width: 170px;
-        font-weight: bold;
-        margin-right: 1px;
-        margin-top: 5px;
-        margin-bottom: 10px;
-
-    }
-</style>
-
 <body>
-<nav class="navbar navbar-default" style="background-color: #337ab7">
-    <div class="container">
+<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+    <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
+        <div class="mdl-layout__header-row">
+            <span class="mdl-layout-title">@yield('header')</span>
+            <div class="mdl-layout-spacer"></div>
 
-        <div class="navbar-header">
+            {{-- <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+                 <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
+                     <i class="material-icons">search</i>
+                 </label>
+                 <div class="mdl-textfield__expandable-holder">
+                     <input class="mdl-textfield__input" type="text" id="search">
+                     <label class="mdl-textfield__label" for="search">Enter your query...</label>
+                 </div>
+             </div>--}}
 
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+                <i class="material-icons">more_vert</i>
             </button>
-            <a class="navbar-brand" style="color: #FFFFFF; font-weight: bold" href="/home">Embrater</a>
-        </div>
-
-
-        <div id="navbar" class="collapse navbar-collapse" style="margin-top: 8px;">
-            <ul class="nav navbar-nav">
-
-
-                <li>
-                    <button href="#" class=" btn btn-default" data-toggle="dropdown">
-                        Menu <span class="caret"></span></button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="/home">Inicio</a></li>
-                        <li><a href="/postos">Cadastrar Postos</a></li>
-                        <li><a href="/motivos">Cadastrar Motivos</a></li>
-                        <li><a href="/ocorrencias">Cadastrar Ocorrencias</a></li>
-                        <li><a href="/veste/crudveste">Cadastrar Vestes</a></li>
-
-
-                    </ul>
-                </li>
-
-                <li>
-                    <button href="#" class=" btn btn-default" data-toggle="dropdown">
-                        Funcionários <span class="caret"></span></button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="/funcionarios/create">Cadastrar Novo</a></li>
-                        <li><a href="/funcionarios">Listar Todos</a></li>
-                        <li><a href="/funcionarios/correcoes/index">Ajuste em Lote</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="/relogio">Exportar Dados P/ Ponto</a></li>
-
-                    </ul>
-                </li>
-
-                <li>
-                    <button href="#" class=" btn btn-default" data-toggle="dropdown">
-                        Atestados <span class="caret"></span></button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="/atestadomedicos">Listar</a></li>
-                    </ul>
-                </li>
-
-                {{--
-
-                                <li>
-                                    <button href="#" class=" btn btn-default" data-toggle="dropdown">
-                                        Controle Veste <span class="caret"></span></button>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="/veste/entregarveste">Entregar</a></li>
-                                        <li><a href="/veste/devolverveste">Devolver</a></li>
-                                        <li><a href="/veste/listarentregarveste">Listar Entregas</a></li>
-                                        <li><a href="/veste/listardevolverveste">Listar Devoluções</a></li>
-                                    </ul>
-                                </li>
-                --}}
-
-                <li>
-                    <button href="#" class=" btn btn-default" data-toggle="dropdown">
-                        Usuário <span class="caret"></span></button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a>{{ Auth::user()->name }}</a></li>
-
-                        <li><a href="/auth/logout">Logout</a></li>
-                    </ul>
-                </li>
-
-                <!--   <li><a href="users">Usuários</a></li> -->
+            <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
+                <li class="mdl-menu__item"><a href="auth/logout">Sair</a></li>
             </ul>
-        </div><!--/.nav-collapse -->
+        </div>
+    </header>
+    <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+        <header class="demo-drawer-header">
+            <img src="/images/guest.png" class="demo-avatar">
+            <div class="demo-avatar-dropdown">
+                <span>{{ Auth::user()->email }}</span>
+                <div class="mdl-layout-spacer"></div>
+                <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                    <i class="material-icons" role="presentation">arrow_drop_down</i>
+                    <span class="visuallyhidden">Accounts</span>
+                </button>
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+
+                    <li class="mdl-menu__item"><a href="auth/logout">Sair</a></li>
+
+                </ul>
+            </div>
+        </header>
+        <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+            <a class="mdl-navigation__link" href="/home"><i class="mdl-color-text--blue-grey-400 material-icons"
+                                                            role="presentation">home</i>Home</a>
+
+            <a class="mdl-navigation__link" href="/funcionarios"><i class="mdl-color-text--blue-grey-400 material-icons"
+                                                                    role="presentation">people</i>Funcionários</a>
+
+            <a class="mdl-navigation__link" href="/funcionarios/aniversariantes/{{date('m')}}"><i
+                        class="mdl-color-text--blue-grey-400 material-icons"
+                        role="presentation">cake</i>Aniversariantes</a>
+
+            <div class="mdl-layout-spacer"></div>
+            {{--<a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons"
+                                                       role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>--}}
+        </nav>
     </div>
-</nav>
-
-<div class="container">
-    @yield('header')
-    @yield('content')
-</div><!-- /.container -->
 
 
-<footer>
 
-    <div style="text-align: center">
-        <img src="\logo.png" height="90px" width="130px">
-    </div>
-    <div class="container-fluid bg-primary py-3">
-        <div class="container" style="margin-top: 22px; margin-bottom: 16px">
-            {{--   <div class="text-center">
-                   <label class="text-center"> E-mail: faleconosco@embrater.com</label>
-               </div>
-               <div class="text-center">
-                   <label> Contato: (82) 3327-8358 </label>
-               </div>--}}
-            <div class="text-center">
-                <p class="text-center"> Copyright © Embrater <?php echo date('Y');?>. </p>
+    <main class="mdl-layout__content mdl-color--grey-100">
+        <div class="mdl-grid demo-content">
+            <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+
+
+                @yield('content')
+
             </div>
         </div>
-    </div>
-</footer>
+    </main>
+
+</div>
 
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
 
 </body>
 </html>
 
+{{--@yield('content')--}}
 
 
+{{-- INICIO Graficos do layout MDL
+
+
+                               <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1"
+                                    class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--2-col-desktop">
+                                   <use xlink:href="#piechart" mask="url(#piemask)"/>
+                                   <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle"
+                                         dy="0.1">82
+                                       <tspan font-size="0.2" dy="-0.07">%</tspan>
+                                   </text>
+
+                                   <text x="0.5" y="1.0" font-family="Roboto" font-size="0.1" fill="#888" text-anchor="middle"
+                                         dy="0.1">UNCISAL
+                                   </text>
+
+                               </svg>
+                               <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1"
+                                    class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--2-col-desktop">
+                                   <use xlink:href="#piechart" mask="url(#piemask)"/>
+                                   <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle"
+                                         dy="0.1">82
+                                       <tspan dy="-0.07" font-size="0.2">%</tspan>
+                                   </text>
+
+                                   <text x="0.5" y="1.0" font-family="Roboto" font-size="0.1" fill="#888" text-anchor="middle"
+                                         dy="0.1">H.E.H.A
+                                   </text>
+
+                               </svg>
+                               <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1"
+                                    class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--2-col-desktop">
+                                   <use xlink:href="#piechart" mask="url(#piemask)"/>
+                                   <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle"
+                                         dy="0.1">82
+                                       <tspan dy="-0.07" font-size="0.2">%</tspan>
+                                   </text>
+
+                                   <text x="0.5" y="1.0" font-family="Roboto" font-size="0.1" fill="#888" text-anchor="middle"
+                                         dy="0.1">Portual Ramalho
+                                   </text>
+                               </svg>
+                               <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1"
+                                    class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--2-col-desktop">
+                                   <use xlink:href="#piechart" mask="url(#piemask)"/>
+                                   <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle"
+                                         dy="0.1">82
+                                       <tspan dy="-0.07" font-size="0.2">%</tspan>
+                                   </text>
+
+                                   <text x="0.5" y="1.0" font-family="Roboto" font-size="0.1" fill="#888" text-anchor="middle"
+                                         dy="0.1">Santa Monica
+                                   </text>
+                               </svg>
+                               <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1"
+                                    class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--2-col-desktop">
+                                   <use xlink:href="#piechart" mask="url(#piemask)"/>
+                                   <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle"
+                                         dy="0.1">82
+                                       <tspan dy="-0.07" font-size="0.2">%</tspan>
+                                   </text>
+
+                                   <text x="0.5" y="1.0" font-family="Roboto" font-size="0.1" fill="#888" text-anchor="middle"
+                                         dy="0.1">ETSAL
+                                   </text>
+                               </svg>
+                               <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1"
+                                    class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--2-col-desktop">
+                                   <use xlink:href="#piechart" mask="url(#piemask)"/>
+                                   <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle"
+                                         dy="0.1">82
+                                       <tspan dy="-0.07" font-size="0.2">%</tspan>
+                                   </text>
+
+                                   <text x="0.5" y="1.0" font-family="Roboto" font-size="0.1" fill="#888" text-anchor="middle"
+                                         dy="0.1">Reservas
+                                   </text>
+                               </svg>
+
+
+Inicio Circulo
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+     style="position: fixed; left: -1000px; height: -1000px;">
+    <defs>
+        <mask id="piemask" maskContentUnits="objectBoundingBox">
+            <circle cx="0.5" cy="0.5" r="0.49" fill="white"/>
+            <circle cx="0.5" cy="0.5" r="0.40" fill="black"/>
+        </mask>
+        <g id="piechart">
+            <circle cx="0.5" cy="0.5" r="0.5"/>
+            <path d="M 0.5 0.5 0.5 0 A 0.5 0.5 0 0 1 0.95 0.28 z" stroke="none" fill="rgba(255, 255, 255, 0.75)"/>
+        </g>
+    </defs>
+</svg>
+FIM Inicio Circulo
+
+FIM Graficos do layout MDL--}}

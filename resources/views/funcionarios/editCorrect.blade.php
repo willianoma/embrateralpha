@@ -2,7 +2,7 @@
 
 @section('header')
 <div class="page-header">
-  <h1><i class="glyphicon glyphicon-edit"></i> Funcionarios / Edit #{{$funcionario->id}}</h1>
+  <h3><i class="glyphicon glyphicon-edit"></i> Funcionarios / Edit #{{$funcionario->id}}</h3>
 </div>
 @endsection
 
