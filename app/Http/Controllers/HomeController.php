@@ -56,8 +56,7 @@ class HomeController extends Controller
         return view('home', compact('aniversariantes', 'afastados', 'uncisalChart', 'hdtChart', 'santaMonicaChart', 'portugalRamalhoChart', 'etsalChart', 'reservaChart', 'geralChart', 'sumario'));
     }
 
-    public
-    function getAniversariantes()
+    public function getAniversariantes()
     {
 
         $aniversariantes = array();

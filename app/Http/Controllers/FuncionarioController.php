@@ -8,6 +8,7 @@ use DB;
 use App\Funcionario;
 use App\Posto;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Schema;
 
@@ -485,6 +486,43 @@ class FuncionarioController extends Controller
         return view('funcionarios.correcoes.correcoes', compact('funcionarios'));
 
     }
+
+    public function mostraraniversariantes()
+    {
+        $aniversariantesMes = $this->getAniversariantes();
+        return view('funcionarios.mostraraniversariantes', compact('aniversariantesMes'));
+    }
+
+    public function getAniversariantes()
+    {
+
+        //Paginação de pelos 5 meses ( 2 pra traz e 2 pra frente..)
+        $funcByMonth = Funcionario::whereMonth('nascimento' );
+        $func = Funcionario::paginate(5);
+        dd($funcByMonth);
+
+        /*
+                $aniversariantes = array();
+                $mesAtual = date('m');
+                $funcionarios = Funcionario::whereMonth('nascimento', '=', $mesAtual)->orderBy('nome', 'asc')->get();
+
+
+                foreach ($funcionarios as $func) {
+                    $idade = Carbon::parse($func['nascimento'])->age;
+                    $nascimento = date('d/m/Y', strtotime($func->nascimento));
+                    array_push($aniversariantes, array(
+                        'id' => $func->id,
+                        'nome' => $func->nome,
+                        'idade' => $idade,
+                        'nascimento' => $nascimento
+                    ));
+                }
+
+                return json_encode($aniversariantes);
+                */
+
+    }
+
 
 }
 

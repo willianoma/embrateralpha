@@ -162,7 +162,7 @@
                         Março/2018 - 15 Aniversariantes este mês!
                     </div>
                     <div class="mdl-card__actions mdl-card--border">
-                        <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Listar Todos</a>
+                        <a href="/funcionarios/aniversariantes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Listar Todos</a>
                     </div>
                 </div>
                 <div class="demo-separator mdl-cell--1-col"></div>
