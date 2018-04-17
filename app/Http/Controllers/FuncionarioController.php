@@ -9,6 +9,7 @@ use App\Funcionario;
 use App\Posto;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use DateTime;
 
 use Illuminate\Support\Facades\Schema;
 
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Schema;
 
 
 use Intervention\Image\ImageManagerStatic as Image;
+use PhpParser\Node\Expr\Array_;
 
 class FuncionarioController extends Controller
 {
@@ -487,39 +489,42 @@ class FuncionarioController extends Controller
 
     }
 
-    public function mostraraniversariantes()
+    public function imprimianiversariantes()
     {
-        $aniversariantesMes = $this->getAniversariantes();
-        return view('funcionarios.mostraraniversariantes', compact('aniversariantesMes'));
+
     }
 
-    public function getAniversariantes()
+    public function mostraraniversariantes($mes)
     {
 
-        //Paginação de pelos 5 meses ( 2 pra traz e 2 pra frente..)
-        $funcByMonth = Funcionario::whereMonth('nascimento' );
-        $func = Funcionario::paginate(5);
-        dd($funcByMonth);
 
-        /*
-                $aniversariantes = array();
-                $mesAtual = date('m');
-                $funcionarios = Funcionario::whereMonth('nascimento', '=', $mesAtual)->orderBy('nome', 'asc')->get();
+        $aniversariantesMes = json_decode($this->getAniversariantes($mes));
+        $mescontrole = $mes;
+        $mesobj = DateTime::createFromFormat('!m', $mes);
+        $mescomposto = $mesobj->format('F');
 
+        return view('funcionarios.mostraraniversariantes', compact('aniversariantesMes', 'mescomposto', 'mescontrole'));
+    }
 
-                foreach ($funcionarios as $func) {
-                    $idade = Carbon::parse($func['nascimento'])->age;
-                    $nascimento = date('d/m/Y', strtotime($func->nascimento));
-                    array_push($aniversariantes, array(
-                        'id' => $func->id,
-                        'nome' => $func->nome,
-                        'idade' => $idade,
-                        'nascimento' => $nascimento
-                    ));
-                }
+    public function getAniversariantes($mes)
+    {
+        $funcAniversariantes = Funcionario::whereMonth('nascimento', '=', ($mes))->orderBy('posto', 'asc')->get();
+        $aniversariantes = array();
 
-                return json_encode($aniversariantes);
-                */
+        foreach ($funcAniversariantes as $func) {
+
+            $idade = Carbon::parse($func['nascimento'])->age;
+            $nascimento = date('d/m/Y', strtotime($func->nascimento));
+            array_push($aniversariantes, array(
+                'id' => $func->id,
+                'nome' => $func->nome,
+                'idade' => $idade,
+                'nascimento' => $nascimento,
+                'posto' => $func->posto
+            ));
+        }
+
+        return json_encode($aniversariantes);
 
     }
 

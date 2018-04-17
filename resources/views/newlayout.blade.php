@@ -17,6 +17,28 @@
 -->
 <html lang="en">
 <head>
+
+    <?php
+    setlocale(LC_ALL, 'pt_BR'); //
+    date_default_timezone_set("America/Sao_Paulo");
+    ?>
+
+    {{--BootStrap--}}
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    {{--EndBootStrap--}}
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
@@ -48,7 +70,7 @@
           href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
-    <link rel="stylesheet" href="css/mdlstyles.css">
+    <link rel="stylesheet" href="/css/mdlstyles.css">
     <style>
         #view-source {
             position: fixed;
@@ -88,7 +110,7 @@
     </header>
     <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
         <header class="demo-drawer-header">
-            <img src="images/user.jpg" class="demo-avatar">
+            <img src="/images/user.jpg" class="demo-avatar">
             <div class="demo-avatar-dropdown">
                 <span>hello@example.com</span>
                 <div class="mdl-layout-spacer"></div>
@@ -127,92 +149,23 @@
                                                        role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
         </nav>
     </div>
+
     <main class="mdl-layout__content mdl-color--grey-100">
         <div class="mdl-grid demo-content">
             <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
 
-                {{-- Inicio Charts--}}
+                @yield('content')
 
-                {!! Charts::assets() !!}
-                <div class="mdl-cell mdl-cell--2-col">{!! $uncisalChart->render() !!}</div>
-                <div class="mdl-cell mdl-cell--2-col">{!! $hdtChart->render() !!}</div>
-                <div class="mdl-cell mdl-cell--2-col">{!! $santaMonicaChart->render() !!}</div>
-                <div class="mdl-cell mdl-cell--2-col">{!! $portugalRamalhoChart->render() !!}</div>
-                <div class="mdl-cell mdl-cell--2-col">{!! $etsalChart->render() !!}</div>
-                <div class="mdl-cell mdl-cell--2-col">{!! $reservaChart->render() !!}</div>
-
-                {{-- FIM Charts--}}
-
-            </div>
-
-            <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
-                <div>
-                    <div class="mdl-cell mdl-cell--12-col">{!! $geralChart->render() !!}</div>
-
-
-                </div>
-
-            </div>
-            <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
-                <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-                    <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
-                        <h2 class="mdl-card__title-text">Aniversários</h2>
-                    </div>
-                    <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-                        Março/2018 - 15 Aniversariantes este mês!
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a href="/funcionarios/aniversariantes" class="mdl-button mdl-js-button mdl-js-ripple-effect">Listar Todos</a>
-                    </div>
-                </div>
-                <div class="demo-separator mdl-cell--1-col"></div>
-                <div class="demo-options mdl-card mdl-color--deep-purple-500 mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--12-col-desktop">
-                    <div class="mdl-card__supporting-text mdl-color-text--blue-grey-50">
-
-                        <h2 class="mdl-card__title-text">Sumário</h2>
-                        <hr style="height:1px; border:none;  background-color:#7d7c80; margin-top:5px; margin-bottom: 10px;"/>
-
-                        <ul>
-                            <li>
-                                <span class="mdl-checkbox__label">Cadastrados:</span>
-                                <span class="mdl-checkbox__label">{{$sumario['Cadastrados']}}</span>
-                            </li>
-                            <li>
-                                <span class="mdl-checkbox__label">Ativos:</span>
-                                <span class="mdl-checkbox__label">{{$sumario['Ativos']}}</span>
-                            </li>
-                            <li>
-                                <span class="mdl-checkbox__label">Inativos:</span>
-                                <span class="mdl-checkbox__label">{{$sumario['Inativos']}}</span>
-                            </li>
-                            <li>
-                                <span class="mdl-checkbox__label">Ferias:</span>
-                                <span class="mdl-checkbox__label">{{$sumario['Ferias']}}</span>
-                            </li>
-                            <li>
-                                <span class="mdl-checkbox__label">INSS:</span>
-                                <span class="mdl-checkbox__label">{{$sumario['Inss']}}</span>
-                            </li>
-                            <li>
-                                <span class="mdl-checkbox__label">Maternidade:</span>
-                                <span class="mdl-checkbox__label">{{$sumario['Maternidade']}}</span>
-                            </li>
-                        </ul>
-                    </div>
-                    {{--<div class="mdl-card__actions mdl-card--border">
-                        <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--blue-grey-50">Change
-                            location</a>
-                        <div class="mdl-layout-spacer"></div>
-                        <i class="material-icons">location_on</i>
-                    </div>--}}
-                </div>
             </div>
         </div>
     </main>
+
 </div>
 
 
 <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+
 </body>
 </html>
 

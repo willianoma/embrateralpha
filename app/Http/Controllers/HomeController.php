@@ -8,32 +8,26 @@ use DB;
 class HomeController extends Controller
 {
 
+    /* 04/2018
+   portugal = 48
+   santa monica = 52
+   hdt = 46
+   unsical = 4+4+1+1+18+9  = 37
+   etsal = 8
+   total 189
+   */
 
     public function __construct()
     {
         //$this->middleware('auth');
-
-        $uncisal = 'uncisal';
-
     }
-
-
-    /*
-    portugal = 48
-    santa monica = 52
-    hdt = 46
-    unsical = 4+4+1+1+18+9  = 37
-    etsal = 8
-    total 189
-
-    */
 
 
     public function index()
     {
+        //  $aniversariantes = json_decode($this->getAniversariantes());
 
         $sumario = $this->getSumario();
-        $aniversariantes = json_decode($this->getAniversariantes());
         $afastados = json_decode($this->getAfastados());
 
         $uncisalChart = $this->createChart('Uncisal', '#00BFFF', $this->getQtdFuncionariosAtivos('uncisal'), $this->getQtdFuncionarios('uncisal'));
@@ -53,33 +47,32 @@ class HomeController extends Controller
             ->setWidth(0);
 
 
-        return view('home', compact('aniversariantes', 'afastados', 'uncisalChart', 'hdtChart', 'santaMonicaChart', 'portugalRamalhoChart', 'etsalChart', 'reservaChart', 'geralChart', 'sumario'));
+        return view('home', compact( 'afastados', 'uncisalChart', 'hdtChart', 'santaMonicaChart', 'portugalRamalhoChart', 'etsalChart', 'reservaChart', 'geralChart', 'sumario'));
     }
 
-    public function getAniversariantes()
-    {
+    /*    public function getAniversariantes()
+        {
 
-        $aniversariantes = array();
-        $mesAtual = date('m');
-        $funcionarios = Funcionario::whereMonth('nascimento', '=', $mesAtual)->orderBy('nome', 'asc')->get();
+            $aniversariantes = array();
+            $mesAtual = date('m');
+            $funcionarios = Funcionario::whereMonth('nascimento', '=', $mesAtual)->orderBy('nome', 'asc')->get();
 
 
-        foreach ($funcionarios as $func) {
-            $idade = Carbon::parse($func['nascimento'])->age;
-            $nascimento = date('d/m/Y', strtotime($func->nascimento));
-            array_push($aniversariantes, array(
-                'id' => $func->id,
-                'nome' => $func->nome,
-                'idade' => $idade,
-                'nascimento' => $nascimento
-            ));
-        }
+            foreach ($funcionarios as $func) {
+                $idade = Carbon::parse($func['nascimento'])->age;
+                $nascimento = date('d/m/Y', strtotime($func->nascimento));
+                array_push($aniversariantes, array(
+                    'id' => $func->id,
+                    'nome' => $func->nome,
+                    'idade' => $idade,
+                    'nascimento' => $nascimento
+                ));
+            }
 
-        return json_encode($aniversariantes);
-    }
+            return json_encode($aniversariantes);
+        }*/
 
-    public
-    function getAfastados()
+    public function getAfastados()
     {
         $afastados = array();
         $funcionariosinss = Funcionario::where('status', '=', 'INSS')->orderBy('nome', 'asc')->get();
@@ -164,7 +157,7 @@ class HomeController extends Controller
         $Cadastrados = Funcionario::all()->count();
         $Ativos = Funcionario::where('Status', '=', 'Ativo')->count();
         $Inativos = Funcionario::where('Status', '=', 'Inativo')->count();
-        $Ferias = Funcionario::where('Status', '=', 'Férias')->count();
+        $Ferias = Funcionario::where('Status', 'like', '%rias')->count();
         $INSS = Funcionario::where('Status', '=', 'INSS')->count();
         $Maternidade = Funcionario::where('Status', '=', 'Maternidade')->count();
 
