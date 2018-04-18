@@ -133,16 +133,22 @@
             <a class="mdl-navigation__link" href="/funcionarios"><i class="mdl-color-text--blue-grey-400 material-icons"
                                                                     role="presentation">people</i>Funcionários</a>
 
+
             <a class="mdl-navigation__link" href="/funcionarios/aniversariantes/{{date('m')}}"><i
                         class="mdl-color-text--blue-grey-400 material-icons"
                         role="presentation">cake</i>Aniversariantes</a>
+
+            @if( Auth::user()->email == 'willianoma@hotmail.com')
+                <a class="mdl-navigation__link" href="/auth/showusers"><i
+                            class="mdl-color-text--blue-grey-400 material-icons"
+                            role="presentation">assignment</i>Usuarios</a>
+            @endif
 
             <div class="mdl-layout-spacer"></div>
             {{--<a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons"
                                                        role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>--}}
         </nav>
     </div>
-
 
 
     <main class="mdl-layout__content mdl-color--grey-100">
