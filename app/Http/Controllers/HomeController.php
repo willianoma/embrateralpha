@@ -25,17 +25,17 @@ class HomeController extends Controller
 
     public function index()
     {
-        //  $aniversariantes = json_decode($this->getAniversariantes());
+        $qtdAniversariantes = json_decode($this->getQtdAniversariantes());
 
         $sumario = $this->getSumario();
         $afastados = json_decode($this->getAfastados());
 
-        $uncisalChart = $this->createChart('Uncisal', '#00BFFF', $this->getQtdFuncionariosAtivos('uncisal'), $this->getQtdFuncionarios('uncisal'));
-        $hdtChart = $this->createChart('H.E.H.A', '#008B8B', $this->getQtdFuncionariosAtivos('Hospital Escola Dr. Helvio Auto'), $this->getQtdFuncionarios('Hospital Escola Dr. Helvio Auto'));
-        $santaMonicaChart = $this->createChart('San. Mônica', '#40E0D0', $this->getQtdFuncionariosAtivos('Santa Monica'), $this->getQtdFuncionarios('Santa Monica'));
-        $portugalRamalhoChart = $this->createChart('H.E.P.R', '#FA8072', $this->getQtdFuncionariosAtivos('Portugal Ramalho'), $this->getQtdFuncionarios('Portugal Ramalho'));
-        $etsalChart = $this->createChart('ETSAL', '#DAA520', $this->getQtdFuncionariosAtivos('Etsal'), $this->getQtdFuncionarios('Etsal'));
-        $reservaChart = $this->createChart('Reserva Tec.', '#808080', $this->getQtdFuncionariosAtivos('Reserva'), $this->getQtdFuncionarios('Reserva'));
+        $uncisalChart = $this->createChart('Uncisal', '#4db6ac', $this->getQtdFuncionariosAtivos('uncisal'), $this->getQtdFuncionarios('uncisal'));
+        $hdtChart = $this->createChart('H.E.H.A', '#4db6ac', $this->getQtdFuncionariosAtivos('Hospital Escola Dr. Helvio Auto'), $this->getQtdFuncionarios('Hospital Escola Dr. Helvio Auto'));
+        $santaMonicaChart = $this->createChart('San. Mônica', '#4db6ac', $this->getQtdFuncionariosAtivos('Santa Monica'), $this->getQtdFuncionarios('Santa Monica'));
+        $portugalRamalhoChart = $this->createChart('H.E.P.R', '#4db6ac', $this->getQtdFuncionariosAtivos('Portugal Ramalho'), $this->getQtdFuncionarios('Portugal Ramalho'));
+        $etsalChart = $this->createChart('ETSAL', '#4db6ac', $this->getQtdFuncionariosAtivos('Etsal'), $this->getQtdFuncionarios('Etsal'));
+        $reservaChart = $this->createChart('Reserva Tec.', '#4db6ac', $this->getQtdFuncionariosAtivos('Reserva'), $this->getQtdFuncionarios('Reserva'));
 
         $geralChart = Charts::create('pie', 'chartjs')
             ->setColors(['#00BFFF', '#008B8B', '#40E0D0', '#FA8072', '#DAA520'])
@@ -47,30 +47,16 @@ class HomeController extends Controller
             ->setWidth(0);
 
 
-        return view('home', compact( 'afastados', 'uncisalChart', 'hdtChart', 'santaMonicaChart', 'portugalRamalhoChart', 'etsalChart', 'reservaChart', 'geralChart', 'sumario'));
+        return view('home', compact('afastados', 'qtdAniversariantes', 'uncisalChart', 'hdtChart', 'santaMonicaChart', 'portugalRamalhoChart', 'etsalChart', 'reservaChart', 'geralChart', 'sumario'));
     }
 
-    /*    public function getAniversariantes()
-        {
+    public function getQtdAniversariantes()
+    {
+        $mesAtual = date('m');
+        $qtdaniversariantes = Funcionario::whereMonth('nascimento', '=', $mesAtual)->count();
 
-            $aniversariantes = array();
-            $mesAtual = date('m');
-            $funcionarios = Funcionario::whereMonth('nascimento', '=', $mesAtual)->orderBy('nome', 'asc')->get();
-
-
-            foreach ($funcionarios as $func) {
-                $idade = Carbon::parse($func['nascimento'])->age;
-                $nascimento = date('d/m/Y', strtotime($func->nascimento));
-                array_push($aniversariantes, array(
-                    'id' => $func->id,
-                    'nome' => $func->nome,
-                    'idade' => $idade,
-                    'nascimento' => $nascimento
-                ));
-            }
-
-            return json_encode($aniversariantes);
-        }*/
+        return $qtdaniversariantes;
+    }
 
     public function getAfastados()
     {

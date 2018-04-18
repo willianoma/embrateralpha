@@ -23,6 +23,29 @@
     <div class="mdl-cell mdl-cell--2-col">{!! $portugalRamalhoChart->render() !!}</div>
     <div class="mdl-cell mdl-cell--2-col">{!! $etsalChart->render() !!}</div>
     <div class="mdl-cell mdl-cell--2-col">{!! $reservaChart->render() !!}</div>
+    <div class="mdl-cell mdl-cell--12-col">
+        <div class="row" style="text-align: center">
+            <div class="mdl-cell--4-col">
+                Vaga Ocupada
+                <svg width="40" height="12">
+                    <rect width="400" height="100" style="fill: rgb(77, 182, 172);"/>
+                </svg>
+            </div>
+            <div class="mdl-cell--4-col">
+                Vaga Disponivel
+                <svg width="40" height="12">
+                    <rect width="400" height="100" style="fill: rgb(50, 205, 50);"/>
+                </svg>
+            </div>
+            <div class="mdl-cell--4-col">
+                Sobressalente
+                <svg width="40" height="12">
+                    <rect width="400" height="100" style="fill: rgb(178, 34, 34);"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
 
     {{-- FIM Charts--}}
 
@@ -42,10 +65,11 @@
                 <h2 class="mdl-card__title-text">Aniversários</h2>
             </div>
             <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-                Março/2018 - 15 Aniversariantes este mês!
+                {{date('F')}}/{{date('Y')}} - {{$qtdAniversariantes}} Aniversariantes este mês!
             </div>
             <div class="mdl-card__actions mdl-card--border">
-                <a href="/funcionarios/aniversariantes/{{date('m')}}" class="mdl-button mdl-js-button mdl-js-ripple-effect">Listar
+                <a href="/funcionarios/aniversariantes/{{date('m')}}"
+                   class="mdl-button mdl-js-button mdl-js-ripple-effect">Listar
                     Todos</a>
             </div>
         </div>
