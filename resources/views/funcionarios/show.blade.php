@@ -10,7 +10,7 @@
 @extends('layout')
 @section('header')
     <div class="page-header">
-        <h7>Funcionarios / {{trans('crud/crud.show')}} #{{$funcionario->id}}</h7>
+        <h7>{{trans('crud/crud.show')}} #{{$funcionario->id}}</h7>
         <form action="{{ route('funcionarios.destroy', $funcionario->id) }}" method="POST" style="display: inline;"
               onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
             <input type="hidden" name="_method" value="DELETE">

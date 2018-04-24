@@ -11,8 +11,8 @@
 
 @section('header')
     <div class="page-header">
-        <h3><i class="glyphicon glyphicon-edit"></i> {{trans('crud/funcionarios.title')}} / {{trans('crud/crud.edit')}}
-            #{{$funcionario->id}}</h3>
+        <h7><i class="glyphicon glyphicon-edit"></i> {{trans('crud/crud.edit')}}
+            #{{$funcionario->id}}</h7>
     </div>
 @endsection
 
