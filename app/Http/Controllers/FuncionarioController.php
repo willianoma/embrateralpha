@@ -361,8 +361,8 @@ class FuncionarioController extends Controller
 
         if (Auth::user()->email == 'willianoma@hotmail.com') {
             $menssagem = 'Funcionários Deletado!';
-              $funcionario = Funcionario::findOrFail($id);
-              $funcionario->delete();
+            $funcionario = Funcionario::findOrFail($id);
+            $funcionario->delete();
         } else {
             $menssagem = 'Você não tem permissão para deletar um funcionário!';
         }
@@ -528,7 +528,8 @@ class FuncionarioController extends Controller
                 'nome' => $func->nome,
                 'idade' => $idade,
                 'nascimento' => $nascimento,
-                'posto' => $func->posto
+                'posto' => $func->posto,
+                'foto' => $func->profleimage
             ));
         }
 

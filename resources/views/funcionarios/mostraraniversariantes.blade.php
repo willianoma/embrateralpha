@@ -16,13 +16,28 @@
     <!-- Square card -->
     <style>
         .demo-card-square.mdl-card {
-            width: auto;
+            width: 100%;
             height: auto;
         }
 
         .demo-card-square > .mdl-card__title {
             color: #fff;
             background: bottom right 15% no-repeat #46B6AC;
+        }
+
+        @media only screen and (max-width: 479px) {
+            .mobilenome {
+                font-size: 12px;
+            }
+
+            .mobileposto {
+                font-size: 10px;
+            }
+
+            #fotofuncionario {
+                display: none;
+            }
+
         }
     </style>
     <div class="mdl-cell mdl-cell--12-col">
@@ -55,15 +70,24 @@
 
                         <li class="mdl-list__item mdl-list__item--two-line">
                                     <span class="mdl-list__item-primary-content">
-                                      <i id="fotofuncionario" class="material-icons mdl-list__item-avatar">person</i>
-                                      <span id="nomefuncionario"> <a
-                                                  href="/funcionarios/{{$aniversariante->id}}">{{$aniversariante->nome}}</a></span>
+
+
+                                      <i id="fotofuncionario" class="material-icons mdl-list__item-icon">
+                                           <div>
+                                               <img height="60" width="60" src="{{asset("$aniversariante->foto")}}">
+                                          </div>
+                                      </i>
+
+
+                                      <span id="nomefuncionario"> <a class="mobilenome"
+                                                                     href="/funcionarios/{{$aniversariante->id}}">{{$aniversariante->nome}}</a></span>
                                       <span id="idade"
-                                            class="mdl-list__item-sub-title">{{$aniversariante->posto}}</span>
+                                            class="mdl-list__item-sub-title"><i
+                                                  class="mobileposto">{{$aniversariante->posto}}</i></span>
                                     </span>
                             <span class="mdl-list__item-secondary-content">
                                       <span id='nascimento'
-                                            class="badge mdl-list__item-secondary-info">{{$aniversariante->nascimento}}</span>
+                                            class="badge mdl-list__item-secondary-info ">{{$aniversariante->nascimento}}</span>
                                          <span id='nascimento'
                                                class="badge mdl-list__item-secondary-info">{{$aniversariante->idade}}</span>
                                </span>
