@@ -1,7 +1,7 @@
 ### Personal ###
 docker-compose.yml
 public/profilesimages
-
+shared/
 
 # Created by https://www.gitignore.io/api/sublimetext,laravel
 
