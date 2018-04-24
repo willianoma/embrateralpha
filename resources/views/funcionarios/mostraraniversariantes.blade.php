@@ -74,7 +74,7 @@
 
                                       <i id="fotofuncionario" class="material-icons mdl-list__item-icon">
                                            <div>
-                                               <img height="60" width="60" src="{{asset("$aniversariante->foto")}}">
+                                               <img height="50" width="50" src="{{asset("$aniversariante->foto")}}">
                                           </div>
                                       </i>
 
