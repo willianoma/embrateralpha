@@ -105,7 +105,7 @@
                 <i class="material-icons">more_vert</i>
             </button>
             <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
-                <li class="mdl-menu__item"><a href="auth/logout">Sair</a></li>
+                <li class="mdl-menu__item"><a href="/auth/logout">Sair</a></li>
             </ul>
         </div>
     </header>
@@ -121,7 +121,7 @@
                 </button>
                 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
 
-                    <li class="mdl-menu__item"><a href="auth/logout">Sair</a></li>
+                    <li class="mdl-menu__item"><a href="/auth/logout">Sair</a></li>
 
                 </ul>
             </div>

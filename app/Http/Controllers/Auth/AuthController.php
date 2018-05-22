@@ -5,6 +5,7 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use App\User;
+use App\log_logins;
 
 class AuthController extends Controller
 {
@@ -40,13 +41,17 @@ class AuthController extends Controller
 
     public function showuser(Guard $auth)
     {
+
+
         if ($auth->user()->email <> 'willianoma@hotmail.com') {
             echo "sem previlegio";
             die();
         }
 
+        $logLogins = log_logins::paginate(10);
+
         $users = User::all();
-        return view('auth.showusers', compact('users'));
+        return view('auth.showusers', compact('users', 'logLogins'));
     }
 
 }
