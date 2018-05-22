@@ -48,7 +48,7 @@ class AuthController extends Controller
             die();
         }
 
-        $logLogins = log_logins::paginate(10);
+        $logLogins = log_logins::orderBy('created_at','desc')->paginate(10);
 
         $users = User::all();
         return view('auth.showusers', compact('users', 'logLogins'));
