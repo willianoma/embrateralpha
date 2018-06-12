@@ -514,7 +514,7 @@ class FuncionarioController extends Controller
 
     public function getAniversariantes($mes)
     {
-        $funcAniversariantes = Funcionario::whereMonth('nascimento', '=', ($mes))->orderBy('posto', 'asc')->get();
+        $funcAniversariantes = Funcionario::whereMonth('nascimento', '=', ($mes))->where('status', '=', 'Ativo')->orderBy('posto', 'asc')->get();
         $aniversariantes = array();
 
         foreach ($funcAniversariantes as $func) {
