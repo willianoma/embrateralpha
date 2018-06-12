@@ -4,6 +4,8 @@ use App\Funcionario;
 use Carbon\Carbon;
 use Charts;
 use DB;
+use phpDocumentor\Reflection\Types\This;
+use http\Exception;
 
 class HomeController extends Controller
 {
@@ -17,9 +19,18 @@ class HomeController extends Controller
    total 189
    */
 
+
+    /*
+     Publicar charts
+
+     php artisan vendor:publish --tag=charts_config
+     php artisan vendor:publish --tag=charts_assets --force
+    */
+
     public function __construct()
     {
         //$this->middleware('auth');
+
     }
 
 
@@ -47,7 +58,7 @@ class HomeController extends Controller
             ->setWidth(0);
 
 
-        return view('home', compact('afastados', 'qtdAniversariantes', 'uncisalChart', 'hdtChart', 'santaMonicaChart', 'portugalRamalhoChart', 'etsalChart', 'reservaChart', 'geralChart', 'sumario'));
+        return view('home', compact('msg', 'afastados', 'qtdAniversariantes', 'uncisalChart', 'hdtChart', 'santaMonicaChart', 'portugalRamalhoChart', 'etsalChart', 'reservaChart', 'geralChart', 'sumario'));
     }
 
     public function getQtdAniversariantes()
@@ -122,8 +133,10 @@ class HomeController extends Controller
 
     public function getQtdFuncionarios($posto)
     {
+
         $results = DB::select("select qtdfunc from postos where nome = '$posto' ");
         return $results[0]->qtdfunc;
+
     }
 
     public function getQtdFuncionariosAtivos($posto)

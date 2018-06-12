@@ -17,6 +17,11 @@
 -->
 <html lang="en">
 <head>
+   {{-- @if(!empty($msg))
+        <div class="alert alert-warning">
+            <strong>Atenção: </strong> {{$msg}}
+        </div>
+    @endif--}}
 
     <?php
     setlocale(LC_ALL, 'pt_BR'); //
