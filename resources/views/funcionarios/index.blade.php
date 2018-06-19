@@ -48,8 +48,8 @@
 
                 <div class="col-3">
                     <select name="status" class="form-control">
-                        <option selected value="vazio">Selecionar Status</option>
-                        <option>Ativo</option>
+                        <option value="vazio">Selecionar Status</option>
+                        <option selected>Ativo</option>
                         <option>Inativo</option>
                         <option>INSS</option>
                         <option>Férias</option>
