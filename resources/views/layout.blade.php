@@ -146,7 +146,20 @@
             @if( Auth::user()->email == 'willianoma@hotmail.com')
                 <a class="mdl-navigation__link" href="/auth/showusers"><i
                             class="mdl-color-text--blue-grey-400 material-icons"
-                            role="presentation">assignment</i>Usuarios</a>
+                            role="presentation">person</i>Usuarios</a>
+                <a class="mdl-navigation__link" href="/postos"><i
+                            class="mdl-color-text--blue-grey-400 material-icons"
+                            role="presentation">location_on</i>Postos</a>
+                <a class="mdl-navigation__link" href="/relogio"><i
+                            class="mdl-color-text--blue-grey-400 material-icons"
+                            role="presentation">import_export</i>Exportar Ponto</a>
+                <a class="mdl-navigation__link" href="/veste/crudveste"><i
+                            class="mdl-color-text--blue-grey-400 material-icons"
+                            role="presentation">accessibility</i>Veste</a>
+
+
+
+
             @endif
 
             <div class="mdl-layout-spacer"></div>
