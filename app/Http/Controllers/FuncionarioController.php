@@ -520,7 +520,7 @@ class FuncionarioController extends Controller
         array_push($campos, 'deficiencia');
         array_push($campos, 'recebe_vale_transporte');
         array_push($campos, 'cargo');
-        array_push($campos, 'cb');
+        array_push($campos, 'cbo');
         array_push($campos, 'aso');
         array_push($campos, 'referencia');
         array_push($campos, 'preenchida_por');

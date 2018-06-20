@@ -12,23 +12,44 @@
 
 @section('content')
 
+    <script>
+        function marcardesmarcar() {
+            $('.marcar').each(function () {
+                if (this.checked) this.checked = false;
+                else this.checked = true;
+            });
+        }
+    </script>
+
+
     <form method="post">
 
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
+
         <div class="table table-bordered mdl-shadow--2dp mdl-grid mdl-cell--12-col">
-            <a>Escolher até 4 campos</a>
+            <a>Escolha os campos</a>
         </div>
+
+        <div class="table table-bordered mdl-shadow--2dp mdl-grid mdl-cell--12-col">
+
+            <button style="width: 100%;" class='btn btn-warning' type='button' title='Todos' id='todos' onclick='marcardesmarcar();' >Marcar Todos</button>
+
+        </div>
+
         <?$count = count($campos)?>
         <div class="table table-bordered mdl-shadow--2dp mdl-grid mdl-cell--12-col">
             @for ($i = 0; $i < $count; $i++)
                 <div class="mdl-cell--4-col">
-                    <input type="checkbox" name="camposelecionado[]" value="{{$campos[$i]}}"/>
+                    <input type="checkbox" class="marcar" name="camposelecionado[]" value="{{$campos[$i]}}"/>
                     <a>{{$campos[$i]}}</a>
                 </div>
             @endfor
 
+
         </div>
+
+
         <div class="table table-bordered mdl-shadow--2dp mdl-grid mdl-cell--12-col">
 
             <input class="btn btn-success" style="width: 100%" type="submit" value="Buscar Erros">
@@ -68,7 +89,7 @@
                                 <a class="btn btn-xs btn-warning"
                                    href="{{ route('funcionarios.edit', $funcpendente->id) }}"><i
                                             class="glyphicon glyphicon-edit"></i> {{trans('crud/crud.edit')}}</a>
-                                
+
                             </td>
                         </tr>
                     @endforeach
