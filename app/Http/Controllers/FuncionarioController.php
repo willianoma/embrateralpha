@@ -423,13 +423,13 @@ class FuncionarioController extends Controller
     }
 
 
-    public function formcorrecoes(Request $request, Posto $postos)
+    public function formcorrecoes(Request $request)
     {
         $camposel = $request->input("camposelecionado");
         $campoRequest = array();
 
         for ($i = 0; $i < count($camposel); $i++)
-            array_push($campoRequest,  $camposel{$i});
+            array_push($campoRequest, $camposel{$i});
 
         $campos = $this->getCampos();
 
@@ -442,6 +442,15 @@ class FuncionarioController extends Controller
         }
 
         return view('funcionarios.correcoes.correcoes', compact('funcionariosPendente', 'campos'));
+    }
+
+    public function formcorrecoesfotos(Request $request)
+    {
+        $postosel = $request->input("posto");
+
+        $funcionariosSemFoto = Funcionario::where('profleimage', '=', '')->orWhere('profleimage', '=', 'guest.png')->where('posto', '=', $postosel)->orderBy('nome', 'asc')->get();
+        $postos = Posto::all();
+        return view('funcionarios.correcoes.fotos', compact('funcionariosSemFoto', 'postos'));
     }
 
 

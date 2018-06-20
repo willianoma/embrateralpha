@@ -167,8 +167,8 @@
                         <div class="dropdown-menu mdl-color--blue-grey-900 " >
 
                             <a class="dropdown-item mdl-color-text--blue-grey-50" href="/funcionarios/correcoes/index">Itens</a>
+                            <a class="dropdown-item mdl-color-text--blue-grey-50" href="/funcionarios/correcoes/fotos">Fotos</a>
                            {{-- <a class="dropdown-item mdl-color-text--blue-grey-50" href="/funcionarios/correcoes/sexo">Sexo</a>--}}
-                            <a class="dropdown-item mdl-color-text--blue-grey-50" href="#">Fotos</a>
                         </div>
                     </a>
 

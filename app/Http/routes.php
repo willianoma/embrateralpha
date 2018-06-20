@@ -40,6 +40,8 @@ Route::group(['prefix' => '', 'middleware' => 'auth'], function () {
     Route::post('/funcionarios/correcoes/index', 'FuncionarioController@formcorrecoes');
     Route::get('/funcionarios/correcoes/correcoes', 'FuncionarioController@correcoes');
     Route::get('/funcionarios/correcoes/sexo', 'FuncionarioController@formcorrecoessexo');
+    Route::get('/funcionarios/correcoes/fotos', 'FuncionarioController@formcorrecoesfotos');
+    Route::post('/funcionarios/correcoes/fotos', 'FuncionarioController@formcorrecoesfotos');
     Route::get('/funcionarios/correcoes/updatesexo/{id}&{sexo}', 'FuncionarioController@corecoessexoupdate');
     Route::get('/funcionarios/aniversariantes/{mes}', 'FuncionarioController@mostraraniversariantes');
     Route::get('/funcionarios/aniversariantes/print', 'FuncionarioController@imprimianiversariantes');
