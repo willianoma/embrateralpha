@@ -2,20 +2,9 @@
 
 @section('content')
 
-   {{-- <form action="correcoes" method="get" enctype="multipart/form-data">
-        <div class="col-md-3">
-            <select name="postoselecionado" class="form-control">
-                <option selected value="vazio">Selecionar Posto</option>
-                @foreach($postos as $posto)
-                    <option>{{$posto->nome}}</option>
-                @endforeach
-            </select>
-        </div>
-        <div>
-            <input type="submit">
-        </div>
+index
 
-    </form>--}}
+
 @endsection
 
 

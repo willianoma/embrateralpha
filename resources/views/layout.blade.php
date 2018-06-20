@@ -17,11 +17,11 @@
 -->
 <html lang="en">
 <head>
-   {{-- @if(!empty($msg))
-        <div class="alert alert-warning">
-            <strong>Atenção: </strong> {{$msg}}
-        </div>
-    @endif--}}
+    {{-- @if(!empty($msg))
+         <div class="alert alert-warning">
+             <strong>Atenção: </strong> {{$msg}}
+         </div>
+     @endif--}}
 
     <?php
     setlocale(LC_ALL, 'pt_BR'); //
@@ -135,8 +135,10 @@
             <a class="mdl-navigation__link" href="/home"><i class="mdl-color-text--blue-grey-400 material-icons"
                                                             role="presentation">home</i>Home</a>
 
-            <a class="mdl-navigation__link" href="/funcionarios"><i class="mdl-color-text--blue-grey-400 material-icons"
-                                                                    role="presentation">people</i>Funcionários</a>
+            <a class="mdl-navigation__link"><i class="mdl-color-text--blue-grey-400 material-icons"
+                                               role="presentation">people</i>
+                Funcionários
+            </a>
 
 
             <a class="mdl-navigation__link" href="/funcionarios/aniversariantes/{{date('m')}}"><i
@@ -158,7 +160,17 @@
                             role="presentation">accessibility</i>Veste</a>
 
 
+                    <a class="nav-link mdl-navigation__link  dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">accessibility</i>
+                        <span>Correções</span>
+                        <div class="dropdown-menu mdl-color--blue-grey-900 " >
 
+                            <a class="dropdown-item mdl-color-text--blue-grey-50" href="/funcionarios/correcoes/index">Itens</a>
+                           {{-- <a class="dropdown-item mdl-color-text--blue-grey-50" href="/funcionarios/correcoes/sexo">Sexo</a>--}}
+                            <a class="dropdown-item mdl-color-text--blue-grey-50" href="#">Fotos</a>
+                        </div>
+                    </a>
 
             @endif
 

@@ -422,78 +422,28 @@ class FuncionarioController extends Controller
 
     }
 
+
     public function formcorrecoes(Request $request, Posto $postos)
     {
-        $operador = '=';
-        $funcionarios = DB::table('funcionarios')
-            ->where('id', $operador, '')
-            ->orwhere('nome', $operador, '')
-            ->orwhere('posto', $operador, '')
-            ->orwhere('cpf', $operador, '')
-            ->orwhere('rg', $operador, '')
-            ->orwhere('ctps', $operador, '')
-            ->orwhere('endereco', $operador, '')
-            ->orwhere('nascimento', $operador, '')
-            ->orwhere('pis_pasep', $operador, '')
-            ->orwhere('data_admissao', $operador, '')
-            ->orwhere('horario', $operador, '')
-            ->orwhere('tipo', $operador, '')
-            ->orwhere('status', $operador, '')
-            ->get();
+        $camposel = $request->input("camposelecionado");
+        $campoRequest = array();
 
+        for ($i = 0; $i < count($camposel); $i++)
+            array_push($campoRequest,  $camposel{$i});
 
-        foreach ($funcionarios as $funcionario) {
-            if (empty($funcionario->id)) {
-                $funcionario->id == "!!PREENCHER!!";
-            }
-            if (empty($funcionario->nome)) {
-                $funcionario->nome == "!!PREENCHER!!";
-            }
-            if (empty($funcionario->posto)) {
-                $funcionario->posto == "!!PREENCHER!!";
-            }
-            if (empty($funcionario->cpf)) {
-                $funcionario->cpf == "!!PREENCHER!!";
-            }
+        $campos = $this->getCampos();
 
-            if (empty($funcionario->rg)) {
-                $funcionario->rg == "!!PREENCHER!!";
-            }
-            if (empty($funcionario->ctps)) {
-                $funcionario->ctps == "!!PREENCHER!!";
-            }
-            if (empty($funcionario->endereco)) {
-                $funcionario->endereco == "!!PREENCHER!!";
-            }
-            if (empty($funcionario->nascimento)) {
-                $funcionario->nascimento == "!!PREENCHER!!";
-            }
+        $funcionariosPendente = array();
 
-            if (empty($funcionario->pis_pasep)) {
-                $funcionario->pis_pasep == "!!PREENCHER!!";
+        foreach ($campoRequest as $campo) {
+            $funcionarios = DB::table('funcionarios')->where($campo, '=', '')->orWhere($campo, '=', null)->get();
 
-            }
-            if (empty($funcionario->data_admissao)) {
-                $funcionario->data_admissao == "!!PREENCHER!!";
-            }
-
-            if (empty($funcionario->horario)) {
-                $funcionario->horario == "!!PREENCHER!!";
-            }
-
-            if (empty($funcionario->tipo)) {
-                $funcionario->tipo == "!!PREENCHER!!";
-            }
-            if (empty($funcionario->status)) {
-                $funcionario->status == "!!PREENCHER!!";
-            }
-
-
+            array_push($funcionariosPendente, array('campo' => $campo, 'funcionarios' => $funcionarios));
         }
 
-        return view('funcionarios.correcoes.correcoes', compact('funcionarios'));
-
+        return view('funcionarios.correcoes.correcoes', compact('funcionariosPendente', 'campos'));
     }
+
 
     public function imprimianiversariantes()
     {
@@ -535,6 +485,52 @@ class FuncionarioController extends Controller
 
     }
 
+    public function getCampos()
+    {
+        $campos = array();
+        array_push($campos, 'id');
+        array_push($campos, 'profleimage');
+        array_push($campos, 'nome');
+        array_push($campos, 'posto');
+        array_push($campos, 'cpf');
+        array_push($campos, 'rg');
+        array_push($campos, 'ctps');
+        array_push($campos, 'endereco');
+        array_push($campos, 'nascimento');
+        array_push($campos, 'pis_pasep');
+        array_push($campos, 'reservista');
+        array_push($campos, 'titulo_eleitor');
+        array_push($campos, 'telefone');
+        array_push($campos, 'email');
+        array_push($campos, 'data_admissao');
+        array_push($campos, 'funcao');
+        array_push($campos, 'farda');
+        array_push($campos, 'bota');
+        array_push($campos, 'filiacao');
+        array_push($campos, 'filhos');
+        array_push($campos, 'banco');
+        array_push($campos, 'banco_conta');
+        array_push($campos, 'banco_agencia');
+        array_push($campos, 'banco_tipo');
+        array_push($campos, 'contato_emergencia');
+        array_push($campos, 'tipo_sanguineo');
+        array_push($campos, 'estado_civil');
+        array_push($campos, 'nome_conjuge');
+        array_push($campos, 'grau_instrucao');
+        array_push($campos, 'deficiencia');
+        array_push($campos, 'recebe_vale_transporte');
+        array_push($campos, 'cargo');
+        array_push($campos, 'cb');
+        array_push($campos, 'aso');
+        array_push($campos, 'referencia');
+        array_push($campos, 'preenchida_por');
+        array_push($campos, 'obs');
+        array_push($campos, 'horario');
+        array_push($campos, 'tipo');
+        array_push($campos, 'status');
+        return $campos;
+    }
+
 
 }
 
@@ -565,7 +561,8 @@ class FuncionarioController extends Controller
      }*/
 
 
-/*       $funcionario->id
+/*
+       $funcionario->id
        $funcionario->profleimage
        $funcionario->nome
        $funcionario->posto
