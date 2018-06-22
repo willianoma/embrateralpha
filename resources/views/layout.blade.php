@@ -162,7 +162,7 @@
 
                     <a class="nav-link mdl-navigation__link  dropdown-toggle" href="#" id="navbarDropdownMenuLink"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">accessibility</i>
+                        <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">event_note</i>
                         <span>Correções</span>
                         <div class="dropdown-menu mdl-color--blue-grey-900 " >
 

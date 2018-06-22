@@ -52,7 +52,7 @@ class FuncionarioController extends Controller
 
         //Clicou no menu listar funcionarios (listar todos)
         if (!isset($posto) and $nome == 'vazio' and !isset($status)) {
-            $funcionarios = Funcionario::orderBy('nome', 'asc')->paginate(20);
+            $funcionarios = Funcionario::orderBy('nome', 'asc')->where('status', 'Ativo')->paginate(20);
             $render = true;
         } else
 
@@ -84,23 +84,30 @@ class FuncionarioController extends Controller
                             $render = false;
                         } else
 
-                            //Busca Por Status
-                            if ($posto == "vazio" and $nome == "vazio" and $status != "vazio") {
-                                //echo "Busca Por Status";
-                                $funcionarios = DB::table('funcionarios')->where('status', $status)->orderBy('nome', 'asc')->get();
+                            //Busca Por Nome+Status
+                            if ($posto == "vazio" and $nome != "vazio" and $status != "vazio") {
+                                //echo "Busca Por Nome";
+                                $funcionarios = DB::table('funcionarios')->where('nome', 'like', "%" . $nome . "%")->where('status', $status)->orderBy('nome', 'asc')->get();
                                 $render = false;
                             } else
 
-                                //busca Em Branco
-                                if ($posto == "vazio" and $nome == "vazio" and $status == "vazio") {
-                                    $funcionarios = Funcionario::orderBy('nome', 'asc')->paginate(20);
-                                    $render = true;
-                                } // Nome+Status ou Posto+Nome+Status
-                                else {
-                                    $funcionarios = Funcionario::orderBy('nome', 'asc')->paginate(20);
-                                    $render = true;
+                                //Busca Por Status
+                                if ($posto == "vazio" and $nome == "vazio" and $status != "vazio") {
+                                    //echo "Busca Por Status";
+                                    $funcionarios = DB::table('funcionarios')->where('status', $status)->orderBy('nome', 'asc')->get();
+                                    $render = false;
+                                } else
 
-                                }
+                                    //busca Em Branco
+                                    if ($posto == "vazio" and $nome == "vazio" and $status == "vazio") {
+                                        $funcionarios = Funcionario::orderBy('nome', 'asc')->where('status', 'Ativo')->paginate(20);
+                                        $render = true;
+                                    } // Nome+Status ou Posto+Nome+Status
+                                    else {
+                                        $funcionarios = Funcionario::orderBy('nome', 'asc')->where('status', 'Ativo')->paginate(20);
+                                        $render = true;
+
+                                    }
 
 
         return view('funcionarios.index', compact('funcionarios', 'postos', 'render'));
