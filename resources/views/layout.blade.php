@@ -135,7 +135,7 @@
             <a class="mdl-navigation__link" href="/home"><i class="mdl-color-text--blue-grey-400 material-icons"
                                                             role="presentation">home</i>Home</a>
 
-            <a class="mdl-navigation__link"><i class="mdl-color-text--blue-grey-400 material-icons"
+            <a class="mdl-navigation__link" href="/funcionarios"><i class="mdl-color-text--blue-grey-400 material-icons"
                                                role="presentation">people</i>
                 Funcionários
             </a>
