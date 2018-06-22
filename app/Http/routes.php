@@ -42,6 +42,7 @@ Route::group(['prefix' => '', 'middleware' => 'auth'], function () {
     Route::get('/funcionarios/correcoes/sexo', 'FuncionarioController@formcorrecoessexo');
     Route::get('/funcionarios/correcoes/fotos', 'FuncionarioController@formcorrecoesfotos');
     Route::post('/funcionarios/correcoes/fotos', 'FuncionarioController@formcorrecoesfotos');
+    Route::post('/funcionarios/correcoes/fotos/update/{id}', 'FuncionarioController@updateCorrecoesfotos');
     Route::get('/funcionarios/correcoes/updatesexo/{id}&{sexo}', 'FuncionarioController@corecoessexoupdate');
     Route::get('/funcionarios/aniversariantes/{mes}', 'FuncionarioController@mostraraniversariantes');
     Route::get('/funcionarios/aniversariantes/print', 'FuncionarioController@imprimianiversariantes');
@@ -64,7 +65,6 @@ Route::group(['prefix' => '', 'middleware' => 'auth'], function () {
     Route::get('auth/register', 'Auth\AuthController@getRegister');
     Route::post('auth/register', 'Auth\AuthController@postRegister');
     Route::get('auth/showusers', 'Auth\AuthController@showuser');
-
 
 
 });

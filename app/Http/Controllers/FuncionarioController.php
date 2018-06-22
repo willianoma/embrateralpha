@@ -349,9 +349,6 @@ class FuncionarioController extends Controller
 
         $funcionario->save();
 
-        sleep(5);
-
-
         return redirect()->route('funcionarios.index')->with('message', 'Funcionario Atualizado com sucesso!');
     }
 
@@ -460,6 +457,41 @@ class FuncionarioController extends Controller
         return view('funcionarios.correcoes.fotos', compact('funcionariosSemFoto', 'postos'));
     }
 
+    public function updateCorrecoesfotos(Request $request, $id)
+    {
+        $funcionario = Funcionario::findOrFail($id);
+        $profileImage = $request->file('profleimage');
+
+
+        if ($request->hasFile('profleimage') && $profileImage->isValid()) {
+            if ($profileImage->getClientMimeType() == "image/jpeg" || $profileImage->getClientMimeType() == "image/png" || $profileImage->getClientMimeType() == "image/jpg") {
+
+                $nomeArquivo = $funcionario->id . '.' . 'png';
+
+
+                $profileImage->move('profilesimages', $nomeArquivo);
+                $funcionario->profleimage = 'profilesimages/' . $nomeArquivo;
+
+                //Ver problema com JPG, girando automaticamente e sem sucesso de save com o metodo abaixo em mobile...
+                $height = Image::make($funcionario->profleimage)->height();
+                $wigth = Image::make($funcionario->profleimage)->width();
+
+
+                /*   if ($height < $wigth) {
+                       return redirect()->route('funcionarios.index')->with('message', 'Posicionamento de foto incorreta');
+
+                   } else {*/
+                Image::make($funcionario->profleimage)->resize(480, 640)->save();
+            }
+        }
+
+
+        $funcionario->save();
+
+
+        return redirect('/funcionarios/correcoes/fotos')->with('message', 'Foto Atualizado com sucesso!');
+
+    }
 
     public function imprimianiversariantes()
     {
