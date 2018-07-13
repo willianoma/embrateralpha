@@ -23,6 +23,12 @@
          </div>
      @endif--}}
 
+    <style>
+        .dropdown-item {
+            font-size: 14px;
+        }
+    </style>
+
     <?php
     setlocale(LC_ALL, 'pt_BR'); //
     date_default_timezone_set("America/Sao_Paulo");
@@ -136,7 +142,7 @@
                                                             role="presentation">home</i>Home</a>
 
             <a class="mdl-navigation__link" href="/funcionarios"><i class="mdl-color-text--blue-grey-400 material-icons"
-                                               role="presentation">people</i>
+                                                                    role="presentation">people</i>
                 Funcionários
             </a>
 
@@ -160,20 +166,33 @@
                             role="presentation">accessibility</i>Veste</a>
 
 
-                    <a class="nav-link mdl-navigation__link  dropdown-toggle" href="#" id="navbarDropdownMenuLink"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">event_note</i>
-                        <span>Correções</span>
-                        <div class="dropdown-menu mdl-color--blue-grey-900 " >
 
-                            <a class="dropdown-item mdl-color-text--blue-grey-50" href="/funcionarios/correcoes/index">Itens</a>
-                            <a class="dropdown-item mdl-color-text--blue-grey-50" href="/funcionarios/correcoes/fotos">Fotos</a>
-                           {{-- <a class="dropdown-item mdl-color-text--blue-grey-50" href="/funcionarios/correcoes/sexo">Sexo</a>--}}
-                        </div>
-                    </a>
 
             @endif
 
+            <div class="dropdown">
+                <button class="btn mdl-color--blue-grey-800 nav-link mdl-navigation__link dropdown-toggle"
+                        data-toggle="dropdown" type="button">
+                    <i class="mdl-color-text--blue-grey-400 material-icons " role="presentation">event_note</i>
+                    <span class=" mdl-color-text--blue-grey-200">Correções</span>
+
+                </button>
+
+                <ul class="dropdown-menu dropdown-menu-right mdl-color--blue-grey-900 ">
+                    <li class="dropdown-item">
+                        <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">add_a_photo</i>
+                        <a class="mdl-color-text--blue-grey-100"
+                           href="/funcionarios/correcoes/fotos">FOTOS</a>
+                    </li>
+
+                    <li class="dropdown-item">
+                        <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">event_note</i>
+                        <a class="mdl-color-text--blue-grey-100"
+                           href="/funcionarios/correcoes/index">ITENS</a>
+                        {{-- <a class="dropdown-item mdl-color-text--blue-grey-50" href="/funcionarios/correcoes/sexo">Sexo</a>--}}
+                    </li>
+                </ul>
+            </div>
             <div class="mdl-layout-spacer"></div>
             {{--<a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons"
                                                        role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>--}}
