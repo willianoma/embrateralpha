@@ -47,6 +47,12 @@ Route::group(['prefix' => '', 'middleware' => 'auth'], function () {
     Route::get('/funcionarios/aniversariantes/{mes}', 'FuncionarioController@mostraraniversariantes');
     Route::get('/funcionarios/aniversariantes/print', 'FuncionarioController@imprimianiversariantes');
 
+    //Filhos
+    Route::get('/funcionarios/associarfilho', 'FuncionarioController@Associarfilho');
+    Route::get('/funcionarios/storefilho', 'FuncionarioController@Storefilho');
+    Route::get('/funcionarios/updatefilho', 'FuncionarioController@Updatefilho');
+    Route::get('/funcionarios/destroyfilho', 'FuncionarioController@Destroyfilho');
+
 
     Route::resource("funcionarios", "FuncionarioController");
     //Fim Rotas Funcionários

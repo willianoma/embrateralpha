@@ -579,6 +579,44 @@ class FuncionarioController extends Controller
         return $campos;
     }
 
+    public function Associarfilho()
+    {
+        $funcionarios = Funcionario::orderBy('nome', 'asc')->get();
+        return view('funcionarios.filhos.associar', compact('funcionarios', 'funcionariopost'));
+
+    }
+
+    public function Criarfilho()
+    {
+        //ajax 
+        return 'Criarfilho';
+
+    }
+
+    public function EditarFilho()
+    {
+        //ajax com lista
+        return 'EditarFilho';
+
+    }
+
+    public function Storefilho()
+    {
+        return 'StoreFilho';
+
+    }
+
+    public function Updatefilho()
+    {
+        return 'UpdateFilho';
+
+    }
+
+    public function Destroyfilho()
+    {
+        return 'DestroyFilho';
+
+    }
 
 }
 
