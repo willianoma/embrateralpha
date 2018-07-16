@@ -588,7 +588,7 @@ class FuncionarioController extends Controller
 
     public function Criarfilho()
     {
-        //ajax 
+        //ajax
         return 'Criarfilho';
 
     }
