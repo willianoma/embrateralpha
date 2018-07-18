@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\FuncionariosFilhos;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -579,40 +580,69 @@ class FuncionarioController extends Controller
         return $campos;
     }
 
-    public function Associarfilho()
+    public function Associarfilho($idfuncionario)
     {
         $funcionarios = Funcionario::orderBy('nome', 'asc')->get();
-        return view('funcionarios.filhos.associar', compact('funcionarios', 'funcionariopost'));
+
+        if ($idfuncionario == 'undefined') {
+            $filhos = FuncionariosFilhos::all();
+        }
+
+        if ($idfuncionario <> 'undefined') {
+            $funcionario = Funcionario::find($idfuncionario);
+            $filhos = $funcionario->getFilhos()->get();
+        }
+
+        return view('funcionarios.filhos.associar', compact('funcionarios', 'funcionario', 'filhos'));
+    }
+
+    public
+    function StoreAssociarfilho(Request $request)
+    {
+
+        $funcionariosfilho = new FuncionariosFilhos();
+        $funcionariosfilho->nome = $request->input("nome-filho");
+        $funcionariosfilho->nascimento = $request->input("nascimento-filho");
+        $funcionariosfilho->idfuncionario = $request->input("funcionario-filho");
+        $funcionariosfilho->save();
+        return redirect('/funcionarios/associarfilho/' . $funcionariosfilho->idfuncionario)->with('message', 'Filho associado com sucesso!');
+
 
     }
 
-    public function Criarfilho()
+
+    public
+    function Criarfilho()
     {
         //ajax
         return 'Criarfilho';
 
     }
 
-    public function EditarFilho()
+    public
+    function EditarFilho()
     {
         //ajax com lista
         return 'EditarFilho';
 
     }
 
-    public function Storefilho()
+    public
+    function Storefilho()
     {
         return 'StoreFilho';
 
     }
 
-    public function Updatefilho()
+    public
+    function Updatefilho()
     {
         return 'UpdateFilho';
 
     }
 
-    public function Destroyfilho()
+    public
+    function Destroyfilho()
     {
         return 'DestroyFilho';
 
