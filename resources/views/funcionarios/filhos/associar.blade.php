@@ -13,20 +13,34 @@
     </style>
     <h7>ASSOCIAR FILHO</h7>
 
+    <script>
+        function buscar() {
+            var idFunc = document.getElementById("funcionario-filho").value;
+            window.location = "/funcionarios/associarfilho/" + idFunc;
+
+        }
+    </script>
+
 @endsection
 
 @section('content')
+
+
 
     <div class="container">
         <div class="row">
             <div class="col-md-12">
 
                 <form method="POST" action="/funcionarios/storeassociarfilho">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input required type="hidden" name="_token" value="{{ csrf_token() }}">
 
                     <div class="row">
                         <div class="col-md-12">
+
                             <label>Associar Funcionário</label>
+                        </div>
+
+                        <div class="col-md-10">
                             <select class="form-control" id="funcionario-filho" name="funcionario-filho">
                                 @if(isset($funcionario))
                                     <option selected value="{{$funcionario->id}}">{{$funcionario->nome}}</option>
@@ -37,25 +51,37 @@
                             </select>
                         </div>
 
+                        <div class="col-md-2">
+                            <button type="button" class="form-control btn btn-warning" onclick="buscar()">Buscar
+                            </button>
+                        </div>
+
 
                     </div>
+
 
                     <div class="row">
 
                         <div class="col-md-6">
                             <label>Nome Filho</label>
-                            <input class="form-control" type="text" id="nome-filho" name="nome-filho">
+                            <input required class="form-control" type="text" id="nome-filho" name="nome-filho">
                         </div>
 
                         <div class="col-md-6">
                             <label>Nascimento</label>
-                            <input class="form-control" type="date" id="nascimento-filho" name="nascimento-filho">
+                            <input required class="form-control" type="date" id="nascimento-filho"
+                                   name="nascimento-filho">
                         </div>
                     </div>
 
                     <div class="col-md-12">
                         <input class="btn btn-success" type="submit" name="Cadastrar" value="Cadastrar"
                                id="btn-cadastrar">
+                    </div>
+
+                    <div class="col-md-12">
+                        <a class="btn btn-danger" name="voltar" href="/funcionarios" value="Voltar"
+                           id="btn-cadastrar">Voltar</a>
                     </div>
 
                 </form>

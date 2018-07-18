@@ -501,7 +501,7 @@
 
                     <div class="row">
 
-                        <div class="form-group col-md-6 minimal-padding first-item @if($errors->has('nome_conjuge')) has-error @endif">
+                        <div class="form-group col-md-12 minimal-padding first-item @if($errors->has('nome_conjuge')) has-error @endif">
                             <label for="nome_conjuge-field">{{trans('crud/funcionarios.spouse')}}</label>
                             <input type="text" id="nome_conjuge-field" name="nome_conjuge" class="form-control"
                                    value="{{ old("nome_conjuge") }}"/>
@@ -510,16 +510,24 @@
                             @endif
                         </div>
 
-                        <div class="form-group col-md-6 minimal-padding last-item @if($errors->has('filhos')) has-error @endif">
-                            <label for="filhos-field">{{trans('crud/funcionarios.children')}}</label>
-                            <input type="text" id="filhos-field" name="filhos" class="form-control"
-                                   value="{{ old("filhos") }}"
-                                   placeholder="Ex.: José Antonio Correia - 05/03/1995 + Maria Correia - 20/05/2001"/>
-                            @if($errors->has("filhos"))
-                                <span class="help-block">{{ $errors->first("filhos") }}</span>
-                            @endif
-                        </div>
+                        <input type="hidden" id="filhos-field" name="filhos" class="form-control"
+                               value=""
+                        />
+
+                        {{--
+                         <div class="form-group col-md-6 minimal-padding last-item @if($errors->has('filhos')) has-error @endif">
+                             <label for="filhos-field">{{trans('crud/funcionarios.children')}}</label>
+                             <input type="text" id="filhos-field" name="filhos" class="form-control"
+                                    value="{{ old("filhos") }}"
+                                    placeholder="Ex.: José Antonio Correia - 05/03/1995 + Maria Correia - 20/05/2001"/>
+                             @if($errors->has("filhos"))
+                                 <span class="help-block">{{ $errors->first("filhos") }}</span>
+                             @endif
+                         </div>
+                                             --}}
+
                     </div>
+
                     <!-- Fim 2 itens -->
 
                     <!-- 4 itens -->
