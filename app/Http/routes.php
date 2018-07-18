@@ -52,7 +52,8 @@ Route::group(['prefix' => '', 'middleware' => 'auth'], function () {
     Route::post('/funcionarios/storeassociarfilho', 'FuncionarioController@StoreAssociarfilho');
     Route::get('/funcionarios/storefilho', 'FuncionarioController@Storefilho');
     Route::get('/funcionarios/updatefilho', 'FuncionarioController@Updatefilho');
-    Route::get('/funcionarios/destroyfilho', 'FuncionarioController@Destroyfilho');
+    Route::get('/funcionarios/destroyfilhos/{idfuncionario}', 'FuncionarioController@Destroyfilhos');
+    Route::get('/funcionarios/destroyfilho/{idfilho}', 'FuncionarioController@Destroyfilho');
 
 
     Route::resource("funcionarios", "FuncionarioController");

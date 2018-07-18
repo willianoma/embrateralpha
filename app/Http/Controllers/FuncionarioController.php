@@ -366,6 +366,7 @@ class FuncionarioController extends Controller
             $menssagem = 'Funcionários Deletado!';
             $funcionario = Funcionario::findOrFail($id);
             $funcionario->delete();
+            $this->Destroyfilhos($id);
         } else {
             $menssagem = 'Você não tem permissão para deletar um funcionário!';
         }
@@ -373,6 +374,7 @@ class FuncionarioController extends Controller
 
         return redirect()->route('funcionarios.index')->with('message', $menssagem);;
     }
+
 
     public function filtro()
     {
@@ -641,10 +643,20 @@ class FuncionarioController extends Controller
 
     }
 
-    public
-    function Destroyfilho()
+    public function Destroyfilho($idfilho)
     {
-        return 'DestroyFilho';
+        $filho = FuncionariosFilhos::find($idfilho);
+        $filho->delete();
+        return redirect('/funcionarios/associarfilho/' . $filho->idfuncionario)->with('message', 'Filho associado com sucesso!');
+
+    }
+
+    public
+    function Destroyfilhos($idFuncionarios)
+    {
+        $filhos = FuncionariosFilhos::where('idfuncionario', '=', $idFuncionarios);
+        $filhos->delete();
+
 
     }
 

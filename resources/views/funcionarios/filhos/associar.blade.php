@@ -19,6 +19,15 @@
             window.location = "/funcionarios/associarfilho/" + idFunc;
 
         }
+
+    </script>
+
+    <script>
+        function deletarFilho() {
+            var idFilho = document.getElementById("id-filho").value;
+            alert(idFilho);
+            // window.location = "/funcionarios/associarfilho/" + idFunc;
+        }
     </script>
 
 @endsection
@@ -44,6 +53,7 @@
                             <select class="form-control" id="funcionario-filho" name="funcionario-filho">
                                 @if(isset($funcionario))
                                     <option selected value="{{$funcionario->id}}">{{$funcionario->nome}}</option>
+                                    <option></option>
                                 @endif
                                 @foreach($funcionarios as $funcionario)
                                     <option value="{{$funcionario->id}}">{{$funcionario->nome}}</option>
@@ -79,10 +89,6 @@
                                id="btn-cadastrar">
                     </div>
 
-                    <div class="col-md-12">
-                        <a class="btn btn-danger" name="voltar" href="/funcionarios" value="Voltar"
-                           id="btn-cadastrar">Voltar</a>
-                    </div>
 
                 </form>
 
@@ -96,17 +102,29 @@
                             <th>Nome Filhos</th>
                             <th>Nascimento</th>
                             <th>Funcionario</th>
+                            <th>Ação</th>
                         </tr>
                         </thead>
                         <tbody>
-
                         @foreach($filhos as $filho)
+
                             <tr>
+
                                 <td>{{$filho->id}}</td>
                                 <td>{{$filho->nome}}</td>
                                 <td>{{$filho->nascimento}}</td>
                                 <td>{{$filho->getFuncionario->nome}}</td>
+                                <td>
+                                    <form action="/funcionarios/destroyfilho/{{$filho->id}}"
+                                          onsubmit="if(confirm('Deseja excluir {{$filho->nome}}?')) { return true } else {return false };">
+
+
+                                        <button class="btn btn-danger" onclick="deletarFilho()">Deletar</button>
+                                    </form>
+
+                                </td>
                             </tr>
+
                         @endforeach
 
                         </tbody>
