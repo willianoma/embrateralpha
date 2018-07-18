@@ -48,6 +48,13 @@
             return v;
         }
     </script>
+
+    <script>
+        function associarFilhos() {
+            alert('ok');
+        }
+    </script>
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -503,6 +510,28 @@
                             @endif
                         </div>
 
+                        {{--
+
+                                                <div class="form-group col-md-6 minimal-padding last-item @if($errors->has('filhos')) has-error @endif">
+                                                    <label for="filhos-field">{{trans('crud/funcionarios.children')}}</label>
+
+                                                    <button id="filhos-field" name="filhos" class="btn btn-sucess"></button>
+
+                                                </div>
+                        --}}
+
+
+                        <div class="form-group col-md-6 minimal-padding last-item @if($errors->has('filhos')) has-error @endif">
+                            <label for="filhos-field">{{trans('crud/funcionarios.children')}}</label>
+                            <a type="button" href="/funcionarios/associarfilho/{{$funcionario->id}}" id="filhos-field" name="filhos" class="form-control btn btn-warning">Associar
+                            </a>
+
+                            <input type="hidden" id="filhos-field" name="filhos" value=""/>
+                        </div>
+
+
+                        {{--
+
                         <div class="form-group col-md-6 minimal-padding last-item @if($errors->has('filhos')) has-error @endif">
                             <label for="filhos-field">{{trans('crud/funcionarios.children')}}</label>
                             <input type="number" id="filhos-field" name="filhos" class="form-control"
@@ -511,6 +540,10 @@
                                 <span class="help-block">{{ $errors->first("filhos") }}</span>
                             @endif
                         </div>
+
+                        --}}
+
+
                     </div>
                     <!-- Fim 2 Itens -->
 
