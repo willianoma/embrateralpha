@@ -3,7 +3,7 @@
 </head>
 
 <style>
-    .row{
+    .row {
         padding-left: 10px;
     }
 </style>
@@ -46,7 +46,7 @@
                     <!--<p class="form-control-static">{{$funcionario->profleimage}}</p>-->
                     </div>
 
-                    <div class="form-group col-md-3 form-group minimal-padding " >
+                    <div class="form-group col-md-3 form-group minimal-padding ">
                         <label for="nome-field">{{trans('crud/funcionarios.name')}}</label>
                         <p class="form-control-static">{{$funcionario->nome}}</p>
                     </div>
@@ -263,7 +263,9 @@
 
                     <div class="form-group col-md-3 form-group minimal-padding last-item">
                         <label for="filhos-field">{{trans('crud/funcionarios.children')}}</label>
-                        <p class="form-control-static">{{$funcionario->filhos}}</p>
+                        @foreach($funcionario->getfilhos as $filhos)
+                            <p class="form-control-static">{{$filhos->nome}}</p>
+                        @endforeach
                     </div>
 
                 </div>
