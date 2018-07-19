@@ -198,6 +198,13 @@
                            href="/funcionarios/associarfilho/undefined">ASSOCIAR FILHOS</a>
                         {{-- <a class="dropdown-item mdl-color-text--blue-grey-50" href="/funcionarios/correcoes/sexo">Sexo</a>--}}
                     </li>
+
+                    <li class="dropdown-item">
+                        <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">healing</i>
+                        <a class="mdl-color-text--blue-grey-100"
+                           href="/funcionarios/correcoes/insalubridade">INSALUBRIDADE</a>
+                        {{-- <a class="dropdown-item mdl-color-text--blue-grey-50" href="/funcionarios/correcoes/sexo">Sexo</a>--}}
+                    </li>
                 </ul>
             </div>
             <div class="mdl-layout-spacer"></div>

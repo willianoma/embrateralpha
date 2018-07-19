@@ -185,7 +185,6 @@ class FuncionarioController extends Controller
         $funcionario->status = $request->input("status");
 
 
-
         $funcionariosDB = DB::table('funcionarios')->get();
 
         if (!empty($funcionariosDB)) {
@@ -433,7 +432,9 @@ class FuncionarioController extends Controller
 
     public function formcorrecoes(Request $request)
     {
+
         $camposel = $request->input("camposelecionado");
+
         $campoRequest = array();
 
         for ($i = 0; $i < count($camposel); $i++)
@@ -449,7 +450,7 @@ class FuncionarioController extends Controller
             array_push($funcionariosPendente, array('campo' => $campo, 'funcionarios' => $funcionarios));
         }
 
-        return view('funcionarios.correcoes.correcoes', compact('funcionariosPendente', 'campos'));
+        return view('funcionarios.correcoes.correcoes', compact('funcionariosPendente', 'campos', 'camposel'));
     }
 
     public function formcorrecoesfotos(Request $request)
@@ -494,6 +495,30 @@ class FuncionarioController extends Controller
 
 
         return redirect('/funcionarios/correcoes/fotos')->with('message', 'Foto Atualizado com sucesso!');
+
+    }
+
+    public function formCorrecoesinsalubridade()
+    {
+        $funcionariosPendente = array();
+
+
+        $funcionarios = DB::table('funcionarios')->where('insalubridade', '=', '')->orWhere('insalubridade', '=', null)->get();
+
+        array_push($funcionariosPendente, array('campo' => 'insalubridade', 'funcionarios' => $funcionarios));
+
+
+        return view('/funcionarios/correcoes/insalubridade', compact('funcionariosPendente'));
+    }
+
+    public function updateCorrecoesinsalubridade($idfuncionario, Request $resquest)
+    {
+
+        $func = Funcionario::find($idfuncionario);
+        $func->insalubridade = $resquest->input('insalubridade');
+        $func->update();
+        return redirect('/funcionarios/correcoes/insalubridade')->with('message', 'Foto Atualizado com sucesso!');
+
 
     }
 

@@ -22,6 +22,8 @@
     </script>
 
 
+
+
     <form method="post">
 
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -33,7 +35,9 @@
 
         <div class="table table-bordered mdl-shadow--2dp mdl-grid mdl-cell--12-col">
 
-            <button style="width: 100%;" class='btn btn-warning' type='button' title='Todos' id='todos' onclick='marcardesmarcar();' >Marcar Todos</button>
+            <button style="width: 100%;" class='btn btn-warning' type='button' title='Todos' id='todos'
+                    onclick='marcardesmarcar();'>Marcar Todos
+            </button>
 
         </div>
 
@@ -46,9 +50,7 @@
                 </div>
             @endfor
 
-
         </div>
-
 
         <div class="table table-bordered mdl-shadow--2dp mdl-grid mdl-cell--12-col">
 
@@ -57,46 +59,50 @@
     </form>
 
 
-
-
     <div class="mdl-grid">
-        @foreach($funcionariosPendente as $funcionariopendente)
-            <div class="mdl-cell mdl-cell--12-col">
 
-                <table class="table table-striped mdl-shadow--2dp mdl-cell mdl-cell--12-col">
-                    <thead>
-                    <tr class="mdl-card__title-text">
-                        <th class="mdl-cell mdl-cell--12-col"><a>{{$funcionariopendente['campo']}}</a></th>
-                    </tr>
-                    </thead>
-                    <thead>
 
-                    <tr class="mdl-cell mdl-cell--12-col">
-                        <th class="mdl-cell mdl-cell--6-col">Nome</th>
-                        <th class="mdl-cell mdl-cell--6-col text-right">Ações</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($funcionariopendente['funcionarios'] as $funcpendente)
-                        <tr class="mdl-cell mdl-cell--12-col">
 
-                            <td class="mdl-cell mdl-cell--6-col"><a>{{$funcpendente->nome}}</a></td>
 
-                            <td class="mdl-cell mdl-cell--6-col text-right">
-                                <a class="btn btn-xs btn-primary"
-                                   href="{{ route('funcionarios.show', $funcpendente->id) }}"><i
-                                            class="glyphicon glyphicon-eye-open"></i> {{trans('crud/crud.show')}}</a>
-                                <a class="btn btn-xs btn-warning"
-                                   href="{{ route('funcionarios.edit', $funcpendente->id) }}"><i
-                                            class="glyphicon glyphicon-edit"></i> {{trans('crud/crud.edit')}}</a>
+            @foreach($funcionariosPendente as $funcionariopendente)
+                <div class="mdl-cell mdl-cell--12-col">
 
-                            </td>
+                    <table class="table table-striped mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+                        <thead>
+                        <tr class="mdl-card__title-text">
+                            <th class="mdl-cell mdl-cell--12-col"><a>{{$funcionariopendente['campo']}}</a></th>
                         </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-            </div>
-        @endforeach
+                        </thead>
+                        <thead>
+
+                        <tr class="mdl-cell mdl-cell--12-col">
+                            <th class="mdl-cell mdl-cell--6-col">Nome</th>
+                            <th class="mdl-cell mdl-cell--6-col text-right">Ações</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($funcionariopendente['funcionarios'] as $funcpendente)
+                            <tr class="mdl-cell mdl-cell--12-col">
+
+                                <td class="mdl-cell mdl-cell--6-col"><a>{{$funcpendente->nome}}</a></td>
+
+                                <td class="mdl-cell mdl-cell--6-col text-right">
+                                    <a class="btn btn-xs btn-primary"
+                                       href="{{ route('funcionarios.show', $funcpendente->id) }}"><i
+                                                class="glyphicon glyphicon-eye-open"></i> {{trans('crud/crud.show')}}
+                                    </a>
+                                    <a class="btn btn-xs btn-warning"
+                                       href="{{ route('funcionarios.edit', $funcpendente->id) }}"><i
+                                                class="glyphicon glyphicon-edit"></i> {{trans('crud/crud.edit')}}</a>
+
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            @endforeach
+
 
     </div>
 
