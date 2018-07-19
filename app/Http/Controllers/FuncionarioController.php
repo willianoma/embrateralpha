@@ -503,7 +503,7 @@ class FuncionarioController extends Controller
         $funcionariosPendente = array();
 
 
-        $funcionarios = DB::table('funcionarios')->where('insalubridade', '=', '')->orWhere('insalubridade', '=', null)->get();
+        $funcionarios = DB::table('funcionarios')->where('insalubridade', '=', '')->orWhere('insalubridade', '=', null)->orderby('nome','asc')->get();
 
         array_push($funcionariosPendente, array('campo' => 'insalubridade', 'funcionarios' => $funcionarios));
 
