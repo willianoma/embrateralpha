@@ -65,7 +65,7 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                     <div class="row">
-                        <div class="form-horizontal div-top col-md-12 @if($errors->has('profleimage')) has-error @endif">
+                        <div class="form-horizontal div-top col-md-8 @if($errors->has('profleimage')) has-error @endif">
                             <label id="label-image-profile" hidden="" for="profleimage-field">Profleimage</label>
                             <img class="img-profile thumb" src="{{asset("$funcionario->profleimage")}}">
                             <input type="file" id="profleimage-field" name="profleimage" class="form-control-static"
@@ -74,6 +74,37 @@
                                 <span class="help-block">{{ $errors->first("profleimage") }}</span>
                             @endif
                         </div>
+
+
+                        <div class="form-group div-top col-md-4  @if($errors->has('insalubridade')) has-error @endif">
+                            <label for="insalubridade-field">Insalubridade</label>
+
+                            <select class="form-control" required="" id="insalubridade-field" name="insalubridade">
+
+
+                                <?php
+
+
+                                if (isset($funcionario->insalubridade)) {
+                                    echo "<option selected=''>";
+                                    echo $funcionario->insalubridade;
+                                    echo ' </option>';
+                                }
+
+                                ?>
+
+
+                                <option>0%</option>
+                                <option>10%</option>
+                                <option>20%</option>
+                                <option>30%</option>
+                                <option>40%</option>
+                            </select>
+                            @if($errors->has("insalubridade"))
+                                <span class="help-block">{{ $errors->first("insalubridade") }}</span>
+                            @endif
+                        </div>
+
                     </div>
 
                     <!-- 2 items -->
@@ -523,10 +554,11 @@
 
                         <div class="form-group col-md-6 minimal-padding last-item @if($errors->has('filhos')) has-error @endif">
                             <label for="filhos-field">{{trans('crud/funcionarios.children')}}</label>
-                            <a type="button" href="/funcionarios/associarfilho/{{$funcionario->id}}" id="filhos-field" name="filhos" class="form-control btn btn-warning">Associar
+                            <a type="button" href="/funcionarios/associarfilho/{{$funcionario->id}}" id="filhos-field"
+                               name="filhos" class="form-control btn btn-warning">Associar
                             </a>
 
-                            <input type="hidden" id="filhos-field" name="filhos" value=""/>
+
                         </div>
 
 

@@ -38,9 +38,9 @@
                     </div>--}}
 
 
-                    {{--2 itens--}}
+                    {{--4 itens--}}
 
-                    <div class="form-group col-md-6  minimal-padding first-item">
+                    <div class="form-group col-md-3  minimal-padding first-item">
                         {{--<label for="profleimage-field">{{trans('crud/funcionarios.profile_image')}}</label>--}}
                         <img height="90" width="60" src="{{asset("$funcionario->profleimage")}}">
                     <!--<p class="form-control-static">{{$funcionario->profleimage}}</p>-->
@@ -54,6 +54,12 @@
                     <div class="form-group col-md-3 form-group minimal-padding  last-item">
                         <label for="sexo-field">{{trans('crud/funcionarios.sexo')}}</label>
                         <p class="form-control-static">{{$funcionario->sexo}}</p>
+
+                    </div>
+
+                    <div class="form-group col-md-3 form-group minimal-padding  last-item">
+                        <label for="sexo-field">Insalubridade</label>
+                        <p class="form-control-static">{{$funcionario->insalubridade}}</p>
 
                     </div>
                 </div>

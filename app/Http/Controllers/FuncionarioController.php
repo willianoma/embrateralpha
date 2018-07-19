@@ -162,7 +162,7 @@ class FuncionarioController extends Controller
         $filiacaomae = $request->input("filiacaomae");
         $funcionario->filiacao = $filiacaopai . " / " . $filiacaomae;;
 
-        $funcionario->filhos = $request->input("filhos");
+        $funcionario->insalubridade = $request->input("insalubridade");
         $funcionario->banco = $request->input("banco");
         $funcionario->banco_conta = $request->input("banco_conta");
         $funcionario->banco_agencia = $request->input("banco_agencia");
@@ -183,6 +183,7 @@ class FuncionarioController extends Controller
         $funcionario->horario = $request->input("horario");
         $funcionario->tipo = $request->input("tipo");
         $funcionario->status = $request->input("status");
+
 
 
         $funcionariosDB = DB::table('funcionarios')->get();
@@ -299,7 +300,7 @@ class FuncionarioController extends Controller
         $funcionario->farda = $request->input("farda");
         $funcionario->bota = $request->input("bota");
         $funcionario->filiacao = $request->input("filiacao");
-        $funcionario->filhos = $request->input("filhos");
+        $funcionario->insalubridade = $request->input("insalubridade");
         $funcionario->banco = $request->input("banco");
         $funcionario->banco_conta = $request->input("banco_conta");
         $funcionario->banco_agencia = $request->input("banco_agencia");
@@ -363,7 +364,7 @@ class FuncionarioController extends Controller
     {
 
         if (Auth::user()->email == 'willianoma@hotmail.com') {
-            $menssagem = 'Funcionários Deletado!';
+            $menssagem = 'Funcionário Deletado!';
             $funcionario = Funcionario::findOrFail($id);
             $funcionario->delete();
             $this->Destroyfilhos($id);
@@ -558,7 +559,7 @@ class FuncionarioController extends Controller
         array_push($campos, 'farda');
         array_push($campos, 'bota');
         array_push($campos, 'filiacao');
-        array_push($campos, 'filhos');
+        array_push($campos, 'insalubridade');
         array_push($campos, 'banco');
         array_push($campos, 'banco_conta');
         array_push($campos, 'banco_agencia');

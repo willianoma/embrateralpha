@@ -57,7 +57,7 @@
                 <form action="{{ route('funcionarios.store') }}" method="POST" enctype="multipart/form-data">
 
                     <div class="row">
-                        <div class="form-horizontal div-top col-md-12 last-item  @if($errors->has('profleimage')) has-error @endif">
+                        <div class="form-group div-top col-md-8  @if($errors->has('profleimage')) has-error @endif">
                             <label for="profleimage-field">{{trans('crud/funcionarios.profile_image')}}</label>
                             <input type="file" id="profleimage-field" name="profleimage" class="form-control"
                                    value="{{ old("profleimage") }}"/>
@@ -65,6 +65,24 @@
                                 <span class="help-block">{{ $errors->first("profleimage") }}</span>
                             @endif
                         </div>
+
+                        <div class="form-group div-top col-md-4  @if($errors->has('insalubidade')) has-error @endif">
+                            <label for="insalubidade-field">Insalubidade</label>
+
+                            <select class="form-control" required="" id="insalubridade-field" name="insalubridade"
+                                   >
+                                <option>0%</option>
+                                <option>10%</option>
+                                <option>20%</option>
+                                <option>30%</option>
+                                <option>40%</option>
+                            </select>
+                            @if($errors->has("insalubridade"))
+                                <span class="help-block">{{ $errors->first("") }}</span>
+                            @endif
+                        </div>
+
+
                     </div>
 
                     {{--2 Itens--}}
@@ -510,9 +528,6 @@
                             @endif
                         </div>
 
-                        <input type="hidden" id="filhos-field" name="filhos" class="form-control"
-                               value=""
-                        />
 
                         {{--
                          <div class="form-group col-md-6 minimal-padding last-item @if($errors->has('filhos')) has-error @endif">

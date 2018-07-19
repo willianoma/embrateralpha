@@ -148,7 +148,7 @@
                     <td>{{$funcionario->farda}}</td>
                     <td>{{$funcionario->bota}}</td>
                     <td>{{$funcionario->filiacao}}</td>
-                    <td>{{$funcionario->filhos}}</td>
+                    <td>{{$funcionario->insalubridade}}</td>
                     <td>{{$funcionario->banco}}</td>
                     <td>{{$funcionario->banco_conta}}</td>
                     <td>{{$funcionario->banco_agencia}}</td>
