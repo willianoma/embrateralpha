@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/', 'Auth\AuthController@getLogin');
+Route::get('/', 'SiteController@home');
+Route::get('/login', 'Auth\AuthController@getLogin');
 
 
 Route::group(['prefix' => '', 'middleware' => 'auth'], function () {

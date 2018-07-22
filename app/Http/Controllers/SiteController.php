@@ -15,7 +15,7 @@ class SiteController extends Controller
      */
     public function home()
     {
-        return view('site.index');
+        return view('site.home');
     }
 
 
