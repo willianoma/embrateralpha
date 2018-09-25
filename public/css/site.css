@@ -62,7 +62,7 @@ a img{
 
 
 .android-logo-image {
-  height: 28px;
+  height: auto;
   width: 140px;
 }
 
@@ -161,7 +161,7 @@ a img{
 
   .android-drawer .mdl-layout-title {
     position: relative;
-    background: #6ab344;
+    background: #95cdeb;
     height: 160px;
   }
 
@@ -175,7 +175,8 @@ a img{
   height: 800px;
   width: auto;
   background-color: #f3f3f3;
-  background: url('/images/site/slide01.jpg') center 30% no-repeat;
+  background: url('/images/site/top.png') no-repeat;
+  background-position: 0% 0%;
   background-size: cover;
 }
 
@@ -373,7 +374,7 @@ a img{
   }
 
 .android-customized-section-image {
-  background: url('/images/site/devices.jpg') center top no-repeat;
+  background: url('/images/site/bottom.png') center top no-repeat;
   background-size: cover;
   height: 400px;
 }
