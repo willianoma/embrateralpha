@@ -1,4 +1,4 @@
-@extends('mdl')
+@extends('layout')
 
 @section('content')
     {{-- {{dump($pendencia)}} --}}
@@ -34,7 +34,7 @@
                     </div>
 
                     <div>
-                        <label>Empresa: {{$visita->getEmpresa->razaosocial}}</label>
+                        <label>Posto: {{$visita->getPosto->nome}}</label>
                     </div>
 
                     <div>
@@ -68,81 +68,29 @@
                     </div>
 
 
-                    @if($pendencia->tipovisita == 'geral')
+                    <div class="mdl-grid mdl-cell--12-col mdl-card__supporting-text ">
 
-                        <div class="mdl-grid mdl-cell--12-col mdl-card__supporting-text ">
-
-                            <div class="mdl-cell mdl-cell--6-col" style="text-align: center">
-                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="concluido">
-                                    <input class="mdl-radio__button" id="concluido" name="status" type="radio"
-                                           value="concluido"
-                                           @if(Input::old('status')=='concluido') checked @endif
-                                    >
-                                    <span class="mdl-radio__label">Concluido</span>
-                                </label>
-                            </div>
-
-                            <div class="mdl-cell mdl-cell--6-col" style="text-align: center">
-                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="pendente">
-                                    <input class="mdl-radio__button" id="pendente" name="status" type="radio"
-                                           value="pendente"
-                                           @if(Input::old('status')=='pendente') checked @endif
-                                    >
-                                    <span class="mdl-radio__label">Pendente</span>
-                                </label>
-                            </div>
-
+                        <div class="mdl-cell mdl-cell--6-col" style="text-align: center">
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="concluido">
+                                <input class="mdl-radio__button" id="concluido" name="status" type="radio"
+                                       value="concluido"
+                                       @if(Input::old('status')=='concluido') checked @endif
+                                >
+                                <span class="mdl-radio__label">Concluido</span>
+                            </label>
                         </div>
 
-                    @endif
-
-                    @if($pendencia->tipovisita == 'individual')
-
-                        <div class="mdl-grid mdl-cell--12-col mdl-card__supporting-text ">
-
-                            <div class="mdl-cell mdl-cell--3-col" style="text-align: center">
-                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="operacional">
-                                    <input class="mdl-radio__button" id="operacional" name="status" type="radio"
-                                           value="operacional"
-                                           @if(Input::old('status')=='operacional') checked @endif
-                                    >
-                                    <span class="mdl-radio__label">Operacional</span>
-                                </label>
-                            </div>
-
-                            <div class="mdl-cell mdl-cell--3-col" style="text-align: center">
-                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="analise">
-                                    <input class="mdl-radio__button" id="analise" name="status" type="radio"
-                                           value="analise"
-                                           @if(Input::old('status')=='analise') checked @endif
-                                    >
-                                    <span class="mdl-radio__label">Análise</span>
-                                </label>
-                            </div>
-
-                            <div class="mdl-cell mdl-cell--3-col" style="text-align: center">
-                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="manutencao">
-                                    <input class="mdl-radio__button" id="manutencao" name="status" type="radio"
-                                           value="manutencao"
-                                           @if(Input::old('status')=='manutencao') checked @endif
-                                    >
-                                    <span class="mdl-radio__label">Manutenção</span>
-                                </label>
-                            </div>
-
-                            <div class="mdl-cell mdl-cell--3-col" style="text-align: center">
-                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="ausente">
-                                    <input class="mdl-radio__button" id="ausente" name="status" type="radio"
-                                           value="ausente"
-                                           @if(Input::old('status')=='ausente') checked @endif
-                                    >
-                                    <span class="mdl-radio__label">Ausente</span>
-                                </label>
-                            </div>
-
+                        <div class="mdl-cell mdl-cell--6-col" style="text-align: center">
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="pendente">
+                                <input class="mdl-radio__button" id="pendente" name="status" type="radio"
+                                       value="pendente"
+                                       @if(Input::old('status')=='pendente') checked @endif
+                                >
+                                <span class="mdl-radio__label">Pendente</span>
+                            </label>
                         </div>
 
-                    @endif
+                    </div>
 
 
                     <div class="mdl-cell mdl-cell--12-col">

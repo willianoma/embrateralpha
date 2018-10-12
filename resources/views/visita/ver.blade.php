@@ -177,7 +177,7 @@
                                         <td>{{date("d/m/Y", strtotime($visita->horainicio))}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Técnico Reponsável</td>
+                                        <td>Usuário Responsável</td>
                                         <td>{{$usuario->name}}</td>
                                     </tr>
                                     <tr>
@@ -194,24 +194,28 @@
                                     <td>
 
                                         <div class="row user-infos pendencias">
+                                            <table>
 
-                                            @foreach($pendencias as $pendencia)
-                                                <dd>
-                                                    <strong>Usuário:</strong> {{$pendencia->getusuario->name}}
-                                                </dd>
-                                                <dd>
-                                                    <strong>Data:</strong> {{$pendencia->created_at}}
-                                                </dd>
-                                                <dd>
-                                                    <strong>Descricao:</strong> {{$pendencia->novadescricao}}
-                                                </dd>
-                                                <dd>
-                                                    <strong> Status:</strong> {{$pendencia->status}}
-                                                </dd>
-                                                <hr>
+                                                @foreach($pendencias as $pendencia)
+                                                    <tr>
+                                                        <td>
+                                                            <dd>
+                                                                <strong>Usuário:</strong> {{$pendencia->getusuario->name}}
+                                                            </dd>
+                                                            <dd>
+                                                                <strong>Data:</strong> {{$pendencia->created_at}}
+                                                            </dd>
+                                                            <dd>
+                                                                <strong>Descricao:</strong> {{$pendencia->novadescricao}}
+                                                            </dd>
+                                                            <dd>
+                                                                <strong> Status:</strong> {{$pendencia->status}}
+                                                            </dd>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
 
-
-                                            @endforeach
+                                            </table>
 
                                         </div>
                                     </td>
