@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'SiteController@home');
+Route::get('/sobre', 'SiteController@sobre');
+
 Route::get('/login', 'Auth\AuthController@getLogin');
 
 
