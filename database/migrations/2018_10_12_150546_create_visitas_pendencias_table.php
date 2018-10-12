@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEntregaVestesTable extends Migration
+class CreateVisitasPendenciasTable extends Migration
 {
 
     /**
@@ -13,13 +13,12 @@ class CreateEntregaVestesTable extends Migration
      */
     public function up()
     {
-        Schema::create('entrega_vestes', function (Blueprint $table) {
+        Schema::create('visitas_pendencias', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('idfuncionario');
-            $table->integer('idveste');
-            $table->integer('iduser');
-            $table->string('assinatura');
-            $table->string('obs');
+            $table->bigInteger('idvisita');
+            $table->bigInteger('idusuario');
+            $table->text('novadescricao');
+            $table->enum('status', ['concluido', 'analise', 'pendente']);
             $table->timestamps();
         });
     }
@@ -31,7 +30,7 @@ class CreateEntregaVestesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('entrega_vestes');
+        Schema::drop('visitas_pendencias');
     }
 
 }

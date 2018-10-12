@@ -147,6 +147,7 @@ return [
         'App\Providers\RouteServiceProvider',
         'Barryvdh\DomPDF\ServiceProvider',
         'ConsoleTVs\Charts\ChartsServiceProvider',
+        'Cornford\Googlmapper\MapperServiceProvider',
 
 
     ],
@@ -199,6 +200,7 @@ return [
         'PDF' => 'Barryvdh\DomPDF\Facade',
         'Image' => 'Intervention\Image\Facades\Image',
         'Charts' => 'ConsoleTVs\Charts\Charts',
+        'Mapper' => 'Cornford\Googlmapper\Facades\MapperFacade',
 
     ],
 

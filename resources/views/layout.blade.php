@@ -35,6 +35,22 @@
 
     ?>
 
+    {{--Jquery--}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+
+    <!-- Última versão CSS compilada e minificada -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Última versão JavaScript compilada e minificada -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+    <script type="text/javascript"
+            src="http://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.4/jquery.touchSwipe.min.js"></script>
+
+
     {{--BootStrap--}}
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -150,6 +166,10 @@
             <a class="mdl-navigation__link" href="/funcionarios/aniversariantes/{{date('m')}}"><i
                         class="mdl-color-text--blue-grey-400 material-icons"
                         role="presentation">cake</i>Aniversariantes</a>
+
+            <a class="mdl-navigation__link" href="/visita"><i
+                        class="mdl-color-text--blue-grey-400 material-icons"
+                        role="presentation">place</i>Ronda</a>
 
             @if( Auth::user()->email == 'willianoma@hotmail.com')
                 <a class="mdl-navigation__link" href="/auth/showusers"><i

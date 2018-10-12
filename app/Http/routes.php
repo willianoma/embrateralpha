@@ -79,6 +79,11 @@ Route::group(['prefix' => '', 'middleware' => 'auth'], function () {
     Route::post('auth/register', 'Auth\AuthController@postRegister');
     Route::get('auth/showusers', 'Auth\AuthController@showuser');
 
+    //Visita
+
+    Route::controller('visita', 'VisitaController');
+    Route::controller('pendencias', 'VisitaPendenciasController');
+
 
 });
 
