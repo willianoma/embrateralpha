@@ -12,7 +12,10 @@
 */
 
 Route::get('/', 'SiteController@home');
-Route::get('/sobre', 'SiteController@sobre');
+Route::get('/sobrenos', 'SiteController@sobrenos');
+Route::get('/contato', 'SiteController@contato');
+Route::get('/servicos', 'SiteController@servicos');
+Route::get('/galeria', 'SiteController@galeria');
 
 Route::get('/login', 'Auth\AuthController@getLogin');
 
