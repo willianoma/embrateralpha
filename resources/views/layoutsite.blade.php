@@ -62,8 +62,9 @@
                     <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/">HOME</a>
                     <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/sobrenos">SOBRE NÓS</a>
                     <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/servicos">SERVIÇOS</a>
-                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/galeria">GALERIA</a>
+                    {{--      <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/galeria">GALERIA</a>--}}
                     <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/contato">CONTATOS</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/home">LOGIN</a>
                 </nav>
             </div>
             <span class="android-mobile-title mdl-layout-title">
@@ -82,8 +83,9 @@
             <a class="mdl-navigation__link" href="/">HOME</a>
             <a class="mdl-navigation__link" href="/sobrenos">SOBRE NÓS</a>
             <a class="mdl-navigation__link" href="/servicos">SERVIÇOS</a>
-            <a class="mdl-navigation__link" href="/galeria">GALERIA</a>
+            {{--  <a class="mdl-navigation__link" href="/galeria">GALERIA</a>--}}
             <a class="mdl-navigation__link" href="/contato">CONTATOS</a>
+            <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/home">LOGIN</a>
             <div class="android-drawer-separator"></div>
 
 
@@ -103,7 +105,7 @@
             <div class="row" style="text-align: center">
 
                 <div class="col-md-4 pull-left">
-                   <a href="https://www.instagram.com/embrateral"><i  class="fab fa-instagram fa-5x"></i></a>
+                    <a href="https://www.instagram.com/embrateral"><i class="fab fa-instagram fa-5x"></i></a>
                     &nbsp;
                     &nbsp;
 
