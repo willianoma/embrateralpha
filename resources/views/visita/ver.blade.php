@@ -82,7 +82,7 @@
                     class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-1">
                 <div class="panel panel-primary">
                     <div class="panel-heading ">
-                        <span id="idvisita" class="panel-title">VISITA GERAL #{{$visita->id}}</span>
+                        <span id="idvisita" class="panel-title">RONDA #{{$visita->id}}</span>
                         <span class="pull-right">
 
                         @if($visita->status == 'concluido')
@@ -157,7 +157,7 @@
                                         <dt>Duração</dt>
                                         <dd>{{$duracao}}m</dd>
                                         <dt>Registro</dt>
-                                        <dd>{{$visita->created_at}}</dd>
+                                        <dd>{{date("d/m/Y h:i A", strtotime($visita->created_at))}}</dd>
 
 
                                     </div>
@@ -236,7 +236,7 @@
                                     </tr>
                                     <tr>
                                         <td>Registro</td>
-                                        <td>{{$visita->created_at}}</td>
+                                        <td>{{date("d/m/Y h:i A", strtotime($visita->created_at))}}</td>
                                     </tr>
 
                                     </tbody>
@@ -273,17 +273,37 @@
                         @endif
 
                         <div class="pull-right">
+                            @if( Auth::user()->email == 'willianoma@hotmail.com')
 
-                            <button onclick="location.href='/visitageral/sendemailvisita/{{$visita->id}}'"
-                                    class="btn btn-sm btn-primary" type="button"
-                                    data-toggle="tooltip"
-                                    data-original-title="Remove this user"><i
-                                        class="glyphicon glyphicon-envelope"></i></button>
+                                <button onclick="location.href='/visitageral/sendemailvisita/{{$visita->id}}'"
+                                        class="btn btn-sm btn-primary" type="button"
+                                        data-toggle="tooltip"
+                                        data-original-title="Remove this user"><i
+                                            class="glyphicon glyphicon-envelope"></i></button>
 
-                            <button class="btn btn-sm btn-warning" type="button"
-                                    data-toggle="tooltip"
-                                    data-original-title="Edit this user"><i
-                                        class="glyphicon glyphicon-print"></i></button>
+                                <button class="btn btn-sm btn-warning" type="button"
+                                        data-toggle="tooltip"
+                                        data-original-title="Edit this user"><i
+                                            class="glyphicon glyphicon-print"></i></button>
+
+
+
+                                <form action="/visita/deletar/{{$visita->id}}" method="GET"
+                                      style="display: inline;"
+                                      onsubmit="if(confirm('Deletar ({{$visita->id}})?')) { return true } else {return false };">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <button type="submit"
+                                            class="btn btn-sm btn-danger" type="button"
+                                            data-toggle="tooltip"
+                                            data-original-title="Remove this user"><i
+                                                class="glyphicon glyphicon-trash"></i></button>
+                                    </button>
+                                </form>
+
+
+
+
+                            @endif
 
 
                         </div>

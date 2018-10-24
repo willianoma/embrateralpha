@@ -15,7 +15,7 @@
   See the License for the specific language governing permissions and
   limitations under the License
 -->
-<html lang="en">
+<html lang="pt">
 <head>
     {{-- @if(!empty($msg))
          <div class="alert alert-warning">
@@ -167,9 +167,17 @@
                         class="mdl-color-text--blue-grey-400 material-icons"
                         role="presentation">cake</i>Aniversariantes</a>
 
-            <a class="mdl-navigation__link" href="/visita"><i
+            <a class="mdl-navigation__link" href="/visita/criar/undefined"><i
                         class="mdl-color-text--blue-grey-400 material-icons"
                         role="presentation">place</i>Ronda</a>
+
+            <a class="mdl-navigation__link" href="/visita"><i
+                        class="mdl-color-text--blue-grey-400 material-icons"
+                        role="presentation">place</i>Listar Ronda</a>
+
+            <a class="mdl-navigation__link" href="/pendencias"><i
+                        class="mdl-color-text--blue-grey-400 material-icons"
+                        role="presentation">place</i>Pendencias</a>
 
             @if( Auth::user()->email == 'willianoma@hotmail.com')
                 <a class="mdl-navigation__link" href="/auth/showusers"><i

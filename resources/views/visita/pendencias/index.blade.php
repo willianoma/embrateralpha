@@ -1,5 +1,10 @@
 @extends('layout')
 
+@section('header')
+
+
+@endsection
+
 @section('content')
     <!-- Square card -->
     <style>
@@ -22,8 +27,8 @@
 
     <div class="mdl-cell--12-col">
         <div class="demo-card-square mdl-card mdl-shadow--6dp mdl-cell ">
-            <div class="mdl-card__title mdl-card--expand">
-                <h2 class="mdl-card__title-text">Visitas</h2>
+            <div class="mdl-card__title ">
+                <h2 class="mdl-card__title-text">Hondas Pendentes</h2>
             </div>
 
             <div class="mdl-card__supporting-text mdl-grid mdl-cell--12-col ">
@@ -35,7 +40,7 @@
 
                         {{--<th style="width: 30px">Id</th>--}}
                         {{--    <td>Usuário</td>--}}
-                        <td>Empresa</td>
+                        <td>Posto</td>
                         <td>Descrição</td>
                         <td>Pendencia</td>
                         {{--<td>Tipo</td>--}}
@@ -85,6 +90,7 @@
 
         </div>
     </div>
+{{--
 
 
     <div class="mdl-cell--12-col demo-card-square  mdl-cell">
@@ -97,7 +103,9 @@
         <table class="table table-responsible mdl-shadow--2dp mdl-cell--12-col">
             <tr style="font-weight: 800">
 
-                {{--<td>ID</td>--}}
+                --}}
+{{--<td>ID</td>--}}{{--
+
                 <td>Status</td>
                 <td>Id Visita</td>
                 <td>Usuario</td>
@@ -113,14 +121,18 @@
 
                     <td>Concluidas</td>
 
-                    {{--<td>{{$pendenciasconcluida->getPosto->nome}}</td>--}}
+                    --}}
+{{--<td>{{$pendenciasconcluida->getPosto->nome}}</td>--}}{{--
+
                     <td>{{$pendenciasconcluida->idvisita}}</td>
                     <td>{{$pendenciasconcluida->getUsuario->name}}</td>
                     <td>{{$pendenciasconcluida->getVisita->getPosto->nome}}</td>
 
                     <td>{{$pendenciasconcluida->novadescricao}}</td>
                     <td>{{$pendenciasconcluida->updated_at}}</td>
-                    {{-- <td>{{$pendenciasconcluida->status}}</td>--}}
+                    --}}
+{{-- <td>{{$pendenciasconcluida->status}}</td>--}}{{--
+
 
 
                 </tr>
@@ -128,7 +140,8 @@
             @endforeach
         </table>
     </div>
-    {{--
+    --}}
+{{--
        {{$pendencia->idempresa}}
        {{$pendencia->horainicio}}
        {{$pendencia->obs}}
@@ -140,7 +153,11 @@
        {{$pendencia->status}}
        {{$pendencia->assinatura}}
 --}}
-    <?php echo $pendenciasconcluidas->render(); ?>
+
+    <?php
+  //  echo $pendenciasconcluidas->render();
+    ?>
+
 
 
 
