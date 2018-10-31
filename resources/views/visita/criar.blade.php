@@ -1,6 +1,12 @@
 @extends('layout')
 
-@section('content')
+@section('header')
+
+    <div class="clearfix">
+
+        <span>Registro de Ronda</span>
+
+    </div>
 
 
     @if($errors->any())
@@ -22,6 +28,7 @@
     <style>
         .demo-card-square.mdl-card {
             width: 100%;
+
         }
 
         .demo-card-square > .mdl-card__title {
@@ -62,52 +69,39 @@
         }
     </script>
 
-    {{--Toast--}}{{--
-    <script>
-        r(function () {
-            var notification = document.querySelector('.mdl-js-snackbar');
-            notification.MaterialSnackbar.showSnackbar(
-                {
-                    message: 'and..working!!'
-                }
-            );
-        });
-        function r(f) {
-            /in/.test(document.readyState) ? setTimeout('r(' + f + ')', 9) : f()
-        }
-    </script>
 
-    <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
-        <div class="mdl-snackbar__text"></div>
-        <button class="mdl-snackbar__action" type="button"></button>
-    </div>
-    --}}{{--Toast--}}
-    @if($messagem <>'')
-        <div class="alert alert-warning" role="alert">
-            <a href="/pendencias">{{$messagem}}</a>
-        </div>
-    @endif
+@endsection
 
-    <form method="POST" action="/visita/store">
-
-        <?$tab = 5?>
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <input type="hidden" name="idusuario" value="{{Auth::user()->id}}">
-        <input type="hidden" name="geolocalizacao" id="geolocalizacao">
-        <label id="position"></label>
+@section('content')
 
 
-        <div class="mdl-grid mdl-cell--12-col">
 
+    <div class="mdl-cell mdl-cell--12-col">
+
+        <form method="POST" action="/visita/store">
+
+            @if($messagem <>'')
+                <div class="alert alert-warning" role="alert">
+                    <a href="/pendencias">{{$messagem}}</a>
+                </div>
+            @endif
+
+            <?$tab = 5?>
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="idusuario" value="{{Auth::user()->id}}">
+            <input type="hidden" name="geolocalizacao" id="geolocalizacao">
+            <label id="position"></label>
 
             <div class="mdl-cell mdl-cell--12-col">
+
                 <div class="demo-card-square mdl-card mdl-shadow--2dp ">
+
                     <div class="mdl-card__title mdl-card--expand">
                         <h2 class="mdl-card__title-text">Identificação</h2>
                     </div>
-                    <div class="mdl-card__supporting-text">
-                        <ul class=" mdl-list">
 
+                    <div class="">
+                        <ul class=" mdl-list">
 
                             @if($undefined == TRUE)
                                 <li class="">
@@ -115,7 +109,7 @@
 
                                         <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col">
                                             <div>
-                                                <label class="">posto</label>
+                                                <label class="">Escolha o Posto</label>
                                             </div>
 
                                             <select class="mdl-textfield__input" id="idposto" name="idposto">
@@ -186,17 +180,23 @@
 
                         </ul>
                     </div>
+
                 </div>
+
             </div>
 
 
             <div class="mdl-cell mdl-cell--12-col">
+
                 <div class="demo-card-square mdl-card mdl-shadow--2dp ">
+
                     <div class="mdl-card__title mdl-card--expand">
                         <h2 class="mdl-card__title-text">Visita</h2>
                     </div>
-                    <div class="mdl-card__supporting-text ">
-                        <ul class=" mdl-list ">
+
+                    <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
+                        <ul class="mdl-list ">
+
                             <li class="">
                                 <div class="mdl-textfield mdl-js-textfield mdl-cell--12-col">
                                     <textarea tabindex="{{$tab++}}" class="mdl-textfield__input" type="text"
@@ -206,6 +206,7 @@
                                     <label class="mdl-textfield__label" for="descricao">Descricao</label>
                                 </div>
                             </li>
+
                             <li class="">
                                 <div class="mdl-textfield mdl-js-textfield  mdl-cell--12-col">
                                     <textarea tabindex="{{$tab++}}" class="mdl-textfield__input" type="text"
@@ -266,7 +267,7 @@
                 <div class="demo-card-square mdl-shadow--2dp">
                     <div class="mdl-card__title mdl-card--expand">
                         <div class="mdl-cell--10-col">
-                            <h2 class="mdl-card__title-text">Enviar Visita Por E-mail</h2>
+                            <h2 class="mdl-card__title-text">Enviar Por E-mail</h2>
                         </div>
                         <div class="pull-right">
                             <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="sendemail">
@@ -293,7 +294,7 @@
             </div>
 
 
-        </div>
+    </div>
 
 
     </form>

@@ -29,9 +29,7 @@
                         <label>ID Visita: #{{$visita->id}}</label>
                     </div>
 
-                    <div>
-                        <label>Tipo de visita: {{$pendencia->tipovisita}}</label>
-                    </div>
+
 
                     <div>
                         <label>Posto: {{$visita->getPosto->nome}}</label>

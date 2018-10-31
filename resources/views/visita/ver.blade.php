@@ -91,7 +91,9 @@
                         @endif
 
                         @if($visita->status == 'pendente')
-                            <span class="panel-title label label-danger">Pendente</span>
+
+                            <span class="panel-title label label-danger"><a
+                                        href="/pendencias/resolver/{{$lastPendencia->id}}">Pendente</a></span>
                             </span>
                         @endif
 
@@ -110,7 +112,7 @@
                                      alt="User Pic">
                             </div>
 
-
+                            {{--MOBILE--}}
                             <div class="col-xs-10 col-sm-10 hidden-md hidden-lg">
                                 <span style="font-size: 20px; "><strong>{{$posto->nome}}</strong></span>
                                 <hr>
@@ -130,7 +132,7 @@
                                         <i class="glyphicon glyphicon-chevron-down text-muted"></i>
                                     </dd>
 
-                                    <div class="row user-infos pendencias">
+                                    <div class=" user-infos pendencias">
                                         @foreach($pendencias as $pendencia)
                                             <dd>
                                                 Usuário: {{$pendencia->getusuario->name}}
@@ -165,7 +167,7 @@
                                 </dl>
                             </div>
 
-
+                            {{--DESKTOP--}}
                             <div class=" col-md-9 col-lg-9 hidden-xs hidden-sm">
                                 <span style="font-size: 20px; "><strong>{{$posto->razaosocial}}</strong></span>
 

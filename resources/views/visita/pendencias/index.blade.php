@@ -25,15 +25,16 @@
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 
-    <div class="mdl-cell--12-col">
-        <div class="demo-card-square mdl-card mdl-shadow--6dp mdl-cell ">
+
+
+    <div class="demo-card-square mdl-card mdl-shadow--6dp ">
             <div class="mdl-card__title ">
                 <h2 class="mdl-card__title-text">Hondas Pendentes</h2>
             </div>
 
-            <div class="mdl-card__supporting-text mdl-grid mdl-cell--12-col ">
+            <div class="  ">
 
-                <table class="table table-responsible mdl-shadow--2dp mdl-cell--12-col">
+                <table class="table table-responsible mdl-shadow--2dp mdl-cell--12">
                     <thead>
 
                     <tr>
@@ -42,7 +43,7 @@
                         {{--    <td>Usuário</td>--}}
                         <td>Posto</td>
                         <td>Descrição</td>
-                        <td>Pendencia</td>
+                    {{--    <td>Pendencia</td>--}}
                         {{--<td>Tipo</td>--}}
                         {{-- <td>Data</td>--}}
                         <td>Visita</td>
@@ -65,7 +66,7 @@
 
                             <td>{{$pendenciaVisitas->getVisita->descricao}}</td>
 
-                            <td>{{$pendenciaVisitas->getVisita->pendencias}}</td>
+                {{--            <td>{{$pendenciaVisitas->getVisita->pendencias}}</td>--}}
                             {{--  <td>{{$pendenciaVisitas->tipovisita}}</td>--}}
                             {{--<td>{{$pendenciaVisitas->updated_at}}</td>--}}
                             <td>
@@ -89,75 +90,6 @@
             </div>
 
         </div>
-    </div>
-{{--
-
-
-    <div class="mdl-cell--12-col demo-card-square  mdl-cell">
-        <h4>
-            Concluidas
-        </h4>
-    </div>
-    <div class="mdl-cell--12-col demo-card-square mdl-card mdl-shadow--6dp mdl-cell">
-
-        <table class="table table-responsible mdl-shadow--2dp mdl-cell--12-col">
-            <tr style="font-weight: 800">
-
-                --}}
-{{--<td>ID</td>--}}{{--
-
-                <td>Status</td>
-                <td>Id Visita</td>
-                <td>Usuario</td>
-                <td>Posto</td>
-                <td>Descricao</td>
-                <td>Data</td>
-
-            </tr>
-
-
-            @foreach($pendenciasconcluidas as $pendenciasconcluida)
-                <tr>
-
-                    <td>Concluidas</td>
-
-                    --}}
-{{--<td>{{$pendenciasconcluida->getPosto->nome}}</td>--}}{{--
-
-                    <td>{{$pendenciasconcluida->idvisita}}</td>
-                    <td>{{$pendenciasconcluida->getUsuario->name}}</td>
-                    <td>{{$pendenciasconcluida->getVisita->getPosto->nome}}</td>
-
-                    <td>{{$pendenciasconcluida->novadescricao}}</td>
-                    <td>{{$pendenciasconcluida->updated_at}}</td>
-                    --}}
-{{-- <td>{{$pendenciasconcluida->status}}</td>--}}{{--
-
-
-
-                </tr>
-
-            @endforeach
-        </table>
-    </div>
-    --}}
-{{--
-       {{$pendencia->idempresa}}
-       {{$pendencia->horainicio}}
-       {{$pendencia->obs}}
-       {{$pendencia->pendencias}}
-       {{$pendencia->assinatura}}
-       {{$pendencia->idusuario}}
-       {{$pendencia->servico}}
-       {{$pendencia->geolocalizacao}}
-       {{$pendencia->status}}
-       {{$pendencia->assinatura}}
---}}
-
-    <?php
-  //  echo $pendenciasconcluidas->render();
-    ?>
-
 
 
 

@@ -12,5 +12,8 @@ class Visita extends Model {
     {
         return $this->hasOne('App\Posto', 'id', 'idposto');
     }
-
+    public function getPendencias()
+    {
+        return $this->hasMany('App\VisitasPendencias', 'id', 'idvisita');
+    }
 }

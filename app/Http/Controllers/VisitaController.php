@@ -23,7 +23,7 @@ class VisitaController extends Controller
 
 //        $visitas = Visita::orderBy('updated_at', 'desc')->paginate(10);
 
-        $visitas = Visita::paginate(10);
+        $visitas = Visita::orderBy('updated_at', 'desc')->paginate(10);;
 
         return view('/visita/index', compact('visitas'));
     }
@@ -39,7 +39,6 @@ class VisitaController extends Controller
             $messagem = 'Existem ' . $QtdVisitasPendencias . ' Pendencia no sistema.';
         }
 
-        $datetime = date('Y-n-d\TH:i:s');
         if ($idposto == 'undefined') {
             $posto = posto::orderBy('nome', 'asc')->get();
             $undefined = TRUE;
@@ -49,9 +48,9 @@ class VisitaController extends Controller
         }
 
         Mapper::location('Maceió')->map(['zoom' => 15, 'center' => true, 'rotateControl' => false, 'ui' => false, 'mapTypeControl' => false, 'scrollWheelZoom' => false, 'streetViewControl' => false, 'marker' => true, 'zoomControl' => false, 'eventAfterLoad' => 'onMapLoad(maps[0].map);']);
-        // Mapper::map(-9.5934459,-35.756719112);
 
-        //Mapper::location('Sheffield');
+        $datetime = date('Y-n-d\TH:i');
+
         return view('/visita/criar', compact('datetime', 'posto', 'undefined', 'messagem'));
     }
 
@@ -73,7 +72,7 @@ class VisitaController extends Controller
             $undefined = FALSE;
         }
 
-        $datetime = date('Y-n-d\TH:i:s');
+        $datetime = date('Y-n-d\TH:i');
 
 
         Mapper::location('Maceió')->map(['eventAfterLoad' => 'onMapLoad(maps[0].map);']);
@@ -101,10 +100,16 @@ class VisitaController extends Controller
 
         $pendencias = VisitasPendencias::where('idvisita', $visita->id)->get();
 
+        foreach ($pendencias as $pend) {
+            $lastPendencia = $pend;
+        }
+
+
+//
         Mapper::map($latlong[0], $latlong[1], ['zoom' => 15, 'center' => true, 'rotateControl' => false, 'mapTypeControl' => false, 'scrollWheelZoom' => false, 'streetViewControl' => false, 'marker' => true, 'zoomControl' => false]);
 
 
-        return view('/visita/ver', compact('visita', 'usuario', 'posto', 'pendencias', 'duracao'));
+        return view('/visita/ver', compact('visita', 'usuario', 'posto', 'pendencias', 'duracao', 'lastPendencia'));
     }
 
 

@@ -2,9 +2,9 @@
 
 @section('header')
 
-    <div class="page-header clearfix">
-        <h3>
-            <i class="glyphicon glyphicon-align-justify"></i>Dashboard</h3>
+    <div class="clearfix">
+
+        <span>Dashboard</span>
 
     </div>
 @endsection
@@ -13,41 +13,42 @@
 
 @section('content')
 
+    <div class="demo-charts mdl-color--white mdl-shadow--2dp  mdl-grid ">
 
-    {{-- Inicio Charts--}}
+        {{-- Inicio Charts--}}
 
-    {!! Charts::assets() !!}
-    <div class="mdl-cell mdl-cell--2-col">{!! $uncisalChart->render() !!}</div>
-    <div class="mdl-cell mdl-cell--2-col">{!! $hdtChart->render() !!}</div>
-    <div class="mdl-cell mdl-cell--2-col">{!! $santaMonicaChart->render() !!}</div>
-    <div class="mdl-cell mdl-cell--2-col">{!! $portugalRamalhoChart->render() !!}</div>
-    <div class="mdl-cell mdl-cell--2-col">{!! $etsalChart->render() !!}</div>
-    <div class="mdl-cell mdl-cell--2-col">{!! $reservaChart->render() !!}</div>
-    <div class="mdl-cell mdl-cell--12-col">
-        <div class="row" style="text-align: center">
-            <div class="mdl-cell--4-col">
-                Vaga Ocupada
-                <svg width="40" height="12">
-                    <rect width="400" height="100" style="fill: rgb(77, 182, 172);"/>
-                </svg>
-            </div>
-            <div class="mdl-cell--4-col">
-                Vaga Disponivel
-                <svg width="40" height="12">
-                    <rect width="400" height="100" style="fill: rgb(50, 205, 50);"/>
-                </svg>
-            </div>
-            <div class="mdl-cell--4-col">
-                Sobressalente
-                <svg width="40" height="12">
-                    <rect width="400" height="100" style="fill: rgb(178, 34, 34);"/>
-                </svg>
+        {!! Charts::assets() !!}
+        <div class="mdl-cell mdl-cell--2-col">{!! $uncisalChart->render() !!}</div>
+        <div class="mdl-cell mdl-cell--2-col">{!! $hdtChart->render() !!}</div>
+        <div class="mdl-cell mdl-cell--2-col">{!! $santaMonicaChart->render() !!}</div>
+        <div class="mdl-cell mdl-cell--2-col">{!! $portugalRamalhoChart->render() !!}</div>
+        <div class="mdl-cell mdl-cell--2-col">{!! $etsalChart->render() !!}</div>
+        <div class="mdl-cell mdl-cell--2-col">{!! $reservaChart->render() !!}</div>
+        <div class="mdl-cell mdl-cell--12-col">
+            <div class="row" style="text-align: center">
+                <div class="mdl-cell--4-col">
+                    Vaga Ocupada
+                    <svg width="40" height="12">
+                        <rect width="400" height="100" style="fill: rgb(77, 182, 172);"/>
+                    </svg>
+                </div>
+                <div class="mdl-cell--4-col">
+                    Vaga Disponivel
+                    <svg width="40" height="12">
+                        <rect width="400" height="100" style="fill: rgb(50, 205, 50);"/>
+                    </svg>
+                </div>
+                <div class="mdl-cell--4-col">
+                    Sobressalente
+                    <svg width="40" height="12">
+                        <rect width="400" height="100" style="fill: rgb(178, 34, 34);"/>
+                    </svg>
+                </div>
             </div>
         </div>
-    </div>
 
 
-    {{-- FIM Charts--}}
+        {{-- FIM Charts--}}
 
     </div>
 
@@ -114,7 +115,7 @@
                 <i class="material-icons">location_on</i>
             </div>--}}
         </div>
-
+    </div>
 
 
 @endsection
