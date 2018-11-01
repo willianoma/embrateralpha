@@ -33,7 +33,6 @@
     <link rel="stylesheet" href="css/site.css">
 
 
-
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
@@ -42,7 +41,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
             integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
             crossorigin="anonymous"></script>
-
 
 
     <style>
@@ -108,63 +106,62 @@
 
     </div>
 
-    <div class="android-content mdl-layout__content">
 
-
+    <main class="android-content mdl-layout__content" style="flex: 1 0 auto;">
         @yield('content')
+    </main>
+
+    <footer class="footer android-footer mdl-mega-footer">
+
+        <div class="row" style="text-align: center;">
+
+            <div class="col-md-4 pull-left">
+                <a href="https://www.instagram.com/embrateral"><i class="fab fa-instagram fa-5x"></i></a>
+                &nbsp;
+                &nbsp;
 
 
-        <footer class="android-footer mdl-mega-footer">
+                <a href="https://www.facebook.com/embrater"><i class="fab fa-facebook fa-5x"></i></a>
 
-            <div class="row" style="text-align: center">
+                &nbsp;
+                &nbsp;
 
-                <div class="col-md-4 pull-left">
-                    <a href="https://www.instagram.com/embrateral"><i class="fab fa-instagram fa-5x"></i></a>
-                    &nbsp;
-                    &nbsp;
-
-
-                    <a href="https://www.facebook.com/embrater"><i class="fab fa-facebook fa-5x"></i></a>
-
-                    &nbsp;
-                    &nbsp;
-
-                    <a href="mailto:contato@embrater.com"><i class="far fa-envelope fa-5x"></i></a>
-
-
-                </div>
-
-                <div class="col-md-4 pull-center">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <a href="https://www.google.com.br/maps/place/Embrater+Limpeza+E+Terceiriza%C3%A7%C3%A3o/@-9.65676,-35.7383681,17z/data=!4m8!1m2!2m1!1sembrater!3m4!1s0x0:0x3e94583464802cf!8m2!3d-9.6559444!4d-35.736161">Rua
-                        Íris Alagoense, 86 - Maceió-AL</a>
-                </div>
-
-                <div class="col-md-4 pull-right">
-                    <div>
-                        <i class="fas fa-headset fa-lg"></i>
-                        <a href="tel:08233278358"> (82) 3327-8358</a>
-                    </div>
-                    <div>
-                        <i class="fab fa-whatsapp fa-lg"></i>
-                        <a href="http://api.whatsapp.com/send?1=pt_BR&phone=5582996900182."> (82) 99690-0182</a>
-                    </div>
-                    <div>
-                        <i class="fas fa-envelope fa-lg"></i>
-                        <a href="mailto:contato@embrater.com"> contato@embrater.com</a>
-                    </div>
-                </div>
+                <a href="mailto:contato@embrater.com"><i class="far fa-envelope fa-5x"></i></a>
 
 
             </div>
 
-            <div class="mdl-mega-footer--middle-section" style="text-align: center">
-                <p class="mdl-typography--font-light pull-right">Embrater: 2018 Maceió - AL</p>
+            <div class="col-md-4 pull-center">
+                <i class="fas fa-map-marker-alt"></i>
+                <a href="https://www.google.com.br/maps/place/Embrater+Limpeza+E+Terceiriza%C3%A7%C3%A3o/@-9.65676,-35.7383681,17z/data=!4m8!1m2!2m1!1sembrater!3m4!1s0x0:0x3e94583464802cf!8m2!3d-9.6559444!4d-35.736161">Rua
+                    Íris Alagoense, 86 - Maceió-AL</a>
             </div>
 
-        </footer>
+            <div class="col-md-4 pull-right">
+                <div>
+                    <i class="fas fa-headset fa-lg"></i>
+                    <a href="tel:08233278358"> (82) 3327-8358</a>
+                </div>
+                <div>
+                    <i class="fab fa-whatsapp fa-lg"></i>
+                    <a href="http://api.whatsapp.com/send?1=pt_BR&phone=5582996900182."> (82) 99690-0182</a>
+                </div>
+                <div>
+                    <i class="fas fa-envelope fa-lg"></i>
+                    <a href="mailto:contato@embrater.com"> contato@embrater.com</a>
+                </div>
+            </div>
 
-    </div>
+
+        </div>
+
+        <div class="mdl-mega-footer--middle-section" style="text-align: center">
+            <p class="mdl-typography--font-light pull-right">Embrater: 2018 Maceió - AL</p>
+        </div>
+
+    </footer>
+
+
     @if($_SERVER["REQUEST_URI"] <> '/contato')
 
         <div id='fale'>
