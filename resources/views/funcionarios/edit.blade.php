@@ -65,6 +65,7 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                     <div class="row">
+
                         <div class="form-horizontal div-top col-md-8 @if($errors->has('profleimage')) has-error @endif">
                             <label id="label-image-profile" hidden="" for="profleimage-field">Profleimage</label>
                             <img class="img-profile thumb" src="{{asset("$funcionario->profleimage")}}">
@@ -81,16 +82,13 @@
 
                             <select class="form-control" required="" id="insalubridade-field" name="insalubridade">
 
-
                                 <?php
-
 
                                 if (isset($funcionario->insalubridade)) {
                                     echo "<option selected=''>";
                                     echo $funcionario->insalubridade;
                                     echo ' </option>';
                                 }
-
                                 ?>
 
 
@@ -671,9 +669,9 @@
                     </div>
                     <!-- Fim 4 Itens -->
 
-                    <div class="row">
+                    <div class="row ">
 
-                        <div class="form-group first-item last-item col-md-12 @if($errors->has('obs')) has-error @endif">
+                        <div class="form-group first-item minimal-padding col-md-10 @if($errors->has('obs')) has-error @endif">
                             <label for="obs-field">{{trans('crud/funcionarios.obs')}}</label>
                             <input type="text" id="obs-field" name="obs" class="form-control"
                                    value="{{ $funcionario->obs }}"/>
@@ -681,7 +679,20 @@
                                 <span class="help-block">{{ $errors->first("obs") }}</span>
                             @endif
                         </div>
+
+
+                        <div class="form-group last-item minimal-padding col-md-2 @if($errors->has('datademissao')) has-error @endif">
+                            <label for="datademissao-field">Data de demissão</label>
+                            <input type="date" id="datademissao-field" name="datademissao" class="form-control"
+                                   value="{{ $funcionario->datademissao }}"/>
+                            @if($errors->has("datademissao"))
+                                <span class="help-block">{{ $errors->first("datademissao") }}</span>
+                            @endif
+                        </div>
+
+
                     </div>
+
 
                     <div class="well well-sm">
                         <button type="submit" class="btn btn-primary">{{trans('crud/crud.save')}}</button>

@@ -335,9 +335,14 @@
                 <!-- Fim 4 Itens -->
                 <div class="row">
 
-                    <div class="form-group col-md-12 first-item last-item">
+                    <div class="form-group col-md-10 first-item last-item">
                         <label for="obs-field">{{trans('crud/funcionarios.obs')}}</label>
                         <p class="form-control-static">{{$funcionario->obs}}</p>
+                    </div>
+
+                    <div class="form-group col-md-2 first-item last-item">
+                        <label for="datademissao-field">Data de demissão</label>
+                        <p class="form-control-static">{{strftime('%d/%m/%Y', strtotime($funcionario->datademissao))}}</p>
                     </div>
                 </div>
             </div>

@@ -320,6 +320,7 @@ class FuncionarioController extends Controller
         $funcionario->horario = $request->input("horario");
         $funcionario->tipo = $request->input("tipo");
         $funcionario->status = $request->input("status");
+        $funcionario->datademissao = $request->input("datademissao");
 
 
         $profileImage = $request->file('profleimage');
