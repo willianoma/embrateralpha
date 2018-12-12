@@ -4,7 +4,7 @@
 
 
 @section('header')
-    <div class="page-header clearfix">
+    <div class="">
         <h3>
             <i class="glyphicon glyphicon-align-justify"></i> {{trans('crud/funcionarios.title')}}
             <a class="btn btn-success " href="{{ route('funcionarios.create') }}"><i
