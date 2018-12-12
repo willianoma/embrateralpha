@@ -150,7 +150,7 @@ class VisitaController extends Controller
 
             $pendencia->idvisita = $visita->id;
             $pendencia->idusuario = $visita->idusuario;
-            $pendencia->novadescricao = $request->input('pendencias');
+            $pendencia->novadescricao = "Início";
             $pendencia->status = 'pendente';
 
             $pendencia->save();

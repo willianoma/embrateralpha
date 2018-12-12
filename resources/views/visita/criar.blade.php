@@ -207,7 +207,7 @@
                                 </div>
                             </li>
 
-                            <li class="">
+                            {{--<li class="">
                                 <div class="mdl-textfield mdl-js-textfield  mdl-cell--12-col">
                                     <textarea tabindex="{{$tab++}}" class="mdl-textfield__input" type="text"
                                               id="pendencias"
@@ -215,7 +215,7 @@
                                               style="height: 100px">{{old("pendencias")}}</textarea>
                                     <label class="mdl-textfield__label" for="pendencias">pendencias</label>
                                 </div>
-                            </li>
+                            </li>--}}
 
                             <li>
                                 <div style="height: 180px;">

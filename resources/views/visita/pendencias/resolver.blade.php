@@ -8,7 +8,7 @@
     <div class="mdl-grid mdl-cell--12-col">
         <div class=" mdl-card  mdl-cell--12-col mdl-shadow--8dp ">
 
-            <span class="alert alert-success" style="text-align: center"><b>RESOLVER PENDÊNCIA</b></span>
+            <span class="alert alert-success" style="text-align: center"><b>ATUALIZAR HONDA</b></span>
 
             <div class="mdl-cell--12-col mdl-card__supporting-text">
 
@@ -22,11 +22,11 @@
 
 
                     <div>
-                        <label>ID Pendencia: #{{$pendencia->id}}</label>
+                        <label>ID: #{{$pendencia->id}}</label>
                     </div>
 
                     <div>
-                        <label>ID Visita: #{{$visita->id}}</label>
+                        <label>ID Visita:<a href="/visita/ver/{{$visita->id}}"> #{{$visita->id}}</a> </label>
                     </div>
 
 
@@ -45,7 +45,7 @@
                     </div>
 
                     <div>
-                        <label>Historico Pendencias:</label>
+                        <label>Atualizações:</label>
                         @foreach($todaspendencias as $pend)
                             <div>{{$pend->created_at}} - {{$pend->getusuario->name}}
                                 - {{$pend->novadescricao}}</div>
@@ -53,7 +53,7 @@
                     </div>
 
                     <div>
-                        <label>Nova Descrição:</label>
+                        <label>Nova Atualização:</label>
                     </div>
                     <div>
 

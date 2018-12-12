@@ -342,7 +342,10 @@
 
                     <div class="form-group col-md-2 first-item last-item">
                         <label for="datademissao-field">Data de demissão</label>
-                        <p class="form-control-static">{{strftime('%d/%m/%Y', strtotime($funcionario->datademissao))}}</p>
+                        @if($funcionario->datademissao != NULL)
+
+                            <p class="form-control-static">{{strftime('%d/%m/%Y', strtotime($funcionario->datademissao))}}</p>
+                        @endif
                     </div>
                 </div>
             </div>

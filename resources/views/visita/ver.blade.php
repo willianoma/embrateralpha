@@ -86,7 +86,7 @@
                         <span class="pull-right">
 
                         @if($visita->status == 'concluido')
-                                <span class="panel-title label label-success">Concluído</span>
+                                <span class="panel-title label label-success">concluído</span>
                     </span>
                         @endif
 
@@ -119,14 +119,14 @@
                                 <dl>
                                     <dt>Data</dt>
                                     <dd>{{date("d/m/Y", strtotime($visita->horainicio))}}</dd>
-                                    <dt>Técnico Reponsável</dt>
+                                    <dt>Usuário Responsável</dt>
                                     <dd>{{$usuario->name}}</dd>
                                     <dt>Descrição</dt>
                                     <dd> {{$visita->descricao}}</dd>
 
 
                                     <dt>
-                                        Pendencias
+                                        Atualizações
                                     </dt>
                                     <dd class="dropdown-user" data-for=".pendencias">
                                         <i class="glyphicon glyphicon-chevron-down text-muted"></i>
@@ -138,14 +138,14 @@
                                                 Usuário: {{$pendencia->getusuario->name}}
                                             </dd>
                                             <dd>
-                                                Data: {{$pendencia->created_at}}
+                                                Data:  {{strftime('%d de %B de %Y, %A ', strtotime($pendencia->created_at))}}
                                             </dd>
                                             <dd>
                                                 Descricao: {{$pendencia->novadescricao}}
                                             </dd>
-                                            <dd>
+                                         {{--   <dd>
                                                 Status: {{$pendencia->status}}
-                                            </dd>
+                                            </dd>--}}
                                             <hr>
                                         @endforeach
                                     </div>
@@ -187,7 +187,7 @@
                                         <td>{{$visita->descricao}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Pendencias</td>
+                                        <td>Atualizações</td>
                                         <td class="dropdown-user" data-for=".pendencias">
                                             <i class="glyphicon glyphicon-chevron-down text-muted"></i>
                                         </td>
@@ -205,14 +205,14 @@
                                                                 <strong>Usuário:</strong> {{$pendencia->getusuario->name}}
                                                             </dd>
                                                             <dd>
-                                                                <strong>Data:</strong> {{$pendencia->created_at}}
+                                                                <strong>Data:</strong> {{strftime('%d de %B de %Y, %A ', strtotime($pendencia->created_at))}}
                                                             </dd>
                                                             <dd>
                                                                 <strong>Descricao:</strong> {{$pendencia->novadescricao}}
                                                             </dd>
-                                                            <dd>
+                                                         {{--   <dd>
                                                                 <strong> Status:</strong> {{$pendencia->status}}
-                                                            </dd>
+                                                            </dd>--}}
                                                         </td>
                                                     </tr>
                                                 @endforeach
