@@ -8,7 +8,7 @@
     <div class="mdl-grid mdl-cell--12-col">
         <div class=" mdl-card  mdl-cell--12-col mdl-shadow--8dp ">
 
-            <span class="alert alert-success" style="text-align: center"><b>ATUALIZAR HONDA</b></span>
+            <span class="alert alert-success" style="text-align: center"><b>ATUALIZAR RONDA</b></span>
 
             <div class="mdl-cell--12-col mdl-card__supporting-text">
 

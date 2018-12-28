@@ -29,7 +29,7 @@
 
     <div class="demo-card-square mdl-card mdl-shadow--6dp ">
             <div class="mdl-card__title ">
-                <h2 class="mdl-card__title-text">Hondas Pendentes</h2>
+                <h2 class="mdl-card__title-text">Rondas Pendentes</h2>
             </div>
 
             <div class="  ">

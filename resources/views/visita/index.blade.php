@@ -4,7 +4,7 @@
 
     <div class="clearfix">
 
-        <span>Lista de Hondas</span>
+        <span>Lista de Rondas</span>
 
     </div>
 @endsection
@@ -36,7 +36,7 @@
     <div class="demo-card-square mdl-card mdl-shadow--6dp  ">
 
         <div class="mdl-card__title mdl-card--expand">
-            <h2 class="mdl-card__title-text">Hondas</h2>
+            <h2 class="mdl-card__title-text">Rondas</h2>
         </div>
 
         {{--  <div style="margin-right: 40px; margin-top: 10px">
