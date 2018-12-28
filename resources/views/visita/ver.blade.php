@@ -114,7 +114,7 @@
 
                             {{--MOBILE--}}
                             <div class="col-xs-10 col-sm-10 hidden-md hidden-lg">
-                                <span style="font-size: 20px; "><strong>{{$posto->nome}}</strong></span>
+                                <span style="font-size: 20px; "><strong>{{$visita->getposto->nome}}</strong></span>
                                 <hr>
                                 <dl>
                                     <dt>Data</dt>
@@ -138,14 +138,14 @@
                                                 Usuário: {{$pendencia->getusuario->name}}
                                             </dd>
                                             <dd>
-                                                Data:  {{strftime('%d de %B de %Y, %A ', strtotime($pendencia->created_at))}}
+                                                Data: {{strftime('%d de %B de %Y, %A ', strtotime($pendencia->created_at))}}
                                             </dd>
                                             <dd>
                                                 Descricao: {{$pendencia->novadescricao}}
                                             </dd>
-                                         {{--   <dd>
-                                                Status: {{$pendencia->status}}
-                                            </dd>--}}
+                                            {{--   <dd>
+                                                   Status: {{$pendencia->status}}
+                                               </dd>--}}
                                             <hr>
                                         @endforeach
                                     </div>
@@ -174,10 +174,14 @@
                                 <table class="table table-user-information">
                                     <tbody>
                                     <tr>
+                                        <span style="font-size: 20px; "><strong>{{$visita->getposto->nome}}</strong></span>
+                                    </tr>
+                                    <tr>
 
                                         <td>Data</td>
                                         <td>{{date("d/m/Y", strtotime($visita->horainicio))}}</td>
                                     </tr>
+
                                     <tr>
                                         <td>Usuário Responsável</td>
                                         <td>{{$usuario->name}}</td>
@@ -210,9 +214,9 @@
                                                             <dd>
                                                                 <strong>Descricao:</strong> {{$pendencia->novadescricao}}
                                                             </dd>
-                                                         {{--   <dd>
-                                                                <strong> Status:</strong> {{$pendencia->status}}
-                                                            </dd>--}}
+                                                            {{--   <dd>
+                                                                   <strong> Status:</strong> {{$pendencia->status}}
+                                                               </dd>--}}
                                                         </td>
                                                     </tr>
                                                 @endforeach
