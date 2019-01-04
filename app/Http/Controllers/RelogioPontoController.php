@@ -27,7 +27,6 @@ class RelogioPontoController extends Controller
 
         if ($posto == 'Todos') {
             $funcionarios = Funcionario::where('status', '=', 'Ativo')->get();
-            dd($funcionarios);
 
             foreach ($funcionarios as $funcionario) {
                 if (empty($nomeFuncionario = $funcionario->nome)) {
