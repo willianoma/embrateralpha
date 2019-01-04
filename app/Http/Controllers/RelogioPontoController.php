@@ -26,7 +26,8 @@ class RelogioPontoController extends Controller
         $posto = $_GET['postoselecionado'];
 
         if ($posto == 'Todos') {
-            $funcionarios = Funcionario::all();
+            $funcionarios = Funcionario::where('status', '=', 'Ativo')->get();
+            dd($funcionarios);
 
             foreach ($funcionarios as $funcionario) {
                 if (empty($nomeFuncionario = $funcionario->nome)) {
@@ -73,7 +74,7 @@ class RelogioPontoController extends Controller
 
         } else {
 
-            $funcionarios = DB::table('funcionarios')->where('posto', $posto)->get();
+            $funcionarios = DB::table('funcionarios')->where('posto', $posto)->where('status', '=', 'Ativo')->get();
 
             foreach ($funcionarios as $funcionario) {
                 if (empty($nomeFuncionario = $funcionario->nome)) {
