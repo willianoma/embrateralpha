@@ -95,7 +95,7 @@
 
     <div class="demo-card-square mdl-card mdl-shadow--6dp ">
         <div class="mdl-card__title ">
-            <h2 class="mdl-card__title-text">Pendencias  (em testes)</h2>
+            <h2 class="mdl-card__title-text">Concluidas  (em testes)</h2>
         </div>
 
         <div class="  ">
@@ -107,8 +107,10 @@
 
                     {{--<th style="width: 30px">Id</th>--}}
                     {{--    <td>Usuário</td>--}}
-                    <td>Ronda</td>
+                    <td>Data</td>
                     <td>Posto</td>
+                    <td>Descrição</td>
+
                     {{--    <td>Pendencia</td>--}}
                     {{--<td>Tipo</td>--}}
                     {{-- <td>Data</td>--}}
@@ -126,17 +128,21 @@
                     <tr>
                         {{--   <td>{{$pendenciaVisitas->id}}</td>--}}
                         {{-- <td>{{$pendenciaVisitas->getVisita->getUsuario->name}}</td>--}}
-
                         <td>
-                            <a href="/visita/ver/{{$visitaPendenteConcluida}}">#{{$visitaPendenteConcluida}}</a>
+                            {{strftime('%d de %B de %Y, %A ', strtotime($visitaPendenteConcluida->horainicio))}}
+                        </td>
+                        <td>
+                            <a href="/visita/ver/{{$visitaPendenteConcluida->id}}">{{$visitaPendenteConcluida->getposto->nome}}</a>
                         </td>
 
                         {{--            <td>{{$pendenciaVisitas->getVisita->pendencias}}</td>--}}
                         {{--  <td>{{$pendenciaVisitas->tipovisita}}</td>--}}
                         {{--<td>{{$pendenciaVisitas->updated_at}}</td>--}}
-                        <td>
 
+                        <td>
+                            {{$visitaPendenteConcluida->descricao}}
                         </td>
+
                         {{-- <td>{{$pendenciaVisitas->assinatura}}</td>--}}
 
                         {{--<td>

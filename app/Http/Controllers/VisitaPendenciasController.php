@@ -100,14 +100,22 @@ class VisitaPendenciasController extends Controller
     public
     function getVisitasPendentesConcluidas()
     {
-        $pendenciasconcluidas = VisitasPendencias::where('status', 'concluido')->orderBy('updated_at', 'desc')->get();
-        $visitasPendentesConcluidas = collect([]);
-        $idsVisitasPendentesConcluidas = collect();
-        $dataVisitasPendentesConcluidas = collect();
 
-        foreach ($pendenciasconcluidas as $vpc) {
-            $idsVisitasPendentesConcluidas->push($vpc->idvisita);
-                   }
+        $visitasconcluidas = Visita::where('status', 'concluido')->orderBy('updated_at', 'desc')->get();
+
+        return $visitasconcluidas;
+
+
+
+
+     //   $pendenciasconcluidas = VisitasPendencias::where('status', 'concluido')->orderBy('updated_at', 'desc')->get();
+     //   $visitasPendentesConcluidas = collect([]);
+     //   $idsVisitasPendentesConcluidas = collect();
+     //   $dataVisitasPendentesConcluidas = collect();
+
+     //   foreach ($pendenciasconcluidas as $vpc) {
+     //       $idsVisitasPendentesConcluidas->push($vpc->idvisita);
+     //   }
 
 
         /*$idsFiltrados = $idsVisitasPendentesConcluidas->unique();
@@ -119,7 +127,7 @@ class VisitaPendenciasController extends Controller
         // dd($idsVisitasPendentesConcluidas->unique());
 
         dd($visitasPendentesConcluidas);*/
-        return $idsVisitasPendentesConcluidas->unique();
+        //return $idsVisitasPendentesConcluidas->unique();
     }
 
     public
