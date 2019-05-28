@@ -28,69 +28,133 @@
 
 
     <div class="demo-card-square mdl-card mdl-shadow--6dp ">
-            <div class="mdl-card__title ">
-                <h2 class="mdl-card__title-text">Rondas Pendentes</h2>
-            </div>
+        <div class="mdl-card__title ">
+            <h2 class="mdl-card__title-text">Rondas Pendentes</h2>
+        </div>
 
-            <div class="  ">
+        <div class="  ">
 
-                <table class="table table-responsible mdl-shadow--2dp mdl-cell--12">
-                    <thead>
+            <table class="table table-responsible mdl-shadow--2dp mdl-cell--12">
+                <thead>
+
+                <tr>
+
+                    {{--<th style="width: 30px">Id</th>--}}
+                    {{--    <td>Usuário</td>--}}
+                    <td>Posto</td>
+                    <td>Descrição</td>
+                    {{--    <td>Pendencia</td>--}}
+                    {{--<td>Tipo</td>--}}
+                    {{-- <td>Data</td>--}}
+                    <td>Ronda</td>
+                    {{-- <th>Ação</th>--}}
+
+                </tr>
+                </thead>
+
+                <tbody>
+
+                @foreach($pendenciasVisitas as $pendenciaVisitas)
+
 
                     <tr>
+                        {{--   <td>{{$pendenciaVisitas->id}}</td>--}}
+                        {{-- <td>{{$pendenciaVisitas->getVisita->getUsuario->name}}</td>--}}
+                        <td>
+                            <a href="/pendencias/resolver/{{$pendenciaVisitas->id}}">{{$pendenciaVisitas->getVisita->getPosto->nome}}</a>
+                        </td>
 
-                        {{--<th style="width: 30px">Id</th>--}}
-                        {{--    <td>Usuário</td>--}}
-                        <td>Posto</td>
-                        <td>Descrição</td>
-                    {{--    <td>Pendencia</td>--}}
-                        {{--<td>Tipo</td>--}}
-                        {{-- <td>Data</td>--}}
-                        <td>Visita</td>
-                        {{-- <th>Ação</th>--}}
+                        <td>{{$pendenciaVisitas->getVisita->descricao}}</td>
 
+                        {{--            <td>{{$pendenciaVisitas->getVisita->pendencias}}</td>--}}
+                        {{--  <td>{{$pendenciaVisitas->tipovisita}}</td>--}}
+                        {{--<td>{{$pendenciaVisitas->updated_at}}</td>--}}
+                        <td>
+                            <a href="/visita/ver/{{$pendenciaVisitas->idvisita}}">#{{$pendenciaVisitas->idvisita}}</a>
+                        </td>
+                        {{-- <td>{{$pendenciaVisitas->assinatura}}</td>--}}
+
+                        {{--<td>
+                            <a class="btn btn-xs btn-info"
+                               href="/pendencias/resolver/{{$pendenciaVisitas->id}}"><i
+                                        class="glyphicon glyphicon-edit"></i> Resolver</a>
+
+                        </td>--}}
                     </tr>
-                    </thead>
 
-                    <tbody>
+                @endforeach
 
-                    @foreach($pendenciasVisitas as $pendenciaVisitas)
-
-
-                        <tr>
-                            {{--   <td>{{$pendenciaVisitas->id}}</td>--}}
-                            {{-- <td>{{$pendenciaVisitas->getVisita->getUsuario->name}}</td>--}}
-                            <td>
-                                <a href="/pendencias/resolver/{{$pendenciaVisitas->id}}">{{$pendenciaVisitas->getVisita->getPosto->nome}}</a>
-                            </td>
-
-                            <td>{{$pendenciaVisitas->getVisita->descricao}}</td>
-
-                {{--            <td>{{$pendenciaVisitas->getVisita->pendencias}}</td>--}}
-                            {{--  <td>{{$pendenciaVisitas->tipovisita}}</td>--}}
-                            {{--<td>{{$pendenciaVisitas->updated_at}}</td>--}}
-                            <td>
-                                <a href="/visita/ver/{{$pendenciaVisitas->idvisita}}">#{{$pendenciaVisitas->idvisita}}</a>
-                            </td>
-                            {{-- <td>{{$pendenciaVisitas->assinatura}}</td>--}}
-
-                            {{--<td>
-                                <a class="btn btn-xs btn-info"
-                                   href="/pendencias/resolver/{{$pendenciaVisitas->id}}"><i
-                                            class="glyphicon glyphicon-edit"></i> Resolver</a>
-
-                            </td>--}}
-                        </tr>
-
-                    @endforeach
-
-                    </tbody>
-                </table>
-
-            </div>
+                </tbody>
+            </table>
 
         </div>
 
+
+    </div>
+
+
+    <div class="demo-card-square mdl-card mdl-shadow--6dp ">
+        <div class="mdl-card__title ">
+            <h2 class="mdl-card__title-text">Pendencias  (em testes)</h2>
+        </div>
+
+        <div class="  ">
+
+            <table class="table table-responsible mdl-shadow--2dp mdl-cell--12">
+                <thead>
+
+                <tr>
+
+                    {{--<th style="width: 30px">Id</th>--}}
+                    {{--    <td>Usuário</td>--}}
+                    <td>Ronda</td>
+                    <td>Posto</td>
+                    {{--    <td>Pendencia</td>--}}
+                    {{--<td>Tipo</td>--}}
+                    {{-- <td>Data</td>--}}
+
+                    {{-- <th>Ação</th>--}}
+
+                </tr>
+                </thead>
+
+                <tbody>
+
+                @foreach($visitasPendentesConcluidas as $visitaPendenteConcluida)
+
+
+                    <tr>
+                        {{--   <td>{{$pendenciaVisitas->id}}</td>--}}
+                        {{-- <td>{{$pendenciaVisitas->getVisita->getUsuario->name}}</td>--}}
+
+                        <td>
+                            <a href="/visita/ver/{{$visitaPendenteConcluida}}">#{{$visitaPendenteConcluida}}</a>
+                        </td>
+
+                        {{--            <td>{{$pendenciaVisitas->getVisita->pendencias}}</td>--}}
+                        {{--  <td>{{$pendenciaVisitas->tipovisita}}</td>--}}
+                        {{--<td>{{$pendenciaVisitas->updated_at}}</td>--}}
+                        <td>
+
+                        </td>
+                        {{-- <td>{{$pendenciaVisitas->assinatura}}</td>--}}
+
+                        {{--<td>
+                            <a class="btn btn-xs btn-info"
+                               href="/pendencias/resolver/{{$pendenciaVisitas->id}}"><i
+                                        class="glyphicon glyphicon-edit"></i> Resolver</a>
+
+                        </td>--}}
+                    </tr>
+
+                @endforeach
+
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
 
 
 @endsection

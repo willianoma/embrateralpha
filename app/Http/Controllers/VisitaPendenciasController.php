@@ -6,6 +6,7 @@ use App\VisitasPendencias;
 use App\Visita;
 use Auth;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\Array_;
 
 class VisitaPendenciasController extends Controller
 {
@@ -13,9 +14,10 @@ class VisitaPendenciasController extends Controller
     public function getIndex()
     {
         $pendenciasVisitas = $this->getPendencias();
-        $pendenciasconcluidas = $this->getPendenciasConcluidas();
+        $visitasPendentesConcluidas = $this->getVisitasPendentesConcluidas();
 
-        return view('/visita/pendencias/index', compact('pendenciasVisitas', 'pendenciasconcluidas'));
+
+        return view('/visita/pendencias/index', compact('pendenciasVisitas', 'visitasPendentesConcluidas'));
 
     }
 
@@ -90,9 +92,34 @@ class VisitaPendenciasController extends Controller
     public
     function getPendenciasConcluidas()
     {
-        $pendenciasconcluidas = VisitasPendencias::where('status', 'concluido')->orwhere('status', 'operacional')->orderBy('updated_at', 'desc')->paginate(10);
+        $pendenciasconcluidas = VisitasPendencias::where('status', 'concluido')->orderBy('updated_at', 'desc')->get();
 
         return $pendenciasconcluidas;
+    }
+
+    public
+    function getVisitasPendentesConcluidas()
+    {
+        $pendenciasconcluidas = VisitasPendencias::where('status', 'concluido')->orderBy('updated_at', 'desc')->get();
+        $visitasPendentesConcluidas = collect([]);
+        $idsVisitasPendentesConcluidas = collect();
+        $dataVisitasPendentesConcluidas = collect();
+
+        foreach ($pendenciasconcluidas as $vpc) {
+            $idsVisitasPendentesConcluidas->push($vpc->idvisita);
+                   }
+
+
+        /*$idsFiltrados = $idsVisitasPendentesConcluidas->unique();
+
+        foreach ($idsFiltrados as $idf) {
+            $visitasPendentesConcluidas->push(VisitasPendencias::where('idvisita', '=', $idf)->get());
+        }
+
+        // dd($idsVisitasPendentesConcluidas->unique());
+
+        dd($visitasPendentesConcluidas);*/
+        return $idsVisitasPendentesConcluidas->unique();
     }
 
     public
