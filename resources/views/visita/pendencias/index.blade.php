@@ -155,9 +155,10 @@
 
                 @endforeach
 
+
                 </tbody>
             </table>
-
+            <?php echo $visitasPendentesConcluidas->render();?>
         </div>
 
     </div>

@@ -101,7 +101,7 @@ class VisitaPendenciasController extends Controller
     function getVisitasPendentesConcluidas()
     {
 
-        $visitasconcluidas = Visita::where('status', 'concluido')->orderBy('updated_at', 'desc')->get();
+        $visitasconcluidas = Visita::where('status', 'concluido')->orderBy('updated_at', 'desc')->paginate(15);
 
         return $visitasconcluidas;
 
