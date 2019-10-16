@@ -11,7 +11,7 @@
 		"consoletvs/charts": "2.*",
 		"doctrine/dbal": "^2.5",
 		"nesbot/carbon": "~1.21",
-		"cornford/googlmapper": "2.29.0",
+		"cornford/googlmapper": "2.*",
 		"google/apiclient": "^2.0"
 	},
 	"require-dev": {
