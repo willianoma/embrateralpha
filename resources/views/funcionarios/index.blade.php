@@ -53,6 +53,7 @@
                         <option>Inativo</option>
                         <option>INSS</option>
                         <option>Férias</option>
+                        <option>Maternidade</option>
                     </select>
                 </div>
 
