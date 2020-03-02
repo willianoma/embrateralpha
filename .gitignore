@@ -1,7 +1,14 @@
 ### Personal ###
 docker-compose.yml
 public/profilesimages
+public/.htaccess
+public/error_log
 shared/
+.htaccess*
+.ftpquota
+.user.ini
+error_log
+php.ini*
 
 # Created by https://www.gitignore.io/api/sublimetext,laravel
 
